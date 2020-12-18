@@ -72,6 +72,12 @@ typings/
 .env
 .env.test
 
+# expo files
+.expo
+
+# vscode configs
+.vscode
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
