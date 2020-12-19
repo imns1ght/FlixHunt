@@ -1,7 +1,7 @@
 import { Dimensions, StatusBar } from "react-native";
 
-const { height, width } = Dimensions.get("screen");
-const tabBarHeight = 54;
+export const { height, width } = Dimensions.get("screen");
+export const tabBarHeight = 54;
 
 export const CONSTANTS = {
   api_base_url: "https://api.themoviedb.org/3",
