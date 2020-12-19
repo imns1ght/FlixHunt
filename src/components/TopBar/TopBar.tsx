@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedbackBase,
-  View,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { CONSTANTS } from "../../services/constants";
 
 const TopBar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textGeneric}>Menu</Text>
       <Text style={styles.textTitle}>Movie Browser</Text>
       <Text style={styles.textGeneric}>Search</Text>
     </View>
@@ -19,6 +14,7 @@ const TopBar = () => {
 const styles = StyleSheet.create({
   container: {
     alignSelf: "stretch",
+    marginTop: CONSTANTS.statusBarHeight,
     height: 62,
     flexDirection: "row", // row
     backgroundColor: "#0F1F2E",
@@ -28,6 +24,7 @@ const styles = StyleSheet.create({
     paddingRight: 30,
   },
   textTitle: {
+    fontFamily: "sans-serif",
     fontSize: 24,
     fontWeight: "700",
     color: "white",
