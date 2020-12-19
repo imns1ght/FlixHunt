@@ -1,9 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import Carousel from "react-native-snap-carousel";
 import { TrendingResponse } from "../../models/trending/trending";
 import { getTrendingMovies } from "../../services/api";
-import CarouselItem from "./CarouselItem/CarouselItem";
+import { CONSTANTS } from "../../services/constants";
+import MovieItem from "../MovieItem/MovieItem";
 import styles from "./style";
 
 interface Props {
@@ -16,7 +23,7 @@ const TrendingMovies = ({ time_window }: Props) => {
     setTrendingMoviesdata,
   ] = useState<TrendingResponse>();
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const ref = useRef(null);
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     const getResponse = async () => {
@@ -39,7 +46,7 @@ const TrendingMovies = ({ time_window }: Props) => {
           <Text style={styles.sectionTitle}>Trending</Text>
           <Text style={styles.sectionSubTitle}>{time_window}</Text>
         </View>
-        {trendingMoviesData && (
+        {trendingMoviesData ? (
           <ScrollView>
             <View
               style={{
@@ -50,16 +57,25 @@ const TrendingMovies = ({ time_window }: Props) => {
             >
               <Carousel
                 layout={"default"}
-                ref={ref}
+                activeSlideAlignment={"center"}
+                inactiveSlideOpacity={0.9}
+                inactiveSlideScale={1}
+                activeAnimationType="decay"
+                loop={true}
+                ref={carouselRef}
                 data={trendingMoviesData!.results}
-                sliderWidth={400}
-                sliderHeight={550}
-                itemWidth={350}
-                renderItem={CarouselItem}
+                sliderWidth={CONSTANTS.width}
+                sliderHeight={300}
+                itemHeight={300}
+                itemWidth={220}
+                firstItem={trendingMoviesData.results.length / 2}
+                renderItem={MovieItem}
                 onSnapToItem={(index: number) => setActiveIndex(index)}
               />
             </View>
           </ScrollView>
+        ) : (
+          <ActivityIndicator size="large" />
         )}
       </View>
     </SafeAreaView>

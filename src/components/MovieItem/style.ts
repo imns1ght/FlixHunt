@@ -1,33 +1,6 @@
 import { Platform, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    marginBottom: 40,
-  },
-  section: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    margin: 20,
-  },
-  sectionTitle: {
-    color: "#FFFFFF",
-    fontSize: 26,
-  },
-  sectionSubTitle: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    margin: 10,
-  },
-  imageContainer: {
-    flex: 1,
-    marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
-    borderRadius: 8,
-  },
   cardImage: {
     ...StyleSheet.absoluteFillObject,
     resizeMode: "cover",

@@ -1,25 +1,27 @@
 import React from "react";
-import MovieSimpleInterface from "../../../models/movie-simple";
+import MovieSimpleInterface from "../../models/movie-simple";
 import { Fontisto, Ionicons } from "@expo/vector-icons";
 import { Image, Text, TouchableHighlight, View } from "react-native";
-import { CONSTANTS } from "../../../services/constants";
-import styles from "../style";
+import { CONSTANTS } from "../../services/constants";
+import styles from "./style";
 
 interface RenderItemProps {
   item: MovieSimpleInterface;
   index: number;
 }
 
-const CarouselItem = ({ item, index }: RenderItemProps) => {
+const MovieItem = ({ item, index }: RenderItemProps) => {
   return (
     <TouchableHighlight
-      onPress={() => window.alert("Clicked in " + (index + 1))}
+      onPress={() => {
+        window.alert("Clicked in " + (index + 1));
+      }}
     >
       <View
         style={{
-          height: 550,
-          width: 350,
-          padding: 35,
+          height: 300,
+          width: 200,
+          padding: 5,
           marginLeft: 5,
           marginRight: 5,
         }}
@@ -39,22 +41,22 @@ const CarouselItem = ({ item, index }: RenderItemProps) => {
             position: "absolute",
             justifyContent: "center",
             alignItems: "baseline",
-            right: 25,
-            bottom: 15,
+            right: 6,
+            bottom: 6,
             paddingHorizontal: 6,
             paddingVertical: 5,
           }}
         >
           <Ionicons
             name="heart-sharp"
-            size={22}
+            size={12}
             color="white"
             style={{ marginRight: 8 }}
           />
           <Text style={styles.cardTextVotes}>{item.vote_average}</Text>
           <Fontisto
             name="like"
-            size={20}
+            size={10}
             color="white"
             style={{
               alignSelf: "flex-start",
@@ -70,4 +72,4 @@ const CarouselItem = ({ item, index }: RenderItemProps) => {
   );
 };
 
-export default CarouselItem;
+export default MovieItem;

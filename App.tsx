@@ -7,9 +7,7 @@ import TrendingMovies from "./src/components/TrendingMovies/TrendingMovies";
 export default function App() {
   return (
     <SafeAreaView
-      style={{
-        flex: 1,
-      }}
+      style={styles.container}
     >
       <ScrollView>
         <TopBar />
