@@ -4,9 +4,10 @@ import { Fontisto, Ionicons } from "@expo/vector-icons";
 import { Image, Text, TouchableHighlight, View } from "react-native";
 import { CONSTANTS } from "../../services/constants";
 import styles from "./style";
+import { MovieResponse } from "../../models/movies/movie";
 
 interface RenderItemProps {
-  item: MovieSimpleInterface;
+  item: MovieSimpleInterface | MovieResponse;
   index: number;
 }
 
