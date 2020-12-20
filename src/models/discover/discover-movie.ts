@@ -21,6 +21,10 @@ export interface DiscoverMovieParams {
     include_video?: boolean;
     page?: number;
     primary_release_year?: number;
+    "primary_release_date.gte"?: string;
+    "primary_release_date.lte"?: string;
+    "release_date.gte"?: string;
+    "release_date.lte"?: string;
     year?: number;
     with_cast?: string;
     with_crew?: string;

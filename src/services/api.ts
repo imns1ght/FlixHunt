@@ -15,6 +15,17 @@ import {
 import { TrendingParams, TrendingResponse } from "../models/trending/trending";
 import { CONSTANTS } from "./constants";
 
+const getCurrentDate = () => {
+  const currentDate = new Date();
+  const currentDateApiPattern =
+    currentDate.getFullYear() +
+    "-" +
+    currentDate.getMonth() +
+    "-" +
+    currentDate.getDate();
+  return currentDateApiPattern;
+};
+
 // Used in requests
 const axiosInstance = axios.create({
   baseURL: CONSTANTS.api_base_url,
@@ -36,6 +47,7 @@ export const getLatestMoviesByReleaseDate = async (
         language: "en-US",
         include_adult: false,
         sort_by: "release_date.desc",
+        "release_date.lte": getCurrentDate(),
         page: page || 1,
       },
     })

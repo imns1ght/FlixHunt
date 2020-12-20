@@ -1,29 +1,25 @@
+import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import TopBar from "./src/components/TopBar/TopBar";
-import FeaturedMovies from "./src/components/FeaturedMovies/FeaturedMovies";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import Movie from "./src/screens/Movie/Movie";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <TopBar />
-        <View style={styles.container}>
-          <FeaturedMovies category="toprated" />
-          <FeaturedMovies category="trending" time_window="week" />
-          <FeaturedMovies category="trending" time_window="day" />
-          <StatusBar style="auto" />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <StatusBar style="auto" />
+      <TopBar />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Movie" component={Movie} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: "#050B10",
-  },
-});

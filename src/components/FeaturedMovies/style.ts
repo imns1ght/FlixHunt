@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
-    marginBottom: 40,
+    marginVertical: 10,
+    marginHorizontal: 20,
   },
   section: {
     flex: 1,
@@ -15,11 +16,12 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   sectionTitle: {
-    color: "#FFFFFF",
+    color: "#393e46",
+    fontWeight: "bold",
     fontSize: 26,
   },
   sectionSubTitle: {
-    color: "#FFFFFF",
+    color: "#393e46",
     fontSize: 16,
     margin: 10,
   },
