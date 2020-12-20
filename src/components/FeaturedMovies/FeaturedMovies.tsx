@@ -1,17 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
-  SafeAreaView,
-  ScrollView,
   Text,
   View,
   ActivityIndicator,
+  FlatList,
 } from "react-native";
-import Carousel from "react-native-snap-carousel";
 import { MoviesTopRatedResponse } from "../../models/movies/movies-top-rated";
 import { TrendingResponse } from "../../models/trending/trending";
 import { getMoviesTopRated, getTrendingMovies } from "../../services/api";
-import { CONSTANTS } from "../../services/constants";
-import MovieItem from "../MovieItem/MovieItem";
+import MovieCard from "../MovieCard/MovieCard";
 import styles from "./style";
 
 interface Props {
@@ -28,8 +25,6 @@ const FeaturedMovies = ({ category, time_window }: Props) => {
     topRatedMoviesData,
     setTopRatedMoviesData,
   ] = useState<MoviesTopRatedResponse>();
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const carouselRef = useRef(null);
 
   useEffect(() => {
     const getResponse = async () => {
@@ -49,9 +44,9 @@ const FeaturedMovies = ({ category, time_window }: Props) => {
   }, []);
 
   const getCategoryData = () => {
-    if (category === "trending") {
+    if (category === "trending" && trendingMoviesData) {
       return trendingMoviesData;
-    } else if (category === "toprated") {
+    } else if (category === "toprated" && topRatedMoviesData) {
       return topRatedMoviesData;
     } else {
       return null;
@@ -68,58 +63,34 @@ const FeaturedMovies = ({ category, time_window }: Props) => {
     }
   };
 
-  const getFirstItem = () => {
-    if (category === "trending") {
-      return getCategoryData()!.results.length / 2;
-    } else {
-      return 1;
+  const shouldRender = () => {
+    if (!getCategoryData()) {
+      return false;
     }
+
+    return true;
   };
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-      }}
-    >
-      <View style={styles.container}>
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{getSectionTitle()}</Text>
-          <Text style={styles.sectionSubTitle}>{time_window}</Text>
-        </View>
-        {trendingMoviesData || topRatedMoviesData ? (
-          <ScrollView>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                justifyContent: "flex-start",
-              }}
-            >
-              <Carousel
-                layout={"default"}
-                activeSlideAlignment={"center"}
-                inactiveSlideOpacity={0.9}
-                inactiveSlideScale={1}
-                activeAnimationType="decay"
-                loop={true}
-                ref={carouselRef}
-                data={getCategoryData()!.results}
-                sliderWidth={CONSTANTS.width}
-                sliderHeight={300}
-                itemHeight={300}
-                itemWidth={220}
-                firstItem={getFirstItem()}
-                renderItem={MovieItem}
-                onSnapToItem={(index: number) => setActiveIndex(index)}
-              />
-            </View>
-          </ScrollView>
-        ) : (
-          <ActivityIndicator size="large" />
-        )}
+    <View style={styles.container}>
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>{getSectionTitle()}</Text>
+        <Text style={styles.sectionSubTitle}>{time_window}</Text>
       </View>
-    </SafeAreaView>
+      {shouldRender() ? (
+        <FlatList
+          keyExtractor={(_, index) => _.id.toString() + index}
+          data={getCategoryData()?.results}
+          renderItem={MovieCard}
+          horizontal
+          contentContainerStyle={{
+            alignSelf: "center",
+          }}
+        />
+      ) : (
+        <ActivityIndicator size="large" />
+      )}
+    </View>
   );
 };
 
