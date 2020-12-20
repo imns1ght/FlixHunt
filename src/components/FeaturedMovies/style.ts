@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from "react-native";
+import { COLORS } from "../../../style";
 
 const styles = StyleSheet.create({
   container: {
@@ -6,7 +7,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
-    marginBottom: 40,
+    marginVertical: 10,
+    marginHorizontal: 20,
   },
   section: {
     flex: 1,
@@ -15,11 +17,12 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   sectionTitle: {
-    color: "#FFFFFF",
+    color: COLORS.primary,
+    fontWeight: "bold",
     fontSize: 26,
   },
   sectionSubTitle: {
-    color: "#FFFFFF",
+    color: COLORS.primary,
     fontSize: 16,
     margin: 10,
   },
@@ -44,12 +47,12 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(0, 0, 0, 0.75)",
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
-    color: "#FFF",
+    color: COLORS.secondary,
   },
   cardTextVotes: {
-    color: "#FFF",
+    color: COLORS.secondary,
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 12,
   },
 });
 

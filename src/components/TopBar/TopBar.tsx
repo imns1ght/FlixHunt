@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { COLORS } from "../../../style";
 import { CONSTANTS } from "../../services/constants";
 
 const TopBar = () => {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     marginTop: CONSTANTS.statusBarHeight,
     height: 62,
     flexDirection: "row", // row
-    backgroundColor: "#0F1F2E",
+    backgroundColor: COLORS.primary,
     alignItems: "center",
     justifyContent: "space-between", // center, space-around
     paddingLeft: 30,
@@ -27,11 +28,11 @@ const styles = StyleSheet.create({
     fontFamily: "sans-serif",
     fontSize: 24,
     fontWeight: "700",
-    color: "white",
+    color: COLORS.secondary,
   },
   textGeneric: {
     fontSize: 18,
-    color: "white",
+    color: COLORS.secondary,
   },
 });
 
