@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Image,
-  Text,
-  View,
-  ActivityIndicator,
-  SafeAreaView,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Image, Text, View, ActivityIndicator } from "react-native";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { ScrollView, TouchableHighlight } from "react-native-gesture-handler";
 import NumberFormat from "react-number-format";
 import { MovieResponse } from "../../models/movies/movie";
@@ -16,8 +10,9 @@ import styles from "./style";
 import { COLORS } from "../../../style";
 import { useNavigation } from "@react-navigation/native";
 import CastAndCrew from "./CastAndCrew/CastAndCrew";
+import { arrToStringFormated, convertMinsToTime } from "../../../utils";
 
-const Movie = (props: any) => {
+const MovieScreen = (props: any) => {
   const [movieData, setMovieData] = useState<MovieResponse>();
   const navigation = useNavigation();
 
@@ -32,30 +27,6 @@ const Movie = (props: any) => {
 
   const shouldRender = () => {
     return movieData ? true : false;
-  };
-
-  const convertMinsToTime = (mins: number | null) => {
-    if (mins) {
-      let hours = Math.floor(mins / 60);
-      let minutes = mins % 60;
-      let minutesStr = minutes < 10 ? "0" + minutes : minutes;
-      return `${hours ? `${hours}h` : ""}${minutesStr}m`;
-    }
-  };
-
-  const arrToStringFormated = (arr: any[]) => {
-    if (arr) {
-      const result = arr.map((value, index, arr) => {
-        if (arr.length - 1 === index) {
-          return value.name + ".";
-        } else {
-          return value.name + ", ";
-        }
-      });
-      return result;
-    }
-
-    return "";
   };
 
   return (
@@ -81,9 +52,26 @@ const Movie = (props: any) => {
           <View style={{ display: "flex", flexDirection: "column" }}>
             <Text style={styles.title}>{movieData!.title}</Text>
             <Text style={styles.subtitle}>{movieData!.tagline}</Text>
+            <Text style={styles.overview}>{movieData!.overview}</Text>
             <Text style={styles.tags}>
               Genre: {arrToStringFormated(movieData!.genres)}
             </Text>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={styles.tags}>Rating: {movieData!.vote_average}</Text>
+              <FontAwesome
+                name="star"
+                size={14}
+                color="orange"
+                style={{ marginLeft: 3 }}
+              />
+            </View>
             <Text style={styles.tags}>
               Duration: {convertMinsToTime(movieData!.runtime)}
             </Text>
@@ -111,7 +99,6 @@ const Movie = (props: any) => {
             <Text style={styles.tags}>
               Production: {arrToStringFormated(movieData!.production_companies)}
             </Text>
-            <Text style={styles.overview}>{movieData!.overview}</Text>
             <CastAndCrew movie_id={movieData!.id} />
           </View>
         </View>
@@ -122,4 +109,4 @@ const Movie = (props: any) => {
   );
 };
 
-export default Movie;
+export default MovieScreen;
