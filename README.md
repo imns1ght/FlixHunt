@@ -74,10 +74,10 @@ Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.
       expo start --web
       ```
 
-5. Building
+## Building
 
-    - [If you choose to build for Android](https://docs.expo.io/distribution/building-standalone-apps/#if-you-choose-to-build-for-android)
-    - [If you choose to build for iOS](https://docs.expo.io/distribution/building-standalone-apps/#if-you-choose-to-build-for-ios)
+- [If you choose to build for Android](https://docs.expo.io/distribution/building-standalone-apps/#if-you-choose-to-build-for-android)
+- [If you choose to build for iOS](https://docs.expo.io/distribution/building-standalone-apps/#if-you-choose-to-build-for-ios)
 
 ## TODO
 
