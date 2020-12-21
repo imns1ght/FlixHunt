@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#FFF",
     height: 335,
     resizeMode: "stretch",
     borderRadius: 6,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 6,
     },
-    shadowOpacity: .5,
+    shadowOpacity: 0.5,
     shadowRadius: 8.3,
     overflow: "visible",
   },

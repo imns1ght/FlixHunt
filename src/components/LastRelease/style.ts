@@ -1,20 +1,25 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../../style";
-import { CONSTANTS } from "../../services/constants";
-
-export const numberGrid = Math.ceil(CONSTANTS.width / 400);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginVertical: 10,
     marginHorizontal: 20,
-    marginBottom: 40,
   },
   sectionContainer: {
     display: "flex",
     flex: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
+  },
+  grid: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignContent: "flex-start",
   },
   section: {
     flex: 1,

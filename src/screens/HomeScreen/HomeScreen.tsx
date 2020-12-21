@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SearchBar } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import FeaturedMovies from "../../components/FeaturedMovies/FeaturedMovies";
-import LatestMovies from "../../components/LatestMovies/LatestMovies";
+import LastRelease from "../../components/LastRelease/LastRelease";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import { SearchMovieResponse } from "../../models/search/search-movie";
 import { searchByMovie } from "../../services/api";
@@ -33,9 +33,10 @@ const HomeScreen = () => {
       />
       {!searchText || !searchResults ? (
         <>
+          <FeaturedMovies category="trending" time_window="day" />
           <FeaturedMovies category="trending" time_window="week" />
           <FeaturedMovies category="toprated" />
-          <LatestMovies />
+          <LastRelease />
         </>
       ) : (
         <SearchResults data={searchResults!} />
