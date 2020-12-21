@@ -46,7 +46,13 @@ Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.
    yarn global add expo-cli
    ```
 
-3. Runnning
+3. Install the required packages
+
+   ```bash
+   yarn install
+   ```
+
+4. Runnning
 
    You can run the project in several ways:
 
