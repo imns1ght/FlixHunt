@@ -4,17 +4,17 @@ The Movie Browser is an app for you to find a good movie to watch! The Movie Bro
 
 ## Features
 
-### Home Page with Trending Movies and Last Releases
+## Home Page with Trending Movies and Last Releases
 
-- ![Home Page](assets/readme/tablet-home.gif)
+  <img src="assets/readme/tablet-home.gif" width="350" height="550"/>
 
-### Search Page
+## Search Page
 
-- ![Search Page](assets/readme/tablet-search.gif)
+<img src="assets/readme/tablet-search.gif" width="350" height="550"/>
 
-### Movie Page
+## Movie Page
 
-- ![Movie Page](assets/readme/tablet-movie.gif)
+<img src="assets/readme/tablet-movie.gif" width="350" height="550"/>
 
 ## Configuring
 
@@ -71,6 +71,7 @@ For major changes, please, open an issue first to discuss what you would like to
 ### Acknowledgment
 
 - Icons made by [photo3idea_studio](https://www.flaticon.com/authors/photo3idea-studio)
+- Database [The Movie Database](https://www.themoviedb.org/)
 
 ## License
 
