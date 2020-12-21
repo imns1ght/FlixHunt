@@ -1,5 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { COLORS } from "../../../style";
 import { CONSTANTS } from "../../services/constants";
 
@@ -7,7 +8,6 @@ const TopBar = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Movie Browser</Text>
-      <Text style={styles.textGeneric}>Search</Text>
     </View>
   );
 };
