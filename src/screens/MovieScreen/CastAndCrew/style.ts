@@ -1,5 +1,4 @@
-import { PixelRatio, StyleSheet } from "react-native";
-import { COLORS } from "../../../../style";
+import { StyleSheet } from "react-native";
 
 const MARGIN_H_DEFAULT = 15;
 const MARGIN_V_DEFAULT = 15;
