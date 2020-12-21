@@ -2,12 +2,12 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { COLORS } from "../../../style";
 import { CONSTANTS } from "../../services/constants";
-import logo from "../../../assets/favicon.png";
+import logo from "../../../assets/logo-light.png";
 
 const TopBar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textTitle}>Movie Browser</Text>
+      <Text style={styles.textTitle}>The Movie Browser</Text>
       <Image source={logo} style={{ width: 40, height: 40 }} />
     </View>
   );
