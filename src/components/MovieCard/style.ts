@@ -13,6 +13,14 @@ const styles = StyleSheet.create({
     height: 335,
     resizeMode: "stretch",
     borderRadius: 6,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: .5,
+    shadowRadius: 8.3,
+    overflow: "visible",
   },
   cardText: {
     position: "absolute",

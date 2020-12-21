@@ -5,6 +5,10 @@ import {
 } from "../models/discover/discover-movie";
 import { MovieParams, MovieResponse } from "../models/movies/movie";
 import {
+  MovieCreditsParams,
+  MovieCreditsResponse,
+} from "../models/movies/movie-credits";
+import {
   MoviesTopRatedParams,
   MoviesTopRatedResponse,
 } from "../models/movies/movies-top-rated";
@@ -84,6 +88,36 @@ export const getMovieByID = async (
     })
     .catch((response) => {
       console.log("error: getMovieByID()", response.err);
+      return response.err;
+    });
+
+  return response;
+};
+
+/**
+ * Returns the cast and crew for a movie by id.
+ *
+ * @param movie_id The movie id
+ * @returns Cast and crew for a movie.
+ */
+export const getMovieCastAndCrew = async (
+  movie_id: number
+): Promise<MovieCreditsResponse> => {
+  const response = await axiosInstance
+    .get<MovieCreditsResponse>(`/movie/${movie_id}/credits`, <
+      MovieCreditsParams
+    >{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: "en-US",
+        movie_id: movie_id,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((response) => {
+      console.log("error: getMovieCastAndCrew()", response.err);
       return response.err;
     });
 

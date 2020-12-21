@@ -1,5 +1,8 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../../style";
+import { CONSTANTS } from "../../services/constants";
+
+export const numberGrid = Math.ceil(CONSTANTS.width / 400);
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +26,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: COLORS.primary,
     fontSize: 26,
+    fontWeight: "bold",
   },
   sectionSubTitle: {
     color: COLORS.primary,

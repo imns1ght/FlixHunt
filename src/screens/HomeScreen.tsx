@@ -7,7 +7,7 @@ import styles from "./style";
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      <FeaturedMovies category="trending" time_window="day" />
+      {/* <FeaturedMovies category="trending" time_window="day" /> */}
       <FeaturedMovies category="trending" time_window="week" />
       <FeaturedMovies category="toprated" />
       <LatestMovies />
