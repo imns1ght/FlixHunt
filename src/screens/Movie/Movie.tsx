@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Image,
-  Text,
-  View,
-  ActivityIndicator,
-  SafeAreaView,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Image, Text, View, ActivityIndicator } from "react-native";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { ScrollView, TouchableHighlight } from "react-native-gesture-handler";
 import NumberFormat from "react-number-format";
 import { MovieResponse } from "../../models/movies/movie";
@@ -84,6 +78,22 @@ const Movie = (props: any) => {
             <Text style={styles.tags}>
               Genre: {arrToStringFormated(movieData!.genres)}
             </Text>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={styles.tags}>Rating: {movieData!.vote_average}</Text>{" "}
+              <FontAwesome
+                name="star"
+                size={14}
+                color="orange"
+                style={{ marginLeft: 2 }}
+              />
+            </View>
             <Text style={styles.tags}>
               Duration: {convertMinsToTime(movieData!.runtime)}
             </Text>
