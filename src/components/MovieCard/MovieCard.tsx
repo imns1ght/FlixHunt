@@ -1,28 +1,32 @@
 import React from "react";
-import MovieSimpleInterface from "../../models/movie-simple";
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Image, Text, TouchableHighlight, View } from "react-native";
 import { CONSTANTS } from "../../services/constants";
 import styles from "./style";
-import { MovieResponse } from "../../models/movies/movie";
 
 interface RenderItemProps {
-  item: MovieSimpleInterface | MovieResponse;
+  item: any;
   index: number;
+  navigation: any;
 }
 
-const MovieCard = ({ item, index }: RenderItemProps) => {
+const MovieCard = ({ item, index, navigation }: RenderItemProps) => {
   return (
     <TouchableHighlight
       key={index}
       onPress={() => {
-        window.alert("Movie: " + item.title);
+        navigation.navigate("Movie", {
+          movieId: item.id,
+          movieName: item.title,
+        });
       }}
+      activeOpacity={0.6}
+      underlayColor="#CCCCCC"
     >
       <View style={styles.card}>
         <Image
           source={{
-            uri: `${CONSTANTS.api_image_url}/w780${item.poster_path}`,
+            uri: `${CONSTANTS.api_image_url}/w342${item.poster_path}`,
           }}
           style={styles.cardImage}
         />
