@@ -75,6 +75,7 @@ const Movie = (props: any) => {
           <View style={{ display: "flex", flexDirection: "column" }}>
             <Text style={styles.title}>{movieData!.title}</Text>
             <Text style={styles.subtitle}>{movieData!.tagline}</Text>
+            <Text style={styles.overview}>{movieData!.overview}</Text>
             <Text style={styles.tags}>
               Genre: {arrToStringFormated(movieData!.genres)}
             </Text>
@@ -86,12 +87,12 @@ const Movie = (props: any) => {
                 alignItems: "center",
               }}
             >
-              <Text style={styles.tags}>Rating: {movieData!.vote_average}</Text>{" "}
+              <Text style={styles.tags}>Rating: {movieData!.vote_average}</Text>
               <FontAwesome
                 name="star"
                 size={14}
                 color="orange"
-                style={{ marginLeft: 2 }}
+                style={{ marginLeft: 3 }}
               />
             </View>
             <Text style={styles.tags}>
@@ -121,7 +122,6 @@ const Movie = (props: any) => {
             <Text style={styles.tags}>
               Production: {arrToStringFormated(movieData!.production_companies)}
             </Text>
-            <Text style={styles.overview}>{movieData!.overview}</Text>
             <CastAndCrew movie_id={movieData!.id} />
           </View>
         </View>
