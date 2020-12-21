@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
   image: {
     height: 250,
     width: 170,
-    borderRadius: 3,
     backgroundColor: "#FFF",
   },
 });
