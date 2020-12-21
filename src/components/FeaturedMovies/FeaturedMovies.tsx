@@ -11,7 +11,7 @@ import MovieSimpleInterface from "../../models/movie-simple";
 import { MovieResponse } from "../../models/movies/movie";
 import { MoviesTopRatedResponse } from "../../models/movies/movies-top-rated";
 import { TrendingResponse } from "../../models/trending/trending";
-import Movie from "../../screens/Movie/Movie";
+import Movie from "../../screens/MovieScreen/MovieScreen";
 import { getMoviesTopRated, getTrendingMovies } from "../../services/api";
 import MovieCard from "../MovieCard/MovieCard";
 import styles from "./style";

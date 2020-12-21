@@ -5,7 +5,7 @@ import MovieSimpleInterface from "../movie-simple";
 export interface SearchMovieResponse {
   page: number;
   results: MovieSimpleInterface[];
-  top_results: number;
+  total_results: number;
   total_pages: number;
 }
 
