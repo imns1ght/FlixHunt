@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   tags: {
     fontSize: 14,
     color: "black",
-    marginHorizontal: MARGIN_H_DEFAULT + 5,
+    marginLeft: MARGIN_H_DEFAULT + 5,
     marginVertical: 2,
   },
   overview: {
