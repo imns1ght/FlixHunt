@@ -74,6 +74,7 @@ typings/
 
 # expo files
 .expo
+.expo-shared
 
 # vscode configs
 .vscode
