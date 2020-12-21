@@ -1,5 +1,5 @@
 import React from "react";
-import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { Image, Text, TouchableHighlight, View } from "react-native";
 import { CONSTANTS } from "../../services/constants";
 import styles from "./style";
@@ -31,11 +31,11 @@ const MovieCard = ({ item, index, navigation }: RenderItemProps) => {
           style={styles.cardImage}
         />
         <View style={styles.cardSubBar}>
-          <Ionicons name="heart-sharp" size={12} color="white" />
+          <FontAwesome name="star" size={14} color="orange" />
           <Text style={styles.cardSubBarText}>{item.vote_average}</Text>
-          <AntDesign name="like1" size={10} color="white" />
+          <AntDesign name="like1" size={14} color="#dfe3ee" />
           <Text style={styles.cardSubBarText}>{item.vote_count}</Text>
-          <MaterialIcons name="date-range" size={12} color="white" />
+          <MaterialIcons name="date-range" size={14} color="#dfe3ee" />
           <Text style={styles.cardSubBarText}>{item.release_date}</Text>
         </View>
       </View>

@@ -1,14 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator, FlatList, Button } from "react-native";
+import { View, Text, ActivityIndicator, Button } from "react-native";
 import { COLORS } from "../../../style";
 import { DiscoverMovieResponse } from "../../models/discover/discover-movie";
 import { getLatestMoviesByReleaseDate } from "../../services/api";
-import { CONSTANTS } from "../../services/constants";
 import MovieCard from "../MovieCard/MovieCard";
-import styles, { numberGrid } from "./style";
+import styles from "./style";
 
-const LatestMovies = () => {
+const LastRelease = () => {
   const [
     latestMoviesData,
     setLatestMoviesData,
@@ -37,17 +36,18 @@ const LatestMovies = () => {
         </View>
       </View>
       {latestMoviesData ? (
-        <FlatList
-          keyExtractor={(_, index) => _.id.toString() + index}
-          data={latestMoviesData.results.filter((movie) => movie.poster_path)}
-          renderItem={({ item, index }) =>
-            MovieCard({ item, index, navigation })
-          }
-          numColumns={numberGrid}
-          contentContainerStyle={{
-            alignSelf: "center",
-          }}
-        />
+        <View style={styles.grid}>
+          {latestMoviesData.results.map((movie, index) => {
+            return (
+              <MovieCard
+                key={index}
+                index={index}
+                item={movie}
+                navigation={navigation}
+              />
+            );
+          })}
+        </View>
       ) : (
         <ActivityIndicator size="large" />
       )}
@@ -62,4 +62,4 @@ const LatestMovies = () => {
   );
 };
 
-export default LatestMovies;
+export default LastRelease;

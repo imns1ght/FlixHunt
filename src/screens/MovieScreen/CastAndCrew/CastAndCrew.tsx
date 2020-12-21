@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { SectionList, Image, View, Text } from "react-native";
+import { Image, View, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import {
-  MovieCast,
   MovieCreditsResponse,
-  MovieCrew,
 } from "../../../models/movies/movie-credits";
 import { getMovieCastAndCrew } from "../../../services/api";
 import { CONSTANTS } from "../../../services/constants";
@@ -77,7 +75,7 @@ const CastAndCrew = ({ movie_id }: Props) => {
                 <View key={person.credit_id} style={styles.card}>
                   <Image
                     source={{
-                      uri: `${CONSTANTS.api_image_url}/w185${person.profile_path}`,
+                      uri: `${CONSTANTS.api_image_url}/w632${person.profile_path}`,
                     }}
                     style={styles.image}
                   />
