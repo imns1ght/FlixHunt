@@ -1,10 +1,10 @@
 # The Movie Browser
 
-The Movie Browser is an app for you to find a good movie to watch! The Movie Browser is made with ❤️ using [React Native](https://reactnative.dev/) and [Expo](https://expo.io/), consuming data from [TMDb API](https://developers.themoviedb.org/3).
+The Movie Browser is an app for you to find a good movie to watch! The Movie Browser is made with ❤️ using [React Native](https://reactnative.dev/) and [Expo](https://expo.io/), consuming data from the [TMDb API](https://developers.themoviedb.org/3) using [Axios](https://github.com/axios/axios)!.
 
 ## Features
 
-## Home Page with Trending Movies and Last Releases
+## Home Page with popular movies and latest releases
 
   <img src="assets/readme/tablet-home.gif" width="350" height="550"/>
 
@@ -16,41 +16,63 @@ The Movie Browser is an app for you to find a good movie to watch! The Movie Bro
 
 <img src="assets/readme/tablet-movie.gif" width="350" height="550"/>
 
-## Configuring
+## Running
 
-Assuming you have installed [CMake](https://cmake.org), [make](https://www.gnu.org/software/make/), [GTest](https://github.com/google/googletest) and [Git](https://git-scm.com/), we can follow these steps:
+### Requirements
 
-1. Download the project and moves into the root directory
+- Node.js LTS release or greater
+- Yarn
+- Git
+- Watchman for macOS users
 
-   ```
-   git clone https://github.com/imns1ght/vector && cd vector/
-   ```
+### Documentation
 
-2. Create build files
+- [React Native](https://reactnative.dev/docs/environment-setup)
+- [Expo](https://docs.expo.io/distribution/building-standalone-apps/#1-install-expo-cli)
 
-   ```
-   cmake -B build/
-   ```
+### Quick running
 
-3. Start the compiling process.
+Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.yarnpkg.com/en/docs/install#alternatives-stable) and [NodeJS LTS](https://nodejs.org/en/), we can follow:
 
-   ```
-   make install -C build/
-   ```
+1. Download the project and go to the root directory
 
-   After that, the library (`libvector.a`) it's located in `lib/`.
-
-4. Create a symlink (shortcut) for the executable.
-   ```
-   ln -sf build/run_tests .
+   ```bash
+   git clone https://github.com/imns1ght/movie-browser && cd movie-browser/
    ```
 
-Finally, we have an executable inside the `build` directory that tests the library functions.
-Also, we will have a library `libvector.a` in which the functions are compiled.
+2. Install Expo Cli
+
+   ```bash
+   yarn global add expo-cli
+   ```
+
+3. Runnning
+
+   You can run the project in several ways:
+
+   1. Using an Expo client application for iOS or Android and connect to the same wireless network as your computer
+
+      On Android, use the Expo app to scan the QR code from your terminal to open your project. On iOS, use the built-in QR code scanner of the Camera app.
+
+      - [Android Client](https://play.google.com/store/apps/details?id=host.exp.exponent)
+      - [iOS Client](https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?path=apps%2fexponent)
+
+   2. Using an emulator
+
+      - [Installing the iOS Simulator (macOS only)](https://docs.expo.io/workflow/ios-simulator/)
+      - [Installing an Android emulator](https://docs.expo.io/workflow/android-studio-emulator/)
+
+   3. Using as a web application, running the script below in the root directory.
+
+      ```bash
+      expo start --web
+      ```
 
 ## TODO
 
-- [ ] Fix insert functions
+- [ ] Allow users to signup;
+- [ ] Create unit tests;
+- [ ] Create APK and share with users.
 
 ## Contributing
 
