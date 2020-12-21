@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     height: 335,
     resizeMode: "stretch",
-    borderRadius: 6,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

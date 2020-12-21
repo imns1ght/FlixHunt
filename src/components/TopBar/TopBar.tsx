@@ -1,13 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { COLORS } from "../../../style";
 import { CONSTANTS } from "../../services/constants";
+import logo from "../../../assets/logo-light.png";
 
 const TopBar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textTitle}>Movie Browser</Text>
+      <Text style={styles.textTitle}>The Movie Browser</Text>
+      <Image source={logo} style={{ width: 40, height: 40 }} />
     </View>
   );
 };
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     flexDirection: "row", // row
     backgroundColor: COLORS.primary,
     alignItems: "center",
-    justifyContent: "space-between", // center, space-around
+    justifyContent: "center", // center, space-around
     paddingLeft: 30,
     paddingRight: 30,
   },
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
     fontFamily: "sans-serif",
     fontSize: 24,
     fontWeight: "700",
+    marginRight: 15,
     color: COLORS.secondary,
   },
   textGeneric: {
