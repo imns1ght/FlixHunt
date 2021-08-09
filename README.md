@@ -2,6 +2,8 @@
 
 The Movie Browser is an app for you to find a good movie to watch! The Movie Browser is made with ❤️ using [React Native](https://reactnative.dev/), [TypeScript](https://www.typescriptlang.org/) and [Expo](https://expo.io/), consuming data from the [TMDb API](https://developers.themoviedb.org/3) using [Axios](https://github.com/axios/axios)!.
 
+## Note: This project needs a lot of improvements. I'll do this when I have a good amount of free time. :)
+
 ## Features
 
 ## Home Page with popular movies and latest releases
