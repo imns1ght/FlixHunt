@@ -8,7 +8,7 @@ The Movie Browser is an app for you to find a good movie to watch! The Movie Bro
 
 | Popular movies and latest releases  | Search Page  | Movie Page  |
 |---|---|---|
-| <img src="assets/readme/tablet-home.gif" width="350" height="550"/>  | <img src="assets/readme/tablet-search.gif" width="350" height="550"/>  | <img src="assets/readme/tablet-movie.gif" width="350" height="550"/>  |
+| <img src="assets/readme/tablet-home.gif" width="100%"/>  | <img src="assets/readme/tablet-search.gif" width="100%"/>  | <img src="assets/readme/tablet-movie.gif" width="100%"/>  |
 
 ## Running
 
