@@ -1,23 +1,23 @@
 // Documentation: https://developers.themoviedb.org/3/search/search-movies
 
-import MovieSimpleInterface from "../movie-simple";
+import MovieSimpleInterface from '../movie-simple'
 
 export interface SearchMovieResponse {
-  page: number;
-  results: MovieSimpleInterface[];
-  total_results: number;
-  total_pages: number;
+  page: number
+  results: MovieSimpleInterface[]
+  total_results: number
+  total_pages: number
 }
 
 export interface SearchMovieParams {
   params: {
-    api_key: string;
-    language?: string;
-    query: string;
-    page?: number;
-    include_adult?: boolean;
-    region?: string;
-    year?: number;
-    primary_release_year?: number;
-  };
+    api_key: string
+    language?: string
+    query: string
+    page?: number
+    include_adult?: boolean
+    region?: string
+    year?: number
+    primary_release_year?: number
+  }
 }

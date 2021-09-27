@@ -2,13 +2,13 @@
 
 The Movie Browser is an app for you to find a good movie to watch! The Movie Browser is made with ❤️ using [React Native](https://reactnative.dev/), [TypeScript](https://www.typescriptlang.org/) and [Expo](https://expo.io/), consuming data from the [TMDb API](https://developers.themoviedb.org/3) using [Axios](https://github.com/axios/axios)!.
 
-# Note ⚠️: This project needs **a lot** of improvement. I've learned a lot in the last few months and I'll update this project when I have free time. :)
+## Note ⚠️: This project needs **a lot** of improvement. I've learned a lot in the last few months and I'll update this project when I have free time. :)
 
 ## Features
 
-| Popular movies and latest releases  | Search Page  | Movie Page  |
-|---|---|---|
-| <img src="assets/readme/tablet-home.gif" width="100%"/>  | <img src="assets/readme/tablet-search.gif" width="100%"/>  | <img src="assets/readme/tablet-movie.gif" width="100%"/>  |
+| Popular movies and latest releases                      | Search Page                                               | Movie Page                                               |
+| ------------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------------------- |
+| <img src="assets/readme/tablet-home.gif" width="100%"/> | <img src="assets/readme/tablet-search.gif" width="100%"/> | <img src="assets/readme/tablet-movie.gif" width="100%"/> |
 
 ## Running
 

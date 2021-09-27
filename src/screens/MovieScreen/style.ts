@@ -1,25 +1,25 @@
-import { StyleSheet } from "react-native";
-import { COLORS } from "../../../style";
-import { CONSTANTS } from "../../services/constants";
+import { StyleSheet } from 'react-native'
+import { COLORS } from '../../../style'
+import { CONSTANTS } from '../../services/constants'
 
-const MARGIN_H_DEFAULT = 15;
-const MARGIN_V_DEFAULT = 15;
-const MAX_WIDTH = CONSTANTS.width < 1200 ? CONSTANTS.width : 1200;
+const MARGIN_H_DEFAULT = 15
+const MARGIN_V_DEFAULT = 15
+const MAX_WIDTH = CONSTANTS.width < 1200 ? CONSTANTS.width : 1200
 
 const styles = StyleSheet.create({
   scrollview: {
-    display: "flex",
-    alignContent: "center",
-    alignSelf: "center",
+    display: 'flex',
+    alignContent: 'center',
+    alignSelf: 'center',
     width: MAX_WIDTH,
     padding: 10,
   },
   container: {
-    display: "flex",
-    flexDirection: "column",
-    alignContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
     maxWidth: MAX_WIDTH,
   },
   image: {
@@ -28,45 +28,45 @@ const styles = StyleSheet.create({
     width: CONSTANTS.width,
     maxWidth: MAX_WIDTH,
     borderRadius: 8,
-    resizeMode: "center",
+    resizeMode: 'center',
     marginBottom: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 6,
     },
     shadowOpacity: 0.39,
     shadowRadius: 8.3,
-    overflow: "visible",
+    overflow: 'visible',
   },
   text: {
-    color: "black",
+    color: 'black',
   },
   title: {
     fontSize: 40,
-    fontWeight: "bold",
-    color: "black",
+    fontWeight: 'bold',
+    color: 'black',
     marginHorizontal: MARGIN_H_DEFAULT,
     marginVertical: MARGIN_V_DEFAULT,
   },
   subtitle: {
     fontSize: 24,
-    color: "black",
+    color: 'black',
     marginHorizontal: MARGIN_H_DEFAULT + 5,
     marginBottom: MARGIN_V_DEFAULT,
   },
   tags: {
     fontSize: 14,
-    color: "black",
+    color: 'black',
     marginLeft: MARGIN_H_DEFAULT + 10,
     marginVertical: 2,
   },
   overview: {
     fontSize: 18,
-    color: "black",
+    color: 'black',
     marginHorizontal: MARGIN_H_DEFAULT + 10,
     marginBottom: MARGIN_V_DEFAULT,
   },
-});
+})
 
-export default styles;
+export default styles

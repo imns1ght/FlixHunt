@@ -1,39 +1,78 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "movie-browser-v2",
+  "version": "0.0.2",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest",
+    "lint": "eslint --ext .tsx --ext .ts src/ --fix",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
-    "@react-navigation/native": "^5.8.10",
-    "@react-navigation/stack": "^5.12.8",
+    "@react-navigation/native": "^6.0.4",
+    "@react-navigation/stack": "^6.0.9",
     "axios": "^0.21.0",
-    "expo": "~40.0.0",
-    "expo-status-bar": "~1.0.3",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "~0.65.1",
     "react-native-elements": "^3.0.1",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-infinite-scroll-view": "^0.4.5",
-    "react-native-reanimated": "^1.13.2",
+    "react-native-reanimated": "^2.2.2",
     "react-native-safe-area-context": "^3.1.9",
-    "react-native-screens": "^2.15.0",
-    "react-native-web": "~0.13.12",
+    "react-native-screens": "^3.7.2",
+    "react-native-unimodules": "~0.14.8",
     "react-navigation-stack": "^2.10.2",
     "react-number-format": "^4.4.1",
     "sharp-cli": "^1.14.1"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0",
-    "@types/react": "~16.9.35",
-    "@types/react-dom": "~16.9.8",
-    "@types/react-native": "~0.63.2",
-    "typescript": "~4.0.0"
+    "@babel/core": "~7.15.5",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "@types/react": "~17.0.24",
+    "@types/react-dom": "~17.0.9",
+    "@types/react-native": "~0.65.1",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "babel-jest": "~27.2.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.2",
+    "jest": "~27.2.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "react-native-clean-project": "^3.6.7",
+    "react-native-vector-icons": "^8.1.0",
+    "react-test-renderer": "~17.0.2",
+    "typescript": "~4.4.3"
   },
-  "private": true
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --ext .tsx --ext .ts src/ --fix"
+    ],
+    "./src/**": [
+      "prettier --write ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }

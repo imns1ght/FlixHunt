@@ -1,16 +1,16 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Image, Text, TouchableHighlight, View } from "react-native";
-import { SearchMovieResponse } from "../../models/search/search-movie";
-import { CONSTANTS } from "../../services/constants";
-import styles from "./style";
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
+import { Image, Text, TouchableHighlight, View } from 'react-native'
+import { SearchMovieResponse } from '../../models/search/search-movie'
+import { CONSTANTS } from '../../services/constants'
+import styles from './style'
 
 interface Props {
-  data: SearchMovieResponse;
+  data: SearchMovieResponse
 }
 
 const SearchResults = ({ data }: Props) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
@@ -22,9 +22,9 @@ const SearchResults = ({ data }: Props) => {
               <TouchableHighlight
                 key={index}
                 onPress={() => {
-                  navigation.navigate("Movie", {
+                  navigation.navigate('Movie', {
                     movieId: movie.id,
-                  });
+                  })
                 }}
                 activeOpacity={0.6}
                 underlayColor="#CCCCCC"
@@ -43,20 +43,18 @@ const SearchResults = ({ data }: Props) => {
                     <View>
                       <Text style={styles.overview}>{movie.overview}</Text>
                     </View>
-                    <Text style={styles.tags}>
-                      Release date: {movie.release_date}
-                    </Text>
+                    <Text style={styles.tags}>Release date: {movie.release_date}</Text>
                   </View>
                 </View>
               </TouchableHighlight>
-            );
+            )
           })}
         </>
       ) : (
         <Text style={styles.title}>Not found...Try another movie.</Text>
       )}
     </View>
-  );
-};
+  )
+}
 
-export default SearchResults;
+export default SearchResults

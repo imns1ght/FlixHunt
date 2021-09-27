@@ -1,24 +1,24 @@
-import { Platform, StyleSheet } from "react-native";
-import { COLORS } from "../../../style";
+import { Platform, StyleSheet } from 'react-native'
+import { COLORS } from '../../../style'
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
+    display: 'flex',
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     marginVertical: 10,
     marginHorizontal: 20,
   },
   section: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-start",
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
     margin: 20,
   },
   sectionTitle: {
     color: COLORS.primary,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 26,
   },
   sectionSubTitle: {
@@ -33,27 +33,27 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     ...StyleSheet.absoluteFillObject,
-    resizeMode: "cover",
+    resizeMode: 'cover',
     zIndex: -90,
     borderRadius: 5,
   },
   cardText: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 15,
     left: 25,
     fontSize: 50,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     elevation: 1,
-    textShadowColor: "rgba(0, 0, 0, 0.75)",
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
     color: COLORS.secondary,
   },
   cardTextVotes: {
     color: COLORS.secondary,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 12,
   },
-});
+})
 
-export default styles;
+export default styles
