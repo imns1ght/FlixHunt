@@ -1,40 +1,4 @@
 {
-  "expo": {
-    "name": "The Movie Browser",
-    "slug": "movie-browser",
-    "description": "The Movie Browser is an app for you to find a good movie to watch!",
-    "version": "0.1.0",
-    "githubUrl": "https://github.com/imns1ght/movie-browser",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "backgroundColor": "#EEEEEE",
-    "primaryColor": "#0F1F2E",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#EEEEEE"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.jeffersonbruno.moviebrowser",
-      "buildNumber": "0.1.0"
-    },
-    "android": {
-      "package": "com.jeffersonbruno.moviebrowser",
-      "versionCode": 1,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "name": "The Movie Browser",
-      "favicon": "./assets/favicon.png"
-    }
-  }
+  "name": "MovieBrowserV2",
+  "displayName": "MovieBrowserV2"
 }

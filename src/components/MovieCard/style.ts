@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { COLORS } from "../../../style";
+import { StyleSheet } from 'react-native'
+import { COLORS } from '../../../style'
 
 const styles = StyleSheet.create({
   card: {
@@ -10,38 +10,38 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
     height: 335,
-    resizeMode: "stretch",
-    shadowColor: "#000",
+    resizeMode: 'stretch',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 6,
     },
     shadowOpacity: 0.5,
     shadowRadius: 8.3,
-    overflow: "visible",
+    overflow: 'visible',
   },
   cardText: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 15,
     left: 25,
     fontSize: 50,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     elevation: 1,
     color: COLORS.secondary,
   },
   cardSubBar: {
-    backgroundColor: "rgb(12, 27, 41)",
+    backgroundColor: 'rgb(12, 27, 41)',
     flex: 1,
-    flexDirection: "row",
-    flexWrap: "nowrap",
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
     height: 25,
     width: 250,
-    position: "absolute",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    alignContent: "space-between",
+    position: 'absolute',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    alignContent: 'space-between',
     left: 0,
     bottom: 0,
     borderRadius: 4,
@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
   },
   cardSubBarText: {
     color: COLORS.secondary,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 12,
     paddingHorizontal: 6,
     paddingVertical: 2,
   },
-});
+})
 
-export default styles;
+export default styles

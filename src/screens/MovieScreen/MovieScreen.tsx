@@ -1,45 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { Image, Text, View, ActivityIndicator } from "react-native";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import { ScrollView, TouchableHighlight } from "react-native-gesture-handler";
-import NumberFormat from "react-number-format";
-import { MovieResponse } from "../../models/movies/movie";
-import { getMovieByID } from "../../services/api";
-import { CONSTANTS } from "../../services/constants";
-import styles from "./style";
-import { COLORS } from "../../../style";
-import { useNavigation } from "@react-navigation/native";
-import CastAndCrew from "./CastAndCrew/CastAndCrew";
-import { arrToStringFormated, convertMinsToTime } from "../../../utils";
+import React, { useEffect, useState } from 'react'
+import { Image, Text, View, ActivityIndicator } from 'react-native'
+import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler'
+import NumberFormat from 'react-number-format'
+import { MovieResponse } from '../../models/movies/movie'
+import { getMovieByID } from '../../services/api'
+import { CONSTANTS } from '../../services/constants'
+import styles from './style'
+import { COLORS } from '../../../style'
+import { useNavigation } from '@react-navigation/native'
+import CastAndCrew from './CastAndCrew/CastAndCrew'
+import { arrToStringFormated, convertMinsToTime } from '../../../utils'
 
 const MovieScreen = (props: any) => {
-  const [movieData, setMovieData] = useState<MovieResponse>();
-  const navigation = useNavigation();
+  const [movieData, setMovieData] = useState<MovieResponse>()
+  const navigation = useNavigation()
 
   useEffect(() => {
     const getResponse = async () => {
-      let response = await getMovieByID(props.route.params.movieId);
-      setMovieData(response);
-    };
+      const response = await getMovieByID(props.route.params.movieId)
+      setMovieData(response)
+    }
 
-    getResponse();
-  }, []);
+    getResponse()
+  }, [])
 
   const shouldRender = () => {
-    return movieData ? true : false;
-  };
+    return movieData ? true : false
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.scrollview}>
       <TouchableHighlight
         onPress={() => {
-          navigation.goBack();
+          navigation.goBack()
         }}
-        style={{ alignSelf: "flex-start", marginBottom: 10 }}
+        style={{ alignSelf: 'flex-start', marginBottom: 10 }}
         activeOpacity={0.6}
         underlayColor="#DDDDDD"
       >
-        <Ionicons name="arrow-back-sharp" size={50} color={COLORS.primary} />
+        {/* <Ionicons name="arrow-back-sharp" size={50} color={COLORS.primary} /> */}
       </TouchableHighlight>
       {shouldRender() ? (
         <View style={styles.container}>
@@ -49,52 +48,37 @@ const MovieScreen = (props: any) => {
             }}
             style={styles.image}
           />
-          <View style={{ display: "flex", flexDirection: "column" }}>
+          <View style={{ display: 'flex', flexDirection: 'column' }}>
             <Text style={styles.title}>{movieData!.title}</Text>
             <Text style={styles.subtitle}>{movieData!.tagline}</Text>
             <Text style={styles.overview}>{movieData!.overview}</Text>
-            <Text style={styles.tags}>
-              Genre: {arrToStringFormated(movieData!.genres)}
-            </Text>
+            <Text style={styles.tags}>Genre: {arrToStringFormated(movieData!.genres)}</Text>
             <View
               style={{
-                display: "flex",
-                flexDirection: "row",
-                alignContent: "center",
-                alignItems: "center",
+                display: 'flex',
+                flexDirection: 'row',
+                alignContent: 'center',
+                alignItems: 'center',
               }}
             >
               <Text style={styles.tags}>Rating: {movieData!.vote_average}</Text>
-              <FontAwesome
-                name="star"
-                size={14}
-                color="orange"
-                style={{ marginLeft: 3 }}
-              />
+              {/* <FontAwesome name="star" size={14} color="orange" style={{ marginLeft: 3 }} /> */}
             </View>
-            <Text style={styles.tags}>
-              Duration: {convertMinsToTime(movieData!.runtime)}
-            </Text>
-            <Text style={styles.tags}>
-              Release date: {movieData!.release_date}
-            </Text>
+            <Text style={styles.tags}>Duration: {convertMinsToTime(movieData!.runtime)}</Text>
+            <Text style={styles.tags}>Release date: {movieData!.release_date}</Text>
             <NumberFormat
               value={movieData?.budget}
-              displayType={"text"}
+              displayType={'text'}
               thousandSeparator={true}
-              prefix={"$"}
-              renderText={(value) => (
-                <Text style={styles.tags}>Budget: {value}</Text>
-              )}
+              prefix={'$'}
+              renderText={value => <Text style={styles.tags}>Budget: {value}</Text>}
             />
             <NumberFormat
               value={movieData?.revenue}
-              displayType={"text"}
+              displayType={'text'}
               thousandSeparator={true}
-              prefix={"$"}
-              renderText={(value) => (
-                <Text style={styles.tags}>Revenue: {value}</Text>
-              )}
+              prefix={'$'}
+              renderText={value => <Text style={styles.tags}>Revenue: {value}</Text>}
             />
             <Text style={styles.tags}>
               Production: {arrToStringFormated(movieData!.production_companies)}
@@ -106,7 +90,7 @@ const MovieScreen = (props: any) => {
         <ActivityIndicator size="large" />
       )}
     </ScrollView>
-  );
-};
+  )
+}
 
-export default MovieScreen;
+export default MovieScreen

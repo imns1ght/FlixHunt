@@ -1,35 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { Image, View, Text } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import {
-  MovieCreditsResponse,
-} from "../../../models/movies/movie-credits";
-import { getMovieCastAndCrew } from "../../../services/api";
-import { CONSTANTS } from "../../../services/constants";
-import styles from "./style";
+import React, { useEffect, useState } from 'react'
+import { Image, View, Text } from 'react-native'
+import { MovieCreditsResponse } from '../../../models/movies/movie-credits'
+import { getMovieCastAndCrew } from '../../../services/api'
+import { CONSTANTS } from '../../../services/constants'
+import styles from './style'
 
 interface Props {
-  movie_id: number;
+  movie_id: number
 }
 
 const CastAndCrew = ({ movie_id }: Props) => {
-  const [
-    castAndCrewData,
-    setCastAndCrewData,
-  ] = useState<MovieCreditsResponse>();
+  const [castAndCrewData, setCastAndCrewData] = useState<MovieCreditsResponse>()
 
   useEffect(() => {
     const getResponse = async () => {
-      let response = await getMovieCastAndCrew(movie_id);
-      setCastAndCrewData(response);
-    };
+      const response = await getMovieCastAndCrew(movie_id)
+      setCastAndCrewData(response)
+    }
 
-    getResponse();
-  }, []);
+    getResponse()
+  }, [])
 
   const shouldRender = () => {
-    return castAndCrewData ? true : false;
-  };
+    return castAndCrewData ? true : false
+  }
 
   return (
     <>
@@ -48,24 +42,20 @@ const CastAndCrew = ({ movie_id }: Props) => {
                   />
                   <View style={styles.textContainer}>
                     <Text style={styles.name}>{person.name}</Text>
-                    <Text style={styles.description}>
-                      as {person.character}
-                    </Text>
+                    <Text style={styles.description}>as {person.character}</Text>
                     <View
                       style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
                       }}
                     >
-                      <Text style={styles.description}>
-                        {person.popularity}
-                      </Text>
-                      <FontAwesome name="star" size={18} color="orange" />
+                      <Text style={styles.description}>{person.popularity}</Text>
+                      {/* <FontAwesome name="star" size={18} color="orange" /> */}
                     </View>
                   </View>
                 </View>
-              );
+              )
             })}
           </View>
           <Text style={styles.title}>Crew</Text>
@@ -80,37 +70,27 @@ const CastAndCrew = ({ movie_id }: Props) => {
                     style={styles.image}
                   />
                   <View style={styles.textContainer}>
-                    <Text style={styles.name}>
-                      {person.name}
-                    </Text>
-                    <Text style={styles.description}>
-                      {person.job}
-                    </Text>
+                    <Text style={styles.name}>{person.name}</Text>
+                    <Text style={styles.description}>{person.job}</Text>
                     <View
                       style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
                       }}
                     >
-                      <Text style={styles.description}>
-                        {person.popularity}
-                      </Text>
-                      <FontAwesome
-                        name="star"
-                        size={18}
-                        color="orange"
-                      />
+                      <Text style={styles.description}>{person.popularity}</Text>
+                      {/* <FontAwesome name="star" size={18} color="orange" /> */}
                     </View>
                   </View>
                 </View>
-              );
+              )
             })}
           </View>
         </View>
       )}
     </>
-  );
-};
+  )
+}
 
-export default CastAndCrew;
+export default CastAndCrew
