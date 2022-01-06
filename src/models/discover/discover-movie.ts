@@ -2,14 +2,14 @@
 
 import MovieSimpleInterface from '../movie-simple'
 
-export interface DiscoverMovieResponse {
+export type DiscoverMovieResponse = {
   page: number
   results: MovieSimpleInterface[]
   total_results: number
   total_pages: number
 }
 
-export interface DiscoverMovieParams {
+export type DiscoverMovieParams = {
   params: {
     api_key: string
     language?: string
