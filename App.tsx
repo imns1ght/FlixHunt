@@ -8,20 +8,18 @@ import MovieScreen from './src/screens/MovieScreen/MovieScreen'
 
 const Stack = createStackNavigator()
 
-export default function App() {
-  return (
-    <>
-      <NavigationContainer>
-        <TopBar />
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Movie" component={MovieScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
-  )
-}
+const App = () => (
+  <NavigationContainer>
+    <TopBar />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name='Home' component={HomeScreen} />
+      <Stack.Screen name='Movie' component={MovieScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
+)
+
+export default App

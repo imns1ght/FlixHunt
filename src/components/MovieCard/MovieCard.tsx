@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, Text, TouchableHighlight, View } from 'react-native'
-import { CONSTANTS } from '../../services/constants'
+import { CONSTANTS } from '~/services/constants'
 import styles from './style'
 
 interface RenderItemProps {
@@ -20,7 +20,7 @@ const MovieCard = ({ item, index, navigation }: RenderItemProps) => {
         })
       }}
       activeOpacity={0.6}
-      underlayColor="#CCCCCC"
+      underlayColor='#CCCCCC'
     >
       <View style={styles.card}>
         <Image

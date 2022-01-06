@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '../../../style'
+import { COLORS } from '~/styles'
 import { CONSTANTS } from '../../services/constants'
 
 const MARGIN_H_DEFAULT = 15

@@ -26,7 +26,7 @@ The Movie Browser is an app for you to find a good movie to watch! The Movie Bro
 
 ### Quick running
 
-Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.yarnpkg.com/en/docs/install#alternatives-stable) and [NodeJS LTS](https://nodejs.org/en/), we can follow:
+Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.yarnpkg.com/en/docs/install#alternatives-stable), Watchman, and [NodeJS LTS](https://nodejs.org/en/), we can follow:
 
 1. Download the project and go to the root directory
 
