@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import { COLORS } from '../../../style'
+import { COLORS } from '~/styles'
 import { CONSTANTS } from '../../services/constants'
 import logo from '../../../assets/logo-light.png'
 

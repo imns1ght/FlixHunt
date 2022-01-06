@@ -1,15 +1,11 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Image, Text, TouchableHighlight, View } from 'react-native'
-import { SearchMovieResponse } from '../../models/search/search-movie'
-import { CONSTANTS } from '../../services/constants'
+import { useNavigation } from '@react-navigation/native'
+import { SearchMovieResponse } from '~/models/search/search-movie'
+import { CONSTANTS } from '~/services/constants'
 import styles from './style'
 
-interface Props {
-  data: SearchMovieResponse
-}
-
-const SearchResults = ({ data }: Props) => {
+const SearchResults = ({ data }: { data: SearchMovieResponse }) => {
   const navigation = useNavigation()
 
   return (
@@ -27,7 +23,7 @@ const SearchResults = ({ data }: Props) => {
                   })
                 }}
                 activeOpacity={0.6}
-                underlayColor="#CCCCCC"
+                underlayColor='#CCCCCC'
               >
                 <View key={index} style={styles.itemContainer}>
                   <Image

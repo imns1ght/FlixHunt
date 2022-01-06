@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Image, Text, View, ActivityIndicator } from 'react-native'
 import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler'
 import NumberFormat from 'react-number-format'
-import { MovieResponse } from '../../models/movies/movie'
-import { getMovieByID } from '../../services/api'
-import { CONSTANTS } from '../../services/constants'
+import { MovieResponse } from '~/models/movies/movie'
+import { getMovieByID } from '~/services/api'
+import { CONSTANTS } from '~/services/constants'
 import styles from './style'
-import { COLORS } from '../../../style'
 import { useNavigation } from '@react-navigation/native'
 import CastAndCrew from './CastAndCrew/CastAndCrew'
-import { arrToStringFormated, convertMinsToTime } from '../../../utils'
+import { arrToStringFormated, convertMinsToTime } from '~/utils'
 
 const MovieScreen = (props: any) => {
   const [movieData, setMovieData] = useState<MovieResponse>()
@@ -22,7 +21,7 @@ const MovieScreen = (props: any) => {
     }
 
     getResponse()
-  }, [])
+  }, [props.route.params.movieId])
 
   const shouldRender = () => {
     return movieData ? true : false
@@ -36,7 +35,7 @@ const MovieScreen = (props: any) => {
         }}
         style={{ alignSelf: 'flex-start', marginBottom: 10 }}
         activeOpacity={0.6}
-        underlayColor="#DDDDDD"
+        underlayColor='#DDDDDD'
       >
         {/* <Ionicons name="arrow-back-sharp" size={50} color={COLORS.primary} /> */}
       </TouchableHighlight>
@@ -87,7 +86,7 @@ const MovieScreen = (props: any) => {
           </View>
         </View>
       ) : (
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size='large' />
       )}
     </ScrollView>
   )

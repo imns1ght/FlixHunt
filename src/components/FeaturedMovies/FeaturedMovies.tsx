@@ -1,30 +1,22 @@
+import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useRef, useState } from 'react'
-import { Text, View, ActivityIndicator, FlatList, ListRenderItem } from 'react-native'
-import MovieSimpleInterface from '../../models/movie-simple'
-import { MovieResponse } from '../../models/movies/movie'
-import { MoviesTopRatedResponse } from '../../models/movies/movies-top-rated'
-import { TrendingResponse } from '../../models/trending/trending'
-import Movie from '../../screens/MovieScreen/MovieScreen'
-import { getMoviesTopRated, getTrendingMovies } from '../../services/api'
-import MovieCard from '../MovieCard/MovieCard'
+import { Text, View, ActivityIndicator, FlatList } from 'react-native'
+import { MoviesTopRatedResponse } from '~/models/movies/movies-top-rated'
+import { TrendingResponse } from '~/models/trending/trending'
+import { getMoviesTopRated, getTrendingMovies } from '~/services/api'
+import MovieCard from '~/components/MovieCard/MovieCard'
 import styles from './style'
 
-interface Props {
-  category: string
-  time_window?: string
-}
-
-const FeaturedMovies = ({ category, time_window }: Props) => {
-  const [trendingMoviesData, setTrendingMoviesdata] = useState<TrendingResponse>()
-  const [topRatedMoviesData, setTopRatedMoviesData] = useState<MoviesTopRatedResponse>()
+const FeaturedMovies = ({ category, time_window }: { category: string; time_window?: string }) => {
   const navigation = useNavigation()
+  const [trendingMoviesData, setTrendingMoviesdata] = React.useState<TrendingResponse>()
+  const [topRatedMoviesData, setTopRatedMoviesData] = React.useState<MoviesTopRatedResponse>()
 
-  useEffect(() => {
+  React.useEffect(() => {
     const getResponse = async () => {
       let response
       if (category === 'trending') {
-        response = await getTrendingMovies(time_window!)
+        response = await getTrendingMovies(time_window ?? 'day')
         setTrendingMoviesdata(response)
       } else if (category === 'toprated') {
         response = await getMoviesTopRated()
@@ -33,7 +25,7 @@ const FeaturedMovies = ({ category, time_window }: Props) => {
     }
 
     getResponse()
-  }, [])
+  }, [category, time_window])
 
   const getCategoryData = () => {
     if (category === 'trending' && trendingMoviesData) {
@@ -71,7 +63,7 @@ const FeaturedMovies = ({ category, time_window }: Props) => {
       </View>
       {shouldRender() ? (
         <FlatList
-          keyExtractor={(_, index) => _.id.toString() + index}
+          keyExtractor={(key, index) => `${key.id.toString()}${index}`}
           data={getCategoryData()?.results.slice(0, 10)}
           renderItem={({ item, index }) => MovieCard({ item, index, navigation })}
           extraData={navigation}
@@ -81,7 +73,7 @@ const FeaturedMovies = ({ category, time_window }: Props) => {
           }}
         />
       ) : (
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size='large' />
       )}
     </View>
   )

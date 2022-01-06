@@ -1,18 +1,18 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { View, Text, ActivityIndicator, Button } from 'react-native'
-import { COLORS } from '../../../style'
-import { DiscoverMovieResponse } from '../../models/discover/discover-movie'
-import { getLatestMoviesByReleaseDate } from '../../services/api'
-import MovieCard from '../MovieCard/MovieCard'
+import { useNavigation } from '@react-navigation/native'
+import { COLORS } from '~/styles'
+import { DiscoverMovieResponse } from '~/models/discover/discover-movie'
+import { getLatestMoviesByReleaseDate } from '~/services/api'
+import MovieCard from '~/components/MovieCard/MovieCard'
 import styles from './style'
 
 const LastRelease = () => {
-  const [latestMoviesData, setLatestMoviesData] = useState<DiscoverMovieResponse>()
-  const [requestPage, setRequestPage] = useState<number>(1)
   const navigation = useNavigation()
+  const [latestMoviesData, setLatestMoviesData] = React.useState<DiscoverMovieResponse>()
+  const [requestPage, setRequestPage] = React.useState<number>(1)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const getResponse = async () => {
       const response = await getLatestMoviesByReleaseDate(requestPage)
       if (latestMoviesData) {
@@ -23,7 +23,7 @@ const LastRelease = () => {
     }
 
     getResponse()
-  }, [requestPage])
+  }, [latestMoviesData, requestPage])
 
   return (
     <>
@@ -39,11 +39,11 @@ const LastRelease = () => {
           })}
         </View>
       ) : (
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size='large' />
       )}
       <View style={styles.loadMoreButton}>
         <Button
-          title="Load more"
+          title='Load more'
           onPress={() => setRequestPage(requestPage + 1)}
           color={COLORS.primary}
         />
