@@ -1,55 +1,57 @@
 import axios from 'axios'
-import { DiscoverMovieParams, DiscoverMovieResponse } from '../models/discover/discover-movie'
-import { MovieParams, MovieResponse } from '../models/movies/movie'
-import { MovieCreditsParams, MovieCreditsResponse } from '../models/movies/movie-credits'
-import { MoviesTopRatedParams, MoviesTopRatedResponse } from '../models/movies/movies-top-rated'
-import { SearchMovieParams, SearchMovieResponse } from '../models/search/search-movie'
-import { TrendingParams, TrendingResponse } from '../models/trending/trending'
+
+// import { DiscoverMovieParams, DiscoverMovieResponse } from '~/models/discover/discover-movie'
+import { MovieParams, MovieResponse } from '~/models/movies/movie'
+import { MovieCreditsParams, MovieCreditsResponse } from '~/models/movies/movie-credits'
+import { MoviesTopRatedParams, MoviesTopRatedResponse } from '~/models/movies/movies-top-rated'
+import { SearchMovieParams, SearchMovieResponse } from '~/models/search/search-movie'
+import { TrendingParams, TrendingResponse } from '~/models/trending/trending'
 import { CONSTANTS } from './constants'
 
-const getCurrentDate = () => {
-  const currentDate = new Date()
-  const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0')
-  const currentDay = currentDate.getDate().toString().padStart(2, '0')
-  const currentDateApiPattern = currentDate.getFullYear() + '-' + currentMonth + '-' + currentDay
-  return currentDateApiPattern
-}
+// const getCurrentDate = () => {
+//   const currentDate = new Date()
+//   const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0')
+//   const currentDay = currentDate.getDate().toString().padStart(2, '0')
+//   const currentDateApiPattern = `${currentDate.getFullYear()}-${currentMonth}-${currentDay}`
+
+//   return currentDateApiPattern
+// }
 
 // Used in requests
 const axiosInstance = axios.create({
   baseURL: CONSTANTS.api_base_url,
 })
 
-/**
- * Returns a list of the most recent movies sorted by release date in descending order
- *
- * @param page The number of the page
- * @returns List of the most recent movies sorted by release date in desc order
- */
-export const getLatestMoviesByReleaseDate = async (
-  page?: number
-): Promise<DiscoverMovieResponse> => {
-  const response = await axiosInstance
-    .get<DiscoverMovieResponse>('/discover/movie', <DiscoverMovieParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: 'en-US',
-        include_adult: false,
-        sort_by: 'release_date.desc',
-        'release_date.lte': getCurrentDate(),
-        page: page || 1,
-      },
-    })
-    .then(response => {
-      return response.data
-    })
-    .catch(response => {
-      console.log('error: getLatestMoviesByReleaseDate()', response.err)
-      return response.err
-    })
+// /**
+//  * Returns a list of the most recent movies sorted by release date in descending order
+//  *
+//  * @param page The number of the page
+//  * @returns List of the most recent movies sorted by release date in desc order
+//  */
+// export const getLatestMoviesByReleaseDate = async (
+//   page?: number
+// ): Promise<DiscoverMovieResponse | undefined> => {
+//   const response = await axiosInstance
+//     .get<DiscoverMovieResponse>('/discover/movie', <DiscoverMovieParams>{
+//       params: {
+//         api_key: CONSTANTS.api_key,
+//         language: 'en-US',
+//         include_adult: false,
+//         sort_by: 'release_date.desc',
+//         'release_date.lte': getCurrentDate(),
+//         page,
+//       },
+//     })
+//     .then(response => response.data)
+//     .catch(error => {
+//       console.error(error)
+//       return undefined
+//     })
 
-  return response
-}
+//   console.log(response)
+
+//   return response
+// }
 
 /**
  * Returns a movie by ID

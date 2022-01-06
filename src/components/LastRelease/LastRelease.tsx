@@ -3,7 +3,7 @@ import { View, Text, ActivityIndicator, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { COLORS } from '~/styles'
 import { DiscoverMovieResponse } from '~/models/discover/discover-movie'
-import { getLatestMoviesByReleaseDate } from '~/services/api'
+// import { getLatestMoviesByReleaseDate } from '~/services/api'
 import MovieCard from '~/components/MovieCard/MovieCard'
 import styles from './style'
 
@@ -12,18 +12,17 @@ const LastRelease = () => {
   const [latestMoviesData, setLatestMoviesData] = React.useState<DiscoverMovieResponse>()
   const [requestPage, setRequestPage] = React.useState<number>(1)
 
-  React.useEffect(() => {
-    const getResponse = async () => {
-      const response = await getLatestMoviesByReleaseDate(requestPage)
-      if (latestMoviesData) {
-        response.results = [...latestMoviesData.results, ...response.results]
-      }
+  // React.useEffect(() => {
+  //   const getResponse = async () => {
+  //     const response = await getLatestMoviesByReleaseDate(requestPage)
 
-      setLatestMoviesData(response)
-    }
+  //     if (response) {
+  //       setLatestMoviesData(response)
+  //     }
+  //   }
 
-    getResponse()
-  }, [latestMoviesData, requestPage])
+  //   getResponse()
+  // }, [latestMoviesData, requestPage])
 
   return (
     <>
