@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.moviebrowserv2",
+    package = "com.moviebrowser",
 )
 
 android_resource(
     name = "res",
-    package = "com.moviebrowserv2",
+    package = "com.moviebrowser",
     res = "src/main/res",
 )
 
