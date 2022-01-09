@@ -7,7 +7,7 @@ import logo from '../../../assets/logo-light.png'
 const TopBar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textTitle}>The Movie Browser</Text>
+      <Text style={styles.textTitle}>Movie Browser</Text>
       <Image source={logo} style={{ width: 40, height: 40 }} />
     </View>
   )
