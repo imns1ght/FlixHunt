@@ -4,15 +4,9 @@ Movie Browser is an app for you to find a good movie to watch! The Movie Browser
 
 ## Note ⚠️: This project needs **a lot** of improvement. I've learned a lot in the last few months and I'll update this project when I have free time. :)
 
-## Features
-
-## New version (PREVIEW!!!)
+## Features (PREVIEW!!!)
 
 https://user-images.githubusercontent.com/24906506/148714241-d9a6984f-5ac7-4bcf-9168-b1a339bc2ac0.mp4
-
-| Popular movies and latest releases | Search Page | Movie Page |
-| ---------------------------------- | ----------- |  --------- |
-| <img src="src/assets/readme/tablet-home.gif" width="100%"/> | <img src="src/assets/readme/tablet-search.gif" width="100%"/> | <img src="src/assets/readme/tablet-movie.gif" width="100%"/> |
 
 ## Running
 
