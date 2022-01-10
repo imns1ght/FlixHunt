@@ -34,8 +34,9 @@ Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.
 2. Install the required packages
 
    ```bash
-   yarn install
+   yarn install && cd ios/ && pod install && cd ..
    ```
+   
 
 3. Runnning
 
