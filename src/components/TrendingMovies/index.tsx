@@ -14,7 +14,7 @@ const TrendingMovies = ({ timePeriod }: { timePeriod: 'day' | 'week' }) => {
     const response = await api.getTrendingMovies(timePeriod)
     if (response) setMoviesData(response)
     setLoading(false)
-  }, [])
+  }, [timePeriod])
 
   React.useEffect(() => {
     fetchMovies()
