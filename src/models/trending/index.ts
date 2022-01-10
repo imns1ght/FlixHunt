@@ -1,15 +1,15 @@
 // Documentation: https://developers.themoviedb.org/3/trending/get-trending
 
-import MovieSimpleInterface from '../movie-simple'
+import { MovieSimpleType } from '../movie-simple'
 
-export interface TrendingResponse {
+export type TrendingResponse = {
   page: number
-  results: MovieSimpleInterface[]
+  results: MovieSimpleType[]
   total_pages: number
   total_results: number
 }
 
-export interface TrendingParams {
+export type TrendingParams = {
   params: {
     api_key: string
     media_type: string

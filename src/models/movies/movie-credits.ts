@@ -1,6 +1,6 @@
 // Documentation: https://developers.themoviedb.org/3/movies/get-movie-credits
 
-export interface MovieCast {
+export type MovieCastType = {
   adult: boolean
   gender?: number
   id: number
@@ -8,14 +8,14 @@ export interface MovieCast {
   name: string
   original_name: string
   popularity: number
-  profile_path?: string
+  profile_path: string
   cast_id: number
   character: string
   credit_id: string
   order: number
 }
 
-export interface MovieCrew {
+export type MovieCrew = {
   adult: boolean
   gender?: number
   id: number
@@ -29,13 +29,13 @@ export interface MovieCrew {
   job: string
 }
 
-export interface MovieCreditsResponse {
+export type MovieCreditsResponse = {
   id: number
-  cast: MovieCast[]
+  cast: MovieCastType[]
   crew: MovieCrew[]
 }
 
-export interface MovieCreditsParams {
+export type MovieCreditsParams = {
   params: {
     api_key: string
     language?: string

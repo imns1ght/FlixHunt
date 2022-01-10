@@ -5,11 +5,28 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import HomeScreen from './src/screens/HomeScreen/HomeScreen'
 import MovieScreen from './src/screens/MovieScreen/MovieScreen'
+import theme from '~/styles'
 
 const Stack = createStackNavigator()
 
+if (__DEV__) {
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+}
+
 const App = () => (
-  <NavigationContainer>
+  <NavigationContainer
+    theme={{
+      dark: true,
+      colors: {
+        primary: theme.colors.primary,
+        background: theme.colors.secondary,
+        card: theme.colors.primary,
+        text: theme.colors.white,
+        border: theme.colors.gray,
+        notification: theme.colors.primary,
+      },
+    }}
+  >
     <TopBar />
     <Stack.Navigator
       screenOptions={{

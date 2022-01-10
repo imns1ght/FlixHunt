@@ -1,12 +1,17 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
+import CONSTANTS from '~/constants'
 
 // import { DiscoverMovieParams, DiscoverMovieResponse } from '~/models/discover/discover-movie'
 import { MovieParams, MovieResponse } from '~/models/movies/movie'
-import { MovieCreditsParams, MovieCreditsResponse } from '~/models/movies/movie-credits'
+import {
+  MovieCastType,
+  MovieCreditsParams,
+  MovieCreditsResponse,
+} from '~/models/movies/movie-credits'
 import { MoviesTopRatedParams, MoviesTopRatedResponse } from '~/models/movies/movies-top-rated'
 import { SearchMovieParams, SearchMovieResponse } from '~/models/search/search-movie'
-import { TrendingParams, TrendingResponse } from '~/models/trending/trending'
-import { CONSTANTS } from './constants'
+import { TrendingParams, TrendingResponse } from '~/models'
+import { MovieSimpleType } from '~/models/movie-simple'
 
 // const getCurrentDate = () => {
 //   const currentDate = new Date()
@@ -21,6 +26,44 @@ import { CONSTANTS } from './constants'
 const axiosInstance = axios.create({
   baseURL: CONSTANTS.api_base_url,
 })
+
+/**
+ * Returns a list of trending movies
+ */
+export const getTrendingMovies = async (
+  timePeriod: 'day' | 'week'
+): Promise<MovieSimpleType[] | undefined> => {
+  return axiosInstance
+    .get<TrendingResponse>(`/trending/movie/${timePeriod}`, <TrendingParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+      },
+    })
+    .then(response => response.data.results)
+    .catch((err: Error | AxiosError) => {
+      console.error(`${err.name}: ${err.message}`)
+      return undefined
+    })
+}
+
+/**
+ * Returns the cast and crew for a movie by id.
+ */
+export const getMovieCast = async (movieId: number): Promise<MovieCastType[] | undefined> => {
+  return axiosInstance
+    .get<MovieCreditsResponse>(`/movie/${movieId}/credits`, <MovieCreditsParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+        movie_id: movieId,
+      },
+    })
+    .then(response => response.data.cast)
+    .catch((err: Error | AxiosError) => {
+      console.error(`${err.name}: ${err.message}`)
+      return undefined
+    })
+}
 
 // /**
 //  * Returns a list of the most recent movies sorted by release date in descending order
@@ -80,32 +123,6 @@ export const getMovieByID = async (movie_id: number): Promise<MovieResponse> => 
 }
 
 /**
- * Returns the cast and crew for a movie by id.
- *
- * @param movie_id The movie id
- * @returns Cast and crew for a movie.
- */
-export const getMovieCastAndCrew = async (movie_id: number): Promise<MovieCreditsResponse> => {
-  const response = await axiosInstance
-    .get<MovieCreditsResponse>(`/movie/${movie_id}/credits`, <MovieCreditsParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: 'en-US',
-        movie_id: movie_id,
-      },
-    })
-    .then(response => {
-      return response.data
-    })
-    .catch(response => {
-      console.log('error: getMovieCastAndCrew()', response.err)
-      return response.err
-    })
-
-  return response
-}
-
-/**
  * Returns a list of movies top rated
  *
  * @param page Page number
@@ -125,32 +142,6 @@ export const getMoviesTopRated = async (page?: number): Promise<MoviesTopRatedRe
     })
     .catch(response => {
       console.log('error: getMoviesTopRated()', response.err)
-      return response.err
-    })
-
-  return response
-}
-
-/**
- * Returns a list of trending movies
- *
- * @param time_window filter in 'day' or 'week'
- * @returns List of trending movies in a day or week
- */
-export const getTrendingMovies = async (time_window: string): Promise<TrendingResponse> => {
-  const response = await axiosInstance
-    .get<TrendingResponse>(`/trending/movie/${time_window}`, <TrendingParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        media_type: 'movie',
-        time_window: time_window,
-      },
-    })
-    .then(response => {
-      return response.data
-    })
-    .catch(response => {
-      console.log('error: getTrendingMovies()', response.err)
       return response.err
     })
 
@@ -181,4 +172,9 @@ export const searchByMovie = async (query: string): Promise<SearchMovieResponse>
     })
 
   return response
+}
+
+export default {
+  getTrendingMovies,
+  getMovieCast,
 }

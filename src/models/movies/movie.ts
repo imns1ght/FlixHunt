@@ -8,7 +8,7 @@ import SpokenLanguages from '../spoken_languages'
 export interface MovieResponse {
   adult: boolean
   backdrop_path: string | null
-  belongs_to_collection: object | null
+  belongs_to_collection: Record<string, unknown> | null
   budget: number
   genres: genre[]
   homepage: string | null
@@ -18,7 +18,7 @@ export interface MovieResponse {
   original_title: string
   overview: string | null
   popularity: number
-  poster_path: string | null
+  poster_path: string
   production_companies: ProductionCompanies[]
   production_countries: ProductionCountries[]
   release_date: string

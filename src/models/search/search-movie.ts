@@ -1,10 +1,10 @@
 // Documentation: https://developers.themoviedb.org/3/search/search-movies
 
-import MovieSimpleInterface from '../movie-simple'
+import { MovieSimpleType } from '../movie-simple'
 
 export interface SearchMovieResponse {
   page: number
-  results: MovieSimpleInterface[]
+  results: MovieSimpleType[]
   total_results: number
   total_pages: number
 }

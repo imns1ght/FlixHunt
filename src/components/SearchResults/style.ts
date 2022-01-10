@@ -1,59 +1,42 @@
 import { StyleSheet } from 'react-native'
-import { CONSTANTS } from '../../services/constants'
-
-const MARGIN_H_DEFAULT = 15
-const MARGIN_V_DEFAULT = 15
-const MAX_WIDTH = CONSTANTS.width < 900 ? CONSTANTS.width : 900
+import theme from '~/styles'
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    alignContent: 'flex-start',
-    alignSelf: 'center',
-    width: MAX_WIDTH,
-    padding: 10,
-  },
   itemContainer: {
     display: 'flex',
     flexDirection: 'row',
-    marginVertical: MARGIN_V_DEFAULT,
-  },
-  itemTextContainer: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    marginVertical: MARGIN_V_DEFAULT,
-  },
-  itemTitle: {
-    flex: 1,
-    fontSize: 24,
-    color: 'black',
-    marginHorizontal: MARGIN_H_DEFAULT + 5,
-    marginBottom: MARGIN_V_DEFAULT,
-  },
-  overview: {
-    overflow: 'hidden',
-    fontSize: 16,
-    color: 'black',
-    marginHorizontal: MARGIN_H_DEFAULT + 5,
-  },
-  title: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: 'black',
-    marginHorizontal: MARGIN_H_DEFAULT,
-    marginVertical: MARGIN_V_DEFAULT,
-  },
-  tags: {
-    fontSize: 14,
-    color: 'black',
-    marginLeft: MARGIN_H_DEFAULT + 5,
-    marginVertical: MARGIN_V_DEFAULT,
+    marginVertical: 10,
+    elevation: 2,
   },
   image: {
-    height: 250,
-    width: 170,
-    backgroundColor: '#FFF',
+    height: 150,
+    width: 100,
+    resizeMode: 'contain',
+    borderRadius: 5,
+    marginRight: 5,
+  },
+  itemTextContainer: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  itemTitle: {
+    fontSize: 24,
+    color: theme.colors.white,
+    marginBottom: 10,
+  },
+  overview: {
+    fontSize: 16,
+    color: theme.colors.white,
+    marginBottom: 10,
+  },
+  tags: {
+    fontSize: 16,
+    color: theme.colors.white,
+  },
+  errorMessage: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: theme.colors.white,
   },
 })
 

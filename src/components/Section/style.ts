@@ -3,7 +3,14 @@ import theme from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.colors.secondary,
+    margin: 10,
+    marginVertical: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: theme.colors.white,
+    marginBottom: 20,
   },
 })
 

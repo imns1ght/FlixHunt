@@ -1,4 +1,4 @@
-export default interface MovieSimpleInterface {
+export type MovieSimpleType = {
   adult: boolean
   backdrop_path: string | null
   genre_ids: number[]
@@ -7,7 +7,7 @@ export default interface MovieSimpleInterface {
   original_title: string
   overview: string | null
   popularity: number
-  poster_path: string | null
+  poster_path: string
   release_date: string
   title: string
   video: boolean

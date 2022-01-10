@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import { StyleSheet } from 'react-native'
 import { SearchBar } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler'
-import FeaturedMovies from '../../components/FeaturedMovies/FeaturedMovies'
-// import LastRelease from '../../components/LastRelease/LastRelease'
+import { TrendingMovies } from '~/components'
 import SearchResults from '../../components/SearchResults/SearchResults'
 import { SearchMovieResponse } from '../../models/search/search-movie'
 import { searchByMovie } from '../../services/api'
 import styles from './style'
 
 const HomeScreen = () => {
-  const [searchText, setSearchText] = useState<string>()
+  const [searchText, setSearchText] = useState<string>('')
   const [searchResults, setSearchResults] = useState<SearchMovieResponse>()
 
   useEffect(() => {
     const getResponse = async () => {
-      const response = await searchByMovie(searchText!)
+      const response = await searchByMovie(searchText)
       setSearchResults(response)
     }
 
@@ -29,13 +29,11 @@ const HomeScreen = () => {
         placeholder='Search for movies...'
         onChangeText={text => setSearchText(text)}
         value={searchText}
-        clearIcon
       />
       {!searchText || !searchResults ? (
         <>
-          <FeaturedMovies category='trending' time_window='day' />
-          <FeaturedMovies category='trending' time_window='week' />
-          <FeaturedMovies category='toprated' />
+          <TrendingMovies timePeriod='day' />
+          <TrendingMovies timePeriod='week' />
           {/* <LastRelease /> */}
         </>
       ) : (
