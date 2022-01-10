@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import HomeScreen from './src/screens/HomeScreen/HomeScreen'
 import MovieScreen from './src/screens/MovieScreen/MovieScreen'
 import theme from '~/styles'
+import { SafeAreaView } from 'react-native'
 
 const Stack = createStackNavigator()
 
@@ -27,15 +28,17 @@ const App = () => (
       },
     }}
   >
-    <TopBar />
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name='Home' component={HomeScreen} />
-      <Stack.Screen name='Movie' component={MovieScreen} />
-    </Stack.Navigator>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.secondary }}>
+      <TopBar />
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name='Home' component={HomeScreen} />
+        <Stack.Screen name='Movie' component={MovieScreen} />
+      </Stack.Navigator>
+    </SafeAreaView>
   </NavigationContainer>
 )
 
