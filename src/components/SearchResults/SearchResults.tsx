@@ -1,55 +1,56 @@
 import React from 'react'
-import { Image, Text, TouchableHighlight, View } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { SearchMovieResponse } from '~/models/search/search-movie'
-import { CONSTANTS } from '~/services/constants'
+import CONSTANTS from '~/constants'
 import styles from './style'
+import { Section } from '~/components'
 
 const SearchResults = ({ data }: { data: SearchMovieResponse }) => {
   const navigation = useNavigation()
 
+  const handlePress = React.useCallback(
+    (movieId: number) =>
+      navigation.navigate('Movie', {
+        movieId: movieId,
+      }),
+    [navigation]
+  )
+
   return (
-    <View style={styles.container}>
+    <Section title='Results'>
       {data.total_results !== 0 ? (
         <>
-          <Text style={styles.title}>Results:</Text>
-          {data.results.slice(0, 10).map((movie, index) => {
+          {data.results.map(movie => {
             return (
-              <TouchableHighlight
-                key={index}
-                onPress={() => {
-                  navigation.navigate('Movie', {
-                    movieId: movie.id,
-                  })
-                }}
-                activeOpacity={0.6}
-                underlayColor='#CCCCCC'
+              <TouchableOpacity
+                key={movie.id}
+                onPress={() => handlePress(movie.id)}
+                style={styles.itemContainer}
               >
-                <View key={index} style={styles.itemContainer}>
-                  <Image
-                    source={{
-                      uri: `${CONSTANTS.api_image_url}/w780${movie.poster_path}`,
-                    }}
-                    style={styles.image}
-                  />
-                  <View style={styles.itemTextContainer}>
-                    <View>
-                      <Text style={styles.itemTitle}>{movie.title}</Text>
-                    </View>
-                    <View>
-                      <Text style={styles.overview}>{movie.overview}</Text>
-                    </View>
-                    <Text style={styles.tags}>Release date: {movie.release_date}</Text>
-                  </View>
+                <Image
+                  source={{
+                    uri: `${CONSTANTS.api_image_url}/w300${movie.poster_path}`,
+                  }}
+                  style={styles.image}
+                />
+                <View style={styles.itemTextContainer}>
+                  <Text style={styles.itemTitle} numberOfLines={1}>
+                    {movie.title}
+                  </Text>
+                  <Text style={styles.overview} numberOfLines={3}>
+                    {movie.overview}
+                  </Text>
+                  <Text style={styles.tags}>{new Date(movie.release_date).toDateString()}</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             )
           })}
         </>
       ) : (
-        <Text style={styles.title}>Not found...Try another movie.</Text>
+        <Text style={styles.errorMessage}>Not found...Try another movie.</Text>
       )}
-    </View>
+    </Section>
   )
 }
 

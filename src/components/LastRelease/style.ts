@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '~/styles'
+import theme from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -29,12 +29,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
   },
   sectionTitle: {
-    color: COLORS.primary,
+    color: theme.colors.primary,
     fontSize: 26,
     fontWeight: 'bold',
   },
   sectionSubTitle: {
-    color: COLORS.primary,
+    color: theme.colors.primary,
     fontSize: 16,
     margin: 10,
   },

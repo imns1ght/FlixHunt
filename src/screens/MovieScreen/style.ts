@@ -1,71 +1,58 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '~/styles'
-import { CONSTANTS } from '../../services/constants'
-
-const MARGIN_H_DEFAULT = 15
-const MARGIN_V_DEFAULT = 15
-const MAX_WIDTH = CONSTANTS.width < 1200 ? CONSTANTS.width : 1200
+import theme from '~/styles'
 
 const styles = StyleSheet.create({
   scrollview: {
     display: 'flex',
-    alignContent: 'center',
-    alignSelf: 'center',
-    width: MAX_WIDTH,
-    padding: 10,
+    backgroundColor: theme.colors.secondary,
   },
   container: {
     display: 'flex',
-    flexDirection: 'column',
-    alignContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    maxWidth: MAX_WIDTH,
   },
+  cover: {
+    height: 250,
+    resizeMode: 'cover',
+    justifyContent: 'flex-end',
+  },
+  coverImage: { opacity: 0.4, backgroundColor: '#000' },
   image: {
-    aspectRatio: 1,
-    height: CONSTANTS.height / 2,
-    width: CONSTANTS.width,
-    maxWidth: MAX_WIDTH,
-    borderRadius: 8,
-    resizeMode: 'center',
-    marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.39,
-    shadowRadius: 8.3,
-    overflow: 'visible',
+    height: 200,
+    width: 140,
+    borderRadius: 5,
+    marginLeft: 10,
+    marginRight: 15,
   },
-  text: {
-    color: 'black',
+  titleWithImage: {
+    flexDirection: 'row',
+  },
+  titleContainer: {
+    flex: 1,
+    paddingVertical: 15,
+    justifyContent: 'space-around',
+  },
+  content: {
+    marginHorizontal: 10,
+    marginVertical: 5,
   },
   title: {
-    fontSize: 40,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
-    marginHorizontal: MARGIN_H_DEFAULT,
-    marginVertical: MARGIN_V_DEFAULT,
+    color: theme.colors.white,
   },
   subtitle: {
-    fontSize: 24,
-    color: 'black',
-    marginHorizontal: MARGIN_H_DEFAULT + 5,
-    marginBottom: MARGIN_V_DEFAULT,
-  },
-  tags: {
-    fontSize: 14,
-    color: 'black',
-    marginLeft: MARGIN_H_DEFAULT + 10,
-    marginVertical: 2,
+    fontSize: 20,
+    fontStyle: 'italic',
+    color: theme.colors.white,
   },
   overview: {
     fontSize: 18,
-    color: 'black',
-    marginHorizontal: MARGIN_H_DEFAULT + 10,
-    marginBottom: MARGIN_V_DEFAULT,
+    color: theme.colors.white,
+    paddingVertical: 10,
+  },
+  tags: {
+    fontSize: 16,
+    color: theme.colors.white,
+    marginVertical: 2,
   },
 })
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, ActivityIndicator, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { COLORS } from '~/styles'
+import theme from '~/styles'
 import { DiscoverMovieResponse } from '~/models/discover/discover-movie'
 // import { getLatestMoviesByReleaseDate } from '~/services/api'
-import MovieCard from '~/components/MovieCard/MovieCard'
+import MovieCard from '~/components/MovieCard'
 import styles from './style'
 
 const LastRelease = () => {
@@ -44,7 +44,7 @@ const LastRelease = () => {
         <Button
           title='Load more'
           onPress={() => setRequestPage(requestPage + 1)}
-          color={COLORS.primary}
+          color={theme.colors.primary}
         />
       </View>
     </>
