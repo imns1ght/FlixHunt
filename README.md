@@ -17,12 +17,11 @@ Movie Browser is an app for you to find a good movie to watch! The Movie Browser
 - Node.js LTS release or greater
 - Yarn
 - Git
-- Watchman for macOS users
+- Watchman
 
 ### Documentation
 
 - [React Native](https://reactnative.dev/docs/environment-setup)
-- [Expo](https://docs.expo.io/distribution/building-standalone-apps/#1-install-expo-cli)
 
 ### Quick running
 
@@ -34,44 +33,25 @@ Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.
    git clone https://github.com/imns1ght/movie-browser && cd movie-browser/
    ```
 
-2. Install Expo Cli
-
-   ```bash
-   yarn global add expo-cli
-   ```
-
-3. Install the required packages
+2. Install the required packages
 
    ```bash
    yarn install
    ```
 
-4. Runnning
+3. Runnning
 
-   You can run the project in several ways:
-
-   1. Using an Expo client application for iOS or Android and connect to the same wireless network as your computer
-
-      On Android, use the Expo app to scan the QR code from your terminal to open your project. On iOS, use the built-in QR code scanner of the Camera app.
-
-      - [Android Client](https://play.google.com/store/apps/details?id=host.exp.exponent)
-      - [iOS Client](https://search.itunes.apple.com/WebObjects/MZContentLink.woa/wa/link?path=apps%2fexponent)
-
-   2. Using an emulator
-
-      - [Installing the iOS Simulator (macOS only)](https://docs.expo.io/workflow/ios-simulator/)
-      - [Installing an Android emulator](https://docs.expo.io/workflow/android-studio-emulator/)
-
-   3. Using as a web application, running the script below in the root directory.
-
-      ```bash
-      expo start --web
+   1. Start the server
+      ```sh
+      yarn start
       ```
-
-## Building
-
-- [If you choose to build for Android](https://docs.expo.io/distribution/building-standalone-apps/#if-you-choose-to-build-for-android)
-- [If you choose to build for iOS](https://docs.expo.io/distribution/building-standalone-apps/#if-you-choose-to-build-for-ios)
+   2. Start the app
+      ```sh
+      yarn android
+      ```
+      ```sh
+      yarn ios
+      ```
 
 ## TODO
 
