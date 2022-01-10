@@ -5,6 +5,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.secondary,
   },
+  searchInput: {
+    color: theme.colors.white,
+    backgroundColor: theme.colors.black,
+    padding: 20,
+  },
 })
 
 export default styles

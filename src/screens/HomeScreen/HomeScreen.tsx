@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { SearchBar } from 'react-native-elements'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, TextInput } from 'react-native'
 import { TrendingMovies } from '~/components'
+import theme from '~/styles'
 import SearchResults from '../../components/SearchResults/SearchResults'
 import { SearchMovieResponse } from '../../models/search/search-movie'
 import { searchByMovie } from '../../services/api'
 import styles from './style'
 
 const HomeScreen = () => {
-  const [searchText, setSearchText] = useState<string>('')
+  const [searchText, setSearchText] = useState<string>()
   const [searchResults, setSearchResults] = useState<SearchMovieResponse>()
 
-  useEffect(() => {
-    const getResponse = async () => {
-      const response = await searchByMovie(searchText)
-      setSearchResults(response)
-    }
+  const fetchSearchResults = React.useCallback(async (searchText: string) => {
+    const response = await searchByMovie(searchText)
+    setSearchResults(response)
+  }, [])
 
-    if (searchText) {
-      getResponse()
-    }
-  }, [searchText])
+  useEffect(() => {
+    if (searchText) fetchSearchResults(searchText)
+  }, [fetchSearchResults, searchText])
 
   return (
     <ScrollView style={styles.container}>
-      <SearchBar
+      <TextInput
         placeholder='Search for movies...'
+        placeholderTextColor={theme.colors.darkGray}
         onChangeText={text => setSearchText(text)}
         value={searchText}
+        style={styles.searchInput}
+        clearButtonMode='always'
       />
       {!searchText || !searchResults ? (
         <>
