@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet } from 'react-native'
 import { SearchBar } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler'
 import { TrendingMovies } from '~/components'
@@ -34,7 +33,6 @@ const HomeScreen = () => {
         <>
           <TrendingMovies timePeriod='day' />
           <TrendingMovies timePeriod='week' />
-          {/* <LastRelease /> */}
         </>
       ) : (
         <SearchResults data={searchResults} />
