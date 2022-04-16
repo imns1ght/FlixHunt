@@ -1,2 +1,5 @@
 export { default as Section } from './Section'
 export { default as TrendingMovies } from './TrendingMovies'
+export { default as TopBar } from './TopBar'
+export { default as MovieCard } from './MovieCard'
+export { default as SearchResults } from './SearchResults'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import styles from './style'
+import styles from './Section.styles'
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => {
   return (

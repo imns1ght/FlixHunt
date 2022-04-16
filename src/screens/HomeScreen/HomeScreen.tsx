@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+
 import { ScrollView, TextInput } from 'react-native'
-import { TrendingMovies } from '~/components'
+import { SearchResults, TrendingMovies } from '~/components'
+import { SearchMovieResponse } from '~/models'
+import { API } from '~/services'
+
 import theme from '~/styles'
-import SearchResults from '../../components/SearchResults/SearchResults'
-import { SearchMovieResponse } from '../../models/search/search-movie'
-import { searchByMovie } from '../../services/api'
-import styles from './style'
+import styles from './HomeScreen.styles'
 
 const HomeScreen = () => {
-  const [searchText, setSearchText] = useState<string>()
-  const [searchResults, setSearchResults] = useState<SearchMovieResponse>()
+  const [searchText, setSearchText] = React.useState<string>()
+  const [searchResults, setSearchResults] = React.useState<SearchMovieResponse>()
 
   const fetchSearchResults = React.useCallback(async (searchText: string) => {
-    const response = await searchByMovie(searchText)
+    const response = await API.searchByMovie(searchText)
     setSearchResults(response)
   }, [])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (searchText) fetchSearchResults(searchText)
   }, [fetchSearchResults, searchText])
 

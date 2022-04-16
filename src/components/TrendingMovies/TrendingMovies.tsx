@@ -1,17 +1,16 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
-import MovieCard from '~/components/MovieCard'
-import { Section } from '~/components'
+import { MovieCard, Section } from '~/components'
 import { MovieSimpleType } from '~/models'
-import { api } from '~/services'
-import styles from './style'
+import { API } from '~/services'
+import styles from './TrendingMovies.styles'
 
 const TrendingMovies = ({ timePeriod }: { timePeriod: 'day' | 'week' }) => {
   const [moviesData, setMoviesData] = React.useState<MovieSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
 
   const fetchMovies = React.useCallback(async () => {
-    const response = await api.getTrendingMovies(timePeriod)
+    const response = await API.getTrendingMovies(timePeriod)
     if (response) setMoviesData(response)
     setLoading(false)
   }, [timePeriod])

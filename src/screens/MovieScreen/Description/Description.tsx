@@ -1,8 +1,8 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Text, View } from 'react-native'
 import { arrToStringFormated, convertMinsToTime } from '~/utils'
 import NumberFormat from 'react-number-format'
-import styles from '../style'
+import styles from '../MovieScreen.styles'
 import { MovieResponse } from '~/models/movies/movie'
 
 const Description = ({ movieData }: { movieData: MovieResponse }) => {

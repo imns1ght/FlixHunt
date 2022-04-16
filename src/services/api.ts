@@ -1,16 +1,20 @@
 import axios, { AxiosError } from 'axios'
 import CONSTANTS from '~/constants'
 
-import { MovieParams, MovieResponse } from '~/models/movies/movie'
 import {
   MovieCastType,
   MovieCreditsParams,
   MovieCreditsResponse,
-} from '~/models/movies/movie-credits'
-import { MoviesTopRatedParams, MoviesTopRatedResponse } from '~/models/movies/movies-top-rated'
-import { SearchMovieParams, SearchMovieResponse } from '~/models/search/search-movie'
-import { TrendingParams, TrendingResponse } from '~/models'
-import { MovieSimpleType } from '~/models/movie-simple'
+  MovieParams,
+  MovieResponse,
+  MovieSimpleType,
+  MoviesTopRatedParams,
+  MoviesTopRatedResponse,
+  SearchMovieParams,
+  SearchMovieResponse,
+  TrendingParams,
+  TrendingResponse,
+} from '~/models'
 
 // Used in requests
 const axiosInstance = axios.create({
@@ -136,6 +140,7 @@ export const searchByMovie = async (query: string): Promise<SearchMovieResponse>
 export default {
   getTrendingMovies,
   getMovieCast,
+  searchByMovie,
 }
 
 // import { DiscoverMovieParams, DiscoverMovieResponse } from '~/models/discover/discover-movie'
