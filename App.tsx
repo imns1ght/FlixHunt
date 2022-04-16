@@ -1,17 +1,11 @@
+import 'react-native-gesture-handler'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import 'react-native-gesture-handler'
 import { TopBar } from '~/components/'
 import { HomeScreen, MovieScreen } from '~/screens'
 import theme from '~/styles'
-
-const Stack = createStackNavigator()
-
-if (__DEV__) {
-  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
-}
+import Stack from '~/navigation'
 
 const App = () => (
   <NavigationContainer
@@ -30,6 +24,7 @@ const App = () => (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.secondary }}>
       <TopBar />
       <Stack.Navigator
+        initialRouteName='Home'
         screenOptions={{
           headerShown: false,
         }}
