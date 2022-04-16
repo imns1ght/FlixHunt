@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, Text, ActivityIndicator, ScrollView, ImageBackground } from 'react-native'
-import { MovieCastType } from '~/models/movies/movie-credits'
-import { api } from '~/services'
+import { ActivityIndicator, ImageBackground, ScrollView, Text, View } from 'react-native'
+import { MovieCastType } from '~/models/movies/credits'
+import { API } from '~/services'
 import CONSTANTS from '~/constants'
-import styles from './style'
+import styles from './Cast.styles'
 import { Section } from '~/components'
 
 const MovieCast = ({ movieId }: { movieId: number }) => {
@@ -11,7 +11,7 @@ const MovieCast = ({ movieId }: { movieId: number }) => {
   const [loading, setLoading] = React.useState(true)
 
   const fetchMovieCast = React.useCallback(async () => {
-    const response = await api.getMovieCast(movieId)
+    const response = await API.getMovieCast(movieId)
     setPeopleData(response)
     setLoading(false)
   }, [movieId])

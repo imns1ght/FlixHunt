@@ -6,8 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
-    "lint": "eslint . --ext .ts,.tsx",
-    "format": "prettier --check ./src"
+    "lint": "eslint --fix . --ext .ts,.tsx",
+    "format": "prettier --write ./src"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.14",

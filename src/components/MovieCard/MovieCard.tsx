@@ -1,9 +1,9 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Image, TouchableHighlight } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import CONSTANTS from '~/constants'
 import { MovieSimpleType } from '~/models'
-import styles from './style'
+import styles from './MovieCard.styles'
 
 const MovieCard = ({ item, index }: { item: MovieSimpleType; index: number }) => {
   const navigation = useNavigation()

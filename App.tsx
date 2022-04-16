@@ -1,12 +1,11 @@
-import 'react-native-gesture-handler'
 import React from 'react'
-import TopBar from './src/components/TopBar/TopBar'
+import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import HomeScreen from './src/screens/HomeScreen/HomeScreen'
-import MovieScreen from './src/screens/MovieScreen/MovieScreen'
+import 'react-native-gesture-handler'
+import { TopBar } from '~/components/'
+import { HomeScreen, MovieScreen } from '~/screens'
 import theme from '~/styles'
-import { SafeAreaView } from 'react-native'
 
 const Stack = createStackNavigator()
 

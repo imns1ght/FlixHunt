@@ -1,2 +1,4 @@
-export type { MovieSimpleType } from './movie-simple'
-export type { TrendingParams, TrendingResponse } from './trending'
+export * from './movie-simple'
+export * from './trending'
+export * from './search'
+export * from './movies'

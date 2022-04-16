@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { Image, Text, View, ActivityIndicator, ImageBackground } from 'react-native'
+import React from 'react'
+import { ActivityIndicator, Image, ImageBackground, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { MovieResponse } from '~/models/movies/movie'
 import { getMovieByID } from '~/services/api'
 import CONSTANTS from '~/constants'
-import styles from './style'
+import styles from './MovieScreen.styles'
 import MovieCast from './Cast'
 import Description from './Description'
 import { arrToStringFormated } from '~/utils'
 
 const MovieScreen = props => {
-  const [loading, setLoading] = useState(true)
-  const [movieData, setMovieData] = useState<MovieResponse>()
+  const [loading, setLoading] = React.useState(true)
+  const [movieData, setMovieData] = React.useState<MovieResponse>()
 
-  useEffect(() => {
+  React.useEffect(() => {
     const getResponse = async () => {
       const response = await getMovieByID(props.route.params.movieId)
       setMovieData(response)

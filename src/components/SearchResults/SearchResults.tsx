@@ -1,9 +1,9 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { SearchMovieResponse } from '~/models/search/search-movie'
+import { SearchMovieResponse } from '~/models/search'
 import CONSTANTS from '~/constants'
-import styles from './style'
+import styles from './SearchResults.styles'
 import { Section } from '~/components'
 
 const SearchResults = ({ data }: { data: SearchMovieResponse }) => {
