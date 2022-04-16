@@ -24,9 +24,7 @@ const axiosInstance = axios.create({
 /**
  * Returns a list of trending movies
  */
-export const getTrendingMovies = async (
-  timePeriod: 'day' | 'week'
-): Promise<MovieSimpleType[] | undefined> => {
+export const getTrendingMovies = async (timePeriod: 'day' | 'week'): Promise<MovieSimpleType[]> => {
   return axiosInstance
     .get<TrendingResponse>(`/trending/movie/${timePeriod}`, <TrendingParams>{
       params: {
@@ -34,16 +32,16 @@ export const getTrendingMovies = async (
       },
     })
     .then(response => response.data.results)
-    .catch((err: Error | AxiosError) => {
-      console.error(`${err.name}: ${err.message}`)
-      return undefined
+    .catch((e: Error | AxiosError) => {
+      console.error(`${e.name}: ${e.message}`)
+      throw e
     })
 }
 
 /**
  * Returns the cast and crew for a movie by id.
  */
-export const getMovieCast = async (movieId: number): Promise<MovieCastType[] | undefined> => {
+export const getMovieCast = async (movieId: number): Promise<MovieCastType[]> => {
   return axiosInstance
     .get<MovieCreditsResponse>(`/movie/${movieId}/credits`, <MovieCreditsParams>{
       params: {
@@ -53,9 +51,9 @@ export const getMovieCast = async (movieId: number): Promise<MovieCastType[] | u
       },
     })
     .then(response => response.data.cast)
-    .catch((err: Error | AxiosError) => {
-      console.error(`${err.name}: ${err.message}`)
-      return undefined
+    .catch((e: Error | AxiosError) => {
+      console.error(`${e.name}: ${e.message}`)
+      throw e
     })
 }
 
@@ -77,9 +75,9 @@ export const getMovieByID = async (movie_id: number): Promise<MovieResponse> => 
     .then(response => {
       return response.data
     })
-    .catch(response => {
-      console.log('error: getMovieByID()', response.err)
-      return response.err
+    .catch((e: Error | AxiosError) => {
+      console.log('error: getMovieByID()', e)
+      throw e
     })
 
   return response
@@ -103,9 +101,9 @@ export const getMoviesTopRated = async (page?: number): Promise<MoviesTopRatedRe
     .then(response => {
       return response.data
     })
-    .catch(response => {
-      console.log('error: getMoviesTopRated()', response.err)
-      return response.err
+    .catch((e: Error | AxiosError) => {
+      console.log('error: getMoviesTopRated()', e)
+      throw e
     })
 
   return response
@@ -129,9 +127,9 @@ export const searchByMovie = async (query: string): Promise<SearchMovieResponse>
     .then(response => {
       return response.data
     })
-    .catch(response => {
-      console.log('error: searchByMovie()', response.err)
-      return response.err
+    .catch((e: Error | AxiosError) => {
+      console.log('error: searchByMovie()', e)
+      throw e
     })
 
   return response
@@ -142,45 +140,3 @@ export default {
   getMovieCast,
   searchByMovie,
 }
-
-// import { DiscoverMovieParams, DiscoverMovieResponse } from '~/models/discover/discover-movie'
-
-// const getCurrentDate = () => {
-//   const currentDate = new Date()
-//   const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0')
-//   const currentDay = currentDate.getDate().toString().padStart(2, '0')
-//   const currentDateApiPattern = `${currentDate.getFullYear()}-${currentMonth}-${currentDay}`
-
-//   return currentDateApiPattern
-// }
-
-// /**
-//  * Returns a list of the most recent movies sorted by release date in descending order
-//  *
-//  * @param page The number of the page
-//  * @returns List of the most recent movies sorted by release date in desc order
-//  */
-// export const getLatestMoviesByReleaseDate = async (
-//   page?: number
-// ): Promise<DiscoverMovieResponse | undefined> => {
-//   const response = await axiosInstance
-//     .get<DiscoverMovieResponse>('/discover/movie', <DiscoverMovieParams>{
-//       params: {
-//         api_key: CONSTANTS.api_key,
-//         language: 'en-US',
-//         include_adult: false,
-//         sort_by: 'release_date.desc',
-//         'release_date.lte': getCurrentDate(),
-//         page,
-//       },
-//     })
-//     .then(response => response.data)
-//     .catch(error => {
-//       console.error(error)
-//       return undefined
-//     })
-
-//   console.log(response)
-
-//   return response
-// }
