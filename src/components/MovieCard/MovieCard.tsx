@@ -1,14 +1,15 @@
 import React from 'react'
 import { Image, TouchableHighlight } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/core'
 import CONSTANTS from '~/constants'
 import { MovieSimpleType } from '~/models'
 import styles from './MovieCard.styles'
+import { NavigationProps } from '~/navigation'
 
 const MovieCard = ({ item, index }: { item: MovieSimpleType; index: number }) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<NavigationProps>()
 
-  const handleOnPress = React.useCallback(
+  const onPress = React.useCallback(
     () =>
       navigation.navigate('Movie', {
         movieId: item.id,
@@ -18,7 +19,7 @@ const MovieCard = ({ item, index }: { item: MovieSimpleType; index: number }) =>
   )
 
   return (
-    <TouchableHighlight key={index} onPress={handleOnPress} activeOpacity={0.8} style={styles.card}>
+    <TouchableHighlight key={index} onPress={onPress} activeOpacity={0.8} style={styles.card}>
       <Image
         source={{
           uri: `${CONSTANTS.api_image_url}/w500${item.poster_path}`,

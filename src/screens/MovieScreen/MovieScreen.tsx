@@ -8,20 +8,22 @@ import styles from './MovieScreen.styles'
 import MovieCast from './Cast'
 import Description from './Description'
 import { arrToStringFormated } from '~/utils'
+import { NavigationScreenProps } from '~/navigation'
 
-const MovieScreen = props => {
+const MovieScreen = ({ route }: NavigationScreenProps['Movie']) => {
+  const { movieId } = route.params
   const [loading, setLoading] = React.useState(true)
   const [movieData, setMovieData] = React.useState<MovieResponse>()
 
-  React.useEffect(() => {
-    const getResponse = async () => {
-      const response = await getMovieByID(props.route.params.movieId)
-      setMovieData(response)
-      setLoading(false)
-    }
+  const fetchMovieData = React.useCallback(async () => {
+    const response = await getMovieByID(movieId)
+    setMovieData(response)
+    setLoading(false)
+  }, [movieId])
 
-    getResponse()
-  }, [props.route.params.movieId])
+  React.useEffect(() => {
+    fetchMovieData()
+  }, [fetchMovieData])
 
   return (
     <ScrollView contentContainerStyle={styles.scrollview}>

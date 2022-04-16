@@ -7,7 +7,7 @@ export const convertMinsToTime = (mins: number | null) => {
   }
 }
 
-export const arrToStringFormated = (arr: any[]) => {
+export const arrToStringFormated = (arr: { name: string }[]) => {
   if (!arr) return ''
 
   return arr.map((value, index, arr) => `${value.name}${index === arr.length - 1 ? '.' : ', '}`)

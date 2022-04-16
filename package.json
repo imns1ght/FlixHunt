@@ -4,6 +4,7 @@
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
+    "android-reverse": "adb reverse tcp:8081 tcp:8081",
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint --fix . --ext .ts,.tsx",
@@ -51,6 +52,9 @@
     "react-test-renderer": "~17.0.2",
     "reactotron-react-native": "^5.0.1",
     "typescript": "~4.4.3"
+  },
+  "resolutions": {
+    "@types/react": "17.0.43"
   },
   "jest": {
     "preset": "react-native",
