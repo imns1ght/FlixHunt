@@ -5,9 +5,10 @@ import { SearchMovieResponse } from '~/models/search'
 import CONSTANTS from '~/constants'
 import styles from './SearchResults.styles'
 import { Section } from '~/components'
+import { NavigationProps } from '~/navigation'
 
 const SearchResults = ({ data }: { data: SearchMovieResponse }) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<NavigationProps>()
 
   const handlePress = React.useCallback(
     (movieId: number) =>
