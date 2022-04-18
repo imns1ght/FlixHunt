@@ -13,16 +13,17 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   infoContainer: {
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   name: {
     fontSize: 20,
     color: theme.colors.white,
-    marginBottom: 5,
+    marginBottom: 3,
   },
   description: {
-    fontSize: 18,
+    fontSize: 16,
     color: theme.colors.white,
   },
 })
