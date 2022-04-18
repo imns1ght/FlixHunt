@@ -1,6 +1,5 @@
 import React from 'react'
-import { ActivityIndicator, Text, View } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native'
 import { MovieResponse } from '~/models/movies/movie'
 import styles from './MovieScreen.styles'
 import MovieCast from './Cast'
