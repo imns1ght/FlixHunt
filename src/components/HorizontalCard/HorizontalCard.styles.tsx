@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import theme from '~/styles'
 
 const styles = StyleSheet.create({
-  itemContainer: {
+  container: {
     display: 'flex',
     flexDirection: 'row',
     marginVertical: 10,
@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginRight: 5,
   },
-  itemTextContainer: {
+  textContainer: {
     flex: 1,
     paddingHorizontal: 10,
   },
-  itemTitle: {
+  title: {
     fontSize: 24,
     color: theme.colors.white,
     marginBottom: 10,
@@ -31,11 +31,6 @@ const styles = StyleSheet.create({
   },
   tags: {
     fontSize: 16,
-    color: theme.colors.white,
-  },
-  errorMessage: {
-    fontSize: 20,
-    fontWeight: 'bold',
     color: theme.colors.white,
   },
 })

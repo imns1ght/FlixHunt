@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
   },
   card: {
     marginRight: 8,
-    height: 300,
-    width: 260,
+    height: 240,
+    width: 200,
     borderRadius: 5,
     justifyContent: 'flex-end',
   },

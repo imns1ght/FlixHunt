@@ -3,24 +3,36 @@ import { ActivityIndicator, FlatList, Text } from 'react-native'
 import { MovieCard, Section } from '~/components'
 import { MovieSimpleType } from '~/models'
 import { API } from '~/services'
-import styles from './TrendingMovies.styles'
+import styles from './MoviesCarousel.styles'
 
-const TrendingMovies = ({ timePeriod }: { timePeriod: 'day' | 'week' }) => {
+type CarouselTypes = 'trending' | 'popular' | 'top_rated'
+
+const titles = {
+  trending: 'Trending 🔥',
+  popular: 'What people are watching',
+  top_rated: 'Top Rated',
+}
+
+const MoviesCarousel = ({ type }: { type: CarouselTypes }) => {
   const [moviesData, setMoviesData] = React.useState<MovieSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
 
   const fetchMovies = React.useCallback(async () => {
-    const response = await API.getTrendingMovies(timePeriod)
+    let response
+    if (type === 'trending') response = await API.getTrendingMovies()
+    else if (type === 'popular') response = await API.getPopularMovies()
+    else if (type === 'top_rated') response = await API.getTopRatedMovies()
+
     if (response) setMoviesData(response)
     setLoading(false)
-  }, [timePeriod])
+  }, [type])
 
   React.useEffect(() => {
     fetchMovies()
   }, [fetchMovies])
 
   return (
-    <Section title={`${timePeriod === 'week' ? 'Week' : 'Day'} 🔥`}>
+    <Section title={titles[type]}>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !moviesData ? (
@@ -37,4 +49,4 @@ const TrendingMovies = ({ timePeriod }: { timePeriod: 'day' | 'week' }) => {
   )
 }
 
-export default TrendingMovies
+export default MoviesCarousel

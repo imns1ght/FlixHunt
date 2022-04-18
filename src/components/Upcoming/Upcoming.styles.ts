@@ -2,15 +2,10 @@ import { StyleSheet } from 'react-native'
 import theme from '~/styles'
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 15,
-    marginVertical: 20,
-  },
-  title: {
-    fontSize: 24,
+  errorMessage: {
+    fontSize: 20,
     fontWeight: 'bold',
     color: theme.colors.white,
-    marginBottom: 20,
   },
 })
 

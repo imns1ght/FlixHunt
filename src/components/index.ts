@@ -1,5 +1,5 @@
 export { default as Section } from './Section'
-export { default as TrendingMovies } from './TrendingMovies'
-export { default as TopBar } from './TopBar'
 export { default as MovieCard } from './MovieCard'
-export { default as SearchResults } from './SearchResults'
+export { default as HorizontalCard } from './HorizontalCard'
+export { default as MoviesCarousel } from './MoviesCarousel'
+export { default as Upcoming } from './Upcoming'
