@@ -3,7 +3,7 @@ import type { StackScreenProps } from '@react-navigation/stack'
 
 export type StackParamList = {
   Home: undefined
-  Movie: { movieId: number; movieName?: string } | undefined
+  Movie: { movieId: number; movieName?: string }
 }
 
 type HomeScreenProps = StackScreenProps<StackParamList, 'Home'>

@@ -22,9 +22,28 @@ const axiosInstance = axios.create({
 })
 
 /**
+ * Returns a list of popular movies.
+ */
+const getPopularMovies = async (): Promise<MovieSimpleType[]> => {
+  return axiosInstance
+    .get<TrendingResponse>('/discover/movie?sort_by=popularity.desc', <TrendingParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+      },
+    })
+    .then(response => response.data.results)
+    .catch((e: Error | AxiosError) => {
+      console.error(e)
+      throw e
+    })
+}
+
+/**
  * Returns a list of trending movies
  */
-export const getTrendingMovies = async (timePeriod: 'day' | 'week'): Promise<MovieSimpleType[]> => {
+const getTrendingMovies = async (
+  timePeriod: 'day' | 'week' = 'week'
+): Promise<MovieSimpleType[]> => {
   return axiosInstance
     .get<TrendingResponse>(`/trending/movie/${timePeriod}`, <TrendingParams>{
       params: {
@@ -41,7 +60,7 @@ export const getTrendingMovies = async (timePeriod: 'day' | 'week'): Promise<Mov
 /**
  * Returns the cast and crew for a movie by id.
  */
-export const getMovieCast = async (movieId: number): Promise<MovieCastType[]> => {
+const getMovieCast = async (movieId: number): Promise<MovieCastType[]> => {
   return axiosInstance
     .get<MovieCreditsResponse>(`/movie/${movieId}/credits`, <MovieCreditsParams>{
       params: {
@@ -58,12 +77,59 @@ export const getMovieCast = async (movieId: number): Promise<MovieCastType[]> =>
 }
 
 /**
+ * Returns a list of movies top rated
+ *
+ * @param page Page number
+ * @returns List of movies top rated
+ */
+const getTopRatedMovies = async (page?: number): Promise<MovieSimpleType[]> => {
+  return axiosInstance
+    .get<MoviesTopRatedResponse>('/movie/top_rated', <MoviesTopRatedParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+        page: page,
+      },
+    })
+    .then(response => {
+      return response.data.results
+    })
+    .catch((e: Error | AxiosError) => {
+      console.log('error: getMoviesTopRated()', e)
+      throw e
+    })
+}
+
+/**
+ * Returns a list of movies top rated
+ *
+ * @param page Page number
+ * @returns List of movies top rated
+ */
+const getUpcoming = async (): Promise<MovieSimpleType[]> => {
+  return axiosInstance
+    .get<MoviesTopRatedResponse>('/movie/upcoming', <MoviesTopRatedParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+      },
+    })
+    .then(response => {
+      return response.data.results
+    })
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+}
+
+/**
  * Returns a movie by ID
  *
  * @param movie_id The movie id
  * @returns Movie with the id provided in the param
  */
-export const getMovieByID = async (movie_id: number): Promise<MovieResponse> => {
+const getMovieByID = async (movie_id: number): Promise<MovieResponse> => {
   const response = await axiosInstance
     .get<MovieResponse>(`/movie/${movie_id}`, <MovieParams>{
       params: {
@@ -84,38 +150,12 @@ export const getMovieByID = async (movie_id: number): Promise<MovieResponse> => 
 }
 
 /**
- * Returns a list of movies top rated
- *
- * @param page Page number
- * @returns List of movies top rated
- */
-export const getMoviesTopRated = async (page?: number): Promise<MoviesTopRatedResponse> => {
-  const response = await axiosInstance
-    .get<MoviesTopRatedResponse>('/movie/top_rated', <MoviesTopRatedParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: 'en-US',
-        page: page,
-      },
-    })
-    .then(response => {
-      return response.data
-    })
-    .catch((e: Error | AxiosError) => {
-      console.log('error: getMoviesTopRated()', e)
-      throw e
-    })
-
-  return response
-}
-
-/**
  * Returns a list of movies based in the query provided in params
  *
  * @param query Movie to search
  * @returns List of movies based in the query provided in params
  */
-export const searchByMovie = async (query: string): Promise<SearchMovieResponse> => {
+const searchByMovie = async (query: string): Promise<SearchMovieResponse> => {
   const response = await axiosInstance
     .get<SearchMovieResponse>('/search/movie', <SearchMovieParams>{
       params: {
@@ -137,6 +177,10 @@ export const searchByMovie = async (query: string): Promise<SearchMovieResponse>
 
 export default {
   getTrendingMovies,
+  getPopularMovies,
+  getTopRatedMovies,
+  getUpcoming,
+  getMovieByID,
   getMovieCast,
   searchByMovie,
 }
