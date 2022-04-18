@@ -6,7 +6,7 @@ Movie Browser is an app for you to find a good movie to watch! The Movie Browser
 
 ## Features (PREVIEW!!!)
 
-https://user-images.githubusercontent.com/24906506/163766868-836d9f65-384c-4202-ade1-a5990b0ecfbc.mp4
+https://user-images.githubusercontent.com/24906506/163769691-ecc74f61-901a-44a9-b01f-660379b530d5.mp4
 
 ## Running
 
