@@ -1,10 +1,10 @@
 import React from 'react'
-import { ActivityIndicator, ImageBackground, ScrollView, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, ImageBackground, Text, View } from 'react-native'
 import { MovieCastType } from '~/models/movies/credits'
 import { API } from '~/services'
-import CONSTANTS from '~/constants'
 import styles from './Cast.styles'
 import { Section } from '~/components'
+import { getImagePath } from '~/utils'
 
 const MovieCast = ({ movieId }: { movieId: number }) => {
   const [peopleData, setPeopleData] = React.useState<MovieCastType[]>()
@@ -20,6 +20,27 @@ const MovieCast = ({ movieId }: { movieId: number }) => {
     fetchMovieCast()
   }, [fetchMovieCast])
 
+  const renderItem = React.useCallback(({ item }: { item: MovieCastType }) => {
+    return item.profile_path ? (
+      <ImageBackground
+        key={item.id}
+        source={{
+          uri: getImagePath(item.profile_path, 'w500'),
+        }}
+        style={styles.card}
+      >
+        <View style={styles.infoContainer}>
+          <Text style={styles.name} numberOfLines={1}>
+            {item.name}
+          </Text>
+          <Text style={styles.description} numberOfLines={1}>
+            {item.character}
+          </Text>
+        </View>
+      </ImageBackground>
+    ) : null
+  }, [])
+
   return (
     <Section title='Cast'>
       {loading ? (
@@ -27,26 +48,15 @@ const MovieCast = ({ movieId }: { movieId: number }) => {
       ) : !peopleData ? (
         <Text>Error...</Text>
       ) : (
-        <ScrollView style={styles.scrollContainer} horizontal>
-          {peopleData.slice(0, 20).map(person => (
-            <ImageBackground
-              key={person.id}
-              source={{
-                uri: `${CONSTANTS.api_image_url}/w500${person.profile_path}`,
-              }}
-              style={styles.card}
-            >
-              <View style={styles.infoContainer}>
-                <Text style={styles.name} numberOfLines={1}>
-                  {person.name}
-                </Text>
-                <Text style={styles.description} numberOfLines={1}>
-                  {person.character}
-                </Text>
-              </View>
-            </ImageBackground>
-          ))}
-        </ScrollView>
+        <FlatList
+          data={peopleData}
+          style={styles.scrollContainer}
+          renderItem={renderItem}
+          initialNumToRender={5}
+          maxToRenderPerBatch={5}
+          removeClippedSubviews
+          horizontal
+        />
       )}
     </Section>
   )

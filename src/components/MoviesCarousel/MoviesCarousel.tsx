@@ -40,8 +40,13 @@ const MoviesCarousel = ({ type }: { type: CarouselTypes }) => {
       ) : (
         <FlatList
           keyExtractor={(key, index) => `${key.id.toString()}${index}`}
-          data={moviesData.slice(0, 20)}
-          renderItem={({ item, index }) => <MovieCard item={item} index={index} />}
+          data={moviesData}
+          renderItem={({ item, index }) =>
+            item.poster_path ? <MovieCard item={item} index={index} /> : null
+          }
+          initialNumToRender={5}
+          maxToRenderPerBatch={5}
+          removeClippedSubviews
           horizontal
         />
       )}

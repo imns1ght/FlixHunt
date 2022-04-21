@@ -1,14 +1,41 @@
 import { Image, ImageBackground, Text, View } from 'react-native'
 import React from 'react'
-import CONSTANTS from '~/constants'
 import styles from '../MovieScreen.styles'
 import { MovieResponse } from '~/models'
-import { arrToStringFormated } from '~/utils'
+import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
 
 const Header = ({ movieData }: { movieData: MovieResponse }) => {
+  const { tagline, title, poster_path, images } = movieData
+  const releaseDate = React.useMemo(
+    () => new Date(movieData.release_date).toDateString(),
+    [movieData.release_date]
+  )
+  const genres = React.useMemo(() => arrToStringFormated(movieData.genres), [movieData.genres])
+  const runtime = React.useMemo(() => convertMinsToTime(movieData.runtime), [movieData.runtime])
+  const productionCompanies = React.useMemo(
+    () => !!movieData.production_companies && arrToStringFormated(movieData.production_companies),
+    [movieData.production_companies]
+  )
+
+  const backgroundPath = React.useMemo(() => {
+    const backdropAvailable = images.backdrops.length > 0
+    console.log({ backdropAvailable })
+    const filePath = backdropAvailable
+      ? images.backdrops[Math.floor(Math.random() * images.backdrops.length)].file_path
+      : poster_path
+
+    return getImagePath(filePath, backdropAvailable ? 'w1280' : 'w500')
+  }, [images.backdrops, poster_path])
+
+  const posterPath = React.useMemo(() => getImagePath(poster_path, 'w500'), [poster_path])
+
+  console.log({ backgroundPath, posterPath })
+
   return (
     <ImageBackground
-      source={{ uri: `${CONSTANTS.api_image_url}/w780${movieData.poster_path}` }}
+      source={{
+        uri: backgroundPath,
+      }}
       style={styles.cover}
       imageStyle={styles.coverImage}
       blurRadius={8}
@@ -16,22 +43,22 @@ const Header = ({ movieData }: { movieData: MovieResponse }) => {
       <View style={styles.titleWithImage}>
         <Image
           source={{
-            uri: `${CONSTANTS.api_image_url}/w780${movieData.poster_path}`,
+            uri: posterPath,
           }}
           style={styles.image}
         />
         <View style={styles.titleContainer}>
           <View>
-            <Text style={styles.title}>{movieData.title}</Text>
-            {!!movieData.tagline && <Text style={styles.subtitle}>{movieData.tagline}</Text>}
+            <Text style={styles.title}>{title}</Text>
+            {!!tagline && <Text style={styles.subtitle}>{tagline}</Text>}
           </View>
           <View>
-            {!!movieData.genres && (
-              <Text style={styles.tags}>{arrToStringFormated(movieData.genres)}</Text>
-            )}
-            {!!movieData.release_date && (
-              <Text style={styles.tags}>{new Date(movieData.release_date).toDateString()}</Text>
-            )}
+            <Text style={styles.tags}>{genres}</Text>
+            <Text style={styles.tags}>{releaseDate}</Text>
+            <Text style={styles.tags}>Duration: {runtime}</Text>
+            <Text style={styles.tags} numberOfLines={2}>
+              {productionCompanies}
+            </Text>
           </View>
         </View>
       </View>

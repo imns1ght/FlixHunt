@@ -2,9 +2,6 @@ import { StyleSheet } from 'react-native'
 import theme from '~/styles'
 
 const styles = StyleSheet.create({
-  scrollContainer: {
-    marginBottom: 20,
-  },
   card: {
     marginRight: 8,
     height: 240,
