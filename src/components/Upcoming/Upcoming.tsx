@@ -12,7 +12,7 @@ const Upcoming = () => {
   const fetchMovies = React.useCallback(async () => {
     const response = await API.getUpcoming()
 
-    if (response) setMoviesData(response)
+    if (response) setMoviesData(response.slice(0, 10))
     setLoading(false)
   }, [])
 
