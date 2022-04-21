@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
     width: 200,
     marginHorizontal: 5,
   },
+  disabledCard: {
+    opacity: 0.5,
+  },
   image: {
     height: 305,
     borderRadius: 5,

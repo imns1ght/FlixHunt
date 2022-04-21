@@ -15,6 +15,7 @@ import {
   TrendingParams,
   TrendingResponse,
 } from '~/models'
+import { Collection } from '~/models/collection/collection'
 
 // Used in requests
 const axiosInstance = axios.create({
@@ -136,6 +137,8 @@ const getMovieByID = async (movie_id: number): Promise<MovieResponse> => {
         api_key: CONSTANTS.api_key,
         language: 'en-US',
         movie_id: movie_id,
+        append_to_response: 'images',
+        include_image_language: 'en,null',
       },
     })
     .then(response => {
@@ -143,6 +146,26 @@ const getMovieByID = async (movie_id: number): Promise<MovieResponse> => {
     })
     .catch((e: Error | AxiosError) => {
       console.log('error: getMovieByID()', e)
+      throw e
+    })
+
+  return response
+}
+
+const getCollection = async (collectionId: number): Promise<Collection> => {
+  const response = await axiosInstance
+    .get<Collection>(`/collection/${collectionId}`, <MovieParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+        collection_id: collectionId,
+      },
+    })
+    .then(response => {
+      return response.data
+    })
+    .catch((e: Error | AxiosError) => {
+      console.error(e)
       throw e
     })
 
@@ -182,5 +205,6 @@ export default {
   getUpcoming,
   getMovieByID,
   getMovieCast,
+  getCollection,
   searchByMovie,
 }

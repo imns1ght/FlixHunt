@@ -2,12 +2,15 @@ import { StyleSheet } from 'react-native'
 import theme from '~/styles'
 
 const styles = StyleSheet.create({
-  scrollview: {
-    display: 'flex',
-    backgroundColor: theme.colors.secondary,
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  container: {
-    display: 'flex',
+  scrollview: {
+    flexGrow: 1,
+    backgroundColor: theme.colors.secondary,
+    paddingBottom: 10,
   },
   cover: {
     height: 250,
@@ -27,8 +30,8 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 1,
-    paddingVertical: 15,
     justifyContent: 'space-around',
+    marginRight: 10,
   },
   content: {
     marginHorizontal: 10,
@@ -53,6 +56,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: theme.colors.white,
     marginVertical: 2,
+  },
+  collapsible: {
+    marginVertical: 3,
+  },
+  textCollapsible: {
+    fontSize: 16,
+    color: theme.colors.gray,
   },
 })
 

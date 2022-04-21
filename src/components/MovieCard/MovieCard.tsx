@@ -1,12 +1,20 @@
 import React from 'react'
 import { Image, TouchableHighlight } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
-import CONSTANTS from '~/constants'
 import { MovieSimpleType } from '~/models'
 import styles from './MovieCard.styles'
 import { NavigationProps } from '~/navigation'
+import { getImagePath } from '~/utils'
 
-const MovieCard = ({ item, index }: { item: MovieSimpleType; index: number }) => {
+const MovieCard = ({
+  item,
+  index,
+  disabled = false,
+}: {
+  item: MovieSimpleType
+  index: number
+  disabled?: boolean
+}) => {
   const navigation = useNavigation<NavigationProps>()
 
   const onPress = React.useCallback(
@@ -19,10 +27,16 @@ const MovieCard = ({ item, index }: { item: MovieSimpleType; index: number }) =>
   )
 
   return (
-    <TouchableHighlight key={index} onPress={onPress} activeOpacity={0.8} style={styles.card}>
+    <TouchableHighlight
+      key={index}
+      onPress={onPress}
+      activeOpacity={0.8}
+      style={{ ...styles.card, ...(disabled ? styles.disabledCard : {}) }}
+      disabled={disabled}
+    >
       <Image
         source={{
-          uri: `${CONSTANTS.api_image_url}/w500${item.poster_path}`,
+          uri: getImagePath(item.poster_path, 'w500'),
         }}
         style={styles.image}
       />

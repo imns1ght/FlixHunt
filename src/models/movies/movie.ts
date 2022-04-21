@@ -4,14 +4,22 @@ import genre from '../genre'
 import ProductionCompanies from '../production-companies'
 import { ProductionCountries } from '../production-countries'
 import SpokenLanguages from '../spoken_languages'
+import { ImagesType } from './images'
 
+export type BelongsToCollectionType = {
+  backdrop_path: string | null
+  id: number
+  name: string
+  poster_path: string | null
+}
 export interface MovieResponse {
   adult: boolean
   backdrop_path: string | null
-  belongs_to_collection: Record<string, unknown> | null
+  belongs_to_collection: BelongsToCollectionType
   budget: number
   genres: genre[]
   homepage: string | null
+  images: ImagesType
   id: number
   imdb_id: string | null
   original_language: string
@@ -19,7 +27,7 @@ export interface MovieResponse {
   overview: string | null
   popularity: number
   poster_path: string
-  production_companies: ProductionCompanies[]
+  production_companies?: ProductionCompanies[]
   production_countries: ProductionCountries[]
   release_date: string
   revenue: number
@@ -38,5 +46,6 @@ export interface MovieParams {
     api_key: string
     language?: string
     append_to_response?: string
+    include_image_language?: string
   }
 }

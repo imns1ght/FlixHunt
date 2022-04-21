@@ -8,6 +8,10 @@ import CONSTANTS from '~/constants'
 
 const HorizontalCard = ({ movie }: { movie: MovieSimpleType }) => {
   const navigation = useNavigation<NavigationProps>()
+  const releaseData = React.useMemo(
+    () => new Date(movie.release_date).toDateString(),
+    [movie.release_date]
+  )
 
   const handlePress = React.useCallback(() => {
     return navigation.navigate('Movie', {
@@ -31,7 +35,7 @@ const HorizontalCard = ({ movie }: { movie: MovieSimpleType }) => {
         <Text style={styles.overview} numberOfLines={3}>
           {movie.overview}
         </Text>
-        <Text style={styles.tags}>{new Date(movie.release_date).toDateString()}</Text>
+        <Text style={styles.tags}>{releaseData}</Text>
       </View>
     </TouchableOpacity>
   )
