@@ -4,18 +4,20 @@ import NumberFormat from 'react-number-format'
 import Collapsible from 'react-native-collapsible'
 
 import styles from '../MovieScreen.styles'
-import { MovieResponse } from '~/models/movies/movie'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import theme from '~/styles'
+import { convertMinsToTime } from '~/utils'
+import { MovieData } from '~/models'
 
-const Description = ({ movieData }: { movieData: MovieResponse }) => {
-  const { budget, revenue, homepage, belongs_to_collection } = movieData
+const Description = ({ movieData }: { movieData: MovieData }) => {
   const [isDetailsCollapsed, setIsDetailsCollapsed] = React.useState(true)
-  const showCollapsible = React.useMemo(
-    () => !!budget || !!revenue || !!homepage,
-    [budget, homepage, revenue]
-  )
+  const { budget, revenue, homepage } = movieData
+  const runtime = React.useMemo(() => convertMinsToTime(movieData.runtime), [movieData.runtime])
 
+  const showCollapsible = React.useMemo(
+    () => !!budget || !!revenue || !!homepage || !!runtime,
+    [budget, homepage, revenue, runtime]
+  )
   return (
     <View>
       <View style={styles.content}>
@@ -26,17 +28,7 @@ const Description = ({ movieData }: { movieData: MovieResponse }) => {
           </TouchableHighlight>
         )}
         <Collapsible collapsed={isDetailsCollapsed} style={styles.collapsible}>
-          {!!homepage && (
-            <Text
-              style={{ ...styles.tags, color: theme.colors.primary }}
-              onPress={() => Linking.openURL(homepage)}
-            >
-              {homepage}
-            </Text>
-          )}
-          {!!belongs_to_collection && (
-            <Text style={styles.tags}>Collection: {belongs_to_collection.name}</Text>
-          )}
+          <Text style={styles.tags}>Duration: {runtime}</Text>
           {!!budget && (
             <NumberFormat
               value={budget}
@@ -54,6 +46,14 @@ const Description = ({ movieData }: { movieData: MovieResponse }) => {
               prefix={'$'}
               renderText={value => <Text style={styles.tags}>Revenue: {value}</Text>}
             />
+          )}
+          {!!homepage && (
+            <Text
+              style={{ ...styles.tags, color: theme.colors.primary }}
+              onPress={() => Linking.openURL(homepage)}
+            >
+              {homepage}
+            </Text>
           )}
         </Collapsible>
       </View>

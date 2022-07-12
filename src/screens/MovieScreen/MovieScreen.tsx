@@ -1,23 +1,23 @@
 import React from 'react'
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native'
-import { MovieResponse } from '~/models/movies/movie'
+import { MovieData } from '~/models/movies/movie'
 import styles from './MovieScreen.styles'
 import MovieCast from './Cast'
 import Description from './Description'
 import Header from './Header'
 import { NavigationScreenProps } from '~/navigation'
 import { API } from '~/services'
-import { ImagesCarousel, Related } from '~/components'
+import { ImagesCarousel, Related, VideosCarousel } from '~/components'
 
 const MovieScreen = ({ route }: NavigationScreenProps['Movie']) => {
   const { movieId } = route.params
   const [loading, setLoading] = React.useState(true)
-  const [movieData, setMovieData] = React.useState<MovieResponse>()
+  const [movieData, setMovieData] = React.useState<MovieData>()
   const scrollRef = React.useRef<ScrollView>(null)
 
   const fetchMovieData = React.useCallback(async () => {
-    const response = await API.getMovieByID(movieId)
-    setMovieData(response)
+    const moviesByID = await API.getMovieByID(movieId)
+    setMovieData(moviesByID)
     setLoading(false)
   }, [movieId])
 
@@ -29,8 +29,6 @@ const MovieScreen = ({ route }: NavigationScreenProps['Movie']) => {
     if (movieId) scrollRef.current?.scrollTo({ x: 0, y: 0, animated: true })
   }, [movieId])
 
-  console.log({ movieData })
-
   return (
     <ScrollView ref={scrollRef} contentContainerStyle={styles.scrollview}>
       {loading ? (
@@ -41,7 +39,8 @@ const MovieScreen = ({ route }: NavigationScreenProps['Movie']) => {
         <View>
           <Header movieData={movieData} />
           <Description movieData={movieData} />
-          <ImagesCarousel movieId={movieId} images={movieData.images} />
+          <VideosCarousel videos={movieData.videos.results} />
+          <ImagesCarousel images={movieData.images} />
           <MovieCast movieId={movieData.id} />
           {!!movieData.belongs_to_collection && (
             <Related movieId={movieData.id} collectionId={movieData.belongs_to_collection.id} />

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
   card: {
     width: 200,
-    marginHorizontal: 5,
+    marginRight: 10,
   },
   disabledCard: {
     opacity: 0.5,
