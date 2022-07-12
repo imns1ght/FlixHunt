@@ -2,7 +2,7 @@ import { Image, ImageBackground, Text, View } from 'react-native'
 import React from 'react'
 import styles from '../MovieScreen.styles'
 import { MovieResponse } from '~/models'
-import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
+import { arrToStringFormated, getImagePath } from '~/utils'
 
 const Header = ({ movieData }: { movieData: MovieResponse }) => {
   const { tagline, title, poster_path, images } = movieData
@@ -11,7 +11,6 @@ const Header = ({ movieData }: { movieData: MovieResponse }) => {
     [movieData.release_date]
   )
   const genres = React.useMemo(() => arrToStringFormated(movieData.genres), [movieData.genres])
-  const runtime = React.useMemo(() => convertMinsToTime(movieData.runtime), [movieData.runtime])
   const productionCompanies = React.useMemo(
     () => !!movieData.production_companies && arrToStringFormated(movieData.production_companies),
     [movieData.production_companies]
@@ -19,7 +18,6 @@ const Header = ({ movieData }: { movieData: MovieResponse }) => {
 
   const backgroundPath = React.useMemo(() => {
     const backdropAvailable = images.backdrops.length > 0
-    console.log({ backdropAvailable })
     const filePath = backdropAvailable
       ? images.backdrops[Math.floor(Math.random() * images.backdrops.length)].file_path
       : poster_path
@@ -55,7 +53,6 @@ const Header = ({ movieData }: { movieData: MovieResponse }) => {
           <View>
             <Text style={styles.tags}>{genres}</Text>
             <Text style={styles.tags}>{releaseDate}</Text>
-            <Text style={styles.tags}>Duration: {runtime}</Text>
             <Text style={styles.tags} numberOfLines={2}>
               {productionCompanies}
             </Text>

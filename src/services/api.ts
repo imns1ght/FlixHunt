@@ -5,9 +5,12 @@ import {
   MovieCastType,
   MovieCreditsParams,
   MovieCreditsResponse,
+  MovieData,
   MovieParams,
-  MovieResponse,
   MovieSimpleType,
+  MovieVideo,
+  MovieVideosParams,
+  MovieVideosResponse,
   MoviesTopRatedParams,
   MoviesTopRatedResponse,
   SearchMovieParams,
@@ -130,15 +133,13 @@ const getUpcoming = async (): Promise<MovieSimpleType[]> => {
  * @param movie_id The movie id
  * @returns Movie with the id provided in the param
  */
-const getMovieByID = async (movie_id: number): Promise<MovieResponse> => {
+const getMovieByID = async (movie_id: number): Promise<MovieData> => {
   const response = await axiosInstance
-    .get<MovieResponse>(`/movie/${movie_id}`, <MovieParams>{
+    .get<MovieData>(`/movie/${movie_id}`, <MovieParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
         movie_id: movie_id,
-        append_to_response: 'images',
-        include_image_language: 'en,null',
+        append_to_response: 'images,videos',
       },
     })
     .then(response => {
@@ -150,6 +151,24 @@ const getMovieByID = async (movie_id: number): Promise<MovieResponse> => {
     })
 
   return response
+}
+
+/**
+ * Returns a list of popular movies.
+ */
+const getMovieVideos = async (movie_id: number): Promise<MovieVideo[]> => {
+  return axiosInstance
+    .get<MovieVideosResponse>(`/movie/${movie_id}/videos`, <MovieVideosParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+      },
+    })
+    .then(response => response.data.results.filter(video => video.site === 'YouTube'))
+    .catch((e: Error | AxiosError) => {
+      console.error(e)
+      throw e
+    })
 }
 
 const getCollection = async (collectionId: number): Promise<Collection> => {
@@ -204,6 +223,7 @@ export default {
   getTopRatedMovies,
   getUpcoming,
   getMovieByID,
+  getMovieVideos,
   getMovieCast,
   getCollection,
   searchByMovie,

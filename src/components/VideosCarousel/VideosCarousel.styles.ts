@@ -1,14 +1,17 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  imageContainer: {
+  videoContainer: {
     marginRight: 10,
   },
-  image: {
+  youtubePlayer: {
     height: 225,
   },
   modal: {
-    margin: 0,
+    margin: 10,
+  },
+  modalYoutubePlayer: {
+    height: 300,
   },
 })
 
