@@ -21,7 +21,7 @@ const Upcoming = () => {
   }, [fetchMovies])
 
   return (
-    <Section title='Coming soon to theaters'>
+    <Section title='Movies in theaters'>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !moviesData ? (

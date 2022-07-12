@@ -39,8 +39,12 @@ const MovieScreen = ({ route }: NavigationScreenProps['Movie']) => {
         <View>
           <Header movieData={movieData} />
           <Description movieData={movieData} />
-          <VideosCarousel videos={movieData.videos.results} />
-          <ImagesCarousel images={movieData.images} />
+          {movieData.videos.results.length > 0 && (
+            <VideosCarousel videos={movieData.videos.results} />
+          )}
+          {movieData.images.backdrops.length > 0 && (
+            <ImagesCarousel images={movieData.images.backdrops} />
+          )}
           <MovieCast movieId={movieData.id} />
           {!!movieData.belongs_to_collection && (
             <Related movieId={movieData.id} collectionId={movieData.belongs_to_collection.id} />

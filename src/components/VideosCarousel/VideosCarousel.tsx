@@ -51,8 +51,8 @@ const VideosCarousel = ({ videos }: { videos: MovieVideo[] }) => {
         <FlatList
           data={videosSortedByTrailerFirst}
           renderItem={renderItem}
-          maxToRenderPerBatch={3}
-          initialNumToRender={2}
+          maxToRenderPerBatch={2}
+          initialNumToRender={1}
           horizontal
         />
       </Section>
