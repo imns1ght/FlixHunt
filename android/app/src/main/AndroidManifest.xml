@@ -17,7 +17,7 @@
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"
         android:screenOrientation="portrait"
-        android:exported="true">
+        android:exported="false">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
