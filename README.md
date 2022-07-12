@@ -4,17 +4,14 @@ Movie Browser is an app for you to find a good movie to watch! The Movie Browser
 
 ## Note ⚠️: This project needs **a lot** of improvement. I've learned a lot in the last few months and I'll update this project when I have free time. :)
 
-## Features (PREVIEW!!!)
+## Features (preview!!!)
+
+
+https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-83d3-3bbb1c901301.mp4
 
 
 
-
-
-https://user-images.githubusercontent.com/24906506/164505425-690da7fc-f624-4bd9-b628-0ece16ab968b.mp4
-
-
-
-
+### [Click here to download the Android version](https://github.com/imns1ght/movie-browser/releases/download/0.0.2/movie-browser-20220712.apk)
 
 ## Running
 
@@ -62,9 +59,10 @@ Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.
 
 ## TODO
 
+- [ ] Accessibility
 - [ ] Allow users to signup;
 - [ ] Create unit tests;
-- [ ] Create APK and share with users.
+- [x] Create APK and share with users.
 
 ## Contributing
 
