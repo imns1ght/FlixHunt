@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from 'react-native'
 import Reactotron from 'reactotron-react-native'
 
 // AsyncStorage would either come from `react-native` or `@react-native-community/async-storage` depending on where you get it from

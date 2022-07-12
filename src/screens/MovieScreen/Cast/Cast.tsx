@@ -50,10 +50,9 @@ const MovieCast = ({ movieId }: { movieId: number }) => {
       ) : (
         <FlatList
           data={peopleData}
-          style={styles.scrollContainer}
           renderItem={renderItem}
-          initialNumToRender={5}
-          maxToRenderPerBatch={5}
+          initialNumToRender={2}
+          maxToRenderPerBatch={2}
           removeClippedSubviews
           horizontal
         />

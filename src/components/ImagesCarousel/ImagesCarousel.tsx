@@ -2,12 +2,12 @@ import React from 'react'
 import { FlatList, Image, Pressable, View, useWindowDimensions } from 'react-native'
 import Modal from 'react-native-modal'
 import ImageZoom from 'react-native-image-pan-zoom'
-import { ImageType, ImagesType } from '~/models'
+import { ImageType } from '~/models'
 import { getImagePath } from '~/utils'
 import { Section } from '~/components'
 import styles from './ImagesCarousel.styles'
 
-const ImagesCarousel = ({ images }: { images: ImagesType }) => {
+const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
   const { height: viewportHeight, width: viewportWidth } = useWindowDimensions()
   const [showModal, setShowModal] = React.useState(false)
   const [selectedImage, setSelectedImage] = React.useState<ImageType>()
@@ -38,10 +38,10 @@ const ImagesCarousel = ({ images }: { images: ImagesType }) => {
     <>
       <Section title='Images' removeMargin>
         <FlatList
-          data={images.backdrops}
+          data={images}
           renderItem={renderItem}
-          initialNumToRender={3}
-          maxToRenderPerBatch={5}
+          initialNumToRender={2}
+          maxToRenderPerBatch={3}
           removeClippedSubviews
           horizontal
         />
