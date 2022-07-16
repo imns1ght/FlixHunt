@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Pressable, View, useWindowDimensions } from 'react-native'
+import { FlatList, Pressable, View } from 'react-native'
 import YoutubePlayer from 'react-native-youtube-iframe'
 import Modal from 'react-native-modal'
 import { Section } from '~/components'
@@ -7,7 +7,6 @@ import { MovieVideo } from '~/models'
 import styles from './VideosCarousel.styles'
 
 const VideosCarousel = ({ videos }: { videos: MovieVideo[] }) => {
-  const { width: viewportWidth } = useWindowDimensions()
   const [showModal, setShowModal] = React.useState(false)
   const [selectedVideo, setSelectedVideo] = React.useState<MovieVideo>()
 
@@ -35,14 +34,13 @@ const VideosCarousel = ({ videos }: { videos: MovieVideo[] }) => {
           <YoutubePlayer
             key={item.key}
             height={styles.youtubePlayer.height}
-            width={viewportWidth}
             play={false}
             videoId={item.key}
           />
         </View>
       </Pressable>
     ),
-    [viewportWidth]
+    []
   )
 
   return (
@@ -63,11 +61,13 @@ const VideosCarousel = ({ videos }: { videos: MovieVideo[] }) => {
         onBackButtonPress={closeModal}
         style={styles.modal}
       >
-        <YoutubePlayer
-          height={styles.modalYoutubePlayer.height}
-          play={true}
-          videoId={selectedVideo?.key}
-        />
+        <View style={styles.modalVideoContainer}>
+          <YoutubePlayer
+            height={styles.modalYoutubePlayer.height}
+            play={true}
+            videoId={selectedVideo?.key}
+          />
+        </View>
       </Modal>
     </>
   )
