@@ -6,9 +6,13 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 225,
+    aspectRatio: 16 / 9,
   },
   modal: {
     margin: 0,
+  },
+  modalImage: {
+    aspectRatio: 16 / 9,
   },
 })
 

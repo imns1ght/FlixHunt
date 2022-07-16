@@ -1,16 +1,15 @@
 import React from 'react'
-import { FlatList, Image, Pressable, View, useWindowDimensions } from 'react-native'
+import { ActivityIndicator, FlatList, Image, Pressable, View } from 'react-native'
 import Modal from 'react-native-modal'
-import ImageZoom from 'react-native-image-pan-zoom'
 import { ImageType } from '~/models'
 import { getImagePath } from '~/utils'
 import { Section } from '~/components'
 import styles from './ImagesCarousel.styles'
 
 const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
-  const { height: viewportHeight, width: viewportWidth } = useWindowDimensions()
   const [showModal, setShowModal] = React.useState(false)
   const [selectedImage, setSelectedImage] = React.useState<ImageType>()
+  const [modalImageLoading, setModalImageLoading] = React.useState(false)
 
   const renderItem = React.useCallback(
     ({ item }: { item: ImageType }) => (
@@ -26,12 +25,12 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
             source={{
               uri: getImagePath(item.file_path, 'w780'),
             }}
-            style={{ ...styles.image, width: viewportWidth }}
+            style={{ ...styles.image }}
           />
         </View>
       </Pressable>
     ),
-    [viewportWidth]
+    []
   )
 
   return (
@@ -50,23 +49,21 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
         <Modal
           isVisible={showModal}
           onBackButtonPress={() => setShowModal(false)}
+          onBackdropPress={() => setShowModal(false)}
           hasBackdrop={true}
           style={styles.modal}
         >
-          <ImageZoom
-            cropWidth={viewportWidth}
-            cropHeight={viewportHeight}
-            imageWidth={viewportWidth}
-            imageHeight={styles.image.height}
-          >
-            <Image
-              source={{
-                uri: getImagePath(selectedImage?.file_path ?? '', 'w1280'),
-              }}
-              style={styles.image}
-              resizeMode='contain'
-            />
-          </ImageZoom>
+          <Image
+            source={{
+              uri: getImagePath(selectedImage?.file_path ?? '', 'w1280'),
+            }}
+            onLoadStart={() => setModalImageLoading(true)}
+            onLoadEnd={() => setModalImageLoading(false)}
+            onError={() => setShowModal(false)}
+            style={{ ...styles.modalImage, display: modalImageLoading ? 'none' : 'flex' }}
+            resizeMode='contain'
+          />
+          {modalImageLoading && <ActivityIndicator size='large' />}
         </Modal>
       )}
     </>
