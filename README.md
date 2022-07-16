@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-
 
 
 
-### [Click here to download the Android version](https://github.com/imns1ght/movie-browser/releases/download/0.0.2/movie-browser-20220712.apk)
+### [Click here to download](https://github.com/imns1ght/movie-browser/releases)
 
 ## Running
 
