@@ -1,6 +1,7 @@
 import React from 'react'
 import { Linking, Text, View } from 'react-native'
-import NumberFormat from 'react-number-format'
+import { NumericFormat } from 'react-number-format'
+
 import Collapsible from 'react-native-collapsible'
 
 import styles from '../MovieScreen.styles'
@@ -30,7 +31,7 @@ const Description = ({ movieData }: { movieData: MovieData }) => {
         <Collapsible collapsed={isDetailsCollapsed} style={styles.collapsible}>
           <Text style={styles.tags}>Duration: {runtime}</Text>
           {!!budget && (
-            <NumberFormat
+            <NumericFormat
               value={budget}
               displayType={'text'}
               thousandSeparator={true}
@@ -39,7 +40,7 @@ const Description = ({ movieData }: { movieData: MovieData }) => {
             />
           )}
           {!!revenue && (
-            <NumberFormat
+            <NumericFormat
               value={revenue}
               displayType={'text'}
               thousandSeparator={true}
