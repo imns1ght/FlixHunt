@@ -17,6 +17,7 @@ https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-
 
 ### Requirements
 
+- JDK
 - Node.js LTS release or greater
 - Yarn
 - Git
@@ -73,17 +74,6 @@ For major changes, please, open an issue first to discuss what you would like to
 ## Support
 
 - [Twitter @imns1ght](https://twitter.com/imns1ght) | [E-mail](mailto:jeffersonbrunoit@gmail.com)
-
-## Authors and acknowledgment
-
-### Authors
-
-- [Jefferson Bruno (imns1ght)](https://jeffersonbruno.com)
-
-### Acknowledgment
-
-- Icons made by [photo3idea_studio](https://www.flaticon.com/authors/photo3idea-studio)
-- Database [The Movie Database](https://www.themoviedb.org/)
 
 ## License
 
