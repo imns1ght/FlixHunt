@@ -1,11 +1,10 @@
 import React from 'react'
-import { Linking, Text, View } from 'react-native'
+import { Linking, Text, TouchableOpacity, View } from 'react-native'
 import { NumericFormat } from 'react-number-format'
 
 import Collapsible from 'react-native-collapsible'
 
 import styles from '../MovieScreen.styles'
-import { TouchableHighlight } from 'react-native-gesture-handler'
 import theme from '~/styles'
 import { convertMinsToTime } from '~/utils'
 import { MovieData } from '~/models'
@@ -24,9 +23,9 @@ const Description = ({ movieData }: { movieData: MovieData }) => {
       <View style={styles.content}>
         {!!movieData.overview && <Text style={styles.overview}>{movieData.overview}</Text>}
         {!!showCollapsible && (
-          <TouchableHighlight onPress={() => setIsDetailsCollapsed(!isDetailsCollapsed)}>
+          <TouchableOpacity onPress={() => setIsDetailsCollapsed(!isDetailsCollapsed)}>
             <Text style={styles.textCollapsible}>Show more details</Text>
-          </TouchableHighlight>
+          </TouchableOpacity>
         )}
         <Collapsible collapsed={isDetailsCollapsed} style={styles.collapsible}>
           <Text style={styles.tags}>Duration: {runtime}</Text>

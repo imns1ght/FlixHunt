@@ -13,7 +13,6 @@ const MovieScreen = ({ route }: NavigationScreenProps['Movie']) => {
   const { movieId } = route.params
   const [loading, setLoading] = React.useState(true)
   const [movieData, setMovieData] = React.useState<MovieData>()
-  const scrollRef = React.useRef<ScrollView>(null)
 
   const fetchMovieData = React.useCallback(async () => {
     const moviesByID = await API.getMovieByID(movieId)
@@ -25,12 +24,8 @@ const MovieScreen = ({ route }: NavigationScreenProps['Movie']) => {
     fetchMovieData()
   }, [fetchMovieData])
 
-  React.useEffect(() => {
-    if (movieId) scrollRef.current?.scrollTo({ x: 0, y: 0, animated: true })
-  }, [movieId])
-
   return (
-    <ScrollView ref={scrollRef} contentContainerStyle={styles.scrollview}>
+    <ScrollView contentContainerStyle={styles.scrollview}>
       {loading ? (
         <View style={styles.loading}>
           <ActivityIndicator size='large' />

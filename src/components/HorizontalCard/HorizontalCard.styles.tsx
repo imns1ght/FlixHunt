@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginVertical: 10,
-    elevation: 2,
   },
   image: {
     height: 150,

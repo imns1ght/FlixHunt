@@ -14,7 +14,7 @@ const HorizontalCard = ({ movie }: { movie: MovieSimpleType }) => {
   )
 
   const handlePress = React.useCallback(() => {
-    return navigation.navigate('Movie', {
+    navigation.navigate('Movie', {
       movieId: movie.id,
       movieName: movie.title,
     })
