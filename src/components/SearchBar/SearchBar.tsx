@@ -21,6 +21,7 @@ const SearchBar = () => {
           placeholder='Search for movies...'
           placeholderTextColor={styles.placeholder.color}
           style={styles.textInput}
+          autoFocus
         />
         {!!searchText && (
           <Icon
