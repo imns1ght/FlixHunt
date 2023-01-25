@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
-import theme from '~/styles'
+import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.colors.black,
+    backgroundColor: colors.black,
     elevation: 2,
     top: 50,
     position: 'absolute',
@@ -23,11 +23,11 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   textInput: {
-    color: theme.colors.white,
+    color: colors.white,
     flex: 1,
   },
   placeholder: {
-    color: theme.colors.darkGray,
+    color: colors.darkGray,
   },
 })
 

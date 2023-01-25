@@ -1,16 +1,18 @@
 import React from 'react'
 
 import { ScrollView } from 'react-native'
-import { MoviesCarousel, Upcoming } from '~/components'
+import { CardCarousel } from '~/components'
 
 import styles from './HomeScreen.styles'
 
 const HomeScreen = () => (
   <ScrollView style={styles.container}>
-    <MoviesCarousel type='trending' />
-    <MoviesCarousel type='popular' />
-    <Upcoming />
-    <MoviesCarousel type='top_rated' />
+    <CardCarousel type='trending' mediaType={'movie'} />
+    {/* <CardCarousel type='trending' mediaType={'tv'} /> */}
+    {/* <CardCarousel type='popular' mediaType={'movie'} /> */}
+    <CardCarousel type='popular' mediaType={'tv'} />
+    <CardCarousel type='top_rated' mediaType={'movie'} />
+    {/* <CardCarousel type='top_rated' mediaType={'tv'} /> */}
   </ScrollView>
 )
 

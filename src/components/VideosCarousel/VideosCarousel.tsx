@@ -3,12 +3,12 @@ import { FlatList, Pressable, View } from 'react-native'
 import YoutubePlayer from 'react-native-youtube-iframe'
 import Modal from 'react-native-modal'
 import { Section } from '~/components'
-import { MovieVideo } from '~/models'
+import { VideoType } from '~/models'
 import styles from './VideosCarousel.styles'
 
-const VideosCarousel = ({ videos }: { videos: MovieVideo[] }) => {
+const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
   const [showModal, setShowModal] = React.useState(false)
-  const [selectedVideo, setSelectedVideo] = React.useState<MovieVideo>()
+  const [selectedVideo, setSelectedVideo] = React.useState<VideoType>()
 
   const videosSortedByTrailerFirst = React.useMemo(
     () =>
@@ -23,7 +23,7 @@ const VideosCarousel = ({ videos }: { videos: MovieVideo[] }) => {
   const closeModal = () => setShowModal(false)
 
   const renderItem = React.useCallback(
-    ({ item }: { item: MovieVideo }) => (
+    ({ item }: { item: VideoType }) => (
       <Pressable
         onPress={() => {
           setShowModal(true)

@@ -1,2 +1,5 @@
 export { default as HomeScreen } from './HomeScreen'
-export { default as MovieScreen } from './MovieScreen'
+export { default as MediaScreen } from './MediaScreen'
+export { default as MoviesScreen } from './MoviesScreen'
+export { default as TVShowsScreen } from './TVShowsScreen'
+export { default as InfoScreen } from './InfoScreen'

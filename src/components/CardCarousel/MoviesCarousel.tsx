@@ -1,9 +1,10 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
-import { MovieCard, Section } from '~/components'
+import { MediaCard, Section } from '~/components'
 import { MovieSimpleType } from '~/models'
 import { API } from '~/services'
-import styles from './MoviesCarousel.styles'
+import { mediaType } from '~/types'
+import styles from './CardCarousel.styles'
 
 type CarouselTypes = 'trending' | 'popular' | 'top_rated'
 
@@ -13,36 +14,36 @@ const titles = {
   top_rated: 'Top Rated',
 }
 
-const MoviesCarousel = ({ type }: { type: CarouselTypes }) => {
+const CardCarousel = ({ type, mediaType }: { type: CarouselTypes; mediaType: mediaType }) => {
   const [moviesData, setMoviesData] = React.useState<MovieSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
 
-  const fetchMovies = React.useCallback(async () => {
+  const fetchData = React.useCallback(async () => {
     let response
-    if (type === 'trending') response = await API.getTrendingMovies()
-    else if (type === 'popular') response = await API.getPopularMovies()
-    else if (type === 'top_rated') response = await API.getTopRatedMovies()
+    if (type === 'trending') response = await API.getTrending('week', mediaType)
+    else if (type === 'popular') response = await API.getPopular(mediaType)
+    else if (type === 'top_rated') response = await API.getTopRated(1, mediaType)
 
     if (response) setMoviesData(response)
     setLoading(false)
-  }, [type])
+  }, [mediaType, type])
 
   React.useEffect(() => {
-    fetchMovies()
-  }, [fetchMovies])
+    fetchData()
+  }, [fetchData])
 
   return (
     <Section title={titles[type]}>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !moviesData ? (
-        <Text style={styles.errorMessage}>Failed to fetch movies</Text>
+        <Text style={styles.errorMessage}>Failed to fetch</Text>
       ) : (
         <FlatList
           keyExtractor={(key, index) => `${key.id.toString()}${index}`}
           data={moviesData}
           renderItem={({ item, index }) =>
-            item.poster_path ? <MovieCard item={item} index={index} /> : null
+            item.poster_path ? <MediaCard item={item} index={index} mediaType={mediaType} /> : null
           }
           initialNumToRender={5}
           maxToRenderPerBatch={5}
@@ -54,4 +55,4 @@ const MoviesCarousel = ({ type }: { type: CarouselTypes }) => {
   )
 }
 
-export default MoviesCarousel
+export default CardCarousel

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import theme from '~/styles'
+import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   loading: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   scrollview: {
     flexGrow: 1,
-    backgroundColor: theme.colors.secondary,
+    backgroundColor: colors.secondary,
     paddingBottom: 10,
   },
   cover: {
@@ -41,21 +41,21 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: theme.colors.white,
+    color: colors.white,
   },
   subtitle: {
     fontSize: 20,
     fontStyle: 'italic',
-    color: theme.colors.white,
+    color: colors.white,
   },
   overview: {
     fontSize: 18,
-    color: theme.colors.white,
+    color: colors.white,
     paddingVertical: 10,
   },
   tags: {
     fontSize: 16,
-    color: theme.colors.white,
+    color: colors.white,
     marginVertical: 2,
   },
   collapsible: {
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   textCollapsible: {
     fontSize: 16,
-    color: theme.colors.gray,
+    color: colors.gray,
   },
 })
 

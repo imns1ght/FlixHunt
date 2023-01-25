@@ -1,30 +1,34 @@
 import React from 'react'
 import { Image, TouchableHighlight } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
-import { MovieSimpleType } from '~/models'
-import styles from './MovieCard.styles'
-import { NavigationProps } from '~/navigation'
+import { MediasType } from '~/models'
+import styles from './MediaCard.styles'
+import { StackNavigationProps } from '~/navigation'
 import { getImagePath } from '~/utils'
+import { mediaType } from '~/types'
 
-const MovieCard = ({
+const MediaCard = ({
   item,
   index,
+  mediaType,
   disabled = false,
 }: {
-  item: MovieSimpleType
+  item: MediasType
   index: number
+  mediaType: mediaType
   disabled?: boolean
 }) => {
-  const navigation = useNavigation<NavigationProps>()
+  const navigation = useNavigation<StackNavigationProps>()
+  const isMovie =
+    item.media_type === 'movie' || (item.media_type === undefined && mediaType === 'movie')
 
-  const onPress = React.useCallback(
-    () =>
-      navigation.navigate('Movie', {
-        movieId: item.id,
-        movieName: item.title,
-      }),
-    [item.id, item.title, navigation]
-  )
+  const onPress = () => {
+    navigation.navigate('Media', {
+      id: item.id,
+      title: isMovie ? item.title : item.name,
+      mediaType,
+    })
+  }
 
   return (
     <TouchableHighlight
@@ -44,4 +48,4 @@ const MovieCard = ({
   )
 }
 
-export default MovieCard
+export default MediaCard

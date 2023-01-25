@@ -5,20 +5,21 @@ import { API } from '~/services'
 import styles from './Cast.styles'
 import { Section } from '~/components'
 import { getImagePath } from '~/utils'
+import { mediaType } from '~/types'
 
-const MovieCast = ({ movieId }: { movieId: number }) => {
+const Cast = ({ movieId, mediaType }: { movieId: number; mediaType: mediaType }) => {
   const [peopleData, setPeopleData] = React.useState<MovieCastType[]>()
   const [loading, setLoading] = React.useState(true)
 
-  const fetchMovieCast = React.useCallback(async () => {
-    const response = await API.getMovieCast(movieId)
+  const fetchCast = React.useCallback(async () => {
+    const response = await API.getCast(movieId, mediaType)
     setPeopleData(response)
     setLoading(false)
-  }, [movieId])
+  }, [mediaType, movieId])
 
   React.useEffect(() => {
-    fetchMovieCast()
-  }, [fetchMovieCast])
+    fetchCast()
+  }, [fetchCast])
 
   const renderItem = React.useCallback(({ item }: { item: MovieCastType }) => {
     return item.profile_path ? (
@@ -61,4 +62,4 @@ const MovieCast = ({ movieId }: { movieId: number }) => {
   )
 }
 
-export default MovieCast
+export default Cast

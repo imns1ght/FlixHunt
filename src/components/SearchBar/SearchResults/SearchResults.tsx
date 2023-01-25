@@ -1,20 +1,23 @@
 import React from 'react'
 import styles from './SearchResults.styles'
 import { HorizontalCard, Section } from '~/components'
-import { MovieSimpleType } from '~/models'
+import { MediasType } from '~/models'
 import { Text, View } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 
-const SearchResults = ({ movies }: { movies: MovieSimpleType[] }) => {
-  const renderCards = React.useCallback(() => {
-    if (movies.length <= 0) return <Text style={styles.errorMessage}>Nothing found... :(</Text>
-    return movies.slice(0, 10).map(movie => <HorizontalCard key={movie.id} movie={movie} />)
-  }, [movies])
-
-  return (
-    <View style={styles.container}>
-      <Section>{renderCards()}</Section>
-    </View>
-  )
-}
+const SearchResults = ({ data }: { data: MediasType[] }) => (
+  <View style={styles.container}>
+    <Section>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <HorizontalCard key={item.id} data={item} />}
+        ListEmptyComponent={<Text style={styles.errorMessage}>Nothing found... :(</Text>}
+        initialNumToRender={2}
+        maxToRenderPerBatch={3}
+        removeClippedSubviews
+      />
+    </Section>
+  </View>
+)
 
 export default SearchResults

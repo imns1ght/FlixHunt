@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import theme from '~/styles'
+import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -20,17 +20,17 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    color: theme.colors.white,
+    color: colors.white,
     marginBottom: 10,
   },
   overview: {
     fontSize: 16,
-    color: theme.colors.white,
+    color: colors.white,
     marginBottom: 10,
   },
   tags: {
     fontSize: 16,
-    color: theme.colors.white,
+    color: colors.white,
   },
 })
 

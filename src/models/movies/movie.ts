@@ -1,6 +1,6 @@
 // Documentation: https://developers.themoviedb.org/3/movies/get-movie-details
 
-import { MovieVideo } from './videos'
+import { VideoType } from './videos'
 import genre from '../genre'
 import ProductionCompanies from '../production-companies'
 import { ProductionCountries } from '../production-countries'
@@ -43,7 +43,7 @@ export interface MovieResponse {
 }
 
 export type MovieData = MovieResponse & {
-  videos: { results: MovieVideo[] }
+  videos: { results: VideoType[] }
 }
 
 export interface MovieParams {

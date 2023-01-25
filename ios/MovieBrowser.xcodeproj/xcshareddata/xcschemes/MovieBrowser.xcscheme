@@ -61,7 +61,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
-   <ProfileAction
+   <InfoAction
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
@@ -77,7 +77,7 @@
             ReferencedContainer = "container:MovieBrowser.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-   </ProfileAction>
+   </InfoAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
    </AnalyzeAction>

@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native'
-import theme from '~/styles'
+import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   imageContainer: {
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   errorMessage: {
-    color: theme.colors.error,
+    color: colors.error,
     fontSize: 20,
   },
   cardImage: {
@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
-    color: theme.colors.secondary,
+    color: colors.secondary,
   },
   cardTextVotes: {
-    color: theme.colors.secondary,
+    color: colors.secondary,
     fontWeight: 'bold',
     fontSize: 12,
   },

@@ -1,10 +1,11 @@
 import React from 'react'
-import { ActivityIndicator, FlatList, Image, Pressable, View } from 'react-native'
+import { ActivityIndicator, Image, Pressable, View } from 'react-native'
 import Modal from 'react-native-modal'
 import { ImageType } from '~/models'
 import { getImagePath } from '~/utils'
 import { Section } from '~/components'
 import styles from './ImagesCarousel.styles'
+import { FlatList } from 'react-native-gesture-handler'
 
 const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
   const [showModal, setShowModal] = React.useState(false)

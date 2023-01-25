@@ -1,4 +1,4 @@
-export type MovieVideo = {
+export type VideoType = {
   iso_639_1: string
   iso_3166_1: string
   name: string
@@ -9,16 +9,4 @@ export type MovieVideo = {
   official: boolean
   published_at: string
   id: string
-}
-
-export type MovieVideosResponse = {
-  id: number
-  results: MovieVideo[]
-}
-
-export interface MovieVideosParams {
-  params: {
-    api_key: string
-    language?: string
-  }
 }

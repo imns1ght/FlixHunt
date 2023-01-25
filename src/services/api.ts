@@ -2,23 +2,24 @@ import axios, { AxiosError } from 'axios'
 import CONSTANTS from '~/constants'
 
 import {
+  MediasType,
   MovieCastType,
   MovieCreditsParams,
   MovieCreditsResponse,
   MovieData,
   MovieParams,
-  MovieSimpleType,
-  MovieVideo,
-  MovieVideosParams,
-  MovieVideosResponse,
-  MoviesTopRatedParams,
-  MoviesTopRatedResponse,
-  SearchMovieParams,
-  SearchMovieResponse,
+  MovieType,
+  SearchParams,
+  SearchResponse,
+  TopRatedParams,
+  TopRatedResponse,
   TrendingParams,
   TrendingResponse,
+  UpcomingParams,
+  UpcomingResponse,
 } from '~/models'
 import { Collection } from '~/models/collection/collection'
+import { mediaType } from '~/types'
 
 // Used in requests
 const axiosInstance = axios.create({
@@ -28,125 +29,18 @@ const axiosInstance = axios.create({
 /**
  * Returns a list of popular movies.
  */
-const getPopularMovies = async (): Promise<MovieSimpleType[]> => {
-  return axiosInstance
-    .get<TrendingResponse>('/discover/movie?sort_by=popularity.desc', <TrendingParams>{
+const getPopular = async (mediaType: mediaType): Promise<MediasType[]> => {
+  const response = axiosInstance
+    .get<TrendingResponse>(`/discover/${mediaType}?sort_by=popularity.desc`, <TrendingParams>{
       params: {
         api_key: CONSTANTS.api_key,
+        media_type: mediaType,
+        language: 'en-US',
       },
     })
-    .then(response => response.data.results)
+    .then(response => response.data.results.slice(0, 15))
     .catch((e: Error | AxiosError) => {
       console.error(e)
-      throw e
-    })
-}
-
-/**
- * Returns a list of trending movies
- */
-const getTrendingMovies = async (
-  timePeriod: 'day' | 'week' = 'week'
-): Promise<MovieSimpleType[]> => {
-  return axiosInstance
-    .get<TrendingResponse>(`/trending/movie/${timePeriod}`, <TrendingParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-      },
-    })
-    .then(response => response.data.results)
-    .catch((e: Error | AxiosError) => {
-      console.error(`${e.name}: ${e.message}`)
-      throw e
-    })
-}
-
-/**
- * Returns the cast and crew for a movie by id.
- */
-const getMovieCast = async (movieId: number): Promise<MovieCastType[]> => {
-  return axiosInstance
-    .get<MovieCreditsResponse>(`/movie/${movieId}/credits`, <MovieCreditsParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: 'en-US',
-        movie_id: movieId,
-      },
-    })
-    .then(response => response.data.cast)
-    .catch((e: Error | AxiosError) => {
-      console.error(`${e.name}: ${e.message}`)
-      throw e
-    })
-}
-
-/**
- * Returns a list of movies top rated
- *
- * @param page Page number
- * @returns List of movies top rated
- */
-const getTopRatedMovies = async (page?: number): Promise<MovieSimpleType[]> => {
-  return axiosInstance
-    .get<MoviesTopRatedResponse>('/movie/top_rated', <MoviesTopRatedParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: 'en-US',
-        page: page,
-      },
-    })
-    .then(response => {
-      return response.data.results
-    })
-    .catch((e: Error | AxiosError) => {
-      console.log('error: getMoviesTopRated()', e)
-      throw e
-    })
-}
-
-/**
- * Returns a list of movies top rated
- *
- * @param page Page number
- * @returns List of movies top rated
- */
-const getUpcoming = async (): Promise<MovieSimpleType[]> => {
-  return axiosInstance
-    .get<MoviesTopRatedResponse>('/movie/upcoming', <MoviesTopRatedParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: 'en-US',
-      },
-    })
-    .then(response => {
-      return response.data.results
-    })
-    .catch((e: Error | AxiosError) => {
-      console.log(e)
-      throw e
-    })
-}
-
-/**
- * Returns a movie by ID
- *
- * @param movie_id The movie id
- * @returns Movie with the id provided in the param
- */
-const getMovieByID = async (movie_id: number): Promise<MovieData> => {
-  const response = await axiosInstance
-    .get<MovieData>(`/movie/${movie_id}`, <MovieParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        movie_id: movie_id,
-        append_to_response: 'images,videos',
-      },
-    })
-    .then(response => {
-      return response.data
-    })
-    .catch((e: Error | AxiosError) => {
-      console.log('error: getMovieByID()', e)
       throw e
     })
 
@@ -154,24 +48,121 @@ const getMovieByID = async (movie_id: number): Promise<MovieData> => {
 }
 
 /**
- * Returns a list of popular movies.
+ * Returns a list of trending movies
  */
-const getMovieVideos = async (movie_id: number): Promise<MovieVideo[]> => {
-  return axiosInstance
-    .get<MovieVideosResponse>(`/movie/${movie_id}/videos`, <MovieVideosParams>{
+const getTrending = async (
+  timePeriod: 'day' | 'week' = 'week',
+  mediaType: mediaType
+): Promise<MediasType[]> => {
+  const response = axiosInstance
+    .get<TrendingResponse>(`/trending/${mediaType}/${timePeriod}`, <TrendingParams>{
       params: {
         api_key: CONSTANTS.api_key,
         language: 'en-US',
       },
     })
-    .then(response => response.data.results.filter(video => video.site === 'YouTube'))
+    .then(response => response.data.results.slice(0, 15))
     .catch((e: Error | AxiosError) => {
-      console.error(e)
+      console.error(`${e.name}: ${e.message}`)
       throw e
     })
+
+  return response
 }
 
-const getCollection = async (collectionId: number): Promise<Collection> => {
+/**
+ * Returns the cast and crew for a movie by id.
+ */
+const getCast = async (id: number, mediaType: mediaType): Promise<MovieCastType[]> => {
+  const response = axiosInstance
+    .get<MovieCreditsResponse>(`/${mediaType}/${id}/credits`, <MovieCreditsParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+        movie_id: id,
+      },
+    })
+    .then(response => response.data.cast)
+    .catch((e: Error | AxiosError) => {
+      console.error(`${e.name}: ${e.message}`)
+      throw e
+    })
+
+  return response
+}
+
+/**
+ * Returns a list of movies top rated
+ *
+ * @param page Page number
+ * @returns List of movies top rated
+ */
+const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediasType[]> => {
+  const response = axiosInstance
+    .get<TopRatedResponse>(`/${mediaType}/top_rated`, <TopRatedParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+        page: page,
+      },
+    })
+    .then(response => response.data.results.slice(0, 15))
+    .catch((e: Error | AxiosError) => {
+      console.log('error: getMoviesTopRated()', e)
+      throw e
+    })
+
+  return response
+}
+
+/**
+ * Returns a list of upcoming movies
+ *
+ * @param page Page number
+ * @returns List of movies top rated
+ */
+const getUpcoming = async (): Promise<MovieType[]> => {
+  const response = axiosInstance
+    .get<UpcomingResponse>('/movie/upcoming', <UpcomingParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+      },
+    })
+    .then(response => response.data.results.slice(0, 10))
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
+/**
+ * Returns a movie by ID
+ *
+ * @param id The movie id
+ * @returns Media with the id provided in the param
+ */
+const getByID = async (id: number, mediaType: mediaType): Promise<MovieData> => {
+  const response = await axiosInstance
+    .get<MovieData>(`/${mediaType}/${id}`, <MovieParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        movie_id: id,
+        append_to_response: 'images,videos',
+      },
+    })
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.log('error: getByID()', e)
+      throw e
+    })
+
+  return response
+}
+
+const getMovieCollection = async (collectionId: number): Promise<Collection> => {
   const response = await axiosInstance
     .get<Collection>(`/collection/${collectionId}`, <MovieParams>{
       params: {
@@ -180,9 +171,7 @@ const getCollection = async (collectionId: number): Promise<Collection> => {
         collection_id: collectionId,
       },
     })
-    .then(response => {
-      return response.data
-    })
+    .then(response => response.data)
     .catch((e: Error | AxiosError) => {
       console.error(e)
       throw e
@@ -192,25 +181,27 @@ const getCollection = async (collectionId: number): Promise<Collection> => {
 }
 
 /**
- * Returns a list of movies based in the query provided in params
+ * Returns a list of movies or tv shows based in the query provided in params
  *
- * @param query Movie to search
- * @returns List of movies based in the query provided in params
+ * @param query string to search
+ * @returns List of movies or tv shows based in the query provided in params
  */
-const searchByMovie = async (query: string): Promise<SearchMovieResponse> => {
+const searchByString = async (query: string): Promise<MediasType[]> => {
   const response = await axiosInstance
-    .get<SearchMovieResponse>('/search/movie', <SearchMovieParams>{
+    .get<SearchResponse>('/search/multi', <SearchParams>{
       params: {
         api_key: CONSTANTS.api_key,
         language: 'en-US',
         query: query,
       },
     })
-    .then(response => {
-      return response.data
-    })
+    .then(response =>
+      response.data.results.filter(
+        ({ media_type }) => media_type === 'tv' || media_type === 'movie'
+      )
+    )
     .catch((e: Error | AxiosError) => {
-      console.log('error: searchByMovie()', e)
+      console.log('error: searchByString()', e)
       throw e
     })
 
@@ -218,13 +209,12 @@ const searchByMovie = async (query: string): Promise<SearchMovieResponse> => {
 }
 
 export default {
-  getTrendingMovies,
-  getPopularMovies,
-  getTopRatedMovies,
+  getTrending,
+  getPopular,
+  getTopRated,
   getUpcoming,
-  getMovieByID,
-  getMovieVideos,
-  getMovieCast,
-  getCollection,
-  searchByMovie,
+  getByID,
+  getCast,
+  getMovieCollection,
+  searchByString,
 }

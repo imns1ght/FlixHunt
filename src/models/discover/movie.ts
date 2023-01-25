@@ -1,10 +1,10 @@
 // Documentation: https://developers.themoviedb.org/3/discover/movie-discover
 
-import { MovieSimpleType } from '../movie-simple'
+import { MovieType } from '../medias'
 
 export type DiscoverMovieResponse = {
   page: number
-  results: MovieSimpleType[]
+  results: MovieType[]
   total_results: number
   total_pages: number
 }

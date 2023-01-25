@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { StackHeaderProps } from '@react-navigation/stack'
 import { useNavigation } from '@react-navigation/native'
 import IconButton from '../IconButton'
-import theme from '~/styles'
+import { colors } from '~/styles'
 import styles from './Header.styles'
 import { SearchBar } from '~/components'
 import { SearchContext } from '~/contexts'
@@ -12,7 +12,7 @@ const Header = (props: StackHeaderProps) => {
   const { showSearchBar, setShowSearchBar } = useContext(SearchContext)
   const navigation = useNavigation()
   const iconSize = 25
-  const iconColor = theme.colors.white
+  const iconColor = colors.white
 
   return (
     <View>

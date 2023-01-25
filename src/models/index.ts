@@ -1,4 +1,4 @@
-export * from './movie-simple'
+export * from './medias'
 export * from './trending'
 export * from './search'
 export * from './movies'

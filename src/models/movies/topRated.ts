@@ -1,15 +1,15 @@
 // Documentation: https://developers.themoviedb.org/3/movies/get-top-rated-movies
 
-import { MovieSimpleType } from '../movie-simple'
+import { MediasType } from '../medias'
 
-export interface MoviesTopRatedResponse {
+export interface TopRatedResponse {
   page: number
-  results: MovieSimpleType[]
+  results: MediasType[]
   total_results: number
   total_pages: number
 }
 
-export interface MoviesTopRatedParams {
+export interface TopRatedParams {
   params: {
     api_key: string
     language?: string

@@ -1,33 +1,32 @@
 import React from 'react'
 import styles from './Upcoming.styles'
 import { HorizontalCard, Section } from '~/components'
-import { MovieSimpleType } from '~/models'
+import { MovieType } from '~/models'
 import { ActivityIndicator, Text } from 'react-native'
 import { API } from '~/services'
 
 const Upcoming = () => {
-  const [moviesData, setMoviesData] = React.useState<MovieSimpleType[]>()
+  const [data, setData] = React.useState<MovieType[]>()
   const [loading, setLoading] = React.useState(true)
 
-  const fetchMovies = React.useCallback(async () => {
+  const fetchData = React.useCallback(async () => {
     const response = await API.getUpcoming()
-
-    if (response) setMoviesData(response.slice(0, 8))
+    if (response) setData(response)
     setLoading(false)
   }, [])
 
   React.useEffect(() => {
-    fetchMovies()
-  }, [fetchMovies])
+    fetchData()
+  }, [fetchData])
 
   return (
     <Section title='Movies in theaters'>
       {loading ? (
         <ActivityIndicator size='large' />
-      ) : !moviesData ? (
+      ) : !data ? (
         <Text style={styles.errorMessage}>Failed to fetch movies</Text>
       ) : (
-        moviesData.map(movie => <HorizontalCard key={movie.id} movie={movie} />)
+        data.map(movie => <HorizontalCard key={movie.id} data={movie} />)
       )}
     </Section>
   )

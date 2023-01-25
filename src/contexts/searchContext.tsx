@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { SearchMovieResponse } from '~/models'
+import { MediasType } from '~/models'
 import { API } from '~/services'
 
 type SearchContextType = {
@@ -8,8 +8,8 @@ type SearchContextType = {
   setSearchText: React.Dispatch<React.SetStateAction<string>>
   showSearchBar: boolean
   setShowSearchBar: React.Dispatch<React.SetStateAction<boolean>>
-  searchResults?: SearchMovieResponse
-  setSearchResults: React.Dispatch<React.SetStateAction<SearchMovieResponse | undefined>>
+  searchResults?: MediasType[]
+  setSearchResults: React.Dispatch<React.SetStateAction<MediasType[] | undefined>>
 }
 
 const initialState: SearchContextType = {
@@ -25,7 +25,7 @@ const SearchContext = React.createContext<SearchContextType>(initialState)
 const SearchContextProvider = ({ children }: { children: React.ReactNode }) => {
   const navigation = useNavigation()
   const [searchText, setSearchText] = React.useState('')
-  const [searchResults, setSearchResults] = React.useState<SearchMovieResponse>()
+  const [searchResults, setSearchResults] = React.useState<MediasType[]>()
   const [showSearchBar, setShowSearchBar] = React.useState(false)
 
   // Close search bar when navigate
@@ -38,15 +38,12 @@ const SearchContextProvider = ({ children }: { children: React.ReactNode }) => {
   }, [navigation, showSearchBar])
 
   const fetchSearchResults = React.useCallback(async (searchText: string) => {
-    const response = await API.searchByMovie(searchText)
+    const response = await API.searchByString(searchText)
     setSearchResults(response)
   }, [])
 
   React.useEffect(() => {
-    if (searchText)
-      setTimeout(() => {
-        fetchSearchResults(searchText)
-      }, 100)
+    if (searchText) fetchSearchResults(searchText)
   }, [fetchSearchResults, searchText])
 
   return (

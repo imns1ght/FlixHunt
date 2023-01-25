@@ -1,39 +1,38 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
-import { MovieSimpleType } from '~/models'
+import { MediasType } from '~/models'
 import { useNavigation } from '@react-navigation/core'
-import { NavigationProps } from '~/navigation'
+import { StackNavigationProps } from '~/navigation'
 import styles from './HorizontalCard.styles'
 import CONSTANTS from '~/constants'
 
-const HorizontalCard = ({ movie }: { movie: MovieSimpleType }) => {
-  const navigation = useNavigation<NavigationProps>()
-  const releaseData = React.useMemo(
-    () => new Date(movie.release_date).toDateString(),
-    [movie.release_date]
-  )
+const HorizontalCard = ({ data }: { data: MediasType }) => {
+  const navigation = useNavigation<StackNavigationProps>()
+  const isMovie = data.media_type === 'movie' || data.media_type === undefined
+  const releaseData = new Date(isMovie ? data.release_date : data.first_air_date).toDateString()
 
-  const handlePress = React.useCallback(() => {
-    navigation.navigate('Movie', {
-      movieId: movie.id,
-      movieName: movie.title,
+  const handlePress = () => {
+    navigation.navigate('Media', {
+      id: data.id,
+      title: isMovie ? data.title : data.name,
+      mediaType: isMovie ? 'movie' : 'tv',
     })
-  }, [movie.id, movie.title, navigation])
+  }
 
   return (
-    <TouchableOpacity key={movie.id} onPress={() => handlePress()} style={styles.container}>
+    <TouchableOpacity key={data.id} onPress={() => handlePress()} style={styles.container}>
       <Image
         source={{
-          uri: `${CONSTANTS.api_image_url}/w300${movie.poster_path}`,
+          uri: `${CONSTANTS.api_image_url}/w300${data.poster_path}`,
         }}
         style={styles.image}
       />
       <View style={styles.textContainer}>
         <Text style={styles.title} numberOfLines={1}>
-          {movie.title}
+          {isMovie ? data.title : data.name}
         </Text>
         <Text style={styles.overview} numberOfLines={3}>
-          {movie.overview}
+          {data.overview}
         </Text>
         <Text style={styles.tags}>{releaseData}</Text>
       </View>

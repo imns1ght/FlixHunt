@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import theme from '~/styles'
+import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   card: {
@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
-    color: theme.colors.white,
+    color: colors.white,
     marginBottom: 3,
   },
   description: {
     fontSize: 16,
-    color: theme.colors.white,
+    color: colors.white,
   },
 })
 

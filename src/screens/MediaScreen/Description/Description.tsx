@@ -4,8 +4,8 @@ import { NumericFormat } from 'react-number-format'
 
 import Collapsible from 'react-native-collapsible'
 
-import styles from '../MovieScreen.styles'
-import theme from '~/styles'
+import styles from '../MediaScreen.styles'
+import { colors } from '~/styles'
 import { convertMinsToTime } from '~/utils'
 import { MovieData } from '~/models'
 
@@ -49,7 +49,7 @@ const Description = ({ movieData }: { movieData: MovieData }) => {
           )}
           {!!homepage && (
             <Text
-              style={{ ...styles.tags, color: theme.colors.primary }}
+              style={{ ...styles.tags, color: colors.primary }}
               onPress={() => Linking.openURL(homepage)}
             >
               {homepage}

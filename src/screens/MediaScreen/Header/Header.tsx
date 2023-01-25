@@ -1,14 +1,14 @@
 import { Image, ImageBackground, Text, View } from 'react-native'
 import React from 'react'
-import styles from '../MovieScreen.styles'
+import styles from '../MediaScreen.styles'
 import { MovieResponse } from '~/models'
 import { arrToStringFormated, getImagePath } from '~/utils'
 
 const Header = ({ movieData }: { movieData: MovieResponse }) => {
-  const { tagline, title, poster_path, images } = movieData
+  const { tagline, title, name, poster_path, images } = movieData
   const releaseDate = React.useMemo(
-    () => new Date(movieData.release_date).toDateString(),
-    [movieData.release_date]
+    () => new Date(movieData.release_date ?? movieData.first_air_date).toDateString(),
+    [movieData.first_air_date, movieData.release_date]
   )
   const genres = React.useMemo(() => arrToStringFormated(movieData.genres), [movieData.genres])
   const productionCompanies = React.useMemo(
@@ -26,8 +26,6 @@ const Header = ({ movieData }: { movieData: MovieResponse }) => {
   }, [images.backdrops, poster_path])
 
   const posterPath = React.useMemo(() => getImagePath(poster_path, 'w500'), [poster_path])
-
-  console.log({ backgroundPath, posterPath })
 
   return (
     <ImageBackground
@@ -47,7 +45,7 @@ const Header = ({ movieData }: { movieData: MovieResponse }) => {
         />
         <View style={styles.titleContainer}>
           <View>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.title}>{title ?? name}</Text>
             {!!tagline && <Text style={styles.subtitle}>{tagline}</Text>}
           </View>
           <View>

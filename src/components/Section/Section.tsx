@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
 import styles from './Section.styles'
 
 const Section = ({
@@ -13,10 +12,10 @@ const Section = ({
   children: React.ReactNode
 }) => {
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       {!!title && <Text style={styles.title}>{title}</Text>}
       <View style={removeMargin ? styles.contentWithoutMargin : styles.content}>{children}</View>
-    </ScrollView>
+    </View>
   )
 }
 
