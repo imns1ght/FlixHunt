@@ -2,11 +2,11 @@
 
 Movie Browser is an app for you to find a good movie or TV show to watch! The Movie Browser uses [React Native](https://reactnative.dev/), [TypeScript](https://www.typescriptlang.org/). The data comes from the [TMDb API](https://developers.themoviedb.org/3) using [Axios](https://github.com/axios/axios).
 
+### [Click here to download](https://github.com/imns1ght/movie-browser/releases)
+
 ## Features (outdated!!!)
 
 https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-83d3-3bbb1c901301.mp4
-
-### [Click here to download](https://github.com/imns1ght/movie-browser/releases)
 
 ## Running
 
