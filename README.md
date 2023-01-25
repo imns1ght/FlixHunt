@@ -1,15 +1,10 @@
 # Movie Browser
 
-Movie Browser is an app for you to find a good movie to watch! The Movie Browser uses [React Native](https://reactnative.dev/), [TypeScript](https://www.typescriptlang.org/). The data comes from the [TMDb API](https://developers.themoviedb.org/3) using [Axios](https://github.com/axios/axios).
+Movie Browser is an app for you to find a good movie or TV show to watch! The Movie Browser uses [React Native](https://reactnative.dev/), [TypeScript](https://www.typescriptlang.org/). The data comes from the [TMDb API](https://developers.themoviedb.org/3) using [Axios](https://github.com/axios/axios).
 
-## Note ⚠️: This project needs **a lot** of improvement. I've learned a lot in the last few months and I'll update this project when I have free time. :)
-
-## Features (preview!!!)
-
+## Features (outdated!!!)
 
 https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-83d3-3bbb1c901301.mp4
-
-
 
 ### [Click here to download](https://github.com/imns1ght/movie-browser/releases)
 
@@ -42,7 +37,7 @@ Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.
    ```bash
    yarn install && cd ios/ && pod install && cd ..
    ```
-   
+
 
 3. Runnning
 
