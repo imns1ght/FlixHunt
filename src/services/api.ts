@@ -46,7 +46,24 @@ const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
         language: 'en-US',
       },
     })
-    .then(response => response.data.results.slice(0, 15))
+    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
+    .catch((e: Error | AxiosError) => {
+      console.error(e)
+      throw e
+    })
+
+  return response
+}
+
+const getTVShowAiringToday = async (): Promise<MediaSimpleType[]> => {
+  const response = axiosInstance
+    .get<TrendingResponse>('/tv/airing_today', <TrendingParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+      },
+    })
+    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
     .catch((e: Error | AxiosError) => {
       console.error(e)
       throw e
@@ -69,7 +86,7 @@ const getTrending = async (
         language: 'en-US',
       },
     })
-    .then(response => response.data.results.slice(0, 15))
+    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
     .catch((e: Error | AxiosError) => {
       console.error(`${e.name}: ${e.message}`)
       throw e
@@ -107,7 +124,7 @@ const getRecommendations = async (id: number, mediaType: mediaType): Promise<Med
         language: 'en-US',
       },
     })
-    .then(response => response.data.results.slice(0, 10))
+    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 10))
     .catch((e: Error | AxiosError) => {
       console.error(`${e.name}: ${e.message}`)
       throw e
@@ -131,7 +148,7 @@ const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSi
         page: page,
       },
     })
-    .then(response => response.data.results.slice(0, 15))
+    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
     .catch((e: Error | AxiosError) => {
       console.log('error: getMoviesTopRated()', e)
       throw e
@@ -174,16 +191,16 @@ const getMovieUpcoming = async (): Promise<MovieSimpleType[]> => {
   return response
 }
 
-const getNowPlaying = async (): Promise<MovieSimpleType[]> => {
+const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
   const response = axiosInstance
     .get<UpcomingResponse>('/movie/now_playing', <UpcomingParams>{
       params: {
         api_key: CONSTANTS.api_key,
         language: 'en-US',
-        region: 'BR',
+        region: 'US',
       },
     })
-    .then(response => response.data.results.slice(0, 10))
+    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
     .catch((e: Error | AxiosError) => {
       console.log(e)
       throw e
@@ -199,7 +216,7 @@ const getNowPlaying = async (): Promise<MovieSimpleType[]> => {
  * @returns Media with the id provided in the param
  */
 const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType> => {
-  const response = await axiosInstance
+  const response = axiosInstance
     .get<MediaFullType>(`/${mediaType}/${id}`, <MovieParams | TVParams>{
       params: {
         api_key: CONSTANTS.api_key,
@@ -219,7 +236,7 @@ const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType>
 }
 
 const getMovieCollection = async (collectionId: number): Promise<Collection> => {
-  const response = await axiosInstance
+  const response = axiosInstance
     .get<Collection>(`/collection/${collectionId}`, <MovieParams>{
       params: {
         api_key: CONSTANTS.api_key,
@@ -243,7 +260,7 @@ const getMovieCollection = async (collectionId: number): Promise<Collection> => 
  * @returns List of movies or tv shows based in the query provided in params
  */
 const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
-  const response = await axiosInstance
+  const response = axiosInstance
     .get<SearchResponse>('/search/multi', <SearchParams>{
       params: {
         api_key: CONSTANTS.api_key,
@@ -252,9 +269,9 @@ const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
       },
     })
     .then(response =>
-      response.data.results.filter(
-        ({ media_type }) => media_type === 'tv' || media_type === 'movie'
-      )
+      response.data.results
+        .filter(({ media_type }) => media_type === 'tv' || media_type === 'movie')
+        .filter(item => !!item.overview)
     )
     .catch((e: Error | AxiosError) => {
       console.log('error: searchByString()', e)
@@ -269,10 +286,11 @@ export default {
   getPopular,
   getTopRated,
   getMovieUpcoming,
-  getNowPlaying,
+  getMovieNowPlaying,
   getRecommendations,
   getByID,
   getCast,
   getMovieCollection,
+  getTVShowAiringToday,
   searchByString,
 }

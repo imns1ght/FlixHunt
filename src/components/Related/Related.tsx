@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
-import { MediaCard, Section } from '~/components'
+import { Card, Section } from '~/components'
 import { Collection } from '~/models'
 import { API } from '~/services'
 import styles from './Related.styles'
@@ -32,7 +32,7 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
           data={collectionData.parts}
           renderItem={({ item, index }) =>
             item.poster_path ? (
-              <MediaCard item={item} index={index} disabled={id === item.id} mediaType={'movie'} />
+              <Card item={item} index={index} disabled={id === item.id} mediaType={'movie'} />
             ) : null
           }
           initialNumToRender={5}

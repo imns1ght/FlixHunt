@@ -8,6 +8,7 @@ import { NavigationScreenProps } from '~/navigation'
 import { API } from '~/services'
 import { CardCarousel, ImagesCarousel, Related, VideosCarousel } from '~/components'
 import { MediaFullType } from '~/models'
+import { getImagePath } from '~/utils'
 
 const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
   const { id, mediaType } = route.params
@@ -59,6 +60,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
         </View>
       )
     } else {
+      console.log(getImagePath(data.seasons[0].poster_path))
       components = (
         <View>
           <Header

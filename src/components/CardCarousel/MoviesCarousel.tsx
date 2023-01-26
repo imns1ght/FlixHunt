@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
-import { MediaCard, Section } from '~/components'
+import { Card, Section } from '~/components'
 import { MediaSimpleType, mediaType } from '~/models'
 import { API } from '~/services'
 import styles from './CardCarousel.styles'
@@ -42,7 +42,7 @@ const CardCarousel = ({ type, mediaType }: { type: CarouselTypes; mediaType: med
           keyExtractor={(key, index) => `${key.id.toString()}${index}`}
           data={moviesData}
           renderItem={({ item, index }) =>
-            item.poster_path ? <MediaCard item={item} index={index} mediaType={mediaType} /> : null
+            item.poster_path ? <Card item={item} index={index} mediaType={mediaType} /> : null
           }
           initialNumToRender={5}
           maxToRenderPerBatch={5}

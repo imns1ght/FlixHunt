@@ -8,12 +8,12 @@ import { mediaType } from '~/models'
 import { CastType } from '~/models'
 
 const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
-  const [peopleData, setPeopleData] = React.useState<CastType[]>()
+  const [data, setData] = React.useState<CastType[]>()
   const [loading, setLoading] = React.useState(true)
 
   const fetchCast = React.useCallback(async () => {
     const response = await API.getCast(id, mediaType)
-    setPeopleData(response)
+    setData(response)
     setLoading(false)
   }, [mediaType, id])
 
@@ -46,14 +46,15 @@ const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
     <Section title='Cast'>
       {loading ? (
         <ActivityIndicator />
-      ) : !peopleData ? (
+      ) : !data ? (
         <Text>Error...</Text>
       ) : (
         <FlatList
-          data={peopleData}
+          data={data}
           renderItem={renderItem}
           initialNumToRender={2}
           maxToRenderPerBatch={2}
+          ListEmptyComponent={<Text style={styles.errorMessage}>Nothing to see here...</Text>}
           removeClippedSubviews
           horizontal
         />

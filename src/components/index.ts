@@ -1,5 +1,5 @@
 export { default as Section } from './Section'
-export { default as MediaCard } from './MediaCard'
+export { default as Card } from './Card'
 export { default as HorizontalCard } from './HorizontalCard'
 export { default as CardCarousel } from './CardCarousel'
 export { default as Upcoming } from './Upcoming'

@@ -3,29 +3,29 @@ import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   card: {
-    marginRight: 8,
-    height: 240,
     width: 200,
-    borderRadius: 5,
+    marginRight: 10,
+    height: 305,
     justifyContent: 'flex-end',
+    borderRadius: 5,
   },
+  disabledCard: {
+    opacity: 0.5,
+  },
+
   infoContainer: {
     paddingHorizontal: 10,
     paddingVertical: 5,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  name: {
+  title: {
     fontSize: 20,
     color: colors.white,
     marginBottom: 3,
   },
-  description: {
+  subtitle: {
     fontSize: 16,
     color: colors.white,
-  },
-  errorMessage: {
-    color: colors.error,
-    fontSize: 20,
   },
 })
 

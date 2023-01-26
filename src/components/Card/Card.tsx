@@ -1,22 +1,26 @@
 import React from 'react'
-import { Image, TouchableHighlight } from 'react-native'
+import { ImageBackground, Text, TouchableHighlight, View } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import { MediaSimpleType } from '~/models'
-import styles from './MediaCard.styles'
+import styles from './Card.styles'
 import { StackNavigationProps } from '~/navigation'
 import { getImagePath } from '~/utils'
 import { mediaType } from '~/models'
 
-const MediaCard = ({
+const Card = ({
   item,
   index,
   mediaType,
+  cardTitle,
+  cardSubtitle,
   disabled = false,
 }: {
   item: MediaSimpleType
   index: number
   mediaType: mediaType
   disabled?: boolean
+  cardTitle?: string
+  cardSubtitle?: string
 }) => {
   const navigation = useNavigation<StackNavigationProps>()
   const isMovie =
@@ -38,14 +42,27 @@ const MediaCard = ({
       style={{ ...styles.card, ...(disabled ? styles.disabledCard : {}) }}
       disabled={disabled}
     >
-      <Image
+      <ImageBackground
+        key={item.id}
         source={{
           uri: getImagePath(item.poster_path, 'w500'),
         }}
-        style={styles.image}
-      />
+        style={styles.card}
+      >
+        {!!cardTitle ||
+          (!!cardSubtitle && (
+            <View style={styles.infoContainer}>
+              <Text style={styles.title} numberOfLines={1}>
+                {cardTitle}
+              </Text>
+              <Text style={styles.subtitle} numberOfLines={1}>
+                {cardSubtitle}
+              </Text>
+            </View>
+          ))}
+      </ImageBackground>
     </TouchableHighlight>
   )
 }
 
-export default MediaCard
+export default Card

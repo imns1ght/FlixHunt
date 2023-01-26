@@ -9,8 +9,9 @@ const mediaType = 'tv'
 
 const TVShowsScreen = () => (
   <ScrollView style={styles.container}>
-    <CardCarousel type='popular' mediaType={mediaType} />
     <CardCarousel type='trending' mediaType={mediaType} />
+    <CardCarousel type='airing_today' mediaType={mediaType} />
+    <CardCarousel type='popular' mediaType={mediaType} />
     <CardCarousel type='top_rated' mediaType={mediaType} />
   </ScrollView>
 )

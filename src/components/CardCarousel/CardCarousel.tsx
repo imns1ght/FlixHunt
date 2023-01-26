@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
-import { MediaCard, Section } from '~/components'
+import { Card, Section } from '~/components'
 import { MediaSimpleType, mediaType } from '~/models'
 import { API } from '~/services'
 import styles from './CardCarousel.styles'
@@ -12,24 +12,28 @@ type CarouselTypes =
   | 'top_rated'
   | 'recommendations'
   | 'now_playing'
+  | 'airing_today'
 
 const titles = {
   trending: 'Trending',
-  trending_all: 'Trending',
+  trending_all: 'Popular',
   popular: 'What people are watching',
   top_rated: 'Top rated',
   recommendations: 'Recommendations',
   now_playing: 'Movies in theaters',
+  airing_today: 'Airing today!',
 }
 
 const CardCarousel = ({
   id,
   type,
   mediaType,
+  customTitle,
 }: {
   id?: number
   type: CarouselTypes
   mediaType: mediaType
+  customTitle?: string
 }) => {
   const [data, setData] = React.useState<MediaSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
@@ -42,7 +46,8 @@ const CardCarousel = ({
     else if (type === 'top_rated') response = await API.getTopRated(mediaType, 1)
     else if (type === 'recommendations' && !!id)
       response = await API.getRecommendations(id, mediaType)
-    else if (type === 'now_playing') response = await API.getNowPlaying()
+    else if (type === 'now_playing') response = await API.getMovieNowPlaying()
+    else if (type === 'airing_today') response = await API.getTVShowAiringToday()
 
     if (response) setData(response)
     setLoading(false)
@@ -53,7 +58,7 @@ const CardCarousel = ({
   }, [fetchData])
 
   return (
-    <Section title={titles[type]}>
+    <Section title={customTitle ?? titles[type]}>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !data ? (
@@ -64,7 +69,7 @@ const CardCarousel = ({
           data={data}
           renderItem={({ item, index }) =>
             item.poster_path ? (
-              <MediaCard item={item} index={index} mediaType={item.media_type ?? mediaType} />
+              <Card item={item} index={index} mediaType={item.media_type ?? mediaType} />
             ) : null
           }
           ListEmptyComponent={<Text style={styles.errorMessage}>Nothing to see here...</Text>}
