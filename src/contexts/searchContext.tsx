@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { MediasType } from '~/models'
+import { MediaSimpleType } from '~/models'
 import { API } from '~/services'
 
 type SearchContextType = {
@@ -8,8 +8,8 @@ type SearchContextType = {
   setSearchText: React.Dispatch<React.SetStateAction<string>>
   showSearchBar: boolean
   setShowSearchBar: React.Dispatch<React.SetStateAction<boolean>>
-  searchResults?: MediasType[]
-  setSearchResults: React.Dispatch<React.SetStateAction<MediasType[] | undefined>>
+  searchResults?: MediaSimpleType[]
+  setSearchResults: React.Dispatch<React.SetStateAction<MediaSimpleType[] | undefined>>
 }
 
 const initialState: SearchContextType = {
@@ -25,7 +25,7 @@ const SearchContext = React.createContext<SearchContextType>(initialState)
 const SearchContextProvider = ({ children }: { children: React.ReactNode }) => {
   const navigation = useNavigation()
   const [searchText, setSearchText] = React.useState('')
-  const [searchResults, setSearchResults] = React.useState<MediasType[]>()
+  const [searchResults, setSearchResults] = React.useState<MediaSimpleType[]>()
   const [showSearchBar, setShowSearchBar] = React.useState(false)
 
   // Close search bar when navigate

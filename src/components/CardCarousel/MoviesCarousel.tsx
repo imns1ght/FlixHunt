@@ -1,9 +1,8 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
 import { MediaCard, Section } from '~/components'
-import { MovieSimpleType } from '~/models'
+import { MediaSimpleType, mediaType } from '~/models'
 import { API } from '~/services'
-import { mediaType } from '~/types'
 import styles from './CardCarousel.styles'
 
 type CarouselTypes = 'trending' | 'popular' | 'top_rated'
@@ -15,14 +14,14 @@ const titles = {
 }
 
 const CardCarousel = ({ type, mediaType }: { type: CarouselTypes; mediaType: mediaType }) => {
-  const [moviesData, setMoviesData] = React.useState<MovieSimpleType[]>()
+  const [moviesData, setMoviesData] = React.useState<MediaSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
 
   const fetchData = React.useCallback(async () => {
     let response
     if (type === 'trending') response = await API.getTrending('week', mediaType)
     else if (type === 'popular') response = await API.getPopular(mediaType)
-    else if (type === 'top_rated') response = await API.getTopRated(1, mediaType)
+    else if (type === 'top_rated') response = await API.getTopRated(mediaType, 1)
 
     if (response) setMoviesData(response)
     setLoading(false)

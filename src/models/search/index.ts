@@ -1,8 +1,8 @@
-import { MediasType } from '../medias'
+import { MediaSimpleType } from '../medias'
 
 export interface SearchResponse {
   page: number
-  results: MediasType[]
+  results: MediaSimpleType[]
   total_results: number
   total_pages: number
 }

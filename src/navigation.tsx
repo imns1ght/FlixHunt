@@ -5,7 +5,7 @@ import {
   BottomTabScreenProps,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs'
-import { mediaType } from './types'
+import { mediaType } from './models'
 
 export type StackParamList = {
   BottomBar: { mediaType: mediaType }

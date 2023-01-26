@@ -1,12 +1,12 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
-import { MediasType } from '~/models'
+import { MediaSimpleType } from '~/models'
 import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProps } from '~/navigation'
 import styles from './HorizontalCard.styles'
 import CONSTANTS from '~/constants'
 
-const HorizontalCard = ({ data }: { data: MediasType }) => {
+const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
   const navigation = useNavigation<StackNavigationProps>()
   const isMovie = data.media_type === 'movie' || data.media_type === undefined
   const releaseData = new Date(isMovie ? data.release_date : data.first_air_date).toDateString()

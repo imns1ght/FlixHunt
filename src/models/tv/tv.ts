@@ -1,4 +1,4 @@
-export interface MovieParams {
+export interface TVParams {
   params: {
     api_key: string
     language?: string

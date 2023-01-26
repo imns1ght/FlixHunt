@@ -1,36 +1,32 @@
 import { Image, ImageBackground, Text, View } from 'react-native'
 import React from 'react'
 import styles from '../MediaScreen.styles'
-import { MovieResponse } from '~/models'
-import { arrToStringFormated, getImagePath } from '~/utils'
+import { MovieFullType } from '~/models'
+import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
 
-const Header = ({ movieData }: { movieData: MovieResponse }) => {
-  const { tagline, title, name, poster_path, images } = movieData
-  const releaseDate = React.useMemo(
-    () => new Date(movieData.release_date ?? movieData.first_air_date).toDateString(),
-    [movieData.first_air_date, movieData.release_date]
-  )
-  const genres = React.useMemo(() => arrToStringFormated(movieData.genres), [movieData.genres])
-  const productionCompanies = React.useMemo(
-    () => !!movieData.production_companies && arrToStringFormated(movieData.production_companies),
-    [movieData.production_companies]
-  )
+type Props = Pick<
+  MovieFullType,
+  'tagline' | 'title' | 'poster_path' | 'release_date' | 'images' | 'runtime' | 'genres'
+>
 
-  const backgroundPath = React.useMemo(() => {
+const Header = ({ tagline, title, poster_path, images, runtime, release_date, genres }: Props) => {
+  const releaseDate = new Date(release_date).toLocaleDateString().slice(3)
+  const genresFormated = arrToStringFormated(genres)
+  const posterPath = getImagePath(poster_path, 'w500')
+
+  const backgroundPath = () => {
     const backdropAvailable = images.backdrops.length > 0
     const filePath = backdropAvailable
       ? images.backdrops[Math.floor(Math.random() * images.backdrops.length)].file_path
       : poster_path
 
     return getImagePath(filePath, backdropAvailable ? 'w1280' : 'w500')
-  }, [images.backdrops, poster_path])
-
-  const posterPath = React.useMemo(() => getImagePath(poster_path, 'w500'), [poster_path])
+  }
 
   return (
     <ImageBackground
       source={{
-        uri: backgroundPath,
+        uri: backgroundPath(),
       }}
       style={styles.cover}
       imageStyle={styles.coverImage}
@@ -43,17 +39,17 @@ const Header = ({ movieData }: { movieData: MovieResponse }) => {
           }}
           style={styles.image}
         />
-        <View style={styles.titleContainer}>
-          <View>
-            <Text style={styles.title}>{title ?? name}</Text>
+        <View style={styles.tagsContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{title}</Text>
             {!!tagline && <Text style={styles.subtitle}>{tagline}</Text>}
           </View>
           <View>
-            <Text style={styles.tags}>{genres}</Text>
-            <Text style={styles.tags}>{releaseDate}</Text>
-            <Text style={styles.tags} numberOfLines={2}>
-              {productionCompanies}
-            </Text>
+            <Text style={styles.tags}>{genresFormated}</Text>
+            <View style={{ flexDirection: 'row', columnGap: 10 }}>
+              <Text style={styles.tags}>{releaseDate}</Text>
+              {!!runtime && <Text style={styles.tags}>{convertMinsToTime(runtime)}</Text>}
+            </View>
           </View>
         </View>
       </View>

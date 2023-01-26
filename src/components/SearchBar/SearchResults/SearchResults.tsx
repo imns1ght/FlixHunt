@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './SearchResults.styles'
 import { HorizontalCard, Section } from '~/components'
-import { MediasType } from '~/models'
+import { MediaSimpleType } from '~/models'
 import { Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
-const SearchResults = ({ data }: { data: MediasType[] }) => (
+const SearchResults = ({ data }: { data: MediaSimpleType[] }) => (
   <View style={styles.container}>
     <Section>
       <FlatList

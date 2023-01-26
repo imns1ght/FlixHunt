@@ -1,16 +1,16 @@
 import React from 'react'
 import styles from './Upcoming.styles'
 import { HorizontalCard, Section } from '~/components'
-import { MovieType } from '~/models'
+import { MovieSimpleType } from '~/models'
 import { ActivityIndicator, Text } from 'react-native'
 import { API } from '~/services'
 
 const Upcoming = () => {
-  const [data, setData] = React.useState<MovieType[]>()
+  const [data, setData] = React.useState<MovieSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
 
   const fetchData = React.useCallback(async () => {
-    const response = await API.getUpcoming()
+    const response = await API.getMovieUpcoming()
     if (response) setData(response)
     setLoading(false)
   }, [])
@@ -20,7 +20,7 @@ const Upcoming = () => {
   }, [fetchData])
 
   return (
-    <Section title='Movies in theaters'>
+    <Section title='Upcoming...'>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !data ? (

@@ -1,9 +1,16 @@
-import { MovieType } from '..'
+import { MovieSimpleType } from '..'
 
 export type Collection = {
   id: number
   name: string
   overview: string
   backdrop_path: string | null
-  parts: MovieType[]
+  parts: MovieSimpleType[]
+}
+
+export type BelongsToCollectionType = {
+  backdrop_path: string | null
+  id: number
+  name: string
+  poster_path: string | null
 }

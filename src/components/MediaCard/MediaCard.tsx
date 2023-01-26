@@ -1,11 +1,11 @@
 import React from 'react'
 import { Image, TouchableHighlight } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
-import { MediasType } from '~/models'
+import { MediaSimpleType } from '~/models'
 import styles from './MediaCard.styles'
 import { StackNavigationProps } from '~/navigation'
 import { getImagePath } from '~/utils'
-import { mediaType } from '~/types'
+import { mediaType } from '~/models'
 
 const MediaCard = ({
   item,
@@ -13,7 +13,7 @@ const MediaCard = ({
   mediaType,
   disabled = false,
 }: {
-  item: MediasType
+  item: MediaSimpleType
   index: number
   mediaType: mediaType
   disabled?: boolean

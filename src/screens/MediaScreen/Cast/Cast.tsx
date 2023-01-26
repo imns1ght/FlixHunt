@@ -1,27 +1,27 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, ImageBackground, Text, View } from 'react-native'
-import { MovieCastType } from '~/models/movies/credits'
 import { API } from '~/services'
 import styles from './Cast.styles'
 import { Section } from '~/components'
 import { getImagePath } from '~/utils'
-import { mediaType } from '~/types'
+import { mediaType } from '~/models'
+import { CastType } from '~/models'
 
-const Cast = ({ movieId, mediaType }: { movieId: number; mediaType: mediaType }) => {
-  const [peopleData, setPeopleData] = React.useState<MovieCastType[]>()
+const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
+  const [peopleData, setPeopleData] = React.useState<CastType[]>()
   const [loading, setLoading] = React.useState(true)
 
   const fetchCast = React.useCallback(async () => {
-    const response = await API.getCast(movieId, mediaType)
+    const response = await API.getCast(id, mediaType)
     setPeopleData(response)
     setLoading(false)
-  }, [mediaType, movieId])
+  }, [mediaType, id])
 
   React.useEffect(() => {
     fetchCast()
   }, [fetchCast])
 
-  const renderItem = React.useCallback(({ item }: { item: MovieCastType }) => {
+  const renderItem = React.useCallback(({ item }: { item: CastType }) => {
     return item.profile_path ? (
       <ImageBackground
         key={item.id}

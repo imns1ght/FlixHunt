@@ -13,9 +13,9 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   cover: {
-    height: 250,
     resizeMode: 'cover',
     justifyContent: 'flex-end',
+    paddingTop: 15,
   },
   coverImage: { opacity: 0.4, backgroundColor: '#000' },
   image: {
@@ -28,11 +28,16 @@ const styles = StyleSheet.create({
   },
   titleWithImage: {
     flexDirection: 'row',
+    alignItems: 'flex-end',
   },
   titleContainer: {
+    marginBottom: 10,
+  },
+  tagsContainer: {
     flex: 1,
     justifyContent: 'space-around',
     marginRight: 10,
+    paddingVertical: 10,
   },
   content: {
     marginHorizontal: 10,

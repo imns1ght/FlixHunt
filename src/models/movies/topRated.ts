@@ -1,10 +1,10 @@
 // Documentation: https://developers.themoviedb.org/3/movies/get-top-rated-movies
 
-import { MediasType } from '../medias'
+import { MediaSimpleType } from '../medias'
 
 export interface TopRatedResponse {
   page: number
-  results: MediasType[]
+  results: MediaSimpleType[]
   total_results: number
   total_pages: number
 }

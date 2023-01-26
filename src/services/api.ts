@@ -2,34 +2,42 @@ import axios, { AxiosError } from 'axios'
 import CONSTANTS from '~/constants'
 
 import {
-  MediasType,
-  MovieCastType,
+  CastType,
+  Collection,
+  MediaFullType,
+  MediaSimpleType,
   MovieCreditsParams,
   MovieCreditsResponse,
-  MovieData,
   MovieParams,
-  MovieType,
+  MovieSimpleType,
   SearchParams,
   SearchResponse,
+  TVParams,
   TopRatedParams,
   TopRatedResponse,
   TrendingParams,
   TrendingResponse,
   UpcomingParams,
   UpcomingResponse,
+  mediaType,
 } from '~/models'
-import { Collection } from '~/models/collection/collection'
-import { mediaType } from '~/types'
 
 // Used in requests
 const axiosInstance = axios.create({
   baseURL: CONSTANTS.api_base_url,
 })
 
+type BasicParams = {
+  params: {
+    api_key: string
+    language: string
+  }
+}
+
 /**
  * Returns a list of popular movies.
  */
-const getPopular = async (mediaType: mediaType): Promise<MediasType[]> => {
+const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<TrendingResponse>(`/discover/${mediaType}?sort_by=popularity.desc`, <TrendingParams>{
       params: {
@@ -53,7 +61,7 @@ const getPopular = async (mediaType: mediaType): Promise<MediasType[]> => {
 const getTrending = async (
   timePeriod: 'day' | 'week' = 'week',
   mediaType: mediaType
-): Promise<MediasType[]> => {
+): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<TrendingResponse>(`/trending/${mediaType}/${timePeriod}`, <TrendingParams>{
       params: {
@@ -73,7 +81,7 @@ const getTrending = async (
 /**
  * Returns the cast and crew for a movie by id.
  */
-const getCast = async (id: number, mediaType: mediaType): Promise<MovieCastType[]> => {
+const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> => {
   const response = axiosInstance
     .get<MovieCreditsResponse>(`/${mediaType}/${id}/credits`, <MovieCreditsParams>{
       params: {
@@ -91,13 +99,30 @@ const getCast = async (id: number, mediaType: mediaType): Promise<MovieCastType[
   return response
 }
 
+const getRecommendations = async (id: number, mediaType: mediaType): Promise<MediaSimpleType[]> => {
+  const response = axiosInstance
+    .get<TopRatedResponse>(`/${mediaType}/${id}/recommendations`, <BasicParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+      },
+    })
+    .then(response => response.data.results.slice(0, 10))
+    .catch((e: Error | AxiosError) => {
+      console.error(`${e.name}: ${e.message}`)
+      throw e
+    })
+
+  return response
+}
+
 /**
  * Returns a list of movies top rated
  *
  * @param page Page number
  * @returns List of movies top rated
  */
-const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediasType[]> => {
+const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<TopRatedResponse>(`/${mediaType}/top_rated`, <TopRatedParams>{
       params: {
@@ -121,12 +146,41 @@ const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediasT
  * @param page Page number
  * @returns List of movies top rated
  */
-const getUpcoming = async (): Promise<MovieType[]> => {
+const getMovieUpcoming = async (): Promise<MovieSimpleType[]> => {
   const response = axiosInstance
     .get<UpcomingResponse>('/movie/upcoming', <UpcomingParams>{
       params: {
         api_key: CONSTANTS.api_key,
         language: 'en-US',
+        region: 'US',
+      },
+    })
+    .then(response => {
+      const filtered = response.data.results.filter(
+        movie => new Date(movie.release_date).getTime() >= new Date().getTime()
+      )
+      const sortedDec = filtered.sort(
+        (a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime()
+      )
+      const sliced = sortedDec.slice(0, 10)
+
+      return sliced
+    })
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
+const getNowPlaying = async (): Promise<MovieSimpleType[]> => {
+  const response = axiosInstance
+    .get<UpcomingResponse>('/movie/now_playing', <UpcomingParams>{
+      params: {
+        api_key: CONSTANTS.api_key,
+        language: 'en-US',
+        region: 'BR',
       },
     })
     .then(response => response.data.results.slice(0, 10))
@@ -144,16 +198,18 @@ const getUpcoming = async (): Promise<MovieType[]> => {
  * @param id The movie id
  * @returns Media with the id provided in the param
  */
-const getByID = async (id: number, mediaType: mediaType): Promise<MovieData> => {
+const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType> => {
   const response = await axiosInstance
-    .get<MovieData>(`/${mediaType}/${id}`, <MovieParams>{
+    .get<MediaFullType>(`/${mediaType}/${id}`, <MovieParams | TVParams>{
       params: {
         api_key: CONSTANTS.api_key,
         movie_id: id,
         append_to_response: 'images,videos',
+        language: 'en-US',
+        include_image_language: 'en,null',
       },
     })
-    .then(response => response.data)
+    .then(response => ({ ...response.data, media_type: mediaType }))
     .catch((e: Error | AxiosError) => {
       console.log('error: getByID()', e)
       throw e
@@ -186,7 +242,7 @@ const getMovieCollection = async (collectionId: number): Promise<Collection> => 
  * @param query string to search
  * @returns List of movies or tv shows based in the query provided in params
  */
-const searchByString = async (query: string): Promise<MediasType[]> => {
+const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
   const response = await axiosInstance
     .get<SearchResponse>('/search/multi', <SearchParams>{
       params: {
@@ -212,7 +268,9 @@ export default {
   getTrending,
   getPopular,
   getTopRated,
-  getUpcoming,
+  getMovieUpcoming,
+  getNowPlaying,
+  getRecommendations,
   getByID,
   getCast,
   getMovieCollection,

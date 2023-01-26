@@ -1,34 +1,33 @@
 import React from 'react'
 import { Linking, Text, TouchableOpacity, View } from 'react-native'
 import { NumericFormat } from 'react-number-format'
-
 import Collapsible from 'react-native-collapsible'
-
 import styles from '../MediaScreen.styles'
 import { colors } from '~/styles'
-import { convertMinsToTime } from '~/utils'
-import { MovieData } from '~/models'
+import { MediaFullType } from '~/models'
 
-const Description = ({ movieData }: { movieData: MovieData }) => {
+const Description = (data: Partial<MediaFullType>) => {
   const [isDetailsCollapsed, setIsDetailsCollapsed] = React.useState(true)
-  const { budget, revenue, homepage } = movieData
-  const runtime = React.useMemo(() => convertMinsToTime(movieData.runtime), [movieData.runtime])
+  const isMovie = data.media_type === 'movie'
 
-  const showCollapsible = React.useMemo(
-    () => !!budget || !!revenue || !!homepage || !!runtime,
-    [budget, homepage, revenue, runtime]
-  )
+  const budget = isMovie ? data.budget : null
+  const revenue = isMovie ? data.revenue : null
+  const homepage = isMovie ? data.homepage : null
+
+  const showCollapsible = !!budget || !!revenue || !!homepage
+
   return (
     <View>
       <View style={styles.content}>
-        {!!movieData.overview && <Text style={styles.overview}>{movieData.overview}</Text>}
+        {!!data.overview && <Text style={styles.overview}>{data.overview}</Text>}
         {!!showCollapsible && (
           <TouchableOpacity onPress={() => setIsDetailsCollapsed(!isDetailsCollapsed)}>
             <Text style={styles.textCollapsible}>Show more details</Text>
           </TouchableOpacity>
         )}
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+        {/* @ts-ignore: Collapsible bug, waiting a new version... */}
         <Collapsible collapsed={isDetailsCollapsed} style={styles.collapsible}>
-          <Text style={styles.tags}>Duration: {runtime}</Text>
           {!!budget && (
             <NumericFormat
               value={budget}
@@ -50,7 +49,9 @@ const Description = ({ movieData }: { movieData: MovieData }) => {
           {!!homepage && (
             <Text
               style={{ ...styles.tags, color: colors.primary }}
-              onPress={() => Linking.openURL(homepage)}
+              onPress={() => {
+                Linking.openURL(homepage)
+              }}
             >
               {homepage}
             </Text>
