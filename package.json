@@ -8,8 +8,11 @@
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint --fix . --ext .ts,.tsx",
-    "build": "cd android/ && ./gradlew assembleRelease && cd ..",
-    "build-and-install": "yarn build && adb install android/app/build/outputs/apk/release/app-release.apk",
+    "android-build-release": "cd android/ && ./gradlew assembleRelease && cd ..",
+    "android-build-debug": "cd android/ && ./gradlew assembleDebug && cd ..",
+    "android-install-release": "adb install android/app/build/outputs/apk/release/app-release.apk",
+    "android-install-debug": "adb install android/app/build/outputs/apk/debug/app-debug.apk",
+    "android-build-and-install": "yarn android-build-release && yarn android-install-release",
     "format": "prettier --write ./src",
     "clean": "react-native-clean-project"
   },
