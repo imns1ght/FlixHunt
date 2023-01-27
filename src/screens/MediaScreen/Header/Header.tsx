@@ -5,6 +5,8 @@ import { MovieFullType } from '~/models'
 import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
 import { Rating } from '~/components'
 import FastImage from 'react-native-fast-image'
+import CONSTANTS from '~/constants'
+import WatchButton from './WatchButton'
 
 type Props = Pick<
   MovieFullType,
@@ -16,6 +18,7 @@ type Props = Pick<
   | 'genres'
   | 'vote_average'
   | 'vote_count'
+  | 'watch_providers'
 >
 
 const Header = ({
@@ -27,6 +30,7 @@ const Header = ({
   genres,
   vote_average,
   vote_count,
+  watch_providers,
 }: Props) => {
   const releaseDate = new Date(release_date).toLocaleDateString()
   const genresFormated = arrToStringFormated(genres)
@@ -40,6 +44,7 @@ const Header = ({
 
     return getImagePath(filePath, backdropAvailable ? 'w1280' : 'w500')
   }
+  const watchLink = watch_providers?.results[CONSTANTS.region]?.link
 
   return (
     <ImageBackground
@@ -58,17 +63,20 @@ const Header = ({
           style={styles.image}
         />
         <View style={styles.tagsContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title} numberOfLines={3}>
-              {title}
-            </Text>
+          <View>
+            <View style={styles.titleContainer}>
+              <Text style={styles.title} numberOfLines={3}>
+                {title}
+              </Text>
+            </View>
+            <Text style={styles.tags}>{genresFormated}</Text>
+            <View style={styles.releaseRuntime}>
+              <Text style={styles.tags}>{releaseDate}</Text>
+              {!!runtime && <Text style={styles.tags}>{convertMinsToTime(runtime)}</Text>}
+            </View>
+            <Rating voteAverage={vote_average} voteCount={vote_count} />
           </View>
-          <Text style={styles.tags}>{genresFormated}</Text>
-          <View style={styles.releaseRuntime}>
-            <Text style={styles.tags}>{releaseDate}</Text>
-            {!!runtime && <Text style={styles.tags}>{convertMinsToTime(runtime)}</Text>}
-          </View>
-          <Rating voteAverage={vote_average} voteCount={vote_count} />
+          {!!watchLink && <WatchButton linkRedirect={watchLink} />}
         </View>
       </View>
     </ImageBackground>

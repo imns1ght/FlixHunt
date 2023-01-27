@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   tagsContainer: {
     flex: 1,
     paddingRight: 10,
+    justifyContent: 'space-between',
   },
   titleContainer: {
     marginBottom: 5,

@@ -43,7 +43,7 @@ const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
       params: {
         api_key: CONSTANTS.api_key,
         media_type: mediaType,
-        language: 'en-US',
+        language: CONSTANTS.language,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -60,7 +60,7 @@ const getTVShowAiringToday = async (): Promise<MediaSimpleType[]> => {
     .get<TrendingResponse>('/tv/airing_today', <TrendingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
+        language: CONSTANTS.language,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -83,7 +83,7 @@ const getTrending = async (
     .get<TrendingResponse>(`/trending/${mediaType}/${timePeriod}`, <TrendingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
+        language: CONSTANTS.language,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -103,7 +103,7 @@ const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> =>
     .get<MovieCreditsResponse>(`/${mediaType}/${id}/credits`, <MovieCreditsParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
+        language: CONSTANTS.language,
         movie_id: id,
       },
     })
@@ -121,7 +121,7 @@ const getRecommendations = async (id: number, mediaType: mediaType): Promise<Med
     .get<TopRatedResponse>(`/${mediaType}/${id}/recommendations`, <BasicParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
+        language: CONSTANTS.language,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 10))
@@ -144,7 +144,7 @@ const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSi
     .get<TopRatedResponse>(`/${mediaType}/top_rated`, <TopRatedParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
+        language: CONSTANTS.language,
         page: page,
       },
     })
@@ -168,8 +168,8 @@ const getMovieUpcoming = async (): Promise<MovieSimpleType[]> => {
     .get<UpcomingResponse>('/movie/upcoming', <UpcomingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
-        region: 'US',
+        language: CONSTANTS.language,
+        region: CONSTANTS.region,
       },
     })
     .then(response => {
@@ -196,8 +196,8 @@ const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
     .get<UpcomingResponse>('/movie/now_playing', <UpcomingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
-        region: 'US',
+        language: CONSTANTS.language,
+        region: CONSTANTS.region,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -216,17 +216,24 @@ const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
  * @returns Media with the id provided in the param
  */
 const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType> => {
-  const response = axiosInstance
+  const response = await axiosInstance
     .get<MediaFullType>(`/${mediaType}/${id}`, <MovieParams | TVParams>{
       params: {
         api_key: CONSTANTS.api_key,
         movie_id: id,
-        append_to_response: 'images,videos',
-        language: 'en-US',
+        append_to_response: 'images,videos,watch/providers',
+        language: CONSTANTS.language,
+        region: CONSTANTS.region,
         include_image_language: 'en,null',
       },
     })
-    .then(response => ({ ...response.data, media_type: mediaType }))
+    .then(response => ({
+      ...response.data,
+      media_type: mediaType,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      watch_providers: response.data['watch/providers'],
+    }))
     .catch((e: Error | AxiosError) => {
       console.log('error: getByID()', e)
       throw e
@@ -240,7 +247,7 @@ const getMovieCollection = async (collectionId: number): Promise<Collection> => 
     .get<Collection>(`/collection/${collectionId}`, <MovieParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
+        language: CONSTANTS.language,
         collection_id: collectionId,
       },
     })
@@ -264,7 +271,7 @@ const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
     .get<SearchResponse>('/search/multi', <SearchParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: 'en-US',
+        language: CONSTANTS.language,
         query: query,
       },
     })

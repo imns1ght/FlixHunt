@@ -21,7 +21,7 @@ const Description = (data: Partial<MediaFullType>) => {
       {!!data.overview && <Text style={styles.overview}>{data.overview}</Text>}
       {!!showCollapsible && (
         <TouchableOpacity onPress={() => setIsDetailsCollapsed(!isDetailsCollapsed)}>
-          <Text style={styles.textCollapsible}>Show more details</Text>
+          <Text style={styles.textCollapsible}>Show more details...</Text>
         </TouchableOpacity>
       )}
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}

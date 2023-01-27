@@ -25,66 +25,40 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
   }, [fetchData])
 
   const Content = ({ data }: { data: MediaFullType }) => {
-    let components
     const showImages = data.images.backdrops.length > 0
     const showVideos = data.videos.results.length > 0
+    const isMovie = data.media_type === 'movie'
 
-    if (data.media_type === 'movie') {
-      components = (
-        <View>
-          <Header
-            title={data.title}
-            genres={data.genres}
-            images={data.images}
-            poster_path={data.poster_path}
-            release_date={data.release_date}
-            runtime={data.runtime}
-            vote_average={data.vote_average}
-            vote_count={data.vote_count}
-          />
-          <Description
-            budget={data.budget}
-            revenue={data.revenue}
-            homepage={data.homepage}
-            runtime={data.runtime}
-            overview={data.overview}
-            media_type={data.media_type}
-          />
-          {showImages && <ImagesCarousel images={data.images.backdrops} />}
-          {showVideos && <VideosCarousel videos={data.videos.results} />}
-          <Cast id={data.id} mediaType={mediaType} />
-          {!!data.belongs_to_collection && (
-            <Related id={data.id} collectionId={data.belongs_to_collection.id} />
-          )}
-          <CardCarousel id={data.id} mediaType={data.media_type} type='recommendations' />
-        </View>
-      )
-    } else {
-      components = (
-        <View>
-          <Header
-            title={data.name}
-            genres={data.genres}
-            images={data.images}
-            poster_path={data.poster_path}
-            release_date={data.first_air_date}
-            vote_average={data.vote_average}
-            vote_count={data.vote_count}
-          />
-          <Description
-            homepage={data.homepage}
-            overview={data.overview}
-            media_type={data.media_type}
-          />
-          {showImages && <ImagesCarousel images={data.images.backdrops} />}
-          {showVideos && <VideosCarousel videos={data.videos.results} />}
-          <Cast id={data.id} mediaType={mediaType} />
-          <CardCarousel id={data.id} mediaType={data.media_type} type='recommendations' />
-        </View>
-      )
-    }
-
-    return components
+    return (
+      <View>
+        <Header
+          title={isMovie ? data.title : data.name}
+          genres={data.genres}
+          images={data.images}
+          poster_path={data.poster_path}
+          release_date={isMovie ? data.release_date : data.first_air_date}
+          runtime={isMovie ? data.runtime : null}
+          vote_average={data.vote_average}
+          vote_count={data.vote_count}
+          watch_providers={data.watch_providers}
+        />
+        <Description
+          budget={isMovie ? data.budget : undefined}
+          revenue={isMovie ? data.revenue : undefined}
+          homepage={data.homepage}
+          runtime={isMovie ? data.runtime : null}
+          overview={data.overview}
+          media_type={data.media_type}
+        />
+        {showImages && <ImagesCarousel images={data.images.backdrops} />}
+        {showVideos && <VideosCarousel videos={data.videos.results} />}
+        <Cast id={data.id} mediaType={mediaType} />
+        {isMovie && !!data.belongs_to_collection && (
+          <Related id={data.id} collectionId={data.belongs_to_collection.id} />
+        )}
+        <CardCarousel id={data.id} mediaType={data.media_type} type='recommendations' />
+      </View>
+    )
   }
 
   return (

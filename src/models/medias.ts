@@ -6,6 +6,7 @@ import { ProductionCountries } from './production-countries'
 import SpokenLanguages from './spoken_languages'
 import { Season } from './tv'
 import { VideoType } from './videos'
+import { WatchProvidersType } from './watchProvider'
 
 export type MovieMediaType = 'movie'
 export type TVMediaType = 'tv'
@@ -28,6 +29,7 @@ export type MovieSimpleType = {
   video: boolean
   vote_average: number
   vote_count: number
+  watch_providers?: WatchProvidersType
 }
 
 export type TVSimpleType = {
@@ -47,6 +49,7 @@ export type TVSimpleType = {
   video: boolean
   vote_average: number
   vote_count: number
+  watch_providers?: WatchProvidersType
 }
 
 export type MovieFullType = MovieSimpleType & {
