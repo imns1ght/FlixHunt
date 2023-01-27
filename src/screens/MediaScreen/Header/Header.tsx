@@ -1,9 +1,10 @@
-import { Image, ImageBackground, Text, View } from 'react-native'
+import { ImageBackground, Text, View } from 'react-native'
 import React from 'react'
 import styles from '../MediaScreen.styles'
 import { MovieFullType } from '~/models'
 import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
 import { Rating } from '~/components'
+import FastImage from 'react-native-fast-image'
 
 type Props = Pick<
   MovieFullType,
@@ -50,7 +51,7 @@ const Header = ({
       blurRadius={8}
     >
       <View style={styles.titleWithImage}>
-        <Image
+        <FastImage
           source={{
             uri: posterPath,
           }}

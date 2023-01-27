@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
   errorMessage: {
-    color: colors.error,
+    color: colors.white,
     fontSize: 20,
   },
 })

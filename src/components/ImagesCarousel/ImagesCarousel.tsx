@@ -1,11 +1,12 @@
 import React from 'react'
-import { ActivityIndicator, Image, Pressable, View } from 'react-native'
+import { ActivityIndicator, Pressable, View } from 'react-native'
 import Modal from 'react-native-modal'
 import { ImageType } from '~/models'
 import { getImagePath } from '~/utils'
 import { Section } from '~/components'
 import styles from './ImagesCarousel.styles'
 import { FlatList } from 'react-native-gesture-handler'
+import FastImage from 'react-native-fast-image'
 
 const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
   const [showModal, setShowModal] = React.useState(false)
@@ -21,7 +22,7 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
         }}
       >
         <View style={styles.imageContainer}>
-          <Image
+          <FastImage
             key={item.file_path}
             source={{
               uri: getImagePath(item.file_path, 'w780'),
@@ -38,11 +39,11 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
     <>
       <Section title='Images' removeMargin>
         <FlatList
+          keyExtractor={key => key.file_path}
           data={images}
           renderItem={renderItem}
           initialNumToRender={2}
           maxToRenderPerBatch={3}
-          removeClippedSubviews
           horizontal
         />
       </Section>
@@ -54,7 +55,7 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
           hasBackdrop={true}
           style={styles.modal}
         >
-          <Image
+          <FastImage
             source={{
               uri: getImagePath(selectedImage?.file_path ?? '', 'w1280'),
             }}

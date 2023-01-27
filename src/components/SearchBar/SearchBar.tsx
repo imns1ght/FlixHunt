@@ -14,7 +14,7 @@ const SearchBar = () => {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <Icon name='search' style={styles.searchIcon} size={15} color={colors.gray} />
+        <Icon name='search' style={styles.searchIcon} size={18} color={colors.gray} />
         <TextInput
           value={searchText}
           onChangeText={setSearchText}
@@ -29,7 +29,7 @@ const SearchBar = () => {
             onPress={() => setSearchText('')}
             style={styles.closeIcon}
             color={colors.gray}
-            size={15}
+            size={18}
           />
         )}
       </View>

@@ -37,14 +37,22 @@ const SearchContextProvider = ({ children }: { children: React.ReactNode }) => {
     return unsubscribe
   }, [navigation, showSearchBar])
 
-  const fetchSearchResults = React.useCallback(async (searchText: string) => {
+  const fetchData = React.useCallback(async (searchText: string) => {
     const response = await API.searchByString(searchText)
     setSearchResults(response)
   }, [])
 
   React.useEffect(() => {
-    if (searchText) fetchSearchResults(searchText)
-  }, [fetchSearchResults, searchText])
+    if (searchText) {
+      const getData = setTimeout(() => {
+        fetchData(searchText)
+      }, 600)
+
+      return () => clearTimeout(getData)
+    } else {
+      setSearchResults(undefined)
+    }
+  }, [fetchData, searchText])
 
   return (
     <SearchContext.Provider

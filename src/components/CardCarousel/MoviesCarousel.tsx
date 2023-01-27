@@ -31,6 +31,12 @@ const CardCarousel = ({ type, mediaType }: { type: CarouselTypes; mediaType: med
     fetchData()
   }, [fetchData])
 
+  const renderItem = React.useCallback(
+    ({ item }: { item: MediaSimpleType }) =>
+      item.poster_path ? <Card item={item} mediaType={item.media_type ?? mediaType} /> : null,
+    [mediaType]
+  )
+
   return (
     <Section title={titles[type]}>
       {loading ? (
@@ -39,14 +45,11 @@ const CardCarousel = ({ type, mediaType }: { type: CarouselTypes; mediaType: med
         <Text style={styles.errorMessage}>Failed to fetch</Text>
       ) : (
         <FlatList
-          keyExtractor={(key, index) => `${key.id.toString()}${index}`}
+          keyExtractor={key => key.id.toString()}
           data={moviesData}
-          renderItem={({ item, index }) =>
-            item.poster_path ? <Card item={item} index={index} mediaType={mediaType} /> : null
-          }
+          renderItem={renderItem}
           initialNumToRender={5}
           maxToRenderPerBatch={5}
-          removeClippedSubviews
           horizontal
         />
       )}

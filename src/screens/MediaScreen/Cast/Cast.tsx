@@ -51,11 +51,11 @@ const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
       ) : (
         <FlatList
           data={data}
+          keyExtractor={key => key.id.toString()}
           renderItem={renderItem}
-          initialNumToRender={2}
-          maxToRenderPerBatch={2}
+          initialNumToRender={3}
+          maxToRenderPerBatch={3}
           ListEmptyComponent={<Text style={styles.errorMessage}>Nothing to see here...</Text>}
-          removeClippedSubviews
           horizontal
         />
       )}

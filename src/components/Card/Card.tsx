@@ -9,14 +9,12 @@ import { mediaType } from '~/models'
 
 const Card = ({
   item,
-  index,
   mediaType,
   cardTitle,
   cardSubtitle,
   disabled = false,
 }: {
   item: MediaSimpleType
-  index: number
   mediaType: mediaType
   disabled?: boolean
   cardTitle?: string
@@ -36,7 +34,7 @@ const Card = ({
 
   return (
     <TouchableHighlight
-      key={index}
+      key={item.id}
       onPress={onPress}
       activeOpacity={0.8}
       style={{ ...styles.card, ...(disabled ? styles.disabledCard : {}) }}

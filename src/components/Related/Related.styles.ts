@@ -3,7 +3,7 @@ import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   errorMessage: {
-    color: colors.error,
+    color: colors.white,
     fontSize: 20,
   },
 })

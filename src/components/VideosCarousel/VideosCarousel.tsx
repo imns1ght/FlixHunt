@@ -1,6 +1,6 @@
 import React from 'react'
-import { FlatList, Pressable, View } from 'react-native'
-import YoutubePlayer from 'react-native-youtube-iframe'
+import { ActivityIndicator, FlatList, Pressable, View } from 'react-native'
+const YoutubePlayer = React.lazy(() => import('react-native-youtube-iframe'))
 import Modal from 'react-native-modal'
 import { Section } from '~/components'
 import { VideoType } from '~/models'
@@ -31,12 +31,14 @@ const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
         }}
       >
         <View style={styles.videoContainer} pointerEvents='none'>
-          <YoutubePlayer
-            key={item.key}
-            height={styles.youtubePlayer.height}
-            play={false}
-            videoId={item.key}
-          />
+          <React.Suspense fallback={<ActivityIndicator size='large' />}>
+            <YoutubePlayer
+              key={item.key}
+              height={styles.youtubePlayer.height}
+              play={false}
+              videoId={item.key}
+            />
+          </React.Suspense>
         </View>
       </Pressable>
     ),
@@ -47,28 +49,33 @@ const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
     <>
       <Section title='Videos' removeMargin>
         <FlatList
+          keyExtractor={key => key.id.toString()}
           data={videosSortedByTrailerFirst}
           renderItem={renderItem}
-          maxToRenderPerBatch={2}
           initialNumToRender={1}
+          maxToRenderPerBatch={1}
           horizontal
         />
       </Section>
-      <Modal
-        hasBackdrop={true}
-        isVisible={showModal}
-        onBackdropPress={closeModal}
-        onBackButtonPress={closeModal}
-        style={styles.modal}
-      >
-        <View style={styles.modalVideoContainer}>
-          <YoutubePlayer
-            height={styles.modalYoutubePlayer.height}
-            play={true}
-            videoId={selectedVideo?.key}
-          />
-        </View>
-      </Modal>
+      {showModal && (
+        <Modal
+          hasBackdrop={true}
+          isVisible={showModal}
+          onBackdropPress={closeModal}
+          onBackButtonPress={closeModal}
+          style={styles.modal}
+        >
+          <View style={styles.modalVideoContainer}>
+            <React.Suspense fallback={<ActivityIndicator size='large' />}>
+              <YoutubePlayer
+                height={styles.modalYoutubePlayer.height}
+                play={true}
+                videoId={selectedVideo?.key}
+              />
+            </React.Suspense>
+          </View>
+        </Modal>
+      )}
     </>
   )
 }

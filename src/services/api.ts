@@ -271,7 +271,7 @@ const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
     .then(response =>
       response.data.results
         .filter(({ media_type }) => media_type === 'tv' || media_type === 'movie')
-        .filter(item => !!item.overview)
+        .filter(item => !!item.overview && !!item.poster_path)
     )
     .catch((e: Error | AxiosError) => {
       console.log('error: searchByString()', e)

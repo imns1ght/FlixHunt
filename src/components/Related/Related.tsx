@@ -1,7 +1,7 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
 import { Card, Section } from '~/components'
-import { Collection } from '~/models'
+import { Collection, MediaSimpleType } from '~/models'
 import { API } from '~/services'
 import styles from './Related.styles'
 
@@ -20,6 +20,12 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
     fetchMovies()
   }, [fetchMovies])
 
+  const renderItem = React.useCallback(
+    ({ item }: { item: MediaSimpleType }) =>
+      item.poster_path ? <Card item={item} disabled={id === item.id} mediaType={'movie'} /> : null,
+    [id]
+  )
+
   return (
     <Section title={collectionData?.name ?? 'Related'}>
       {loading ? (
@@ -28,16 +34,11 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
         <Text style={styles.errorMessage}>Failed to fetch data</Text>
       ) : (
         <FlatList
-          keyExtractor={(key, index) => `${key.id.toString()}${index}`}
+          keyExtractor={key => key.id.toString()}
           data={collectionData.parts}
-          renderItem={({ item, index }) =>
-            item.poster_path ? (
-              <Card item={item} index={index} disabled={id === item.id} mediaType={'movie'} />
-            ) : null
-          }
+          renderItem={renderItem}
           initialNumToRender={5}
           maxToRenderPerBatch={5}
-          removeClippedSubviews
           horizontal
         />
       )}

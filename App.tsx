@@ -30,6 +30,7 @@ const App = () => (
             name='Media'
             component={MediaScreen}
             getId={({ params }) => `${params.id}`}
+            options={{ animationEnabled: false }}
           />
         </Stack.Navigator>
       </SafeAreaView>
