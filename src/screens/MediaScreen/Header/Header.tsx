@@ -59,7 +59,9 @@ const Header = ({
         />
         <View style={styles.tagsContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.title} numberOfLines={3}>
+              {title}
+            </Text>
           </View>
           <Text style={styles.tags}>{genresFormated}</Text>
           <View style={styles.releaseRuntime}>
