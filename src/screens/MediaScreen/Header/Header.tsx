@@ -3,14 +3,31 @@ import React from 'react'
 import styles from '../MediaScreen.styles'
 import { MovieFullType } from '~/models'
 import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
+import { Rating } from '~/components'
 
 type Props = Pick<
   MovieFullType,
-  'tagline' | 'title' | 'poster_path' | 'release_date' | 'images' | 'runtime' | 'genres'
+  | 'title'
+  | 'poster_path'
+  | 'release_date'
+  | 'images'
+  | 'runtime'
+  | 'genres'
+  | 'vote_average'
+  | 'vote_count'
 >
 
-const Header = ({ tagline, title, poster_path, images, runtime, release_date, genres }: Props) => {
-  const releaseDate = new Date(release_date).toLocaleDateString().slice(3)
+const Header = ({
+  title,
+  poster_path,
+  images,
+  runtime,
+  release_date,
+  genres,
+  vote_average,
+  vote_count,
+}: Props) => {
+  const releaseDate = new Date(release_date).toLocaleDateString()
   const genresFormated = arrToStringFormated(genres)
   const posterPath = getImagePath(poster_path, 'w500')
 
@@ -42,15 +59,13 @@ const Header = ({ tagline, title, poster_path, images, runtime, release_date, ge
         <View style={styles.tagsContainer}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{title}</Text>
-            {!!tagline && <Text style={styles.subtitle}>{tagline}</Text>}
           </View>
-          <View>
-            <Text style={styles.tags}>{genresFormated}</Text>
-            <View style={{ flexDirection: 'row', columnGap: 10 }}>
-              <Text style={styles.tags}>{releaseDate}</Text>
-              {!!runtime && <Text style={styles.tags}>{convertMinsToTime(runtime)}</Text>}
-            </View>
+          <Text style={styles.tags}>{genresFormated}</Text>
+          <View style={styles.releaseRuntime}>
+            <Text style={styles.tags}>{releaseDate}</Text>
+            {!!runtime && <Text style={styles.tags}>{convertMinsToTime(runtime)}</Text>}
           </View>
+          <Rating voteAverage={vote_average} voteCount={vote_count} />
         </View>
       </View>
     </ImageBackground>

@@ -5,11 +5,14 @@ import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProps } from '~/navigation'
 import styles from './HorizontalCard.styles'
 import CONSTANTS from '~/constants'
+import { Rating } from '..'
 
 const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
   const navigation = useNavigation<StackNavigationProps>()
   const isMovie = data.media_type === 'movie' || data.media_type === undefined
-  const releaseData = new Date(isMovie ? data.release_date : data.first_air_date).toDateString()
+  const releaseData = new Date(
+    isMovie ? data.release_date : data.first_air_date
+  ).toLocaleDateString()
 
   const handlePress = () => {
     navigation.navigate('Media', {
@@ -28,13 +31,16 @@ const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
         style={styles.image}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.title} numberOfLines={1}>
+        <Text style={styles.title} numberOfLines={2}>
           {isMovie ? data.title : data.name}
         </Text>
-        <Text style={styles.overview} numberOfLines={3}>
-          {data.overview}
-        </Text>
-        <Text style={styles.tags}>{releaseData}</Text>
+        <View style={styles.tagsContainer}>
+          <Text style={styles.overview} numberOfLines={2}>
+            {data.overview}
+          </Text>
+          <Text style={styles.tags}>{releaseData}</Text>
+          <Rating voteAverage={data.vote_average} voteCount={data.vote_count} />
+        </View>
       </View>
     </TouchableOpacity>
   )

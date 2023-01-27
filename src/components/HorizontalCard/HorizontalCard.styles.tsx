@@ -3,20 +3,29 @@ import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
     flexDirection: 'row',
-    marginVertical: 10,
+    backgroundColor: colors.darkGray + '05',
+    borderColor: colors.black + '10',
+    borderWidth: 2,
+    borderRadius: 5,
+    marginVertical: 5,
+    paddingHorizontal: 2,
+    paddingVertical: 5,
   },
   image: {
     height: 150,
     width: 100,
     resizeMode: 'contain',
-    borderRadius: 5,
+    borderRadius: 2,
     marginRight: 5,
   },
   textContainer: {
     flex: 1,
-    paddingHorizontal: 10,
+    marginLeft: 5,
+    marginRight: 10,
+  },
+  tagsContainer: {
+    rowGap: 5,
   },
   title: {
     fontSize: 24,
@@ -26,7 +35,6 @@ const styles = StyleSheet.create({
   overview: {
     fontSize: 16,
     color: colors.white,
-    marginBottom: 10,
   },
   tags: {
     fontSize: 16,

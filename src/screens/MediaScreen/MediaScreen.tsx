@@ -8,7 +8,6 @@ import { NavigationScreenProps } from '~/navigation'
 import { API } from '~/services'
 import { CardCarousel, ImagesCarousel, Related, VideosCarousel } from '~/components'
 import { MediaFullType } from '~/models'
-import { getImagePath } from '~/utils'
 
 const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
   const { id, mediaType } = route.params
@@ -40,7 +39,8 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
             poster_path={data.poster_path}
             release_date={data.release_date}
             runtime={data.runtime}
-            tagline={data.tagline}
+            vote_average={data.vote_average}
+            vote_count={data.vote_count}
           />
           <Description
             budget={data.budget}
@@ -60,7 +60,6 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
         </View>
       )
     } else {
-      console.log(getImagePath(data.seasons[0].poster_path))
       components = (
         <View>
           <Header
@@ -69,7 +68,8 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
             images={data.images}
             poster_path={data.poster_path}
             release_date={data.first_air_date}
-            tagline={data.tagline}
+            vote_average={data.vote_average}
+            vote_count={data.vote_count}
           />
           <Description
             homepage={data.homepage}

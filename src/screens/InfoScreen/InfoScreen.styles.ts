@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.white,
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 10,
   },
   link: {
     color: colors.white,
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 10,
     fontWeight: 'bold',
   },

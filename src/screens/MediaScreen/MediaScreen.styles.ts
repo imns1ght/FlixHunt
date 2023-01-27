@@ -28,16 +28,13 @@ const styles = StyleSheet.create({
   },
   titleWithImage: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-  },
-  titleContainer: {
-    marginBottom: 10,
   },
   tagsContainer: {
     flex: 1,
-    justifyContent: 'space-around',
-    marginRight: 10,
-    paddingVertical: 10,
+    paddingRight: 10,
+  },
+  titleContainer: {
+    marginBottom: 5,
   },
   content: {
     marginHorizontal: 10,
@@ -69,6 +66,10 @@ const styles = StyleSheet.create({
   textCollapsible: {
     fontSize: 16,
     color: colors.gray,
+  },
+  releaseRuntime: {
+    flexDirection: 'row',
+    columnGap: 15,
   },
 })
 
