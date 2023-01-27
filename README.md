@@ -1,16 +1,20 @@
 # Movie Browser
 
-Movie Browser is an app for you to find a good movie or TV show to watch! The Movie Browser uses [React Native](https://reactnative.dev/), [TypeScript](https://www.typescriptlang.org/). The data comes from the [TMDb API](https://developers.themoviedb.org/3) using [Axios](https://github.com/axios/axios).
+Welcome to Movie Browser, your app for finding the perfect film or series to watch! Built with [React Native](https://reactnative.dev/) and [TypeScript](https://www.typescriptlang.org/), this app allows you to search for movies and TV shows by title, view detailed information about them, and browse popular and upcoming releases. The data is sourced from the [TMDb API](https://developers.themoviedb.org/3).
 
-### [Click here to download](https://github.com/imns1ght/movie-browser/releases)
+[Download the app](https://github.com/imns1ght/movie-browser/releases)
 
-## Features (outdated!!!)
+## Features
 
-https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-83d3-3bbb1c901301.mp4
+- Search for movies and TV shows by title
+- View detailed information about a movie or TV show, including release date, cast, and plot summary
+- Browse popular movies and TV shows and upcoming releases
 
-## Running
+<https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-83d3-3bbb1c901301.mp4>
 
-### Requirements
+## Running the App
+
+To run the app, you'll need to have the following installed on your development machine and have the [environment of React Native configured](https://reactnative.dev/docs/environment-setup):
 
 - JDK
 - Node.js LTS release or greater
@@ -18,15 +22,7 @@ https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-
 - Git
 - Watchman
 
-### Documentation
-
-- [React Native](https://reactnative.dev/docs/environment-setup)
-
-### Quick running
-
-Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.yarnpkg.com/en/docs/install#alternatives-stable), Watchman, and [NodeJS LTS](https://nodejs.org/en/), we can follow:
-
-1. Download the project and go to the root directory
+1. Clone the repository and navigate to the root directory:
 
    ```bash
    git clone https://github.com/imns1ght/movie-browser && cd movie-browser/
@@ -38,37 +34,41 @@ Assuming you have installed [Git](https://git-scm.com/), [Yarn](https://classic.
    yarn install && cd ios/ && pod install && cd ..
    ```
 
+3. [Generate a new `TMDb API_KEY`](https://www.themoviedb.org/documentation/api) and add it to the `.env` file:
 
-3. Runnning
+   ```env
+   API_KEY='<insert-your-api-key-here'
+   ```
 
-   1. Start the server
-      ```sh
-      yarn start
-      ```
-   2. Start the app
-      ```sh
-      yarn android
-      ```
-      ```sh
-      yarn ios
-      ```
+4. Start the server
 
-## TODO
+   ```sh
+   yarn start
+   ```
 
-- [ ] Accessibility
-- [ ] Allow users to signup;
-- [ ] Create unit tests;
-- [x] Create APK and share with users.
+5. Start the app
+
+   ```sh
+   yarn android
+   ```
+
+   ```sh
+   yarn ios
+   ```
 
 ## Contributing
 
-You are welcome! Create the pull requests.
+If you'd like to contribute to this project, please fork the repository and submit a pull request. We appreciate your help in making Movie Browser better for everyone.
 
-For major changes, please, open an issue first to discuss what you would like to change.
+## Acknowledgements
+
+- [The Movie Database API](https://developers.themoviedb.org/3) for providing movie and TV show data
+- [React Native](https://reactnative.dev/) for powering the application
 
 ## Support
 
-- [Twitter @imns1ght](https://twitter.com/imns1ght) | [E-mail](mailto:jeffersonbrunoit@gmail.com)
+- [Twitter @imns1ght](https://twitter.com/imns1ght)
+- [E-mail](mailto:jeffersonbrunoit@gmail.com)
 
 ## License
 
