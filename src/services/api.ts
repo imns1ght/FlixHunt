@@ -21,6 +21,7 @@ import {
   UpcomingResponse,
   mediaType,
 } from '~/models'
+import { DEFAULT_LANGUAGE_CODE, LANGUAGE, LANGUAGE_CODE, REGION } from './localization'
 
 // Used in requests
 const axiosInstance = axios.create({
@@ -43,7 +44,8 @@ const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
       params: {
         api_key: CONSTANTS.api_key,
         media_type: mediaType,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
+        region: REGION,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -60,7 +62,7 @@ const getTVShowAiringToday = async (): Promise<MediaSimpleType[]> => {
     .get<TrendingResponse>('/tv/airing_today', <TrendingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -83,7 +85,7 @@ const getTrending = async (
     .get<TrendingResponse>(`/trending/${mediaType}/${timePeriod}`, <TrendingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -103,7 +105,7 @@ const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> =>
     .get<MovieCreditsResponse>(`/${mediaType}/${id}/credits`, <MovieCreditsParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
         movie_id: id,
       },
     })
@@ -121,7 +123,7 @@ const getRecommendations = async (id: number, mediaType: mediaType): Promise<Med
     .get<TopRatedResponse>(`/${mediaType}/${id}/recommendations`, <BasicParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 10))
@@ -144,7 +146,8 @@ const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSi
     .get<TopRatedResponse>(`/${mediaType}/top_rated`, <TopRatedParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
+        region: REGION,
         page: page,
       },
     })
@@ -168,15 +171,16 @@ const getMovieUpcoming = async (): Promise<MovieSimpleType[]> => {
     .get<UpcomingResponse>('/movie/upcoming', <UpcomingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
-        region: CONSTANTS.region,
+        language: LANGUAGE,
+        region: REGION,
       },
     })
     .then(response => {
-      const filtered = response.data.results.filter(
+      const filteredByDate = response.data.results.filter(
         movie => new Date(movie.release_date).getTime() >= new Date().getTime()
       )
-      const sortedDec = filtered.sort(
+      const filteredFinal = filteredByDate.filter(movie => !!movie.overview && !!movie.poster_path)
+      const sortedDec = filteredFinal.sort(
         (a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime()
       )
       const sliced = sortedDec.slice(0, 10)
@@ -196,8 +200,8 @@ const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
     .get<UpcomingResponse>('/movie/now_playing', <UpcomingParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
-        region: CONSTANTS.region,
+        language: LANGUAGE,
+        region: REGION,
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
@@ -222,9 +226,10 @@ const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType>
         api_key: CONSTANTS.api_key,
         movie_id: id,
         append_to_response: 'images,videos,watch/providers',
-        language: CONSTANTS.language,
-        region: CONSTANTS.region,
-        include_image_language: 'en,null',
+        language: LANGUAGE,
+        region: REGION,
+        include_image_language: `${LANGUAGE_CODE},${DEFAULT_LANGUAGE_CODE},null`,
+        include_video_language: `${LANGUAGE_CODE},${DEFAULT_LANGUAGE_CODE},null`,
       },
     })
     .then(response => ({
@@ -247,7 +252,7 @@ const getMovieCollection = async (collectionId: number): Promise<Collection> => 
     .get<Collection>(`/collection/${collectionId}`, <MovieParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
         collection_id: collectionId,
       },
     })
@@ -271,7 +276,7 @@ const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
     .get<SearchResponse>('/search/multi', <SearchParams>{
       params: {
         api_key: CONSTANTS.api_key,
-        language: CONSTANTS.language,
+        language: LANGUAGE,
         query: query,
       },
     })

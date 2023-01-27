@@ -4,8 +4,6 @@ const CONSTANTS = {
   api_base_url: 'https://api.themoviedb.org/3',
   api_image_url: 'https://image.tmdb.org/t/p',
   api_key: API_KEY,
-  region: 'US',
-  language: 'en-US',
 }
 
 export default CONSTANTS

@@ -5,8 +5,8 @@ import { MovieFullType } from '~/models'
 import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
 import { Rating } from '~/components'
 import FastImage from 'react-native-fast-image'
-import CONSTANTS from '~/constants'
 import WatchButton from './WatchButton'
+import { DEFAULT_REGION, REGION } from '~/services'
 
 type Props = Pick<
   MovieFullType,
@@ -44,7 +44,8 @@ const Header = ({
 
     return getImagePath(filePath, backdropAvailable ? 'w1280' : 'w500')
   }
-  const watchLink = watch_providers?.results[CONSTANTS.region]?.link
+  const watchLink =
+    watch_providers?.results[REGION]?.link ?? watch_providers?.results[DEFAULT_REGION]?.link
 
   return (
     <ImageBackground
