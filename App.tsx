@@ -7,6 +7,19 @@ import { Header, NavBar } from '~/components'
 import { HomeScreen, InfoScreen, MediaScreen, MoviesScreen, TVShowsScreen } from '~/screens'
 import { Stack, Tab } from '~/navigation'
 import { theme } from '~/styles'
+import { TransitionSpec } from '@react-navigation/stack/lib/typescript/src/types'
+
+const animationConfig: TransitionSpec = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+}
 
 const BottomBar = () => (
   <Tab.Navigator screenOptions={NavBar}>
@@ -30,6 +43,12 @@ const App = () => (
             name='Media'
             component={MediaScreen}
             getId={({ params }) => `${params.id}`}
+            options={{
+              transitionSpec: {
+                open: animationConfig,
+                close: animationConfig,
+              },
+            }}
           />
         </Stack.Navigator>
       </SafeAreaView>
