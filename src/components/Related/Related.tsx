@@ -38,6 +38,7 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
           renderItem={renderItem}
           initialNumToRender={5}
           maxToRenderPerBatch={5}
+          showsHorizontalScrollIndicator={false}
           horizontal
         />
       )}

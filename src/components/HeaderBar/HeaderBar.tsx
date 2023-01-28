@@ -4,12 +4,12 @@ import { StackHeaderProps } from '@react-navigation/stack'
 import { useNavigation } from '@react-navigation/native'
 import IconButton from '../IconButton'
 import { colors } from '~/styles'
-import styles from './Header.styles'
+import styles from './HeaderBar.styles'
 import { SearchBar } from '~/components'
 import { SearchContext } from '~/contexts'
 import { TabNavigationProps } from '~/navigation'
 
-const Header = (props: StackHeaderProps) => {
+const HeaderBar = (props: StackHeaderProps) => {
   const { showSearchBar, setShowSearchBar } = useContext(SearchContext)
   const navigation = useNavigation<TabNavigationProps>()
   const iconSize = 25
@@ -46,4 +46,4 @@ const Header = (props: StackHeaderProps) => {
   )
 }
 
-export default React.memo(Header)
+export default HeaderBar

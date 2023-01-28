@@ -56,6 +56,7 @@ const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
           initialNumToRender={3}
           maxToRenderPerBatch={3}
           ListEmptyComponent={<CustomText type='paragraph'>Nothing to see here...</CustomText>}
+          showsHorizontalScrollIndicator={false}
           horizontal
         />
       )}

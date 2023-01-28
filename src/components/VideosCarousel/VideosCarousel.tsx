@@ -60,6 +60,7 @@ const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
         ) : (
           <FlatList
             keyExtractor={key => key.id.toString()}
+            showsHorizontalScrollIndicator={false}
             data={videosSortedByTrailerFirst}
             renderItem={renderItem}
             initialNumToRender={1}

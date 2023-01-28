@@ -3,7 +3,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { SearchContextProvider } from '~/contexts/'
-import { Header, NavBar } from '~/components'
+import { HeaderBar, NavBar } from '~/components'
 import { HomeScreen, InfoScreen, MediaScreen, MoviesScreen, TVShowsScreen } from '~/screens'
 import { Stack, Tab } from '~/navigation'
 import { theme } from '~/styles'
@@ -36,7 +36,7 @@ const App = () => (
       <SafeAreaView style={{ flex: 1 }}>
         <Stack.Navigator
           initialRouteName='BottomBar'
-          screenOptions={{ header: props => <Header {...props} /> }}
+          screenOptions={{ header: props => <HeaderBar {...props} /> }}
         >
           <Stack.Screen name='BottomBar' component={BottomBar} />
           <Stack.Screen

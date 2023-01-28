@@ -77,6 +77,7 @@ const CardCarousel = ({
           ListEmptyComponent={<CustomText type='paragraph'>Nothing to see here...</CustomText>}
           initialNumToRender={3}
           maxToRenderPerBatch={5}
+          showsHorizontalScrollIndicator={false}
           horizontal
         />
       )}

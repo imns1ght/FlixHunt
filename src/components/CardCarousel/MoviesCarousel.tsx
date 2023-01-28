@@ -49,6 +49,7 @@ const CardCarousel = ({ type, mediaType }: { type: CarouselTypes; mediaType: med
           renderItem={renderItem}
           initialNumToRender={5}
           maxToRenderPerBatch={5}
+          showsHorizontalScrollIndicator={false}
           horizontal
         />
       )}
