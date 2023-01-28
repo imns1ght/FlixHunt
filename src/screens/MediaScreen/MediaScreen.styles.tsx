@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   detailsContainer: {
+    flex: 1,
     rowGap: 2,
   },
   titleContainer: {
