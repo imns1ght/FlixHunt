@@ -1,8 +1,8 @@
 import React from 'react'
-import { ActivityIndicator, FlatList, ImageBackground, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, ImageBackground, View } from 'react-native'
 import { API } from '~/services'
 import styles from './Cast.styles'
-import { Section } from '~/components'
+import { CustomText, Section } from '~/components'
 import { getImagePath } from '~/utils'
 import { mediaType } from '~/models'
 import { CastType } from '~/models'
@@ -31,12 +31,12 @@ const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
         style={styles.card}
       >
         <View style={styles.infoContainer}>
-          <Text style={styles.name} numberOfLines={1}>
+          <CustomText type='subtitle' numberOfLines={1}>
             {item.name}
-          </Text>
-          <Text style={styles.description} numberOfLines={1}>
+          </CustomText>
+          <CustomText type='paragraph' numberOfLines={1}>
             {item.character}
-          </Text>
+          </CustomText>
         </View>
       </ImageBackground>
     ) : null
@@ -47,7 +47,7 @@ const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
       {loading ? (
         <ActivityIndicator />
       ) : !data ? (
-        <Text>Error...</Text>
+        <CustomText type='paragraph'>Error...</CustomText>
       ) : (
         <FlatList
           data={data}
@@ -55,7 +55,7 @@ const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
           renderItem={renderItem}
           initialNumToRender={3}
           maxToRenderPerBatch={3}
-          ListEmptyComponent={<Text style={styles.errorMessage}>Nothing to see here...</Text>}
+          ListEmptyComponent={<CustomText type='paragraph'>Nothing to see here...</CustomText>}
           horizontal
         />
       )}

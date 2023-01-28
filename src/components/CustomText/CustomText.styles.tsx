@@ -2,26 +2,29 @@ import { StyleSheet } from 'react-native'
 import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-  },
   title: {
+    color: colors.white,
     fontSize: 24,
-    fontWeight: 'bold',
-    color: colors.white,
-    marginBottom: 10,
+    fontWeight: '700',
   },
-  text: {
+  subtitle: {
     color: colors.white,
-    fontSize: 18,
-    marginBottom: 10,
+    fontSize: 20,
+    fontWeight: '500',
+  },
+  paragraph: {
+    color: colors.white,
+    fontSize: 16,
   },
   link: {
     color: colors.white,
-    fontSize: 18,
-    marginBottom: 10,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  button: {
+    color: colors.white,
+    fontSize: 16,
+    fontWeight: '700',
   },
 })
 

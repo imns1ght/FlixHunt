@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   placeholder: {
-    color: colors.darkGray,
+    color: colors.gray,
   },
 })
 

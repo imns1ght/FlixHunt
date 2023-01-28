@@ -1,4 +1,3 @@
-export { default as Section } from './Section'
 export { default as Card } from './Card'
 export { default as HorizontalCard } from './HorizontalCard'
 export { default as CardCarousel } from './CardCarousel'
@@ -11,3 +10,6 @@ export { default as NavBar } from './NavBar'
 export { default as SearchBar } from './SearchBar'
 export { default as IconButton } from './IconButton'
 export { default as Rating } from './Rating'
+export { default as CustomText } from './CustomText'
+
+export { default as Section } from './Containers/Section'

@@ -13,13 +13,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     columnGap: 10,
   },
-  text: {
-    color: colors.white,
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
   icon: {
-    marginTop: 3,
+    marginTop: 2,
     color: colors.white,
   },
 })

@@ -1,11 +1,12 @@
 import React from 'react'
-import { ImageBackground, Text, TouchableHighlight, View } from 'react-native'
+import { ImageBackground, TouchableHighlight, View } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import { MediaSimpleType } from '~/models'
 import styles from './Card.styles'
 import { StackNavigationProps } from '~/navigation'
 import { getImagePath } from '~/utils'
 import { mediaType } from '~/models'
+import CustomText from '../CustomText'
 
 const Card = ({
   item,
@@ -36,7 +37,6 @@ const Card = ({
     <TouchableHighlight
       key={item.id}
       onPress={onPress}
-      activeOpacity={0.8}
       style={{ ...styles.card, ...(disabled ? styles.disabledCard : {}) }}
       disabled={disabled}
     >
@@ -50,12 +50,14 @@ const Card = ({
         {!!cardTitle ||
           (!!cardSubtitle && (
             <View style={styles.infoContainer}>
-              <Text style={styles.title} numberOfLines={1}>
+              <CustomText type='subtitle' numberOfLines={1}>
                 {cardTitle}
-              </Text>
-              <Text style={styles.subtitle} numberOfLines={1}>
+                Subtitle
+              </CustomText>
+              <CustomText type='description' numberOfLines={1}>
                 {cardSubtitle}
-              </Text>
+                Description
+              </CustomText>
             </View>
           ))}
       </ImageBackground>

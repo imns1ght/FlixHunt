@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   card: {
@@ -13,19 +12,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  name: {
-    fontSize: 20,
-    color: colors.white,
-    marginBottom: 3,
-  },
-  description: {
-    fontSize: 16,
-    color: colors.white,
-  },
-  errorMessage: {
-    color: colors.white,
-    fontSize: 20,
   },
 })
 

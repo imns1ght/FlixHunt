@@ -1,9 +1,8 @@
 import React from 'react'
-import { ActivityIndicator, FlatList, Text } from 'react-native'
-import { Card, Section } from '~/components'
+import { ActivityIndicator, FlatList } from 'react-native'
+import { Card, CustomText, Section } from '~/components'
 import { Collection, MediaSimpleType } from '~/models'
 import { API } from '~/services'
-import styles from './Related.styles'
 
 const Related = ({ id, collectionId }: { id: number; collectionId: number }) => {
   const [collectionData, setCollectionData] = React.useState<Collection>()
@@ -31,7 +30,7 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !collectionData ? (
-        <Text style={styles.errorMessage}>Failed to fetch data</Text>
+        <CustomText type='paragraph'>Failed to fetch data</CustomText>
       ) : (
         <FlatList
           keyExtractor={key => key.id.toString()}

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProps } from '~/navigation'
 import styles from './HorizontalCard.styles'
 import CONSTANTS from '~/constants'
-import { Rating } from '..'
+import { CustomText, Rating } from '..'
 import FastImage from 'react-native-fast-image'
 
 const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
@@ -32,14 +32,14 @@ const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
         style={styles.image}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.title} numberOfLines={2}>
+        <CustomText type='subtitle' numberOfLines={2}>
           {isMovie ? data.title : data.name}
-        </Text>
-        <View style={styles.tagsContainer}>
-          <Text style={styles.overview} numberOfLines={2}>
+        </CustomText>
+        <View style={styles.details}>
+          <CustomText type='paragraph' numberOfLines={2}>
             {data.overview}
-          </Text>
-          <Text style={styles.tags}>{releaseData}</Text>
+          </CustomText>
+          <CustomText type='paragraph'>{releaseData}</CustomText>
           <Rating voteAverage={data.vote_average} voteCount={data.vote_count} />
         </View>
       </View>

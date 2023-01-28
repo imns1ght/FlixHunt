@@ -1,11 +1,9 @@
 const colors = {
   primary: '#BA181B',
   secondary: '#161A1D',
-  error: '#801114',
   white: '#FFFFFF',
-  black: '#0B090A',
+  black: '#000000',
   gray: '#D3D3D3',
-  darkGray: '#B1A7A6',
 }
 
 const theme = {
@@ -16,7 +14,7 @@ const theme = {
     card: colors.primary,
     text: colors.white,
     border: colors.gray,
-    notification: colors.primary,
+    notification: colors.secondary,
   },
 }
 

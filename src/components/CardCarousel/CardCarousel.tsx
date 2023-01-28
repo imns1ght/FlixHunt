@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, Text } from 'react-native'
-import { Card, Section } from '~/components'
+import { Card, CustomText, Section } from '~/components'
 import { MediaSimpleType, mediaType } from '~/models'
 import { API } from '~/services'
 import styles from './CardCarousel.styles'
@@ -68,13 +68,13 @@ const CardCarousel = ({
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !data ? (
-        <Text style={styles.errorMessage}>Failed to fetch</Text>
+        <CustomText type='paragraph'>Failed to fetch</CustomText>
       ) : (
         <FlatList
           keyExtractor={key => key.id.toString()}
           data={data}
           renderItem={renderItem}
-          ListEmptyComponent={<Text style={styles.errorMessage}>Nothing to see here...</Text>}
+          ListEmptyComponent={<CustomText type='paragraph'>Nothing to see here...</CustomText>}
           initialNumToRender={3}
           maxToRenderPerBatch={5}
           horizontal

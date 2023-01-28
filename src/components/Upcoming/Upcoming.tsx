@@ -1,8 +1,7 @@
 import React from 'react'
-import styles from './Upcoming.styles'
-import { HorizontalCard, Section } from '~/components'
+import { CustomText, HorizontalCard, Section } from '~/components'
 import { MovieSimpleType } from '~/models'
-import { ActivityIndicator, Text } from 'react-native'
+import { ActivityIndicator } from 'react-native'
 import { API } from '~/services'
 
 const Upcoming = () => {
@@ -24,7 +23,7 @@ const Upcoming = () => {
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !data ? (
-        <Text style={styles.errorMessage}>Failed to fetch movies</Text>
+        <CustomText type='paragraph'>Failed to fetch movies</CustomText>
       ) : (
         data.map(movie => <HorizontalCard key={movie.id} data={movie} />)
       )}

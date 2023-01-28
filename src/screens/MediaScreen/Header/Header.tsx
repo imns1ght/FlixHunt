@@ -1,9 +1,9 @@
-import { ImageBackground, Text, View } from 'react-native'
+import { ImageBackground, View } from 'react-native'
 import React from 'react'
 import styles from '../MediaScreen.styles'
 import { MovieFullType } from '~/models'
 import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
-import { Rating } from '~/components'
+import { CustomText, Rating } from '~/components'
 import FastImage from 'react-native-fast-image'
 import WatchButton from './WatchButton'
 import { DEFAULT_REGION, REGION } from '~/services'
@@ -63,17 +63,17 @@ const Header = ({
           }}
           style={styles.image}
         />
-        <View style={styles.tagsContainer}>
-          <View>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title} numberOfLines={3}>
-                {title}
-              </Text>
-            </View>
-            <Text style={styles.tags}>{genresFormated}</Text>
+        <View style={styles.infoContainer}>
+          <View style={styles.titleContainer}>
+            <CustomText type='title' numberOfLines={3}>
+              {title}
+            </CustomText>
+          </View>
+          <View style={styles.detailsContainer}>
+            <CustomText type='paragraph'>{genresFormated}</CustomText>
             <View style={styles.releaseRuntime}>
-              <Text style={styles.tags}>{releaseDate}</Text>
-              {!!runtime && <Text style={styles.tags}>{convertMinsToTime(runtime)}</Text>}
+              <CustomText type='paragraph'>{releaseDate}</CustomText>
+              {!!runtime && <CustomText type='paragraph'>{convertMinsToTime(runtime)}</CustomText>}
             </View>
             <Rating voteAverage={vote_average} voteCount={vote_count} />
           </View>

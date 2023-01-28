@@ -8,11 +8,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: colors.black,
     width: '100%',
-  },
-  errorMessage: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: colors.white,
+    paddingVertical: 10,
   },
 })
 

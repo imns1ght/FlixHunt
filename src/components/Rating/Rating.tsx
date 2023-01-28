@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { AirbnbRating } from 'react-native-ratings'
+import CustomText from '../CustomText'
 import styles from './Rating.styles'
 
 const Rating = ({ voteAverage, voteCount }: { voteAverage: number; voteCount: number }) => {
@@ -14,7 +15,7 @@ const Rating = ({ voteAverage, voteCount }: { voteAverage: number; voteCount: nu
         isDisabled={true}
         showRating={false}
       />
-      <Text style={styles.description}>{voteCount.toLocaleString()} Votes</Text>
+      <CustomText type='paragraph'>{voteCount.toLocaleString()} Votes</CustomText>
     </View>
   )
 }

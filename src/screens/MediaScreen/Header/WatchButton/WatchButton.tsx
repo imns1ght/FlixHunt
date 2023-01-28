@@ -1,7 +1,8 @@
-import { Linking, Text, TouchableOpacity } from 'react-native'
+import { Linking, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import React from 'react'
 import styles from './WatchButton.styles'
+import { CustomText } from '~/components'
 
 const WatchButton = ({ linkRedirect }: { linkRedirect: string }) => {
   return (
@@ -11,8 +12,8 @@ const WatchButton = ({ linkRedirect }: { linkRedirect: string }) => {
       }}
       style={styles.container}
     >
-      <Text style={styles.text}>Watch</Text>
-      <Icon name='external-link' size={16} style={styles.icon} />
+      <CustomText type='button'>Watch</CustomText>
+      <Icon name='external-link' size={14} style={styles.icon} />
     </TouchableOpacity>
   )
 }

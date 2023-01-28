@@ -1,12 +1,18 @@
 import React from 'react'
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native'
+import { ActivityIndicator, ScrollView, View } from 'react-native'
 import styles from './MediaScreen.styles'
 import Cast from './Cast'
-import Description from './Description'
 import Header from './Header'
 import { NavigationScreenProps } from '~/navigation'
 import { API } from '~/services'
-import { CardCarousel, ImagesCarousel, Related, VideosCarousel } from '~/components'
+import {
+  CardCarousel,
+  CustomText,
+  ImagesCarousel,
+  Related,
+  Section,
+  VideosCarousel,
+} from '~/components'
 import { MediaFullType } from '~/models'
 
 const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
@@ -42,14 +48,9 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
           vote_count={data.vote_count}
           watch_providers={data.watch_providers}
         />
-        <Description
-          budget={isMovie ? data.budget : undefined}
-          revenue={isMovie ? data.revenue : undefined}
-          homepage={data.homepage}
-          runtime={isMovie ? data.runtime : null}
-          overview={data.overview}
-          media_type={data.media_type}
-        />
+        <Section>
+          <CustomText type='paragraph'>{data.overview}</CustomText>
+        </Section>
         {showImages && <ImagesCarousel images={data.images.backdrops} />}
         {showVideos && <VideosCarousel videos={data.videos.results} />}
         <Cast id={data.id} mediaType={mediaType} />
@@ -70,7 +71,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
       ) : data ? (
         <Content data={data} />
       ) : (
-        <Text>Error...</Text>
+        <CustomText type='paragraph'>Error...</CustomText>
       )}
     </ScrollView>
   )

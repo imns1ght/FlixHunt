@@ -1,9 +1,8 @@
 import React from 'react'
-import { ActivityIndicator, FlatList, Text } from 'react-native'
-import { Card, Section } from '~/components'
+import { ActivityIndicator, FlatList } from 'react-native'
+import { Card, CustomText, Section } from '~/components'
 import { MediaSimpleType, mediaType } from '~/models'
 import { API } from '~/services'
-import styles from './CardCarousel.styles'
 
 type CarouselTypes = 'trending' | 'popular' | 'top_rated'
 
@@ -42,7 +41,7 @@ const CardCarousel = ({ type, mediaType }: { type: CarouselTypes; mediaType: med
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !moviesData ? (
-        <Text style={styles.errorMessage}>Failed to fetch</Text>
+        <CustomText type='paragraph'>Failed to fetch</CustomText>
       ) : (
         <FlatList
           keyExtractor={key => key.id.toString()}
