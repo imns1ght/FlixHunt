@@ -1,7 +1,9 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ActivityIndicator, FlatList } from 'react-native'
 import { Card, CustomText, Section } from '~/components'
 import { MediaSimpleType, mediaType } from '~/models'
+import { StackNavigationProps } from '~/navigation'
 import { API } from '~/services'
 
 type CarouselTypes =
@@ -36,6 +38,7 @@ const MediaCarousel = ({
 }) => {
   const [data, setData] = React.useState<MediaSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
+  const navigation = useNavigation<StackNavigationProps>()
 
   const fetchData = React.useCallback(async () => {
     let response
@@ -57,9 +60,20 @@ const MediaCarousel = ({
   }, [fetchData])
 
   const renderItem = React.useCallback(
-    ({ item }: { item: MediaSimpleType }) =>
-      item.poster_path ? <Card item={item} mediaType={item.media_type ?? mediaType} /> : null,
-    [mediaType]
+    ({ item }: { item: MediaSimpleType }) => {
+      if (!item.poster_path) return null
+
+      const onPress = () => {
+        navigation.navigate('Media', {
+          id: item.id,
+          title: item.media_type === 'movie' ? item.title : item.name,
+          mediaType: item.media_type ?? mediaType,
+        })
+      }
+
+      return <Card id={item.id} imagePath={item.poster_path} onPress={onPress} />
+    },
+    [mediaType, navigation]
   )
 
   return (

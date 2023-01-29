@@ -1,12 +1,15 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ActivityIndicator, FlatList } from 'react-native'
 import { Card, CustomText, Section } from '~/components'
 import { CollectionType, MediaSimpleType } from '~/models'
+import { StackNavigationProps } from '~/navigation'
 import { API } from '~/services'
 
 const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: number }) => {
   const [collectionData, setCollectionData] = React.useState<CollectionType>()
   const [loading, setLoading] = React.useState(true)
+  const navigation = useNavigation<StackNavigationProps>()
 
   const fetchMovies = React.useCallback(async () => {
     const response = await API.getMovieCollection(collectionId)
@@ -20,9 +23,26 @@ const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: nu
   }, [fetchMovies])
 
   const renderItem = React.useCallback(
-    ({ item }: { item: MediaSimpleType }) =>
-      item.poster_path ? <Card item={item} disabled={id === item.id} mediaType={'movie'} /> : null,
-    [id]
+    ({ item }: { item: MediaSimpleType }) => {
+      if (!item.poster_path) return null
+      const onPress = () => {
+        navigation.navigate('Media', {
+          id: item.id,
+          title: item.media_type === 'movie' ? item.title : item.name,
+          mediaType: item.media_type,
+        })
+      }
+
+      return (
+        <Card
+          id={item.id}
+          imagePath={item.poster_path}
+          disabled={id === item.id}
+          onPress={onPress}
+        />
+      )
+    },
+    [id, navigation]
   )
 
   return (
