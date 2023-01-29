@@ -3,9 +3,8 @@ import React from 'react'
 import styles from '../MediaScreen.styles'
 import { MovieFullType } from '~/models'
 import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
-import { CustomText, Rating } from '~/components'
+import { CustomText, Rating, WatchButton } from '~/components'
 import FastImage from 'react-native-fast-image'
-import WatchButton from './WatchButton'
 import { DEFAULT_REGION, REGION } from '~/services'
 
 type Props = Pick<

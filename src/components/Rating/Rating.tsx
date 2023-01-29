@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import { AirbnbRating } from 'react-native-ratings'
-import CustomText from '../CustomText'
+import { CustomText } from '..'
 import styles from './Rating.styles'
 
 const Rating = ({ voteAverage, voteCount }: { voteAverage: number; voteCount: number }) => {

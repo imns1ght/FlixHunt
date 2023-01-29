@@ -3,7 +3,7 @@ import CONSTANTS from '~/constants'
 
 import {
   CastType,
-  Collection,
+  CollectionType,
   MediaFullType,
   MediaSimpleType,
   MovieCreditsParams,
@@ -247,9 +247,9 @@ const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType>
   return response
 }
 
-const getMovieCollection = async (collectionId: number): Promise<Collection> => {
+const getMovieCollection = async (collectionId: number): Promise<CollectionType> => {
   const response = axiosInstance
-    .get<Collection>(`/collection/${collectionId}`, <MovieParams>{
+    .get<CollectionType>(`/collection/${collectionId}`, <MovieParams>{
       params: {
         api_key: CONSTANTS.api_key,
         language: LANGUAGE,

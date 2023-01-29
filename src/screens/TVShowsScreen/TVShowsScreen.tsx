@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ScrollView } from 'react-native'
-import { CardCarousel } from '~/components'
+import { MediaCarousel } from '~/components'
 
 import styles from './TVShowsScreen.styles'
 
@@ -9,10 +9,10 @@ const mediaType = 'tv'
 
 const TVShowsScreen = () => (
   <ScrollView style={styles.container}>
-    <CardCarousel type='trending' mediaType={mediaType} />
-    <CardCarousel type='airing_today' mediaType={mediaType} />
-    <CardCarousel type='popular' mediaType={mediaType} />
-    <CardCarousel type='top_rated' mediaType={mediaType} />
+    <MediaCarousel type='trending' mediaType={mediaType} />
+    <MediaCarousel type='airing_today' mediaType={mediaType} />
+    <MediaCarousel type='popular' mediaType={mediaType} />
+    <MediaCarousel type='top_rated' mediaType={mediaType} />
   </ScrollView>
 )
 

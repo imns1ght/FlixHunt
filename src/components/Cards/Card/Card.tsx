@@ -6,7 +6,7 @@ import styles from './Card.styles'
 import { StackNavigationProps } from '~/navigation'
 import { getImagePath } from '~/utils'
 import { mediaType } from '~/models'
-import CustomText from '../CustomText'
+import { CustomText } from '~/components'
 
 const Card = ({
   item,
@@ -52,11 +52,9 @@ const Card = ({
             <View style={styles.infoContainer}>
               <CustomText type='subtitle' numberOfLines={1}>
                 {cardTitle}
-                Subtitle
               </CustomText>
-              <CustomText type='description' numberOfLines={1}>
+              <CustomText type='paragraph' numberOfLines={1}>
                 {cardSubtitle}
-                Description
               </CustomText>
             </View>
           ))}

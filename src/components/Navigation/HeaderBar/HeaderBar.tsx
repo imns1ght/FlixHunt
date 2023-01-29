@@ -2,12 +2,11 @@ import React, { useContext } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { StackHeaderProps } from '@react-navigation/stack'
 import { useNavigation } from '@react-navigation/native'
-import IconButton from '../IconButton'
-import { colors } from '~/styles'
 import styles from './HeaderBar.styles'
-import { SearchBar } from '~/components'
+import { IconButton, SearchBar } from '~/components'
 import { SearchContext } from '~/contexts'
 import { TabNavigationProps } from '~/navigation'
+import { colors } from '~/styles'
 
 const HeaderBar = (props: StackHeaderProps) => {
   const { showSearchBar, setShowSearchBar } = useContext(SearchContext)

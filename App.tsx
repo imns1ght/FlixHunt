@@ -3,7 +3,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { SearchContextProvider } from '~/contexts/'
-import { HeaderBar, NavBar } from '~/components'
+import { BottomBar, HeaderBar } from '~/components'
 import { HomeScreen, InfoScreen, MediaScreen, MoviesScreen, TVShowsScreen } from '~/screens'
 import { Stack, Tab } from '~/navigation'
 import { theme } from '~/styles'
@@ -21,8 +21,8 @@ const animationConfig: TransitionSpec = {
   },
 }
 
-const BottomBar = () => (
-  <Tab.Navigator screenOptions={NavBar}>
+const TabBar = () => (
+  <Tab.Navigator screenOptions={BottomBar}>
     <Tab.Screen name='Home' component={HomeScreen} />
     <Tab.Screen name='Movies' component={MoviesScreen} />
     <Tab.Screen name='TV' component={TVShowsScreen} />
@@ -38,7 +38,7 @@ const App = () => (
           initialRouteName='BottomBar'
           screenOptions={{ header: props => <HeaderBar {...props} /> }}
         >
-          <Stack.Screen name='BottomBar' component={BottomBar} />
+          <Stack.Screen name='BottomBar' component={TabBar} />
           <Stack.Screen
             name='Media'
             component={MediaScreen}

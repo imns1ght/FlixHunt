@@ -1,6 +1,6 @@
 import { MovieSimpleType } from '..'
 
-export type Collection = {
+export type CollectionType = {
   id: number
   name: string
   overview: string

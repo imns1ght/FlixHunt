@@ -1,11 +1,11 @@
 import React from 'react'
 import { ActivityIndicator, FlatList } from 'react-native'
 import { Card, CustomText, Section } from '~/components'
-import { Collection, MediaSimpleType } from '~/models'
+import { CollectionType, MediaSimpleType } from '~/models'
 import { API } from '~/services'
 
-const Related = ({ id, collectionId }: { id: number; collectionId: number }) => {
-  const [collectionData, setCollectionData] = React.useState<Collection>()
+const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: number }) => {
+  const [collectionData, setCollectionData] = React.useState<CollectionType>()
   const [loading, setLoading] = React.useState(true)
 
   const fetchMovies = React.useCallback(async () => {
@@ -26,7 +26,7 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
   )
 
   return (
-    <Section title={collectionData?.name ?? 'Related'}>
+    <Section title={collectionData?.name ?? 'Collection'}>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !collectionData ? (
@@ -36,7 +36,7 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
           keyExtractor={key => key.id.toString()}
           data={collectionData.parts}
           renderItem={renderItem}
-          initialNumToRender={5}
+          initialNumToRender={3}
           maxToRenderPerBatch={5}
           showsHorizontalScrollIndicator={false}
           horizontal
@@ -46,4 +46,4 @@ const Related = ({ id, collectionId }: { id: number; collectionId: number }) => 
   )
 }
 
-export default Related
+export default CollectionCarousel

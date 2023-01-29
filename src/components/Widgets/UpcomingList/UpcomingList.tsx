@@ -4,7 +4,7 @@ import { MovieSimpleType } from '~/models'
 import { ActivityIndicator } from 'react-native'
 import { API } from '~/services'
 
-const Upcoming = () => {
+const UpcomingList = () => {
   const [data, setData] = React.useState<MovieSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
 
@@ -31,4 +31,4 @@ const Upcoming = () => {
   )
 }
 
-export default Upcoming
+export default UpcomingList

@@ -5,9 +5,9 @@ import { TabParamList } from '~/navigation'
 import { colors } from '~/styles'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'
-import styles from './NavBar.styles'
+import styles from './BottomBar.styles'
 
-const NavBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamList> }) => ({
+const BottomBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamList> }) => ({
   headerShown: false,
   tabBarShowLabel: false,
   tabBarIcon: ({ focused, size }: { focused: boolean; color: string; size: number }) => {
@@ -28,4 +28,4 @@ const NavBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamList> 
   ),
 })
 
-export default NavBar
+export default BottomBar

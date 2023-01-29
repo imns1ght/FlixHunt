@@ -11,17 +11,22 @@ const SearchResults = ({ data }: { data: MediaSimpleType[] }) => {
     []
   )
 
+  const emptyComponent = () => (
+    <View style={styles.emptyContainer}>
+      <CustomText type='paragraph'>Nothing found... :(</CustomText>
+    </View>
+  )
+
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
         keyExtractor={key => key.id.toString()}
         renderItem={renderItem}
-        ListEmptyComponent={<CustomText type='paragraph'>Nothing found... :(</CustomText>}
+        ListEmptyComponent={emptyComponent}
         initialNumToRender={2}
         maxToRenderPerBatch={3}
         keyboardShouldPersistTaps='always'
-        showsHorizontalScrollIndicator={false}
       />
     </View>
   )

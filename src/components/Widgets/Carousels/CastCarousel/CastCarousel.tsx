@@ -1,13 +1,13 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, ImageBackground, View } from 'react-native'
 import { API } from '~/services'
-import styles from './Cast.styles'
+import styles from './CastCarousel.styles'
 import { CustomText, Section } from '~/components'
 import { getImagePath } from '~/utils'
 import { mediaType } from '~/models'
 import { CastType } from '~/models'
 
-const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
+const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
   const [data, setData] = React.useState<CastType[]>()
   const [loading, setLoading] = React.useState(true)
 
@@ -64,4 +64,4 @@ const Cast = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
   )
 }
 
-export default Cast
+export default CastCarousel

@@ -1,15 +1,15 @@
 import React from 'react'
 import { ActivityIndicator, ScrollView, View } from 'react-native'
 import styles from './MediaScreen.styles'
-import Cast from './Cast'
 import Header from './Header'
 import { NavigationScreenProps } from '~/navigation'
 import { API } from '~/services'
 import {
-  CardCarousel,
+  CastCarousel,
+  CollectionCarousel,
   CustomText,
   ImagesCarousel,
-  Related,
+  MediaCarousel,
   Section,
   VideosCarousel,
 } from '~/components'
@@ -53,11 +53,11 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
         </Section>
         {showImages && <ImagesCarousel images={data.images.backdrops} />}
         {showVideos && <VideosCarousel videos={data.videos.results} />}
-        <Cast id={data.id} mediaType={mediaType} />
+        <CastCarousel id={data.id} mediaType={mediaType} />
         {isMovie && !!data.belongs_to_collection && (
-          <Related id={data.id} collectionId={data.belongs_to_collection.id} />
+          <CollectionCarousel id={data.id} collectionId={data.belongs_to_collection.id} />
         )}
-        <CardCarousel id={data.id} mediaType={data.media_type} type='recommendations' />
+        <MediaCarousel id={data.id} mediaType={data.media_type} type='recommendations' />
       </View>
     )
   }

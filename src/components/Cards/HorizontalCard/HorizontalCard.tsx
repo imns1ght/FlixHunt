@@ -1,12 +1,12 @@
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import { MediaSimpleType } from '~/models'
 import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProps } from '~/navigation'
 import styles from './HorizontalCard.styles'
 import CONSTANTS from '~/constants'
-import { CustomText, Rating } from '..'
 import FastImage from 'react-native-fast-image'
+import { CustomText, Rating } from '~/components'
 
 const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
   const navigation = useNavigation<StackNavigationProps>()
