@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.moviebrowser"
+    namespace "com.imns1ght.moviebrowser"
     defaultConfig {
-        applicationId "com.moviebrowser"
+        applicationId "com.imns1ght.moviebrowser"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
