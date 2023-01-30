@@ -4,7 +4,6 @@ import { colors } from '~/styles'
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.black,
-    elevation: 2,
     top: 50,
     position: 'absolute',
     width: '100%',
