@@ -14,6 +14,7 @@ import {
   VideosCarousel,
 } from '~/components'
 import { MediaFullType } from '~/models'
+import { translate } from '~/locales'
 
 const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
   const { id, mediaType } = route.params
@@ -71,7 +72,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
       ) : data ? (
         <Content data={data} />
       ) : (
-        <CustomText type='paragraph'>Error...</CustomText>
+        <CustomText type='paragraph'>{translate('error')}</CustomText>
       )}
     </ScrollView>
   )

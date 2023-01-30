@@ -4,6 +4,7 @@ import { API } from '~/services'
 import { Card, CustomText, Section } from '~/components'
 import { mediaType } from '~/models'
 import { CastType } from '~/models'
+import { translate } from '~/locales'
 
 const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
   const [data, setData] = React.useState<CastType[]>()
@@ -33,11 +34,11 @@ const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) =
   }, [])
 
   return (
-    <Section title='Cast'>
+    <Section title={translate('cast')}>
       {loading ? (
         <ActivityIndicator />
       ) : !data ? (
-        <CustomText type='paragraph'>Error...</CustomText>
+        <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (
         <FlatList
           data={data}
@@ -45,7 +46,7 @@ const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) =
           renderItem={renderItem}
           initialNumToRender={3}
           maxToRenderPerBatch={3}
-          ListEmptyComponent={<CustomText type='paragraph'>Nothing to see here...</CustomText>}
+          ListEmptyComponent={<CustomText type='paragraph'>{translate('nothingFound')}</CustomText>}
           showsHorizontalScrollIndicator={false}
           horizontal
         />

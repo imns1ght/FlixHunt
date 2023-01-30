@@ -5,6 +5,7 @@ import Modal from 'react-native-modal'
 import { Section } from '~/components'
 import { VideoType } from '~/models'
 import styles from './VideosCarousel.styles'
+import { translate } from '~/locales'
 
 const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
   const [showModal, setShowModal] = React.useState(false)
@@ -54,7 +55,7 @@ const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
 
   return (
     <>
-      <Section title='Videos' removeMargin>
+      <Section title={translate('videos')} removeMargin>
         {waitToRender ? (
           <DummyView />
         ) : (

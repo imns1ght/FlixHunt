@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ActivityIndicator, FlatList } from 'react-native'
 import { Card, CustomText, Section } from '~/components'
+import { translate } from '~/locales'
 import { CollectionType, MediaSimpleType } from '~/models'
 import { StackNavigationProps } from '~/navigation'
 import { API } from '~/services'
@@ -46,11 +47,11 @@ const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: nu
   )
 
   return (
-    <Section title={collectionData?.name ?? 'Collection'}>
+    <Section title={collectionData?.name ?? translate('collection')}>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !collectionData ? (
-        <CustomText type='paragraph'>Failed to fetch data</CustomText>
+        <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (
         <FlatList
           keyExtractor={key => key.id.toString()}

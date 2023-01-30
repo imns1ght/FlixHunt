@@ -5,6 +5,7 @@ import styles from './SearchBar.styles'
 import { colors } from '~/styles'
 import SearchResults from './SearchResults'
 import { SearchContext } from '~/contexts'
+import { translate } from '~/locales'
 
 const SearchBar = () => {
   const { searchResults, searchText, setSearchText } = React.useContext(SearchContext)
@@ -18,7 +19,7 @@ const SearchBar = () => {
         <TextInput
           value={searchText}
           onChangeText={setSearchText}
-          placeholder='Search for movies or TV shows...'
+          placeholder={translate('searchPlaceholder')}
           placeholderTextColor={styles.placeholder.color}
           style={styles.textInput}
           autoFocus

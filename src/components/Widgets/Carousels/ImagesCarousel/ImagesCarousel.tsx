@@ -7,6 +7,7 @@ import { Section } from '~/components'
 import styles from './ImagesCarousel.styles'
 import { FlatList } from 'react-native-gesture-handler'
 import FastImage from 'react-native-fast-image'
+import { translate } from '~/locales'
 
 const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
   const [showModal, setShowModal] = React.useState(false)
@@ -37,7 +38,7 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
 
   return (
     <>
-      <Section title='Images' removeMargin>
+      <Section title={translate('images')} removeMargin>
         <FlatList
           keyExtractor={key => key.file_path}
           data={images}

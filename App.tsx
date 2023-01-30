@@ -30,30 +30,32 @@ const TabBar = () => (
   </Tab.Navigator>
 )
 
-const App = () => (
-  <NavigationContainer theme={theme}>
-    <SearchContextProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Stack.Navigator
-          initialRouteName='BottomBar'
-          screenOptions={{ header: props => <HeaderBar {...props} /> }}
-        >
-          <Stack.Screen name='BottomBar' component={TabBar} />
-          <Stack.Screen
-            name='Media'
-            component={MediaScreen}
-            getId={({ params }) => `${params.id}`}
-            options={{
-              transitionSpec: {
-                open: animationConfig,
-                close: animationConfig,
-              },
-            }}
-          />
-        </Stack.Navigator>
-      </SafeAreaView>
-    </SearchContextProvider>
-  </NavigationContainer>
-)
+const App = () => {
+  return (
+    <NavigationContainer theme={theme}>
+      <SearchContextProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+          <Stack.Navigator
+            initialRouteName='BottomBar'
+            screenOptions={{ header: props => <HeaderBar {...props} /> }}
+          >
+            <Stack.Screen name='BottomBar' component={TabBar} />
+            <Stack.Screen
+              name='Media'
+              component={MediaScreen}
+              getId={({ params }) => `${params.id}`}
+              options={{
+                transitionSpec: {
+                  open: animationConfig,
+                  close: animationConfig,
+                },
+              }}
+            />
+          </Stack.Navigator>
+        </SafeAreaView>
+      </SearchContextProvider>
+    </NavigationContainer>
+  )
+}
 
 export default App

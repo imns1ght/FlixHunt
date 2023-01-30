@@ -10,6 +10,11 @@ Welcome to Movie Browser, your app for finding the perfect film or series to wat
 - View detailed information about a movie or TV show, including release date, cast, and plot summary
 - Browse popular movies and TV shows and upcoming releases
 
+Fully supported languages
+
+- en-US
+- pt-BR
+
 <https://user-images.githubusercontent.com/24906506/178588926-0ced5356-8310-4cd8-83d3-3bbb1c901301.mp4>
 
 ## Running the App

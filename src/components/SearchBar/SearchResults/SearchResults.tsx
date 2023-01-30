@@ -4,6 +4,7 @@ import { CustomText, HorizontalCard } from '~/components'
 import { MediaSimpleType } from '~/models'
 import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import { translate } from '~/locales'
 
 const SearchResults = ({ data }: { data: MediaSimpleType[] }) => {
   const renderItem = React.useCallback(
@@ -13,7 +14,7 @@ const SearchResults = ({ data }: { data: MediaSimpleType[] }) => {
 
   const emptyComponent = () => (
     <View style={styles.emptyContainer}>
-      <CustomText type='paragraph'>Nothing found... :(</CustomText>
+      <CustomText type='paragraph'>{translate('nothingFound')}</CustomText>
     </View>
   )
 

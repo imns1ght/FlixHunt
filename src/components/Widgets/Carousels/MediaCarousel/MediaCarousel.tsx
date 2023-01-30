@@ -2,28 +2,19 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ActivityIndicator, FlatList } from 'react-native'
 import { Card, CustomText, Section } from '~/components'
+import { translate } from '~/locales'
 import { MediaSimpleType, mediaType } from '~/models'
 import { StackNavigationProps } from '~/navigation'
 import { API } from '~/services'
 
 type CarouselTypes =
   | 'trending'
-  | 'trending_all'
+  | 'trendingAll'
   | 'popular'
-  | 'top_rated'
+  | 'topRated'
   | 'recommendations'
-  | 'now_playing'
-  | 'airing_today'
-
-const titles = {
-  trending: 'Trending',
-  trending_all: 'Popular',
-  popular: 'What people are watching',
-  top_rated: 'Top rated',
-  recommendations: 'Recommendations',
-  now_playing: 'Movies in theaters',
-  airing_today: 'Airing today!',
-}
+  | 'nowPlaying'
+  | 'airingToday'
 
 const MediaCarousel = ({
   id,
@@ -43,13 +34,13 @@ const MediaCarousel = ({
   const fetchData = React.useCallback(async () => {
     let response
     if (type === 'trending') response = await API.getTrending('week', mediaType)
-    if (type === 'trending_all') response = await API.getTrending('week', 'all')
+    if (type === 'trendingAll') response = await API.getTrending('week', 'all')
     else if (type === 'popular') response = await API.getPopular(mediaType)
-    else if (type === 'top_rated') response = await API.getTopRated(mediaType, 1)
+    else if (type === 'topRated') response = await API.getTopRated(mediaType, 1)
     else if (type === 'recommendations' && !!id)
       response = await API.getRecommendations(id, mediaType)
-    else if (type === 'now_playing') response = await API.getMovieNowPlaying()
-    else if (type === 'airing_today') response = await API.getTVShowAiringToday()
+    else if (type === 'nowPlaying') response = await API.getMovieNowPlaying()
+    else if (type === 'airingToday') response = await API.getTVShowAiringToday()
 
     if (response) setData(response)
     setLoading(false)
@@ -77,17 +68,17 @@ const MediaCarousel = ({
   )
 
   return (
-    <Section title={customTitle ?? titles[type]}>
+    <Section title={customTitle ?? translate(type)}>
       {loading ? (
         <ActivityIndicator size='large' />
       ) : !data ? (
-        <CustomText type='paragraph'>Failed to fetch</CustomText>
+        <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (
         <FlatList
           keyExtractor={key => key.id.toString()}
           data={data}
           renderItem={renderItem}
-          ListEmptyComponent={<CustomText type='paragraph'>Nothing to see here...</CustomText>}
+          ListEmptyComponent={<CustomText type='paragraph'>{translate('nothingFound')}</CustomText>}
           initialNumToRender={3}
           maxToRenderPerBatch={5}
           showsHorizontalScrollIndicator={false}
