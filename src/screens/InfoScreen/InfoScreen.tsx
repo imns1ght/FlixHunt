@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Linking, View } from 'react-native'
+import { Linking, ScrollView } from 'react-native'
 import { CustomText, Section } from '~/components'
 import { translate } from '~/locales'
 
@@ -9,7 +9,7 @@ const InfoScreen = () => {
     Linking.openURL('https://github.com/imns1ght/movie-browser')
   }
   return (
-    <View>
+    <ScrollView>
       <Section title={translate('disclaimer.title')}>
         <CustomText type='paragraph'>{translate('disclaimer.tmdbAccuracy')}</CustomText>
         <CustomText type='paragraph'>{translate('disclaimer.tmdbNotAffiliated')}</CustomText>
@@ -20,7 +20,7 @@ const InfoScreen = () => {
           {translate('contributing.link')}
         </CustomText>
       </Section>
-    </View>
+    </ScrollView>
   )
 }
 
