@@ -2,7 +2,7 @@
 
 Welcome to Movie Browser, your app for finding the perfect film or series to watch! Built with [React Native](https://reactnative.dev/) and [TypeScript](https://www.typescriptlang.org/), this app allows you to search for movies and TV shows by title, view detailed information about them, and browse popular and upcoming releases. The data is sourced from the [TMDb API](https://developers.themoviedb.org/3).
 
-[Download the app](https://github.com/imns1ght/movie-browser/releases)
+[Download the app](https://play.google.com/store/apps/details?id=com.imns1ght.moviebrowser)
 
 ## Features
 
