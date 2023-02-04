@@ -9,7 +9,8 @@ import styles from './BottomBar.styles'
 
 const BottomBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamList> }) => ({
   headerShown: false,
-  tabBarShowLabel: false,
+  tabBarShowLabel: true,
+  tabBarLabelStyle: { color: colors.white },
   tabBarIcon: ({ focused, size }: { focused: boolean; color: string; size: number }) => {
     let iconName = ''
     if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline'

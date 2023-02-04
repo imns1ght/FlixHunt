@@ -1,5 +1,11 @@
 {
   "airingToday": "New episode today!",
+  "bottomBar": {
+    "home": "Home",
+    "movies": "Movies",
+    "tv": "TV Shows",
+    "info": "Info"
+  },
   "cast": "Cast",
   "collection": "Collection",
   "contributing": {

@@ -8,6 +8,7 @@ import { HomeScreen, InfoScreen, MediaScreen, MoviesScreen, TVShowsScreen } from
 import { Stack, Tab } from '~/navigation'
 import { theme } from '~/styles'
 import { TransitionSpec } from '@react-navigation/stack/lib/typescript/src/types'
+import { translate } from '~/locales'
 
 const animationConfig: TransitionSpec = {
   animation: 'spring',
@@ -23,10 +24,34 @@ const animationConfig: TransitionSpec = {
 
 const TabBar = () => (
   <Tab.Navigator screenOptions={BottomBar}>
-    <Tab.Screen name='Home' component={HomeScreen} />
-    <Tab.Screen name='Movies' component={MoviesScreen} />
-    <Tab.Screen name='TV' component={TVShowsScreen} />
-    <Tab.Screen name='Info' component={InfoScreen} />
+    <Tab.Screen
+      name='Home'
+      component={HomeScreen}
+      options={{
+        tabBarLabel: translate('bottomBar.home'),
+      }}
+    />
+    <Tab.Screen
+      name='Movies'
+      component={MoviesScreen}
+      options={{
+        tabBarLabel: translate('bottomBar.movies'),
+      }}
+    />
+    <Tab.Screen
+      name='TV'
+      component={TVShowsScreen}
+      options={{
+        tabBarLabel: translate('bottomBar.tv'),
+      }}
+    />
+    <Tab.Screen
+      name='Info'
+      component={InfoScreen}
+      options={{
+        tabBarLabel: translate('bottomBar.info'),
+      }}
+    />
   </Tab.Navigator>
 )
 
