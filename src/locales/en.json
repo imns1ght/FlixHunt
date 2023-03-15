@@ -32,5 +32,6 @@
   "upcoming": "Coming soon...",
   "videos": "Videos",
   "votes": "Votes",
-  "watch": "Watch"
+  "watch": "Watch",
+  "watchNotAvailable": "Unavailable"
 }

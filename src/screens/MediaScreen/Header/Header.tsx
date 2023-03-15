@@ -76,7 +76,7 @@ const Header = ({
             </View>
             <Rating voteAverage={vote_average} voteCount={vote_count} />
           </View>
-          {!!watchLink && <WatchButton linkRedirect={watchLink} />}
+          <WatchButton linkRedirect={watchLink} />
         </View>
       </View>
     </ImageBackground>

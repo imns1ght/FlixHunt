@@ -5,16 +5,21 @@ import styles from './WatchButton.styles'
 import { CustomText } from '~/components'
 import { translate } from '~/locales'
 
-const WatchButton = ({ linkRedirect }: { linkRedirect: string }) => {
+const WatchButton = ({ linkRedirect }: { linkRedirect?: string }) => {
+  const isAvailable = !!linkRedirect
+
   return (
     <TouchableOpacity
       onPress={() => {
-        Linking.openURL(linkRedirect)
+        if (isAvailable) Linking.openURL(linkRedirect)
       }}
-      style={styles.container}
+      style={isAvailable ? styles.container : { ...styles.container, ...styles.containerDisabled }}
+      disabled={!isAvailable}
     >
-      <CustomText type='button'>{translate('watch')}</CustomText>
-      <Icon name='external-link' size={14} style={styles.icon} />
+      <CustomText type='button'>
+        {translate(isAvailable ? 'watch' : 'watchNotAvailable')}
+      </CustomText>
+      {isAvailable && <Icon name='external-link' size={14} style={styles.icon} />}
     </TouchableOpacity>
   )
 }

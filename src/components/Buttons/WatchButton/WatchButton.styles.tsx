@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     columnGap: 10,
   },
+  containerDisabled: {
+    backgroundColor: colors.black,
+  },
   icon: {
     marginTop: 2,
     color: colors.white,
