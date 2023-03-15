@@ -3,7 +3,7 @@ import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
+    height: 45,
     backgroundColor: colors.primary,
     flexDirection: 'row',
     alignItems: 'center',
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: '700',
     color: colors.white,
   },
