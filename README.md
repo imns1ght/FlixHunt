@@ -6,15 +6,11 @@ Welcome to Movie Browser, your app for finding the perfect film or series to wat
 
 ## Features
 
-| Home | Upcoming | Overview  |
-|------|-------------|-----------|
-| ![home](https://user-images.githubusercontent.com/24906506/215505815-93c2cb33-83d6-47d6-b4ae-fbd1df944bfb.png) | ![coming soon](https://user-images.githubusercontent.com/24906506/215505965-5ec1d913-8342-446a-882c-838f904fc003.png) | ![movie-overview](https://user-images.githubusercontent.com/24906506/215507863-26684059-496b-4bd4-8d0c-d41c323c734f.png)
+| Home | Search | Upcoming | Overview | Cast/Collection | 
+|------|-------------|-----------| -----------| -----------|
+| ![Home](https://user-images.githubusercontent.com/24906506/225651596-5e10019a-36da-4292-9743-893fb821f5da.png) | ![Search](https://user-images.githubusercontent.com/24906506/225652300-1d82909b-3a24-4c0b-866c-592d9527754a.png) | ![Upcoming](https://user-images.githubusercontent.com/24906506/225651733-48aa8c3a-866b-4094-9682-8fe9b13f78f1.png) | ![Overview](https://user-images.githubusercontent.com/24906506/225651810-d73a16bf-2187-4f96-a9fd-00a746e2c941.png) | ![Cast, Collection and Recommendations](https://user-images.githubusercontent.com/24906506/225652112-5cb838b7-d215-4378-8b85-e9a751397e2d.png) |
 
 <br/>
-
-| Videos/Cast  | Collections | Search |
-|------------------|---------------------------------|--------|
-| ![videos and cast](https://user-images.githubusercontent.com/24906506/215506667-e38422a6-fa9e-4273-859e-d5261344b231.png) | ![collections and recommendations](https://user-images.githubusercontent.com/24906506/215507506-4290067e-3c34-47a4-b920-1838b1544699.png) | ![search](https://user-images.githubusercontent.com/24906506/215506786-9a152d91-3dd8-4c58-a0d6-f97705a328d3.png) |
 
 Fully supported languages
 
