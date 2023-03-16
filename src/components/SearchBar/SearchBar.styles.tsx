@@ -4,15 +4,16 @@ import { colors } from '~/styles'
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.black,
-    top: 50,
-    position: 'absolute',
-    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 5,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
     paddingVertical: 5,
+    flex: 1,
   },
   searchIcon: {
     marginRight: 5,

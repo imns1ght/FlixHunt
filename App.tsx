@@ -2,9 +2,15 @@ import 'react-native-gesture-handler'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { SearchContextProvider } from '~/contexts/'
-import { BottomBar, HeaderBar } from '~/components'
-import { HomeScreen, InfoScreen, MediaScreen, MoviesScreen, TVShowsScreen } from '~/screens'
+import { BottomBar } from '~/components'
+import {
+  HomeScreen,
+  InfoScreen,
+  MediaScreen,
+  MoviesScreen,
+  SearchScreen,
+  TVShowsScreen,
+} from '~/screens'
 import { Stack, Tab } from '~/navigation'
 import { theme } from '~/styles'
 import { TransitionSpec } from '@react-navigation/stack/lib/typescript/src/types'
@@ -29,6 +35,13 @@ const TabBar = () => (
       component={HomeScreen}
       options={{
         tabBarLabel: translate('bottomBar.home'),
+      }}
+    />
+    <Tab.Screen
+      name='Search'
+      component={SearchScreen}
+      options={{
+        tabBarLabel: translate('bottomBar.search'),
       }}
     />
     <Tab.Screen
@@ -58,27 +71,27 @@ const TabBar = () => (
 const App = () => {
   return (
     <NavigationContainer theme={theme}>
-      <SearchContextProvider>
-        <SafeAreaView style={{ flex: 1 }}>
-          <Stack.Navigator
-            initialRouteName='BottomBar'
-            screenOptions={{ header: props => <HeaderBar {...props} /> }}
-          >
-            <Stack.Screen name='BottomBar' component={TabBar} />
-            <Stack.Screen
-              name='Media'
-              component={MediaScreen}
-              getId={({ params }) => `${params.id}`}
-              options={{
-                transitionSpec: {
-                  open: animationConfig,
-                  close: animationConfig,
-                },
-              }}
-            />
-          </Stack.Navigator>
-        </SafeAreaView>
-      </SearchContextProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Stack.Navigator initialRouteName='BottomBar' screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='BottomBar' component={TabBar} />
+          <Stack.Screen
+            name='Media'
+            component={MediaScreen}
+            getId={({ params }) => `${params.id}`}
+            options={{
+              transitionSpec: {
+                open: animationConfig,
+                close: animationConfig,
+              },
+            }}
+          />
+          <Stack.Screen
+            name='Search'
+            component={SearchScreen}
+            getId={({ params }) => `${params.id}`}
+          />
+        </Stack.Navigator>
+      </SafeAreaView>
     </NavigationContainer>
   )
 }

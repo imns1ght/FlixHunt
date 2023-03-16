@@ -2,6 +2,7 @@
   "airingToday": "New episode today!",
   "bottomBar": {
     "home": "Home",
+    "search": "Search",
     "movies": "Movies",
     "tv": "TV Shows",
     "info": "Info"

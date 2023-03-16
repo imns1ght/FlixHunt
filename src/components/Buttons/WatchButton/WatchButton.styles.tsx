@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     columnGap: 10,
   },
   containerDisabled: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.primary + '80',
   },
   icon: {
     marginTop: 2,

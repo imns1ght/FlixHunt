@@ -14,6 +14,7 @@ const BottomBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamLis
   tabBarIcon: ({ focused, size }: { focused: boolean; color: string; size: number }) => {
     let iconName = ''
     if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline'
+    else if (route.name === 'Search') iconName = focused ? 'search' : 'search-outline'
     else if (route.name === 'Movies') iconName = focused ? 'film' : 'film-outline'
     else if (route.name === 'TV') iconName = focused ? 'tv' : 'tv-outline'
     else if (route.name === 'Info')

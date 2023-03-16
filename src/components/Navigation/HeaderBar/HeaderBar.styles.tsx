@@ -3,12 +3,11 @@ import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
-    height: 45,
-    backgroundColor: colors.primary,
+    height: 60,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 5,
+    padding: 5,
   },
   title: {
     fontSize: 20,

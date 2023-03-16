@@ -3,9 +3,11 @@ import React from 'react'
 import styles from '../MediaScreen.styles'
 import { MovieFullType } from '~/models'
 import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
-import { CustomText, Rating, WatchButton } from '~/components'
+import { CustomText, HeaderBar, Rating, WatchButton } from '~/components'
 import FastImage from 'react-native-fast-image'
 import { DEFAULT_REGION, REGION } from '~/services'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProps } from '~/navigation'
 
 type Props = Pick<
   MovieFullType,
@@ -55,6 +57,7 @@ const Header = ({
       imageStyle={styles.coverImage}
       blurRadius={8}
     >
+      <HeaderBar />
       <View style={styles.titleWithImage}>
         <FastImage
           source={{

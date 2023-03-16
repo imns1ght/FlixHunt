@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   cover: {
     resizeMode: 'cover',
     justifyContent: 'flex-end',
-    paddingTop: 15,
   },
   coverImage: {
     opacity: 0.4,

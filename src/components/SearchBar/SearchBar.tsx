@@ -3,14 +3,16 @@ import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import styles from './SearchBar.styles'
 import { colors } from '~/styles'
-import SearchResults from './SearchResults'
-import { SearchContext } from '~/contexts'
 import { translate } from '~/locales'
+import { BackButton } from '../Buttons'
 
-const SearchBar = () => {
-  const { searchResults, searchText, setSearchText } = React.useContext(SearchContext)
-  const showResults = !!searchText && !!searchResults
-
+const SearchBar = ({
+  searchText,
+  setSearchText,
+}: {
+  searchText: string
+  setSearchText: React.Dispatch<React.SetStateAction<string>>
+}) => {
   // Workaround to fix the textInput doesn't losing focus after dismissing keyboard on some Android devices
   // https://github.com/facebook/react-native/issues/33532
   const inputRef = React.useRef<TextInput>(null)
@@ -27,8 +29,8 @@ const SearchBar = () => {
 
   return (
     <View style={styles.container}>
+      <BackButton />
       <View style={styles.inputContainer}>
-        <Icon name='search' style={styles.searchIcon} size={18} color={colors.gray} />
         <TextInput
           ref={inputRef}
           value={searchText}
@@ -48,7 +50,6 @@ const SearchBar = () => {
           />
         )}
       </View>
-      {showResults && <SearchResults data={searchResults} />}
     </View>
   )
 }

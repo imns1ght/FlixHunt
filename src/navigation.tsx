@@ -7,20 +7,23 @@ import {
 } from '@react-navigation/bottom-tabs'
 import { mediaType } from './models'
 
-export type StackParamList = {
-  BottomBar: { mediaType: mediaType }
-  Media: { id: number; title?: string; mediaType: mediaType }
-}
-
 export type TabParamList = {
   Home: undefined
+  Search: undefined
   Movies: undefined
   TV: undefined
   Info: undefined
 }
 
+export type StackParamList = {
+  BottomBar?: { screen?: keyof TabParamList }
+  Media: { id: number; title?: string; mediaType: mediaType }
+  Search: { id: string }
+}
+
 type MovieScreenProps = StackScreenProps<StackParamList, 'Media'>
 type HomeScreenProps = BottomTabScreenProps<TabParamList, 'Home'>
+type SearchScreenProps = BottomTabScreenProps<TabParamList, 'Search'>
 type MoviesScreenProps = BottomTabScreenProps<TabParamList, 'Movies'>
 type TVScreenProps = BottomTabScreenProps<TabParamList, 'TV'>
 type InfoScreenProps = BottomTabScreenProps<TabParamList, 'Info'>
@@ -29,6 +32,7 @@ type InfoScreenProps = BottomTabScreenProps<TabParamList, 'Info'>
  * Example: const component = ({ navigation, route }: NavigationScreenProps['Media']) => {...} */
 export type NavigationScreenProps = {
   ['Home']: HomeScreenProps
+  ['Search']: SearchScreenProps
   ['Media']: MovieScreenProps
   ['Movies']: MoviesScreenProps
   ['TV']: TVScreenProps
