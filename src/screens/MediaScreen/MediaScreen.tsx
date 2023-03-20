@@ -35,6 +35,10 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
     const showImages = data.images.backdrops.length > 0
     const showVideos = data.videos.results.length > 0
     const isMovie = data.media_type === 'movie'
+    const youtubeVideos = React.useMemo(
+      () => data.videos.results.filter(item => item.site.toLowerCase() === 'youtube'),
+      [data.videos.results]
+    )
 
     return (
       <View>
@@ -53,7 +57,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
           <CustomText type='paragraph'>{data.overview}</CustomText>
         </Section>
         {showImages && <ImagesCarousel images={data.images.backdrops} />}
-        {showVideos && <VideosCarousel videos={data.videos.results} />}
+        {showVideos && <VideosCarousel videos={youtubeVideos} />}
         <CastCarousel id={data.id} mediaType={mediaType} />
         {isMovie && !!data.belongs_to_collection && (
           <CollectionCarousel id={data.id} collectionId={data.belongs_to_collection.id} />
