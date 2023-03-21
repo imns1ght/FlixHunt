@@ -98,8 +98,8 @@ android {
         applicationId "com.imns1ght.flixhunt"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
-        versionName "1.3.0"
+        versionCode 1
+        versionName "1.0.0"
     }
 
     splits {
