@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* MovieBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MovieBrowserTests.m */; };
+		00E356F31AD99517003FC87E /* FlixHuntTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FlixHuntTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7E599F1EB0392D22FE681104 /* libPods-MovieBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4486CD3E2DF07772B818E3 /* libPods-MovieBrowser.a */; };
+		7E599F1EB0392D22FE681104 /* libPods-FlixHunt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4486CD3E2DF07772B818E3 /* libPods-FlixHunt.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		D4BDD73B16C2D1D61E0F8F79 /* libPods-MovieBrowser-MovieBrowserTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF835AA9FC4FC15355FDB1EC /* libPods-MovieBrowser-MovieBrowserTests.a */; };
+		D4BDD73B16C2D1D61E0F8F79 /* libPods-FlixHunt-FlixHuntTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF835AA9FC4FC15355FDB1EC /* libPods-FlixHunt-FlixHuntTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,27 +22,27 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = MovieBrowser;
+			remoteInfo = FlixHunt;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* MovieBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* FlixHuntTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlixHuntTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* MovieBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieBrowserTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* MovieBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MovieBrowser/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MovieBrowser/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MovieBrowser/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MovieBrowser/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MovieBrowser/main.m; sourceTree = "<group>"; };
-		668CC2CE785864215BF44F28 /* Pods-MovieBrowser-MovieBrowserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieBrowser-MovieBrowserTests.release.xcconfig"; path = "Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests.release.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MovieBrowser/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		972B064185B557A615F17694 /* Pods-MovieBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieBrowser.release.xcconfig"; path = "Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser.release.xcconfig"; sourceTree = "<group>"; };
-		A665B81F3BA3DD500C14E73E /* Pods-MovieBrowser-MovieBrowserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieBrowser-MovieBrowserTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CBF13EA958A77752B2505D9D /* Pods-MovieBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieBrowser.debug.xcconfig"; path = "Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser.debug.xcconfig"; sourceTree = "<group>"; };
-		CC4486CD3E2DF07772B818E3 /* libPods-MovieBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MovieBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF835AA9FC4FC15355FDB1EC /* libPods-MovieBrowser-MovieBrowserTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MovieBrowser-MovieBrowserTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* FlixHuntTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlixHuntTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* FlixHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlixHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FlixHunt/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FlixHunt/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlixHunt/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FlixHunt/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FlixHunt/main.m; sourceTree = "<group>"; };
+		668CC2CE785864215BF44F28 /* Pods-FlixHunt-FlixHuntTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixHunt-FlixHuntTests.release.xcconfig"; path = "Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests.release.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FlixHunt/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		972B064185B557A615F17694 /* Pods-FlixHunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixHunt.release.xcconfig"; path = "Target Support Files/Pods-FlixHunt/Pods-FlixHunt.release.xcconfig"; sourceTree = "<group>"; };
+		A665B81F3BA3DD500C14E73E /* Pods-FlixHunt-FlixHuntTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixHunt-FlixHuntTests.debug.xcconfig"; path = "Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CBF13EA958A77752B2505D9D /* Pods-FlixHunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixHunt.debug.xcconfig"; path = "Target Support Files/Pods-FlixHunt/Pods-FlixHunt.debug.xcconfig"; sourceTree = "<group>"; };
+		CC4486CD3E2DF07772B818E3 /* libPods-FlixHunt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixHunt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF835AA9FC4FC15355FDB1EC /* libPods-FlixHunt-FlixHuntTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixHunt-FlixHuntTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4BDD73B16C2D1D61E0F8F79 /* libPods-MovieBrowser-MovieBrowserTests.a in Frameworks */,
+				D4BDD73B16C2D1D61E0F8F79 /* libPods-FlixHunt-FlixHuntTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,20 +59,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E599F1EB0392D22FE681104 /* libPods-MovieBrowser.a in Frameworks */,
+				7E599F1EB0392D22FE681104 /* libPods-FlixHunt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* MovieBrowserTests */ = {
+		00E356EF1AD99517003FC87E /* FlixHuntTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* MovieBrowserTests.m */,
+				00E356F21AD99517003FC87E /* FlixHuntTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = MovieBrowserTests;
+			path = FlixHuntTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -83,7 +83,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* MovieBrowser */ = {
+		13B07FAE1A68108700A75B9A /* FlixHunt */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -93,15 +93,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = MovieBrowser;
+			name = FlixHunt;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				CC4486CD3E2DF07772B818E3 /* libPods-MovieBrowser.a */,
-				CF835AA9FC4FC15355FDB1EC /* libPods-MovieBrowser-MovieBrowserTests.a */,
+				CC4486CD3E2DF07772B818E3 /* libPods-FlixHunt.a */,
+				CF835AA9FC4FC15355FDB1EC /* libPods-FlixHunt-FlixHuntTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,9 +116,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* MovieBrowser */,
+				13B07FAE1A68108700A75B9A /* FlixHunt */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* MovieBrowserTests */,
+				00E356EF1AD99517003FC87E /* FlixHuntTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D5E7B878C3EF5EB38B30A206 /* Pods */,
@@ -131,8 +131,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MovieBrowser.app */,
-				00E356EE1AD99517003FC87E /* MovieBrowserTests.xctest */,
+				13B07F961A680F5B00A75B9A /* FlixHunt.app */,
+				00E356EE1AD99517003FC87E /* FlixHuntTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 		D5E7B878C3EF5EB38B30A206 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CBF13EA958A77752B2505D9D /* Pods-MovieBrowser.debug.xcconfig */,
-				972B064185B557A615F17694 /* Pods-MovieBrowser.release.xcconfig */,
-				A665B81F3BA3DD500C14E73E /* Pods-MovieBrowser-MovieBrowserTests.debug.xcconfig */,
-				668CC2CE785864215BF44F28 /* Pods-MovieBrowser-MovieBrowserTests.release.xcconfig */,
+				CBF13EA958A77752B2505D9D /* Pods-FlixHunt.debug.xcconfig */,
+				972B064185B557A615F17694 /* Pods-FlixHunt.release.xcconfig */,
+				A665B81F3BA3DD500C14E73E /* Pods-FlixHunt-FlixHuntTests.debug.xcconfig */,
+				668CC2CE785864215BF44F28 /* Pods-FlixHunt-FlixHuntTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -152,9 +152,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* MovieBrowserTests */ = {
+		00E356ED1AD99517003FC87E /* FlixHuntTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MovieBrowserTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FlixHuntTests" */;
 			buildPhases = (
 				AE14722E61CB2E415A675326 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -168,14 +168,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = MovieBrowserTests;
-			productName = MovieBrowserTests;
-			productReference = 00E356EE1AD99517003FC87E /* MovieBrowserTests.xctest */;
+			name = FlixHuntTests;
+			productName = FlixHuntTests;
+			productReference = 00E356EE1AD99517003FC87E /* FlixHuntTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* MovieBrowser */ = {
+		13B07F861A680F5B00A75B9A /* FlixHunt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MovieBrowser" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FlixHunt" */;
 			buildPhases = (
 				13BD0B95A8CAD52939A1C8BE /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -190,9 +190,9 @@
 			);
 			dependencies = (
 			);
-			name = MovieBrowser;
-			productName = MovieBrowser;
-			productReference = 13B07F961A680F5B00A75B9A /* MovieBrowser.app */;
+			name = FlixHunt;
+			productName = FlixHunt;
+			productReference = 13B07F961A680F5B00A75B9A /* FlixHunt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -212,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MovieBrowser" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FlixHunt" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -225,8 +225,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* MovieBrowser */,
-				00E356ED1AD99517003FC87E /* MovieBrowserTests */,
+				13B07F861A680F5B00A75B9A /* FlixHunt */,
+				00E356ED1AD99517003FC87E /* FlixHuntTests */,
 			);
 		};
 /* End PBXProject section */
@@ -280,7 +280,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MovieBrowser-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FlixHunt-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -293,15 +293,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt/Pods-FlixHunt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt/Pods-FlixHunt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlixHunt/Pods-FlixHunt-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AC8907F02C239E80D25ED7E2 /* [CP] Copy Pods Resources */ = {
@@ -310,15 +310,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt/Pods-FlixHunt-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt/Pods-FlixHunt-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser/Pods-MovieBrowser-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlixHunt/Pods-FlixHunt-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AE14722E61CB2E415A675326 /* [CP] Check Pods Manifest.lock */ = {
@@ -336,7 +336,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MovieBrowser-MovieBrowserTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FlixHunt-FlixHuntTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -349,15 +349,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5895B127B5078438E0BC3CB /* [CP] Embed Pods Frameworks */ = {
@@ -366,15 +366,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieBrowser-MovieBrowserTests/Pods-MovieBrowser-MovieBrowserTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlixHunt-FlixHuntTests/Pods-FlixHunt-FlixHuntTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -403,7 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* MovieBrowserTests.m in Sources */,
+				00E356F31AD99517003FC87E /* FlixHuntTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +421,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* MovieBrowser */;
+			target = 13B07F861A680F5B00A75B9A /* FlixHunt */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -429,14 +429,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A665B81F3BA3DD500C14E73E /* Pods-MovieBrowser-MovieBrowserTests.debug.xcconfig */;
+			baseConfigurationReference = A665B81F3BA3DD500C14E73E /* Pods-FlixHunt-FlixHuntTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MovieBrowserTests/Info.plist;
+				INFOPLIST_FILE = FlixHuntTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,17 +450,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieBrowser.app/MovieBrowser";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlixHunt.app/FlixHunt";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 668CC2CE785864215BF44F28 /* Pods-MovieBrowser-MovieBrowserTests.release.xcconfig */;
+			baseConfigurationReference = 668CC2CE785864215BF44F28 /* Pods-FlixHunt-FlixHuntTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = MovieBrowserTests/Info.plist;
+				INFOPLIST_FILE = FlixHuntTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,19 +474,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieBrowser.app/MovieBrowser";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlixHunt.app/FlixHunt";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBF13EA958A77752B2505D9D /* Pods-MovieBrowser.debug.xcconfig */;
+			baseConfigurationReference = CBF13EA958A77752B2505D9D /* Pods-FlixHunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = MovieBrowser/Info.plist;
+				INFOPLIST_FILE = FlixHunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -497,7 +497,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MovieBrowser;
+				PRODUCT_NAME = FlixHunt;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -506,12 +506,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 972B064185B557A615F17694 /* Pods-MovieBrowser.release.xcconfig */;
+			baseConfigurationReference = 972B064185B557A615F17694 /* Pods-FlixHunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = MovieBrowser/Info.plist;
+				INFOPLIST_FILE = FlixHunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,7 +522,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MovieBrowser;
+				PRODUCT_NAME = FlixHunt;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -656,7 +656,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MovieBrowserTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FlixHuntTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -665,7 +665,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MovieBrowser" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FlixHunt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -674,7 +674,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MovieBrowser" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "FlixHunt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

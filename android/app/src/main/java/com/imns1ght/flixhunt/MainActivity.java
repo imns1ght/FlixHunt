@@ -1,4 +1,4 @@
-package com.imns1ght.moviebrowser;
+package com.imns1ght.flixhunt;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
@@ -11,7 +11,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "MovieBrowser";
+    return "FlixHunt";
   }
 
   @Override

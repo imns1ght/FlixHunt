@@ -6,7 +6,7 @@ import { translate } from '~/locales'
 
 const InfoScreen = () => {
   const onPress = () => {
-    Linking.openURL('https://github.com/imns1ght/movie-browser')
+    Linking.openURL('https://github.com/imns1ght/FlixHunt')
   }
   return (
     <ScrollView>

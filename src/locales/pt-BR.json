@@ -11,13 +11,13 @@
   "collection": "Coleção",
   "contributing": {
     "title": "Contribuição",
-    "description": "O Movie Browser é de código aberto, se você quiser contribuir com este projeto pode enviar um pull request ou reportar um bug abrindo uma issue no GitHub. Agradecemos sua ajuda para tornar o Movie Browser melhor para todos nós!",
+    "description": "O FlixHunt é de código aberto, se você quiser contribuir com este projeto pode enviar um pull request ou reportar um bug abrindo uma issue no GitHub. Agradecemos sua ajuda para tornar o FlixHunt melhor para todos nós!",
     "link": "Clique aqui para acessar o código-fonte no GitHub"
   },
   "disclaimer": {
     "title": "Aviso legal",
-    "tmdbAccuracy": "O aplicativo Movie Browser usa dados provenientes da API do TMDb (The Movie Database API) para fornecer informações sobre filmes e séries. Embora nos esforcemos para garantir que as informações exibidas no aplicativo sejam precisas e atualizadas, não podemos garantir a precisão, integridade ou pontualidade dos dados fornecidos pela API TMDb.",
-    "tmdbNotAffiliated": "Ao usar o aplicativo Movie Browser, você reconhece e concorda que não somos responsáveis por quaisquer erros ou omissões nas informações fornecidas ou por quaisquer ações que você possa realizar com base nas informações exibidas no aplicativo. Além disso, o aplicativo Movie Browser não é endossado ou afiliado ao TMDb, e não fazemos representações ou garantias em relação à precisão ou integridade dos dados fornecidos pelo TMDb."
+    "tmdbAccuracy": "O aplicativo FlixHunt usa dados provenientes da API do TMDb (The Movie Database API) para fornecer informações sobre filmes e séries. Embora nos esforcemos para garantir que as informações exibidas no aplicativo sejam precisas e atualizadas, não podemos garantir a precisão, integridade ou pontualidade dos dados fornecidos pela API TMDb.",
+    "tmdbNotAffiliated": "Ao usar o aplicativo FlixHunt, você reconhece e concorda que não somos responsáveis por quaisquer erros ou omissões nas informações fornecidas ou por quaisquer ações que você possa realizar com base nas informações exibidas no aplicativo. Além disso, o aplicativo FlixHunt não é endossado ou afiliado ao TMDb, e não fazemos representações ou garantias em relação à precisão ou integridade dos dados fornecidos pelo TMDb."
   },
   "error": "Erro...",
   "images": "Imagens",

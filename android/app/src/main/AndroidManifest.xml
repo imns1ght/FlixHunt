@@ -3,14 +3,14 @@
   <uses-permission android:name="android.permission.INTERNET" />
 
   <application
-    android:name="com.imns1ght.moviebrowser.MainApplication"
+    android:name="com.imns1ght.flixhunt.MainApplication"
     android:label="@string/app_name"
     android:icon="@mipmap/ic_launcher"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:allowBackup="false"
     android:theme="@style/AppTheme">
     <activity
-      android:name="com.imns1ght.moviebrowser.MainActivity"
+      android:name="com.imns1ght.flixhunt.MainActivity"
       android:label="@string/app_name"
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
       android:launchMode="singleTask"

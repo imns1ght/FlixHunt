@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.imns1ght.moviebrowser"
+    namespace "com.imns1ght.flixhunt"
     defaultConfig {
-        applicationId "com.imns1ght.moviebrowser"
+        applicationId "com.imns1ght.flixhunt"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 8
