@@ -1,5 +1,5 @@
 const colors = {
-  primary: '#BA181B',
+  primary: '#ca3a4d',
   secondary: '#14141c',
   white: '#FFFFFF',
   black: '#000000',
@@ -13,8 +13,9 @@ const theme = {
     background: colors.secondary,
     card: colors.primary,
     text: colors.white,
-    border: colors.gray,
-    notification: colors.secondary,
+    icon: colors.white,
+    border: colors.black,
+    notification: colors.primary,
   },
 }
 

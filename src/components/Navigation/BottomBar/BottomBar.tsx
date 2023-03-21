@@ -2,7 +2,7 @@ import { TouchableOpacity } from 'react-native'
 import React from 'react'
 import { RouteProp } from '@react-navigation/native'
 import { TabParamList } from '~/navigation'
-import { colors } from '~/styles'
+import { theme } from '~/styles'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'
 import styles from './BottomBar.styles'
@@ -10,7 +10,7 @@ import styles from './BottomBar.styles'
 const BottomBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamList> }) => ({
   headerShown: false,
   tabBarShowLabel: true,
-  tabBarLabelStyle: { color: colors.white },
+  tabBarLabelStyle: { color: theme.colors.text },
   tabBarIcon: ({ focused, size }: { focused: boolean; color: string; size: number }) => {
     let iconName = ''
     if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline'
@@ -20,7 +20,7 @@ const BottomBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamLis
     else if (route.name === 'Info')
       iconName = focused ? 'information-circle' : 'information-circle-outline'
     // You can return any component that you like here!
-    return <Icon name={iconName} size={size} color={colors.white} />
+    return <Icon name={iconName} size={size} color={theme.colors.icon} />
   },
   tabBarStyle: styles.tabBarStyle,
   tabBarButton: ({ children, onPress }: BottomTabBarButtonProps) => (

@@ -1,11 +1,10 @@
 import React from 'react'
 import { IconButton } from '~/components'
-import { colors } from '~/styles'
+import { theme } from '~/styles'
 import { useNavigation } from '@react-navigation/native'
 
 const BackButton = () => {
   const iconSize = 25
-  const iconColor = colors.white
   const navigation = useNavigation()
 
   return (
@@ -14,7 +13,7 @@ const BackButton = () => {
       type='Material'
       onPress={navigation.goBack}
       size={iconSize}
-      color={iconColor}
+      color={theme.colors.icon}
     />
   )
 }

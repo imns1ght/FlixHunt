@@ -2,7 +2,7 @@ import { Keyboard, TextInput, View } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import styles from './SearchBar.styles'
-import { colors } from '~/styles'
+import { theme } from '~/styles'
 import { translate } from '~/locales'
 import { BackButton } from '../Buttons'
 
@@ -45,7 +45,7 @@ const SearchBar = ({
             name='close'
             onPress={() => setSearchText('')}
             style={styles.closeIcon}
-            color={colors.gray}
+            color={theme.colors.icon}
             size={18}
           />
         )}

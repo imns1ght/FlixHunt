@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { colors } from '~/styles'
+import { colors, theme } from '~/styles'
 
 const styles = StyleSheet.create({
   loading: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   scrollview: {
     flexGrow: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: theme.colors.background,
     paddingBottom: 10,
   },
   cover: {
