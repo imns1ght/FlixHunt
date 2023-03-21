@@ -66,6 +66,7 @@ const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
             renderItem={renderItem}
             initialNumToRender={1}
             maxToRenderPerBatch={1}
+            overScrollMode='never'
             horizontal
           />
         )}
