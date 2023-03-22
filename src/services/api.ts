@@ -101,8 +101,9 @@ const getTrending = async (
  * Returns the cast and crew for a movie by id.
  */
 const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> => {
+  const endpoint = mediaType === 'tv' ? 'aggregate_credits' : 'credits'
   const response = axiosInstance
-    .get<MovieCreditsResponse>(`/${mediaType}/${id}/credits`, <MovieCreditsParams>{
+    .get<MovieCreditsResponse>(`/${mediaType}/${id}/${endpoint}`, <MovieCreditsParams>{
       params: {
         api_key: CONSTANTS.api_key,
         language: LANGUAGE,

@@ -28,7 +28,7 @@ const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) =
         id={item.id}
         imagePath={item.profile_path}
         title={item.name}
-        subtitle={item.character}
+        subtitle={item.character ?? item?.roles?.[0].character}
       />
     )
   }, [])

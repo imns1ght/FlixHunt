@@ -1,3 +1,9 @@
+export type RoleType = {
+  credit_id: number
+  character: string
+  episode_count: number
+}
+
 export type CastType = {
   adult: boolean
   gender?: number
@@ -11,4 +17,5 @@ export type CastType = {
   character: string
   credit_id: string
   order: number
+  roles?: RoleType[]
 }

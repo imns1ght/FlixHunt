@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     elevation: 1,
     flexDirection: 'row',
     columnGap: 10,
+    maxWidth: 300,
   },
   containerDisabled: {
     backgroundColor: theme.colors.primary + '70',
