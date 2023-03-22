@@ -40,15 +40,17 @@ type BasicParams = {
  */
 const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
-    .get<TrendingResponse>(`/discover/${mediaType}?sort_by=popularity.desc`, <TrendingParams>{
+    .get<TrendingResponse>(`/discover/${mediaType}`, <TrendingParams>{
       params: {
         api_key: CONSTANTS.api_key,
         media_type: mediaType,
         language: LANGUAGE,
         region: REGION,
+        sort_by: 'popularity.desc',
+        'vote_count.gte': '150',
       },
     })
-    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
+    .then(response => response.data.results)
     .catch((e: Error | AxiosError) => {
       console.error(e)
       throw e
@@ -63,9 +65,12 @@ const getTVShowAiringToday = async (): Promise<MediaSimpleType[]> => {
       params: {
         api_key: CONSTANTS.api_key,
         language: LANGUAGE,
+        sort_by: 'popularity.desc',
+        'vote_count.gte': '100',
+        'vote_average.gte': '5',
       },
     })
-    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
+    .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.error(e)
       throw e
@@ -88,7 +93,7 @@ const getTrending = async (
         language: LANGUAGE,
       },
     })
-    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
+    .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.error(`${e.name}: ${e.message}`)
       throw e
@@ -127,7 +132,7 @@ const getRecommendations = async (id: number, mediaType: mediaType): Promise<Med
         language: LANGUAGE,
       },
     })
-    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 10))
+    .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.error(`${e.name}: ${e.message}`)
       throw e
@@ -152,7 +157,7 @@ const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSi
         page: page,
       },
     })
-    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
+    .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.log('error: getMoviesTopRated()', e)
       throw e
@@ -205,7 +210,7 @@ const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
         region: REGION,
       },
     })
-    .then(response => response.data.results.filter(item => !!item.overview).slice(0, 15))
+    .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.log(e)
       throw e
