@@ -10,6 +10,7 @@ import styles from './BottomBar.styles'
 const BottomBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamList> }) => ({
   headerShown: false,
   tabBarShowLabel: true,
+  tabBarLabelPosition: 'below-icon',
   tabBarLabelStyle: { color: theme.colors.text },
   tabBarIcon: ({ focused, size }: { focused: boolean; color: string; size: number }) => {
     let iconName = ''
