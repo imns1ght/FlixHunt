@@ -60,6 +60,7 @@ const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: nu
           initialNumToRender={3}
           maxToRenderPerBatch={5}
           showsHorizontalScrollIndicator={false}
+          windowSize={3}
           horizontal
         />
       )}

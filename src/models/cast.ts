@@ -18,4 +18,5 @@ export type CastType = {
   credit_id: string
   order: number
   roles?: RoleType[]
+  total_episode_count?: number
 }

@@ -82,6 +82,7 @@ const MediaCarousel = ({
           initialNumToRender={3}
           maxToRenderPerBatch={5}
           showsHorizontalScrollIndicator={false}
+          windowSize={3}
           horizontal
         />
       )}

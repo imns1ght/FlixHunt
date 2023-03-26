@@ -46,6 +46,7 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
           initialNumToRender={2}
           maxToRenderPerBatch={3}
           showsHorizontalScrollIndicator={false}
+          windowSize={3}
           horizontal
         />
       </Section>

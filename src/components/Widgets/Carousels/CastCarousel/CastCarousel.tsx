@@ -48,6 +48,7 @@ const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) =
           maxToRenderPerBatch={3}
           ListEmptyComponent={<CustomText type='paragraph'>{translate('nothingFound')}</CustomText>}
           showsHorizontalScrollIndicator={false}
+          windowSize={3}
           horizontal
         />
       )}

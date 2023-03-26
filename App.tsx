@@ -65,9 +65,6 @@ const App = () => {
             name='Media'
             component={MediaScreen}
             getId={({ params }) => `${params.id}`}
-            options={{
-              animationEnabled: false,
-            }}
           />
           <Stack.Screen
             name='Search'

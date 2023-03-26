@@ -28,6 +28,7 @@ const SearchResults = ({ data }: { data: MediaSimpleType[] }) => {
         initialNumToRender={2}
         maxToRenderPerBatch={3}
         keyboardShouldPersistTaps='always'
+        windowSize={3}
       />
     </View>
   )

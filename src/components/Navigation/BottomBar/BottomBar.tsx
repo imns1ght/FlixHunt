@@ -6,8 +6,13 @@ import { theme } from '~/styles'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'
 import styles from './BottomBar.styles'
+import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
 
-const BottomBar = ({ route }: { route: RouteProp<TabParamList, keyof TabParamList> }) => ({
+const BottomBar = ({
+  route,
+}: {
+  route: RouteProp<TabParamList, keyof TabParamList>
+}): BottomTabNavigationOptions => ({
   headerShown: false,
   tabBarShowLabel: true,
   tabBarLabelPosition: 'below-icon',
