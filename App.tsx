@@ -7,7 +7,6 @@ import {
   AuthScreen,
   HomeScreen,
   InfoScreen,
-  LoginScreen,
   MediaScreen,
   MoviesScreen,
   SearchScreen,
@@ -69,7 +68,6 @@ const App = () => (
           getId={({ params }) => `${params.id}`}
         />
         <Stack.Screen name='Authenticate' component={AuthScreen} />
-        <Stack.Screen name='Login' component={LoginScreen} />
       </Stack.Navigator>
     </SafeAreaView>
   </NavigationContainer>

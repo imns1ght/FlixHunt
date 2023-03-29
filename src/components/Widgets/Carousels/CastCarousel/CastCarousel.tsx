@@ -1,7 +1,7 @@
 import React from 'react'
-import { ActivityIndicator, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import { API } from '~/services'
-import { Card, CustomText, Section } from '~/components'
+import { Card, CustomActivityIndicator, CustomText, Section } from '~/components'
 import { mediaType } from '~/models'
 import { CastType } from '~/models'
 import { translate } from '~/locales'
@@ -36,7 +36,7 @@ const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) =
   return (
     <Section title={translate('cast')}>
       {loading ? (
-        <ActivityIndicator />
+        <CustomActivityIndicator />
       ) : !data ? (
         <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (

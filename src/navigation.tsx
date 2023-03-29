@@ -6,6 +6,8 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs'
 import { mediaType } from './models'
+import { DEFAULT_REGION, LANGUAGE } from './services'
+import { colors } from './styles'
 
 export type TabParamList = {
   Home: undefined
@@ -20,7 +22,6 @@ export type StackParamList = {
   Media: { id: number; title?: string; mediaType: mediaType }
   Search: { id: string }
   Authenticate: undefined
-  Login: undefined
 }
 
 type MovieScreenProps = StackScreenProps<StackParamList, 'Media'>
@@ -30,7 +31,6 @@ type MoviesScreenProps = BottomTabScreenProps<TabParamList, 'Movies'>
 type TVScreenProps = BottomTabScreenProps<TabParamList, 'TV'>
 type InfoScreenProps = BottomTabScreenProps<TabParamList, 'Info'>
 type AuthScreenProps = BottomTabScreenProps<StackParamList, 'Authenticate'>
-type LoginScreenProps = BottomTabScreenProps<StackParamList, 'Login'>
 
 /** Use to get the params from the route.
  * Example: const component = ({ navigation, route }: NavigationScreenProps['Media']) => {...} */
@@ -41,7 +41,6 @@ export type NavigationScreenProps = {
   ['Movies']: MoviesScreenProps
   ['TV']: TVScreenProps
   ['Authenticate']: AuthScreenProps
-  ['Login']: LoginScreenProps
   ['Info']: InfoScreenProps
 }
 
@@ -58,9 +57,23 @@ const linkingConfig = {
   config: {
     screens: {
       Authenticate: 'auth',
-      Login: 'login',
     },
   },
 }
 
-export { Stack, Tab, linkingConfig }
+const tmdbDefaultHeader = () => ({
+  headers: {
+    Cookie: `tmdb.prefs={"locale":${LANGUAGE},"country_code":${DEFAULT_REGION}}`,
+  },
+})
+
+const inAppBrowserDefaultOptions = {
+  ...tmdbDefaultHeader(),
+  hasBackButton: true,
+  includeReferrer: true,
+  toolbarColor: colors.secondary,
+  forceCloseOnRedirection: false,
+  showInRecents: true,
+}
+
+export { Stack, Tab, linkingConfig, inAppBrowserDefaultOptions }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActivityIndicator, ScrollView, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import styles from './MediaScreen.styles'
 import Header from './Header'
 import { NavigationScreenProps } from '~/navigation'
@@ -7,6 +7,7 @@ import { API } from '~/services'
 import {
   CastCarousel,
   CollectionCarousel,
+  CustomActivityIndicator,
   CustomText,
   ImagesCarousel,
   MediaCarousel,
@@ -71,7 +72,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
     <ScrollView contentContainerStyle={styles.scrollview}>
       {loading ? (
         <View style={styles.loading}>
-          <ActivityIndicator size='large' />
+          <CustomActivityIndicator size='large' />
         </View>
       ) : data ? (
         <Content data={data} />

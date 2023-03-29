@@ -1,5 +1,5 @@
 {
-  "name": "FlixHunt",
+  "name": "flixhunt",
   "version": "0.0.1",
   "scripts": {
     "start": "react-native start",
@@ -31,6 +31,7 @@
     "react-native-collapsible": "^1.6.0",
     "react-native-fast-image": "^8.6.3",
     "react-native-gesture-handler": "^2.9.0",
+    "react-native-inappbrowser-reborn": "^3.7.0",
     "react-native-localize": "^2.2.4",
     "react-native-modal": "^13.0.1",
     "react-native-ratings": "^8.1.0",

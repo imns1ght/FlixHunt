@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { ActivityIndicator, FlatList } from 'react-native'
-import { Card, CustomText, Section } from '~/components'
+import { FlatList } from 'react-native'
+import { Card, CustomActivityIndicator, CustomText, Section } from '~/components'
 import { translate } from '~/locales'
 import { CollectionType, MediaSimpleType } from '~/models'
 import { StackNavigationProps } from '~/navigation'
@@ -49,7 +49,7 @@ const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: nu
   return (
     <Section title={collectionData?.name ?? translate('collection')}>
       {loading ? (
-        <ActivityIndicator size='large' />
+        <CustomActivityIndicator size='large' />
       ) : !collectionData ? (
         <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (
