@@ -1,7 +1,6 @@
 import React from 'react'
-import { CustomText, HorizontalCard, Section } from '~/components'
+import { CustomActivityIndicator, CustomText, HorizontalCard, Section } from '~/components'
 import { MovieSimpleType } from '~/models'
-import { ActivityIndicator } from 'react-native'
 import { API } from '~/services'
 import { translate } from '~/locales'
 
@@ -22,7 +21,7 @@ const UpcomingList = () => {
   return (
     <Section title={translate('upcoming')}>
       {loading ? (
-        <ActivityIndicator size='large' />
+        <CustomActivityIndicator size='large' />
       ) : !data ? (
         <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { ActivityIndicator, FlatList } from 'react-native'
-import { Card, CustomText, Section } from '~/components'
+import { FlatList } from 'react-native'
+import { Card, CustomActivityIndicator, CustomText, Section } from '~/components'
 import { translate } from '~/locales'
 import { MediaSimpleType, mediaType } from '~/models'
 import { StackNavigationProps } from '~/navigation'
@@ -70,7 +70,7 @@ const MediaCarousel = ({
   return (
     <Section title={customTitle ?? translate(type)}>
       {loading ? (
-        <ActivityIndicator size='large' />
+        <CustomActivityIndicator size='large' />
       ) : !data ? (
         <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (

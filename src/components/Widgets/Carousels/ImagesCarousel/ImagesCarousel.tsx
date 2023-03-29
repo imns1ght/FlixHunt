@@ -1,9 +1,9 @@
 import React from 'react'
-import { ActivityIndicator, Pressable, View } from 'react-native'
+import { Pressable, View } from 'react-native'
 import Modal from 'react-native-modal'
 import { ImageType } from '~/models'
 import { getImagePath } from '~/utils'
-import { Section } from '~/components'
+import { CustomActivityIndicator, Section } from '~/components'
 import styles from './ImagesCarousel.styles'
 import { FlatList } from 'react-native-gesture-handler'
 import FastImage from 'react-native-fast-image'
@@ -68,7 +68,7 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
             style={{ ...styles.modalImage, display: modalImageLoading ? 'none' : 'flex' }}
             resizeMode='contain'
           />
-          {modalImageLoading && <ActivityIndicator size='large' />}
+          {modalImageLoading && <CustomActivityIndicator size='large' />}
         </Modal>
       )}
     </>

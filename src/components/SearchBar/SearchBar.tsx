@@ -1,10 +1,12 @@
-import { Keyboard, TextInput, View } from 'react-native'
+import { TextInput, View } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import styles from './SearchBar.styles'
 import { theme } from '~/styles'
 import { translate } from '~/locales'
 import { BackButton } from '../Buttons'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { TabNavigationProps } from '~/navigation'
 
 const SearchBar = ({
   searchText,
@@ -13,26 +15,32 @@ const SearchBar = ({
   searchText: string
   setSearchText: React.Dispatch<React.SetStateAction<string>>
 }) => {
-  // Workaround to fix the textInput doesn't losing focus after dismissing keyboard on some Android devices
-  // https://github.com/facebook/react-native/issues/33532
-  const inputRef = React.useRef<TextInput>(null)
-  const keyboardDidHideCallback = () => inputRef.current?.blur?.()
-  React.useEffect(() => {
-    const keyboardDidHideSubscription = Keyboard.addListener(
-      'keyboardDidHide',
-      keyboardDidHideCallback
-    )
-    return () => {
-      keyboardDidHideSubscription?.remove()
+  const navigation = useNavigation<TabNavigationProps>()
+  const textInputRef = React.useRef<TextInput>(null)
+
+  const focusTextInput = React.useCallback(() => {
+    if (textInputRef.current) {
+      const unsubscribe = navigation.addListener('focus', () => {
+        /** Workaround to fix the focus https://github.com/facebook/react-native/issues/19366 */
+        textInputRef.current?.blur()
+        setTimeout(() => {
+          textInputRef.current?.focus()
+        }, 100)
+      })
+      return unsubscribe
     }
-  }, [])
+  }, [navigation])
+
+  useFocusEffect(() => {
+    focusTextInput()
+  })
 
   return (
     <View style={styles.container}>
       <BackButton />
       <View style={styles.inputContainer}>
         <TextInput
-          ref={inputRef}
+          ref={textInputRef}
           value={searchText}
           onChangeText={setSearchText}
           placeholder={translate('searchPlaceholder')}

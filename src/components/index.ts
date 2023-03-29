@@ -4,6 +4,7 @@ export * from './Containers'
 export * from './Buttons'
 export * from './Widgets'
 
+export { default as CustomActivityIndicator } from './CustomActivityIndicator'
 export { default as SearchBar } from './SearchBar'
 export { default as Rating } from './Rating'
 export { default as CustomText } from './CustomText'
