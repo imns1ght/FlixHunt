@@ -4,14 +4,16 @@ import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { BottomBar } from '~/components'
 import {
+  AuthScreen,
   HomeScreen,
   InfoScreen,
+  LoginScreen,
   MediaScreen,
   MoviesScreen,
   SearchScreen,
   TVShowsScreen,
 } from '~/screens'
-import { Stack, Tab } from '~/navigation'
+import { Stack, Tab, linkingConfig } from '~/navigation'
 import { theme } from '~/styles'
 import { translate } from '~/locales'
 
@@ -55,26 +57,22 @@ const TabBar = () => (
   </Tab.Navigator>
 )
 
-const App = () => {
-  return (
-    <NavigationContainer theme={theme}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Stack.Navigator initialRouteName='BottomBar' screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='BottomBar' component={TabBar} />
-          <Stack.Screen
-            name='Media'
-            component={MediaScreen}
-            getId={({ params }) => `${params.id}`}
-          />
-          <Stack.Screen
-            name='Search'
-            component={SearchScreen}
-            getId={({ params }) => `${params.id}`}
-          />
-        </Stack.Navigator>
-      </SafeAreaView>
-    </NavigationContainer>
-  )
-}
+const App = () => (
+  <NavigationContainer linking={linkingConfig} theme={theme}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Stack.Navigator initialRouteName='Authenticate' screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='BottomBar' component={TabBar} />
+        <Stack.Screen name='Media' component={MediaScreen} getId={({ params }) => `${params.id}`} />
+        <Stack.Screen
+          name='Search'
+          component={SearchScreen}
+          getId={({ params }) => `${params.id}`}
+        />
+        <Stack.Screen name='Authenticate' component={AuthScreen} />
+        <Stack.Screen name='Login' component={LoginScreen} />
+      </Stack.Navigator>
+    </SafeAreaView>
+  </NavigationContainer>
+)
 
 export default App

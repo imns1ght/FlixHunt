@@ -8,9 +8,3 @@ export type TrendingResponse = {
   total_pages: number
   total_results: number
 }
-
-export type TrendingParams = {
-  params: {
-    api_key: string
-  }
-}
