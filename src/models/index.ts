@@ -1,3 +1,5 @@
+export * from './authentication'
+export * from './account'
 export * from './medias'
 export * from './trending'
 export * from './search'

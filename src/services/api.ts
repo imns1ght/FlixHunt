@@ -2,23 +2,24 @@ import axios, { AxiosError } from 'axios'
 import CONSTANTS from '~/constants'
 
 import {
+  AccountType,
   CastType,
   CollectionType,
   MediaFullType,
   MediaSimpleType,
   MovieCreditsParams,
   MovieCreditsResponse,
-  MovieParams,
   MovieSimpleType,
   SearchParams,
   SearchResponse,
-  TVParams,
   TopRatedParams,
   TopRatedResponse,
-  TrendingParams,
   TrendingResponse,
-  UpcomingParams,
   UpcomingResponse,
+  createGuestSessionResponse,
+  createRequestTokenResponse,
+  createSessionResponse,
+  createSessionWithLoginResponse,
   mediaType,
 } from '~/models'
 import { DEFAULT_LANGUAGE_CODE, LANGUAGE, LANGUAGE_CODE, REGION } from './localization'
@@ -26,26 +27,21 @@ import { DEFAULT_LANGUAGE_CODE, LANGUAGE, LANGUAGE_CODE, REGION } from './locali
 // Used in requests
 const axiosInstance = axios.create({
   baseURL: CONSTANTS.api_base_url,
-})
-
-type BasicParams = {
   params: {
-    api_key: string
-    language: string
-  }
-}
+    api_key: CONSTANTS.api_key,
+    language: LANGUAGE,
+    region: REGION,
+  },
+})
 
 /**
  * Returns a list of popular movies.
  */
 const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
-    .get<TrendingResponse>(`/discover/${mediaType}`, <TrendingParams>{
+    .get<TrendingResponse>(`/discover/${mediaType}`, {
       params: {
-        api_key: CONSTANTS.api_key,
         media_type: mediaType,
-        language: LANGUAGE,
-        region: REGION,
         sort_by: 'popularity.desc',
         'vote_count.gte': '150',
       },
@@ -61,10 +57,8 @@ const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
 
 const getTVShowAiringToday = async (): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
-    .get<TrendingResponse>('/tv/airing_today', <TrendingParams>{
+    .get<TrendingResponse>('/tv/airing_today', {
       params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
         sort_by: 'popularity.desc',
         'vote_count.gte': '100',
         'vote_average.gte': '5',
@@ -87,12 +81,7 @@ const getTrending = async (
   mediaType: mediaType
 ): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
-    .get<TrendingResponse>(`/trending/${mediaType}/${timePeriod}`, <TrendingParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
-      },
-    })
+    .get<TrendingResponse>(`/trending/${mediaType}/${timePeriod}`)
     .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.error(`${e.name}: ${e.message}`)
@@ -110,8 +99,6 @@ const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> =>
   const response = axiosInstance
     .get<MovieCreditsResponse>(`/${mediaType}/${id}/${endpoint}`, <MovieCreditsParams>{
       params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
         movie_id: id,
       },
     })
@@ -126,12 +113,7 @@ const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> =>
 
 const getRecommendations = async (id: number, mediaType: mediaType): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
-    .get<TopRatedResponse>(`/${mediaType}/${id}/recommendations`, <BasicParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
-      },
-    })
+    .get<TopRatedResponse>(`/${mediaType}/${id}/recommendations`)
     .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.error(`${e.name}: ${e.message}`)
@@ -151,9 +133,6 @@ const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSi
   const response = axiosInstance
     .get<TopRatedResponse>(`/${mediaType}/top_rated`, <TopRatedParams>{
       params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
-        region: REGION,
         page: page,
       },
     })
@@ -174,13 +153,7 @@ const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSi
  */
 const getMovieUpcoming = async (): Promise<MovieSimpleType[]> => {
   const response = axiosInstance
-    .get<UpcomingResponse>('/movie/upcoming', <UpcomingParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
-        region: REGION,
-      },
-    })
+    .get<UpcomingResponse>('/movie/upcoming')
     .then(response => {
       const filteredByDate = response.data.results.filter(
         movie => new Date(movie.release_date).getTime() >= new Date().getTime()
@@ -203,13 +176,7 @@ const getMovieUpcoming = async (): Promise<MovieSimpleType[]> => {
 
 const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
   const response = axiosInstance
-    .get<UpcomingResponse>('/movie/now_playing', <UpcomingParams>{
-      params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
-        region: REGION,
-      },
-    })
+    .get<UpcomingResponse>('/movie/now_playing')
     .then(response => response.data.results.filter(item => !!item.overview))
     .catch((e: Error | AxiosError) => {
       console.log(e)
@@ -227,13 +194,10 @@ const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
  */
 const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType> => {
   const response = await axiosInstance
-    .get<MediaFullType>(`/${mediaType}/${id}`, <MovieParams | TVParams>{
+    .get<MediaFullType>(`/${mediaType}/${id}`, {
       params: {
-        api_key: CONSTANTS.api_key,
         movie_id: id,
         append_to_response: 'images,videos,watch/providers',
-        language: LANGUAGE,
-        region: REGION,
         include_image_language: `${LANGUAGE_CODE},${DEFAULT_LANGUAGE_CODE},null`,
         include_video_language: `${LANGUAGE_CODE},${DEFAULT_LANGUAGE_CODE},null`,
       },
@@ -250,15 +214,15 @@ const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType>
       throw e
     })
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return response
 }
 
 const getMovieCollection = async (collectionId: number): Promise<CollectionType> => {
   const response = axiosInstance
-    .get<CollectionType>(`/collection/${collectionId}`, <MovieParams>{
+    .get<CollectionType>(`/collection/${collectionId}`, {
       params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
         collection_id: collectionId,
       },
     })
@@ -281,8 +245,6 @@ const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<SearchResponse>('/search/multi', <SearchParams>{
       params: {
-        api_key: CONSTANTS.api_key,
-        language: LANGUAGE,
         query: query,
       },
     })
@@ -299,7 +261,82 @@ const searchByString = async (query: string): Promise<MediaSimpleType[]> => {
   return response
 }
 
+/**  This is a temporary token that is required to ask the user for permission to access their account.
+ * This token will auto expire after 60 minutes if it's not used. */
+const createRequestToken = async () => {
+  const response = axiosInstance
+    .get<createRequestTokenResponse>('/authentication/token/new')
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
+const createGuestSession = async () => {
+  const response = axiosInstance
+    .get<createGuestSessionResponse>('/authentication/guest_session/new')
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
+const createSession = async (requestToken: string) => {
+  const response = axiosInstance
+    .post<createSessionResponse>('/authentication/session/new', { request_token: requestToken })
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
+const createSessionWithLogin = async (username: string, password: string, requestToken: string) => {
+  const response = axiosInstance
+    .post<createSessionWithLoginResponse>('authentication/token/validate_with_login', {
+      username: username,
+      password: password,
+      request_token: requestToken,
+    })
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
+const getAccountDetails = async (sessionId: string) => {
+  const response = axiosInstance
+    .get<AccountType>('/account', {
+      params: {
+        session_id: sessionId,
+      },
+    })
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
 export default {
+  getAccountDetails,
+  createRequestToken,
+  createGuestSession,
+  createSession,
+  createSessionWithLogin,
   getTrending,
   getPopular,
   getTopRated,

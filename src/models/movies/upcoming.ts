@@ -8,12 +8,3 @@ export interface UpcomingResponse {
   total_results: number
   total_pages: number
 }
-
-export interface UpcomingParams {
-  params: {
-    api_key: string
-    language?: string
-    page?: number
-    region?: string
-  }
-}
