@@ -7,12 +7,14 @@ type Props = TextProps & {
   bold?: boolean
 }
 
-const CustomText = ({ children, type, numberOfLines, onPress, bold = false }: Props) => {
+const CustomText = ({ children, type, numberOfLines, onPress, bold = false, style }: Props) => {
   const isLink = type === 'link'
   const styleByType = styles[type]
-  const customStyle = (
+  const weightStyle = (
     bold ? { ...styleByType, fontWeight: 'bold' } : styleByType
   ) as StyleProp<TextStyle>
+
+  const customStyle = [weightStyle, style]
 
   const TextComponent = () => (
     <Text style={customStyle} numberOfLines={numberOfLines}>

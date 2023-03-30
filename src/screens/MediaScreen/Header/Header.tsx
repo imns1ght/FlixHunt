@@ -6,8 +6,6 @@ import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
 import { CustomText, HeaderBar, Rating, WatchButton } from '~/components'
 import FastImage from 'react-native-fast-image'
 import { DEFAULT_REGION, REGION } from '~/services'
-import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProps } from '~/navigation'
 
 type Props = Pick<
   MovieFullType,

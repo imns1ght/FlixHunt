@@ -1,5 +1,12 @@
 {
   "airingToday": "Novo episódio hoje!",
+  "auth": {
+    "title": "FlixHunt.",
+    "subtitle": "Encontre filmes e séries.\n\nPesquise, veja detalhes e obtenha recomendações.",
+    "tmdbLogin": "Continuar com a conta do TMDB",
+    "guestLogin": "Continuar como visitante",
+    "description": "Para uma experiência personalizada, é necessário uma conta no TMDB. Se você ainda não tem uma conta, não se preocupe! Criar uma é rápido e fácil."
+  },
   "bottomBar": {
     "home": "Início",
     "search": "Buscar",
@@ -16,8 +23,8 @@
   },
   "disclaimer": {
     "title": "Aviso legal",
-    "tmdbAccuracy": "O aplicativo FlixHunt usa dados provenientes da API do TMDb (The Movie Database API) para fornecer informações sobre filmes e séries. Embora nos esforcemos para garantir que as informações exibidas no aplicativo sejam precisas e atualizadas, não podemos garantir a precisão, integridade ou pontualidade dos dados fornecidos pela API TMDb.",
-    "tmdbNotAffiliated": "Ao usar o aplicativo FlixHunt, você reconhece e concorda que não somos responsáveis por quaisquer erros ou omissões nas informações fornecidas ou por quaisquer ações que você possa realizar com base nas informações exibidas no aplicativo. Além disso, o aplicativo FlixHunt não é endossado ou afiliado ao TMDb, e não fazemos representações ou garantias em relação à precisão ou integridade dos dados fornecidos pelo TMDb."
+    "tmdbAccuracy": "O aplicativo FlixHunt usa dados provenientes da API do TMDB (The Movie Database API) para fornecer informações sobre filmes e séries. Embora nos esforcemos para garantir que as informações exibidas no aplicativo sejam precisas e atualizadas, não podemos garantir a precisão, integridade ou pontualidade dos dados fornecidos pela API TMDB.",
+    "tmdbNotAffiliated": "Ao usar o aplicativo FlixHunt, você reconhece e concorda que não somos responsáveis por quaisquer erros ou omissões nas informações fornecidas ou por quaisquer ações que você possa realizar com base nas informações exibidas no aplicativo. Além disso, o aplicativo FlixHunt não é endossado ou afiliado ao TMDB, e não fazemos representações ou garantias em relação à precisão ou integridade dos dados fornecidos pelo TMDB."
   },
   "error": "Erro...",
   "images": "Imagens",
@@ -26,6 +33,7 @@
   "popular": "O que estão assistindo",
   "recommendations": "Recomendações",
   "searchPlaceholder": "Busque por filmes ou séries...",
+  "tmdbDisclaimer": "Este produto usa a API do TMDB, mas não é endossado ou certificado pelo TMDB.",
   "topRated": "Melhor avaliados",
   "trending": "Em alta",
   "trendingAll": "Popular",

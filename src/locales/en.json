@@ -1,5 +1,12 @@
 {
   "airingToday": "New episode today!",
+  "auth": {
+    "title": "FlixHunt.",
+    "subtitle": "Discover movies and TV shows.\n\nSearch, view details and get recommendations.",
+    "tmdbLogin": "Continue with TMDB account",
+    "guestLogin": "Continue as Guest",
+    "description": "For a personalized experience, a TMDB account is necessary. If you don't have an account yet, don't worry! Creating one is fast and easy."
+  },
   "bottomBar": {
     "home": "Home",
     "search": "Search",
@@ -16,8 +23,8 @@
   },
   "disclaimer": {
     "title": "Disclaimer",
-    "tmdbAccuracy": "The FlixHunt app uses data sourced from the TMDb API (The Movie Database API) to provide information about movies and TV shows. While we strive to ensure that the information displayed in the app is accurate and up-to-date, we cannot guarantee the accuracy, completeness, or timeliness of the data provided by the TMDb API.",
-    "tmdbNotAffiliated": "By using the FlixHunt app, you acknowledge and agree that we are not responsible for any errors or omissions in the information provided, or for any actions you may take based on the information displayed in the app. Additionally, the FlixHunt app is not endorsed or affiliated with TMDb, and we make no representations or warranties regarding the accuracy or completeness of the data provided by TMDb."
+    "tmdbAccuracy": "The FlixHunt app uses data sourced from the TMDB API (The Movie Database API) to provide information about movies and TV shows. While we strive to ensure that the information displayed in the app is accurate and up-to-date, we cannot guarantee the accuracy, completeness, or timeliness of the data provided by the TMDB API.",
+    "tmdbNotAffiliated": "By using the FlixHunt app, you acknowledge and agree that we are not responsible for any errors or omissions in the information provided, or for any actions you may take based on the information displayed in the app. Additionally, the FlixHunt app is not endorsed or affiliated with TMDB, and we make no representations or warranties regarding the accuracy or completeness of the data provided by TMDB."
   },
   "error": "Error...",
   "images": "Images",
@@ -26,6 +33,7 @@
   "popular": "What people are watching",
   "recommendations": "Recommendations",
   "searchPlaceholder": "Search for movies or TV shows...",
+  "tmdbDisclaimer": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
   "topRated": "Top rated",
   "trending": "Trending",
   "trendingAll": "Popular",
