@@ -3,17 +3,12 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
   imageBackground: {
     flexGrow: 1,
+    alignItems: 'center',
   },
   loadingContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  container: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    maxWidth: 800,
   },
   buttonContainer: {
     flexGrow: 1,
@@ -21,7 +16,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   guestButton: {
-    paddingVertical: 10,
+    paddingTop: 10,
     alignSelf: 'center',
   },
   title: {
@@ -39,7 +34,7 @@ const styles = StyleSheet.create({
   disclaimer: {
     textAlign: 'center',
     fontSize: 11,
-    paddingVertical: 10,
+    paddingBottom: 10,
   },
 })
 
