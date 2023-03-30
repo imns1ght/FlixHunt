@@ -6,20 +6,20 @@ import { DEFAULT_LANGUAGE_CODE, findBestAvailableLanguage } from '../services'
 
 const i18nInstance = new I18n()
 
-const translationGetters = {
+const translationGetters: Record<string, object> = {
   en: en,
   'pt-BR': ptBR,
 }
 
 const translate = memoize(
-  (key, config) => i18nInstance.t(key, config),
-  (key, config) => (config ? key + JSON.stringify(config) : key)
+  (key: string, config?: object) => `${i18nInstance.t(key, config)}`,
+  (key: string, config?: object) => (config ? `${key}${JSON.stringify(config)}` : key)
 )
 
 const setI18nConfig = () => {
   const fallback = { languageTag: DEFAULT_LANGUAGE_CODE }
   const { languageTag } = findBestAvailableLanguage(Object.keys(translationGetters)) || fallback
-  translate.cache.clear()
+  translate.cache.clear?.()
   i18nInstance.translations = {
     [languageTag]: translationGetters[languageTag],
   }

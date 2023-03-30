@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     flex: 1,
-    rowGap: 2,
+    rowGap: 3,
   },
   titleContainer: {
     marginBottom: 5,
