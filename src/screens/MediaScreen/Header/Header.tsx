@@ -46,8 +46,6 @@ const Header = ({
   const watchLink =
     watch_providers?.results[REGION]?.link ?? watch_providers?.results[DEFAULT_REGION]?.link
 
-  console.log({ vote_average, vote_count })
-
   return (
     <ImageBackground
       source={{
