@@ -2,6 +2,8 @@ import 'react-native-gesture-handler'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
+import { ToastProvider } from 'react-native-toast-notifications'
+
 import { BottomBar } from '~/components'
 import {
   AuthScreen,
@@ -58,18 +60,24 @@ const TabBar = () => (
 
 const App = () => (
   <NavigationContainer linking={linkingConfig} theme={theme}>
-    <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator initialRouteName='Authenticate' screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='BottomBar' component={TabBar} />
-        <Stack.Screen name='Media' component={MediaScreen} getId={({ params }) => `${params.id}`} />
-        <Stack.Screen
-          name='Search'
-          component={SearchScreen}
-          getId={({ params }) => `${params.id}`}
-        />
-        <Stack.Screen name='Authenticate' component={AuthScreen} />
-      </Stack.Navigator>
-    </SafeAreaView>
+    <ToastProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Stack.Navigator initialRouteName='Authenticate' screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='BottomBar' component={TabBar} />
+          <Stack.Screen
+            name='Media'
+            component={MediaScreen}
+            getId={({ params }) => `${params.id}`}
+          />
+          <Stack.Screen
+            name='Search'
+            component={SearchScreen}
+            getId={({ params }) => `${params.id}`}
+          />
+          <Stack.Screen name='Authenticate' component={AuthScreen} />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </ToastProvider>
   </NavigationContainer>
 )
 

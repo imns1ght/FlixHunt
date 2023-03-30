@@ -1,6 +1,6 @@
 # FlixHunt
 
-Welcome to FlixHunt, your app for finding the perfect film or series to watch! Built with [React Native](https://reactnative.dev/) and [TypeScript](https://www.typescriptlang.org/), this app allows you to search for movies and TV shows by title, view detailed information about them, and browse popular and upcoming releases. The data is sourced from the [TMDb API](https://developers.themoviedb.org/3).
+Welcome to FlixHunt, your app for finding the perfect film or series to watch! Built with [React Native](https://reactnative.dev/) and [TypeScript](https://www.typescriptlang.org/), this app allows you to search for movies and TV shows by title, view detailed information about them, and browse popular and upcoming releases. The data is sourced from the [TMDB API](https://developers.themoviedb.org/3).
 
 <a href='https://play.google.com/store/apps/details?id=com.imns1ght.flixhunt&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' height='70px' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
@@ -39,7 +39,7 @@ To run the app, you'll need to have the following installed on your development 
    yarn install && cd ios/ && pod install && cd ..
    ```
 
-3. [Generate a new `TMDb API_KEY`](https://www.themoviedb.org/documentation/api) and add it to the `.env` file:
+3. [Generate a new `TMDB API_KEY`](https://www.themoviedb.org/documentation/api) and add it to the `.env` file:
 
    ```env
    API_KEY='<insert-your-api-key-here'
@@ -77,16 +77,16 @@ If you'd like to contribute to this project, please fork the repository and subm
 
 ## Disclaimer
 
-The FlixHunt app uses data sourced from the TMDb API (The Movie Database API) to provide
+The FlixHunt app uses data sourced from the TMDB API (The Movie Database API) to provide
 information about movies and TV shows. While we strive to ensure that the information
 displayed in the app is accurate and up-to-date, we cannot guarantee the accuracy,
-completeness, or timeliness of the data provided by the TMDb API.
+completeness, or timeliness of the data provided by the TMDB API.
 
 By using the FlixHunt app, you acknowledge and agree that we are not responsible for any
 errors or omissions in the information provided, or for any actions you may take based on the
 information displayed in the app. Additionally, the FlixHunt app is not endorsed or
-affiliated with TMDb, and we make no representations or warranties regarding the accuracy or
-completeness of the data provided by TMDb.
+affiliated with TMDB, and we make no representations or warranties regarding the accuracy or
+completeness of the data provided by TMDB.
 
 ## License
 
