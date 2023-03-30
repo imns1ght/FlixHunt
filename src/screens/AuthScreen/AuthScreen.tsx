@@ -102,36 +102,38 @@ const AuthScreen = () => {
       resizeMode='cover'
     >
       <Section>
-        <View style={styles.container}>
+        <View>
           <CustomText type='title' style={styles.title}>
             {translate('auth.title')}
           </CustomText>
           <CustomText type='subtitle' style={styles.subtitle}>
             {translate('auth.subtitle')}
           </CustomText>
-          <View style={styles.buttonContainer}>
-            {loginLoading ? (
-              <CustomActivityIndicator size='large' />
-            ) : (
-              <>
-                <CustomButton
-                  title={translate('auth.tmdbLogin')}
-                  onPress={tmdbLogin}
-                  type='rounded'
-                />
-                <CustomText type='link' onPress={guestLogin} style={styles.guestButton}>
-                  {translate('auth.guestLogin')}
-                </CustomText>
-              </>
-            )}
-          </View>
         </View>
-        <CustomText type='paragraph' style={styles.description}>
-          {translate('auth.description')}
-        </CustomText>
-        <CustomText type='paragraph' style={styles.disclaimer}>
-          {translate('tmdbDisclaimer')}
-        </CustomText>
+        <View style={styles.buttonContainer}>
+          {loginLoading ? (
+            <CustomActivityIndicator size='large' />
+          ) : (
+            <>
+              <CustomButton
+                title={translate('auth.tmdbLogin')}
+                onPress={tmdbLogin}
+                type='rounded'
+              />
+              <CustomText type='link' onPress={guestLogin} style={styles.guestButton}>
+                {translate('auth.guestLogin')}
+              </CustomText>
+            </>
+          )}
+        </View>
+        <View>
+          <CustomText type='paragraph' style={styles.description}>
+            {translate('auth.description')}
+          </CustomText>
+          <CustomText type='paragraph' style={styles.disclaimer}>
+            {translate('tmdbDisclaimer')}
+          </CustomText>
+        </View>
       </Section>
     </ImageBackground>
   )
