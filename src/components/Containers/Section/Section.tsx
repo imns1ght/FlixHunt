@@ -1,30 +1,46 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, ViewStyle } from 'react-native'
 import { CustomText } from '~/components'
 import styles from './Section.styles'
 
 const Section = ({
   title,
-  removeMargin = false,
+  removeHorizontalMargin = false,
+  removeVerticalMargin = false,
+  removeGap = false,
+  centered = false,
   children,
 }: {
   title?: string
-  removeMargin?: boolean
+  removeHorizontalMargin?: boolean
+  removeVerticalMargin?: boolean
+  removeGap?: boolean
   children: React.ReactNode
+  centered?: boolean
 }) => {
-  const containerStyle = title
-    ? styles.container
-    : { ...styles.container, ...styles.containerWithoutTitle }
-  const contentStyle = removeMargin
-    ? { ...styles.content, ...styles.contentWithoutMargin }
-    : styles.content
+  const containerStyle: ViewStyle[] = [styles.container]
+  const innerContainerStyle: ViewStyle[] = [styles.innerContainer]
+  const contentStyle: ViewStyle[] = [styles.content]
+  if (!title) containerStyle.push(styles.containerWithoutTitle)
+
+  if (removeVerticalMargin) {
+    containerStyle.push(styles.containerWithoutVerticalMargin)
+    if (!title) contentStyle.push(styles.containerWithoutVerticalMargin)
+  }
+  if (removeHorizontalMargin) contentStyle.push(styles.contentWithoutHorizontalMargin)
+  if (removeGap) contentStyle.push(styles.contentWithoutGap)
+  if (centered) innerContainerStyle.push(styles.innerContainerCentered)
 
   return (
     <View style={containerStyle}>
-      <View style={styles.titleContainer}>
-        {!!title && <CustomText type='title'>{title}</CustomText>}
+      <View style={innerContainerStyle}>
+        <View style={{ flexGrow: 1 }}>
+          <View style={styles.titleContainer}>
+            {!!title && <CustomText type='title'>{title}</CustomText>}
+          </View>
+          <View style={contentStyle}>{children}</View>
+        </View>
       </View>
-      <View style={contentStyle}>{children}</View>
     </View>
   )
 }

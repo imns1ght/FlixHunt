@@ -14,8 +14,7 @@ const BottomBar = ({
   route: RouteProp<TabParamList, keyof TabParamList>
 }): BottomTabNavigationOptions => ({
   headerShown: false,
-  tabBarShowLabel: true,
-  tabBarLabelPosition: 'below-icon',
+  tabBarShowLabel: false,
   tabBarLabelStyle: { color: theme.colors.text },
   tabBarIcon: ({ focused, size }: { focused: boolean; color: string; size: number }) => {
     let iconName = ''
@@ -23,8 +22,8 @@ const BottomBar = ({
     else if (route.name === 'Search') iconName = focused ? 'search' : 'search-outline'
     else if (route.name === 'Movies') iconName = focused ? 'film' : 'film-outline'
     else if (route.name === 'TV') iconName = focused ? 'tv' : 'tv-outline'
-    else if (route.name === 'Info')
-      iconName = focused ? 'information-circle' : 'information-circle-outline'
+    else if (route.name === 'Profile')
+      iconName = focused ? 'person-circle' : 'person-circle-outline'
     // You can return any component that you like here!
     return <Icon name={iconName} size={size} color={theme.colors.icon} />
   },

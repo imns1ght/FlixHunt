@@ -3,6 +3,7 @@ import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 5,
     flexDirection: 'row',
     columnGap: 3,
     alignItems: 'center',
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   icon: {
-    color: colors.yellow,
+    color: colors.orange,
   },
   voteCount: {
     marginLeft: 4,

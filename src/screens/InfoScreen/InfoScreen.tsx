@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Linking, ScrollView } from 'react-native'
-import { CustomText, Section } from '~/components'
+import { CustomText, HeaderBar, Section } from '~/components'
 import { translate } from '~/locales'
 
 const InfoScreen = () => {
@@ -10,15 +10,18 @@ const InfoScreen = () => {
   }
   return (
     <ScrollView>
-      <Section title={translate('disclaimer.title')}>
-        <CustomText type='paragraph'>{translate('disclaimer.tmdbAccuracy')}</CustomText>
-        <CustomText type='paragraph'>{translate('disclaimer.tmdbNotAffiliated')}</CustomText>
-      </Section>
-      <Section title={translate('contributing.title')}>
-        <CustomText type='paragraph'>{translate('contributing.description')}</CustomText>
-        <CustomText type='link' onPress={onPress}>
-          {translate('contributing.link')}
-        </CustomText>
+      <Section centered removeVerticalMargin>
+        <HeaderBar />
+        <Section title={translate('disclaimer.title')} removeVerticalMargin>
+          <CustomText type='paragraph'>{translate('disclaimer.tmdbAccuracy')}</CustomText>
+          <CustomText type='paragraph'>{translate('disclaimer.tmdbNotAffiliated')}</CustomText>
+        </Section>
+        <Section title={translate('contributing.title')} removeVerticalMargin>
+          <CustomText type='paragraph'>{translate('contributing.description')}</CustomText>
+          <CustomText type='link' onPress={onPress}>
+            {translate('contributing.link')}
+          </CustomText>
+        </Section>
       </Section>
     </ScrollView>
   )

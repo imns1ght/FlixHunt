@@ -14,14 +14,15 @@ export type TabParamList = {
   Search: undefined
   Movies: undefined
   TV: undefined
-  Info: undefined
+  Profile: undefined
 }
 
 export type StackParamList = {
   BottomBar?: { screen?: keyof TabParamList }
   Media: { id: number; title?: string; mediaType: mediaType }
   Search: { id: string }
-  Authenticate: undefined
+  Auth: undefined
+  Info: undefined
 }
 
 type MovieScreenProps = StackScreenProps<StackParamList, 'Media'>
@@ -29,8 +30,9 @@ type HomeScreenProps = BottomTabScreenProps<TabParamList, 'Home'>
 type SearchScreenProps = BottomTabScreenProps<TabParamList, 'Search'>
 type MoviesScreenProps = BottomTabScreenProps<TabParamList, 'Movies'>
 type TVScreenProps = BottomTabScreenProps<TabParamList, 'TV'>
-type InfoScreenProps = BottomTabScreenProps<TabParamList, 'Info'>
-type AuthScreenProps = BottomTabScreenProps<StackParamList, 'Authenticate'>
+type ProfileScreenProps = BottomTabScreenProps<TabParamList, 'Profile'>
+type InfoScreenProps = BottomTabScreenProps<StackParamList, 'Info'>
+type AuthScreenProps = BottomTabScreenProps<StackParamList, 'Auth'>
 
 /** Use to get the params from the route.
  * Example: const component = ({ navigation, route }: NavigationScreenProps['Media']) => {...} */
@@ -40,8 +42,9 @@ export type NavigationScreenProps = {
   ['Media']: MovieScreenProps
   ['Movies']: MoviesScreenProps
   ['TV']: TVScreenProps
-  ['Authenticate']: AuthScreenProps
+  ['Auth']: AuthScreenProps
   ['Info']: InfoScreenProps
+  ['Profile']: ProfileScreenProps
 }
 
 /**  Use with useNavigation hook!
@@ -56,7 +59,7 @@ const linkingConfig = {
   prefixes: ['flixhunt://'],
   config: {
     screens: {
-      Authenticate: 'auth',
+      Auth: 'auth',
     },
   },
 }

@@ -3,11 +3,17 @@ import { theme } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    height: 50,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 5,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+  },
+  customButtonsContainer: {
+    flexDirection: 'row',
+    marginRight: 5,
+    columnGap: 10,
   },
   title: {
     fontSize: 20,

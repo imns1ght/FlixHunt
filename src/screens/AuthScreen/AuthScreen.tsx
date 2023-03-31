@@ -14,7 +14,7 @@ import { useToast } from 'react-native-toast-notifications'
 import { translate } from '~/locales'
 
 const { prefixes, config } = linkingConfig
-const deeplink = prefixes[0] + config.screens.Authenticate
+const deeplink = prefixes[0] + config.screens.Auth
 
 const AuthScreen = () => {
   const [generalLoading, setGeneralLoading] = React.useState(true)
@@ -26,7 +26,7 @@ const AuthScreen = () => {
   const navigateToHome = React.useCallback(() => {
     return navigation.dispatch(
       CommonActions.reset({
-        index: 1,
+        index: 0,
         routes: [{ name: 'BottomBar' }],
       })
     )
@@ -35,8 +35,11 @@ const AuthScreen = () => {
   const guestLogin = React.useCallback(async () => {
     try {
       setLoginLoading(true)
-      const { guest_session_id } = await api.createGuestSession()
-      await SecureStorage.setItem('guest_session_id', guest_session_id)
+      const isNewGuestSession = !(await Authentication.isGuest())
+      if (isNewGuestSession) {
+        const { guest_session_id } = await api.createGuestSession()
+        await SecureStorage.setItem('guest_session_id', guest_session_id)
+      }
       navigateToHome()
     } catch ({ message }) {
       console.error(message)
@@ -73,9 +76,9 @@ const AuthScreen = () => {
   }
 
   const checkAuthStatus = React.useCallback(async () => {
-    const alreadyAuthenticated = await Authentication.isUserLogged()
+    const isUserLogged = await Authentication.isUserLogged()
 
-    if (alreadyAuthenticated) {
+    if (isUserLogged) {
       navigateToHome()
     } else {
       const isBrowserAvailable = await InAppBrowser.isAvailable()
@@ -101,7 +104,7 @@ const AuthScreen = () => {
       style={styles.imageBackground}
       resizeMode='cover'
     >
-      <Section>
+      <Section centered>
         <View>
           <CustomText type='title' style={styles.title}>
             {translate('auth.title')}

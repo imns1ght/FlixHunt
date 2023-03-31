@@ -55,7 +55,7 @@ const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
 
   return (
     <>
-      <Section title={translate('videos')} removeMargin>
+      <Section title={translate('videos')} removeHorizontalMargin>
         {waitToRender ? (
           <DummyView />
         ) : (

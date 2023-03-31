@@ -38,7 +38,7 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
 
   return (
     <>
-      <Section title={translate('images')} removeMargin>
+      <Section title={translate('images')} removeHorizontalMargin>
         <FlatList
           keyExtractor={key => key.file_path}
           data={images}
