@@ -1,18 +1,19 @@
 {
+  "about": "About",
   "airingToday": "New episode today!",
   "auth": {
     "title": "FlixHunt.",
     "subtitle": "Discover movies and TV shows.\n\nSearch, view details and get recommendations.",
     "tmdbLogin": "Continue with TMDB account",
     "guestLogin": "Continue as Guest",
-    "description": "For a personalized experience, a TMDB account is necessary. If you don't have an account yet, don't worry! Creating one is fast and easy."
+    "description": "For a complete experience, a TMDB account is necessary. If you don't have an account yet, don't worry! Creating one is fast and easy."
   },
   "bottomBar": {
     "home": "Home",
     "search": "Search",
     "movies": "Movies",
     "tv": "TV Shows",
-    "info": "Info"
+    "profile": "Profile"
   },
   "cast": "Cast",
   "collection": "Collection",
@@ -26,11 +27,21 @@
     "tmdbAccuracy": "The FlixHunt app uses data sourced from the TMDB API (The Movie Database API) to provide information about movies and TV shows. While we strive to ensure that the information displayed in the app is accurate and up-to-date, we cannot guarantee the accuracy, completeness, or timeliness of the data provided by the TMDB API.",
     "tmdbNotAffiliated": "By using the FlixHunt app, you acknowledge and agree that we are not responsible for any errors or omissions in the information provided, or for any actions you may take based on the information displayed in the app. Additionally, the FlixHunt app is not endorsed or affiliated with TMDB, and we make no representations or warranties regarding the accuracy or completeness of the data provided by TMDB."
   },
+  "editProfile": "Edit profile",
   "error": "Error...",
+  "favorites": "Favorites",
+  "featureUnavailable": "Feature under development...",
+  "guest": "Guest",
   "images": "Images",
+  "lists": "Lists",
+  "login": "Login",
+  "logout": "Logout",
   "nothingFound": "Nothing found...",
   "nowPlaying": "Movies in theaters",
   "popular": "What people are watching",
+  "ratings": "Ratings",
+  "reviews": "Reviews",
+  "recentlyVisited": "Recently visited",
   "recommendations": "Recommendations",
   "searchPlaceholder": "Search for movies or TV shows...",
   "tmdbDisclaimer": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
@@ -42,5 +53,6 @@
   "videos": "Videos",
   "votes": "votes",
   "watch": "Watch",
+  "watchlist": "Watchlist",
   "watchNotAvailable": "Unavailable"
 }

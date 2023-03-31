@@ -1,18 +1,19 @@
 {
+  "about": "Sobre",
   "airingToday": "Novo episódio hoje!",
   "auth": {
     "title": "FlixHunt.",
     "subtitle": "Encontre filmes e séries.\n\nPesquise, veja detalhes e obtenha recomendações.",
     "tmdbLogin": "Continuar com a conta do TMDB",
     "guestLogin": "Continuar como visitante",
-    "description": "Para uma experiência personalizada, é necessário uma conta no TMDB. Se você ainda não tem uma conta, não se preocupe! Criar uma é rápido e fácil."
+    "description": "Para uma experiência completa, é necessário uma conta no TMDB. Se você ainda não tem uma conta, não se preocupe! Criar uma é rápido e fácil."
   },
   "bottomBar": {
     "home": "Início",
     "search": "Buscar",
     "movies": "Filmes",
     "tv": "Séries",
-    "info": "Info"
+    "profile": "Perfil"
   },
   "cast": "Elenco",
   "collection": "Coleção",
@@ -26,11 +27,21 @@
     "tmdbAccuracy": "O aplicativo FlixHunt usa dados provenientes da API do TMDB (The Movie Database API) para fornecer informações sobre filmes e séries. Embora nos esforcemos para garantir que as informações exibidas no aplicativo sejam precisas e atualizadas, não podemos garantir a precisão, integridade ou pontualidade dos dados fornecidos pela API TMDB.",
     "tmdbNotAffiliated": "Ao usar o aplicativo FlixHunt, você reconhece e concorda que não somos responsáveis por quaisquer erros ou omissões nas informações fornecidas ou por quaisquer ações que você possa realizar com base nas informações exibidas no aplicativo. Além disso, o aplicativo FlixHunt não é endossado ou afiliado ao TMDB, e não fazemos representações ou garantias em relação à precisão ou integridade dos dados fornecidos pelo TMDB."
   },
+  "editProfile": "Editar perfil",
   "error": "Erro...",
+  "favorites": "Favoritos",
+  "featureUnavailable": "Funcionalidade em desenvolvimento...",
+  "guest": "Visitante",
   "images": "Imagens",
+  "lists": "Listas",
+  "login": "Entrar",
+  "logout": "Encerrar sessão",
   "nothingFound": "Nada encontrado...",
   "nowPlaying": "Em cartaz nos cinemas",
+  "ratings": "Avaliações",
+  "reviews": "Comentários",
   "popular": "O que estão assistindo",
+  "recentlyVisited": "Visitados recentemente",
   "recommendations": "Recomendações",
   "searchPlaceholder": "Busque por filmes ou séries...",
   "tmdbDisclaimer": "Este produto usa a API do TMDB, mas não é endossado ou certificado pelo TMDB.",
@@ -42,5 +53,6 @@
   "videos": "Vídeos",
   "votes": "votos",
   "watch": "Assistir",
+  "watchlist": "Lista de observação",
   "watchNotAvailable": "Indisponível"
 }

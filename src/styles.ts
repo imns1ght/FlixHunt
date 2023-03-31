@@ -1,10 +1,12 @@
 const colors = {
   primary: '#ca3a4d',
-  secondary: '#14141c',
+  secondary: '#09090d',
+  tertiary: '#14141c',
   white: '#FFFFFF',
   black: '#000000',
   gray: '#D3D3D3',
-  yellow: '#FF0',
+  darkGray: '#7e7e7e',
+  orange: '#ff8c19',
 }
 
 const theme = {

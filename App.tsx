@@ -11,6 +11,7 @@ import {
   InfoScreen,
   MediaScreen,
   MoviesScreen,
+  ProfileScreen,
   SearchScreen,
   TVShowsScreen,
 } from '~/screens'
@@ -49,10 +50,10 @@ const TabBar = () => (
       }}
     />
     <Tab.Screen
-      name='Info'
-      component={InfoScreen}
+      name='Profile'
+      component={ProfileScreen}
       options={{
-        tabBarLabel: translate('bottomBar.info'),
+        tabBarLabel: translate('bottomBar.profile'),
       }}
     />
   </Tab.Navigator>
@@ -60,9 +61,9 @@ const TabBar = () => (
 
 const App = () => (
   <NavigationContainer linking={linkingConfig} theme={theme}>
-    <ToastProvider>
+    <ToastProvider swipeEnabled={true} normalColor={theme.colors.primary}>
       <SafeAreaView style={{ flex: 1 }}>
-        <Stack.Navigator initialRouteName='Authenticate' screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName='Auth' screenOptions={{ headerShown: false }}>
           <Stack.Screen name='BottomBar' component={TabBar} />
           <Stack.Screen
             name='Media'
@@ -74,7 +75,8 @@ const App = () => (
             component={SearchScreen}
             getId={({ params }) => `${params.id}`}
           />
-          <Stack.Screen name='Authenticate' component={AuthScreen} />
+          <Stack.Screen name='Auth' component={AuthScreen} />
+          <Stack.Screen name='Info' component={InfoScreen} />
         </Stack.Navigator>
       </SafeAreaView>
     </ToastProvider>

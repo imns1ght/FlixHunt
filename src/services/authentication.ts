@@ -8,10 +8,23 @@ export enum UserStorageKeys {
 
 class Authentication {
   static async isUserLogged() {
-    const session = await SecureStorage.getItem(UserStorageKeys.SESSION_ID)
-    const account = await SecureStorage.getItem(UserStorageKeys.ACCOUNT_ID)
-    const guest = await SecureStorage.getItem(UserStorageKeys.GUEST_SESSION_ID)
-    return (!!session && !!account) || !!guest
+    const session = await this.getSessionId()
+    const account = await this.getAccountId()
+    return !!session && !!account
+  }
+
+  static async isGuest() {
+    const guest = await this.getGuestSessionId()
+    return !!guest
+  }
+
+  static clearStorage() {
+    try {
+      Object.values(UserStorageKeys).map(key => SecureStorage.deleteItem(key))
+      return true
+    } catch {
+      return false
+    }
   }
 
   static setGuestSessionId(guest_session_id: string) {
@@ -30,7 +43,20 @@ class Authentication {
     return Promise.all([
       SecureStorage.setItem(UserStorageKeys.SESSION_ID, session_id),
       SecureStorage.setItem(UserStorageKeys.ACCOUNT_ID, `${account_id}`),
+      SecureStorage.deleteItem(UserStorageKeys.GUEST_SESSION_ID),
     ])
+  }
+
+  static getSessionId() {
+    return SecureStorage.getItem(UserStorageKeys.SESSION_ID)
+  }
+
+  static getAccountId() {
+    return SecureStorage.getItem(UserStorageKeys.ACCOUNT_ID)
+  }
+
+  static getGuestSessionId() {
+    return SecureStorage.getItem(UserStorageKeys.GUEST_SESSION_ID)
   }
 }
 

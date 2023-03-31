@@ -10,9 +10,9 @@ type CustomProps = {
   hide?: boolean
   onPress: () => void
 }
-type Props = Pick<IconProps, 'name' | 'color' | 'size'> & CustomProps
+export type IconButtonProps = Pick<IconProps, 'name' | 'color' | 'size'> & CustomProps
 
-const IconButton = ({ name, color, size, type, hide, onPress }: Props) => {
+const IconButton = ({ name, color, size, type, hide, onPress }: IconButtonProps) => {
   const Icon = (props: IconProps) => {
     switch (type) {
       case 'Material':

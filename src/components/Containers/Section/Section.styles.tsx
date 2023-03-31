@@ -4,6 +4,15 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     paddingTop: 15,
+    alignItems: 'center',
+  },
+  innerContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  innerContainerCentered: {
+    maxWidth: 1080,
   },
   containerWithoutTitle: {
     paddingTop: 5,
@@ -17,8 +26,14 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     rowGap: 10,
   },
-  contentWithoutMargin: {
+  contentWithoutHorizontalMargin: {
     paddingHorizontal: 0,
+  },
+  containerWithoutVerticalMargin: {
+    paddingTop: 0,
+  },
+  contentWithoutGap: {
+    rowGap: 0,
   },
 })
 

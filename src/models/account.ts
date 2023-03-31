@@ -3,6 +3,9 @@ export type AccountType = {
     gravatar: {
       hash: string
     }
+    tmdb: {
+      avatar_path: string
+    }
   }
   id: number
   iso_639_1: string

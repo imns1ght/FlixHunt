@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, ViewStyle } from 'react-native'
 import { CustomText } from '~/components'
 import styles from './CustomButton.styles'
 
@@ -8,22 +8,25 @@ const CustomButton = ({
   disabled,
   onPress,
   type = 'regular',
+  style,
+  transparent = false,
 }: {
   title: string
   disabled?: boolean
   onPress: () => unknown
   type?: 'rounded' | 'regular'
+  style?: ViewStyle
+  transparent?: boolean
 }) => {
-  const containerRegularStyle = disabled
-    ? { ...styles.container, ...styles.containerDisabled }
-    : styles.container
-  const containerTypeStyle =
-    type === 'rounded'
-      ? { ...containerRegularStyle, ...styles.containerRounded }
-      : containerRegularStyle
+  const containerStyle: ViewStyle[] = [styles.container]
+
+  if (disabled) containerStyle.push(styles.containerDisabled)
+  if (type === 'rounded') containerStyle.push(styles.containerRounded)
+  if (transparent) containerStyle.push(styles.containerTransparent)
+  if (style) containerStyle.push(style)
 
   return (
-    <TouchableOpacity onPress={onPress} style={containerTypeStyle} disabled={disabled}>
+    <TouchableOpacity onPress={onPress} style={containerStyle} disabled={disabled}>
       <CustomText type='button'>{title}</CustomText>
     </TouchableOpacity>
   )

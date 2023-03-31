@@ -1,27 +1,30 @@
-import React, { useId } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styles from './HeaderBar.styles'
 import { BackButton, IconButton } from '~/components'
+import { IconButtonProps } from '~/components/Buttons/IconButton/IconButton'
 import { theme } from '~/styles'
-import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProps } from '~/navigation'
 
-const HeaderBar = () => {
-  const navigation = useNavigation<StackNavigationProps>()
-  const searchScreenId = useId()
-
-  const iconSize = 25
-
+const HeaderBar = ({ customButtons }: { customButtons?: IconButtonProps[] }) => {
   return (
     <View style={styles.container}>
       <BackButton />
-      <IconButton
-        name='search'
-        type='Material'
-        size={iconSize}
-        color={theme.colors.icon}
-        onPress={() => navigation.navigate('Search', { id: searchScreenId })}
-      />
+      <View style={styles.customButtonsContainer}>
+        {customButtons &&
+          customButtons?.map(button => {
+            return (
+              <IconButton
+                key={button.name}
+                name={button.name}
+                type={button.type ?? 'Material'}
+                onPress={button.onPress}
+                size={button.size ?? 25}
+                color={button.color ?? theme.colors.icon}
+                hide={button.hide}
+              />
+            )
+          })}
+      </View>
     </View>
   )
 }
