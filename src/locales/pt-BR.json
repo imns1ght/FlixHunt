@@ -25,7 +25,7 @@
   "disclaimer": {
     "title": "Aviso legal",
     "tmdbAccuracy": "O aplicativo FlixHunt usa dados provenientes da API do TMDB (The Movie Database API) para fornecer informações sobre filmes e séries. Embora nos esforcemos para garantir que as informações exibidas no aplicativo sejam precisas e atualizadas, não podemos garantir a precisão, integridade ou pontualidade dos dados fornecidos pela API TMDB.",
-    "tmdbNotAffiliated": "Ao usar o aplicativo FlixHunt, você reconhece e concorda que não somos responsáveis por quaisquer erros ou omissões nas informações fornecidas ou por quaisquer ações que você possa realizar com base nas informações exibidas no aplicativo. Além disso, o aplicativo FlixHunt não é endossado ou afiliado ao TMDB, e não fazemos representações ou garantias em relação à precisão ou integridade dos dados fornecidos pelo TMDB."
+    "tmdbNotAffiliated": "Ao usar o aplicativo FlixHunt, você reconhece e concorda que não somos responsáveis por quaisquer erros ou omissões nas informações fornecidas ou por quaisquer ações que você possa realizar com base nas informações exibidas no aplicativo. Além disso, o aplicativo FlixHunt não é endossado ou afiliado ao TMDB."
   },
   "editProfile": "Editar perfil",
   "error": "Erro...",
