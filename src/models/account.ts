@@ -14,3 +14,17 @@ export type AccountType = {
   include_adult: boolean
   username: string
 }
+
+export type AccountStatesType = {
+  id: number
+  favorite: boolean
+  rated: {
+    value: number
+  }
+  watchlist: false
+}
+
+export type MarkFavoriteResponseType = {
+  status_code: number
+  status_message: string
+}

@@ -13,6 +13,8 @@
     "search": "Search",
     "movies": "Movies",
     "tv": "TV Shows",
+    "favorites": "Favorites",
+    "lists": "Lists",
     "profile": "Profile"
   },
   "cast": "Cast",
@@ -29,6 +31,10 @@
   },
   "editProfile": "Edit profile",
   "error": "Error...",
+  "errors": {
+    "guestblocked": "This Feature is only available to logged in users. To gain access, log in or create an account on TMDB.",
+    "emptyFavoritesList": "Ops! Your favorites list is empty. Add your favorite titles to be shown here!"
+  },
   "favorites": "Favorites",
   "featureUnavailable": "Feature under development...",
   "guest": "Guest",
@@ -36,6 +42,7 @@
   "lists": "Lists",
   "login": "Login",
   "logout": "Logout",
+  "movies": "Movies",
   "nothingFound": "Nothing found...",
   "nowPlaying": "Movies in theaters",
   "popular": "What people are watching",
@@ -49,6 +56,7 @@
   "trending": "Trending",
   "trendingAll": "Popular",
   "tvRecommendations": "Recommended TV Shows",
+  "tvShows": "TV Shows",
   "upcoming": "Coming soon...",
   "videos": "Videos",
   "votes": "votes",

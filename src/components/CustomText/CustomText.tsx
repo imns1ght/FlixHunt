@@ -5,19 +5,27 @@ import styles from './CustomText.styles'
 type Props = TextProps & {
   type: 'title' | 'subtitle' | 'paragraph' | 'link' | 'button'
   bold?: boolean
+  centered?: boolean
 }
 
-const CustomText = ({ children, type, numberOfLines, onPress, bold = false, style }: Props) => {
+const CustomText = ({
+  children,
+  type,
+  numberOfLines,
+  onPress,
+  bold = false,
+  style,
+  centered,
+}: Props) => {
   const isLink = type === 'link'
-  const styleByType = styles[type]
-  const weightStyle = (
-    bold ? { ...styleByType, fontWeight: 'bold' } : styleByType
-  ) as StyleProp<TextStyle>
+  const styleByType: StyleProp<TextStyle> = [styles[type]]
 
-  const customStyle = [weightStyle, style]
+  if (bold) styleByType.push(styles.bold)
+  if (centered) styleByType.push(styles.centered)
+  if (style) styleByType.push(style)
 
   const TextComponent = () => (
-    <Text style={customStyle} numberOfLines={numberOfLines}>
+    <Text style={styleByType} numberOfLines={numberOfLines}>
       {children}
     </Text>
   )

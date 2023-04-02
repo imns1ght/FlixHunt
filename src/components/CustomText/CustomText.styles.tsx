@@ -26,6 +26,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
   },
+  bold: {
+    fontWeight: '700',
+  },
+  centered: {
+    textAlign: 'center',
+  },
 })
 
 export default styles

@@ -13,26 +13,27 @@ import {
 import { ListButtonType } from '~/components/Buttons/ListButton/ListButton'
 import { translate } from '~/locales'
 import { AccountType } from '~/models'
-import { StackNavigationProps } from '~/navigation'
+import { StackNavigationProps, TabNavigationProps } from '~/navigation'
 import { API, Authentication } from '~/services'
 import { Header } from './Header'
 import styles from './ProfileScreen.styles'
 
 const ProfileScreen = () => {
   const toast = useToast()
-  const navigation = useNavigation<StackNavigationProps>()
+  const stackNavigation = useNavigation<StackNavigationProps>()
+  const tabNavigation = useNavigation<TabNavigationProps>()
   const [loading, setLoading] = React.useState(true)
   const [accountData, setAccountData] = React.useState<AccountType | undefined>()
   const [isAuthenticated, setIsAuthenticated] = React.useState(false)
 
   const goToAuth = React.useCallback(() => {
-    navigation.dispatch(
+    stackNavigation.dispatch(
       CommonActions.reset({
         index: 0,
         routes: [{ name: 'Auth' }],
       })
     )
-  }, [navigation])
+  }, [stackNavigation])
 
   const logout = () => {
     if (Authentication.clearStorage()) goToAuth()
@@ -70,9 +71,8 @@ const ProfileScreen = () => {
     return [
       {
         title: translate('favorites'),
-        onPress: onPressUnavailable,
+        onPress: () => tabNavigation.navigate('Favorites'),
         iconName: 'heart-outline',
-        activateDisabledStyle,
         disabled,
       },
       {
@@ -112,11 +112,11 @@ const ProfileScreen = () => {
       },
       {
         title: translate('about'),
-        onPress: () => navigation.navigate('Info'),
+        onPress: () => stackNavigation.navigate('Info'),
         iconName: 'information-outline',
       },
     ]
-  }, [isAuthenticated, navigation, toast])
+  }, [isAuthenticated, stackNavigation, tabNavigation, toast])
 
   if (loading) return <CustomActivityIndicator size='large' style={{ flexGrow: 1 }} />
 

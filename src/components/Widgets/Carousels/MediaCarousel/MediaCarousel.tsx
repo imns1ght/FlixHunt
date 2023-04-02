@@ -36,8 +36,14 @@ const MediaCarousel = ({
     if (type === 'trending') response = await API.getTrending('week', mediaType)
     if (type === 'trendingAll') response = await API.getTrending('week', 'all')
     else if (type === 'popular') response = await API.getPopular(mediaType)
-    else if (type === 'topRated') response = await API.getTopRated(mediaType, 1)
-    else if (type === 'recommendations' && !!id)
+    else if (type === 'topRated') {
+      const movieResponse = await API.getTopRated('movie', 1)
+      const tvResponse = await API.getTopRated('tv', 1)
+      response = movieResponse
+        .concat(tvResponse)
+        .sort((a, b) => b.vote_average - a.vote_average + (b.vote_count - a.vote_count))
+        .slice(0, 30)
+    } else if (type === 'recommendations' && !!id)
       response = await API.getRecommendations(id, mediaType)
     else if (type === 'nowPlaying') response = await API.getMovieNowPlaying()
     else if (type === 'airingToday') response = await API.getTVShowAiringToday()

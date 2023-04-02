@@ -1,14 +1,23 @@
 import React from 'react'
 import { View } from 'react-native'
 import styles from './HeaderBar.styles'
-import { BackButton, IconButton } from '~/components'
+import { BackButton, CustomText, IconButton } from '~/components'
 import { IconButtonProps } from '~/components/Buttons/IconButton/IconButton'
 import { theme } from '~/styles'
 
-const HeaderBar = ({ customButtons }: { customButtons?: IconButtonProps[] }) => {
+const HeaderBar = ({
+  title,
+  customButtons,
+}: {
+  title?: string
+  customButtons?: IconButtonProps[]
+}) => {
   return (
     <View style={styles.container}>
-      <BackButton />
+      <View style={styles.backTitleContainer}>
+        <BackButton />
+        <CustomText type='title'>{title}</CustomText>
+      </View>
       <View style={styles.customButtonsContainer}>
         {customButtons &&
           customButtons?.map(button => {
@@ -18,7 +27,8 @@ const HeaderBar = ({ customButtons }: { customButtons?: IconButtonProps[] }) => 
                 name={button.name}
                 type={button.type ?? 'Material'}
                 onPress={button.onPress}
-                size={button.size ?? 25}
+                onLongPress={button.onLongPress}
+                size={button.size ?? 26}
                 color={button.color ?? theme.colors.icon}
                 hide={button.hide}
               />

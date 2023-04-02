@@ -13,6 +13,8 @@
     "search": "Buscar",
     "movies": "Filmes",
     "tv": "Séries",
+    "favorites": "Favoritos",
+    "lists": "Listas",
     "profile": "Perfil"
   },
   "cast": "Elenco",
@@ -29,6 +31,10 @@
   },
   "editProfile": "Editar perfil",
   "error": "Erro...",
+  "errors": {
+    "guestblocked": "Esta Funcionalidade está disponível somente para usuários logados. Para ter acesso, faça login ou crie uma conta no TMDB.",
+    "emptyFavoritesList": "Ops! Sua lista de favoritos está vazia. Adicione seus títulos favoritos para serem mostrados aqui!"
+  },
   "favorites": "Favoritos",
   "featureUnavailable": "Funcionalidade em desenvolvimento...",
   "guest": "Visitante",
@@ -36,6 +42,7 @@
   "lists": "Listas",
   "login": "Entrar",
   "logout": "Encerrar sessão",
+  "movies": "Filmes",
   "nothingFound": "Nada encontrado...",
   "nowPlaying": "Em cartaz nos cinemas",
   "ratings": "Avaliações",
@@ -49,6 +56,7 @@
   "trending": "Em alta",
   "trendingAll": "Popular",
   "tvRecommendations": "Séries recomendadas",
+  "tvShows": "Séries",
   "upcoming": "Em breve...",
   "videos": "Vídeos",
   "votes": "votos",

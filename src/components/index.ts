@@ -3,6 +3,7 @@ export * from './Navigation'
 export * from './Containers'
 export * from './Buttons'
 export * from './Widgets'
+export * from './Errors'
 
 export { default as CustomActivityIndicator } from './CustomActivityIndicator'
 export { default as SearchBar } from './SearchBar'
