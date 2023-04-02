@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    rowGap: 10,
   },
   message: {
     textAlign: 'center',

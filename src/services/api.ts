@@ -39,16 +39,25 @@ const axiosInstance = axios.create({
 /**
  * Returns a list of popular movies.
  */
-const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
+const getPopular = async (
+  mediaType: mediaType,
+  filters?: Record<string, string | number>
+): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<TrendingResponse>(`/discover/${mediaType}`, {
       params: {
         media_type: mediaType,
         sort_by: 'popularity.desc',
         'vote_count.gte': '150',
+        ...filters,
       },
     })
-    .then(response => response.data.results)
+    .then(response =>
+      response.data.results.map(item => ({
+        ...item,
+        media_type: mediaType,
+      }))
+    )
     .catch((e: Error | AxiosError) => {
       console.error(e)
       throw e
