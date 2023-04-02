@@ -32,7 +32,7 @@
   "editProfile": "Editar perfil",
   "error": "Erro...",
   "errors": {
-    "guestblocked": "Esta Funcionalidade está disponível somente para usuários logados. Para ter acesso, faça login ou crie uma conta no TMDB.",
+    "guestblocked": "Esta funcionalidade está disponível somente para usuários logados. Para ter acesso, faça login ou crie uma conta no TMDB.",
     "emptyFavoritesList": "Ops! Sua lista de favoritos está vazia. Adicione seus títulos favoritos para serem mostrados aqui!"
   },
   "favorites": "Favoritos",

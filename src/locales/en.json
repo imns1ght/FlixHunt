@@ -32,7 +32,7 @@
   "editProfile": "Edit profile",
   "error": "Error...",
   "errors": {
-    "guestblocked": "This Feature is only available to logged in users. To gain access, log in or create an account on TMDB.",
+    "guestblocked": "This feature is only available to logged in users. To gain access, log in or create an account on TMDB.",
     "emptyFavoritesList": "Ops! Your favorites list is empty. Add your favorite titles to be shown here!"
   },
   "favorites": "Favorites",
