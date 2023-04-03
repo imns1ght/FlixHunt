@@ -8,11 +8,11 @@ FlixHunt is not endorsed or affiliated with TMDB.
 
 ## Features
 
-| Home | Recommendations | Search | Details | 
+| Home | Genres | Search | Details | 
 |------|-------------|-----------| -----------| 
 | ![Home](https://user-images.githubusercontent.com/24906506/229597081-4841f48b-af8f-405e-931a-735269eee8a9.png) | ![RecommendationsByGenre](https://user-images.githubusercontent.com/24906506/229597098-5ec8b2e3-0932-4aaa-a003-0636b555a7c4.png) | ![Search](https://user-images.githubusercontent.com/24906506/229597208-db849f3a-d4c8-43f2-8542-4c7d22f7bce6.png) | ![Media-1](https://user-images.githubusercontent.com/24906506/229597059-63e87d2c-2429-462b-9d7a-462c1069cbf1.png) |
 
-| Cast/Collection | Favorites | Upcoming | Profile | 
+| Collection | Favorites | Upcoming | Profile | 
 |-----------------|-----------|----------|---------| 
 | ![Media-2](https://user-images.githubusercontent.com/24906506/229597069-8ac4014e-d615-47bc-9efa-2c099a3ae48d.png) | ![Favorites](https://user-images.githubusercontent.com/24906506/229597048-f990dd65-7d96-405c-a5af-a6c46873b7f1.png) | ![Upcoming Movies](https://user-images.githubusercontent.com/24906506/229597217-b3c93aca-3b9d-488f-b3a7-1cf44caa87cb.png) | ![Profile](https://user-images.githubusercontent.com/24906506/229597094-68046a4f-a7b9-40c3-b107-d075d62eae2c.png)
 
