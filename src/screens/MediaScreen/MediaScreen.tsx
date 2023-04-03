@@ -63,6 +63,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
           runtime={isMovie ? data.runtime : null}
           vote_average={data.vote_average}
           vote_count={data.vote_count}
+          seasonsCount={!isMovie ? data.seasons.length : undefined}
           watch_providers={data.watch_providers}
           userAuthenticated={userAuthenticated}
           favorite={favorite}
@@ -77,7 +78,12 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
         {isMovie && !!data.belongs_to_collection && (
           <CollectionCarousel id={data.id} collectionId={data.belongs_to_collection.id} />
         )}
-        <MediaCarousel id={data.id} mediaType={data.media_type} type='recommendations' />
+        <MediaCarousel
+          id={data.id}
+          mediaType={data.media_type}
+          widgetName='recommendationsById'
+          widgetType='default'
+        />
       </View>
     )
   }

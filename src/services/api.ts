@@ -47,6 +47,8 @@ const getPopular = async (
     .get<TrendingResponse>(`/discover/${mediaType}`, {
       params: {
         media_type: mediaType,
+        region: REGION,
+        language: LANGUAGE,
         sort_by: 'popularity.desc',
         'vote_count.gte': '150',
         ...filters,
@@ -122,7 +124,10 @@ const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> =>
   return response
 }
 
-const getRecommendations = async (id: number, mediaType: mediaType): Promise<MediaSimpleType[]> => {
+const getRecommendationsById = async (
+  id: number,
+  mediaType: mediaType
+): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<TopRatedResponse>(`/${mediaType}/${id}/recommendations`)
     .then(response => response.data.results.filter(item => !!item.overview))
@@ -436,7 +441,7 @@ export default {
   getTopRated,
   getMovieUpcoming,
   getMovieNowPlaying,
-  getRecommendations,
+  getRecommendationsById,
   getByID,
   getCast,
   getMovieCollection,

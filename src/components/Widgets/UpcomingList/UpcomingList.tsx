@@ -19,7 +19,7 @@ const UpcomingList = () => {
   }, [fetchData])
 
   return (
-    <Section title={translate('upcoming')}>
+    <Section title={translate('widgets.movie.upcoming')}>
       {loading ? (
         <CustomActivityIndicator size='large' />
       ) : !data ? (

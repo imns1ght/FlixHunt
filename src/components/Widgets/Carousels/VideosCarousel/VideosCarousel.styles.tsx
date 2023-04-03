@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { colors } from '~/styles'
 
-const viewHeight = 225
+const viewHeight = 200
 
 const styles = StyleSheet.create({
   dummyView: {

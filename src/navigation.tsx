@@ -15,8 +15,6 @@ import { colors } from './styles'
 export type BottomTabParamList = {
   Home: undefined
   Search: undefined
-  Movies: undefined
-  TV: undefined
   Profile: undefined
   Favorites: undefined
   Lists: undefined
@@ -37,8 +35,6 @@ type HomeScreenProps = BottomTabScreenProps<BottomTabParamList, 'Home'>
 type SearchScreenProps = BottomTabScreenProps<BottomTabParamList, 'Search'>
 type FavoritesScreenProps = BottomTabScreenProps<BottomTabParamList | StackParamList, 'Favorites'>
 type ListsScreenProps = BottomTabScreenProps<BottomTabParamList, 'Lists'>
-type MoviesScreenProps = BottomTabScreenProps<BottomTabParamList, 'Movies'>
-type TVScreenProps = BottomTabScreenProps<BottomTabParamList, 'TV'>
 type ProfileScreenProps = BottomTabScreenProps<BottomTabParamList, 'Profile'>
 type InfoScreenProps = BottomTabScreenProps<StackParamList, 'Info'>
 type AuthScreenProps = BottomTabScreenProps<StackParamList, 'Auth'>
@@ -51,8 +47,6 @@ export type NavigationScreenProps = {
   ['Favorites']: FavoritesScreenProps
   ['Lists']: ListsScreenProps
   ['Media']: MovieScreenProps
-  ['Movies']: MoviesScreenProps
-  ['TV']: TVScreenProps
   ['Auth']: AuthScreenProps
   ['Info']: InfoScreenProps
   ['Profile']: ProfileScreenProps

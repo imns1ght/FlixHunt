@@ -28,7 +28,7 @@ const HeaderBar = ({
                 type={button.type ?? 'Material'}
                 onPress={button.onPress}
                 onLongPress={button.onLongPress}
-                size={button.size ?? 26}
+                size={button.size}
                 color={button.color ?? theme.colors.icon}
                 hide={button.hide}
               />

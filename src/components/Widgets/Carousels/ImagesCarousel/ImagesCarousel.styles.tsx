@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   image: {
-    height: 225,
+    height: 200,
     aspectRatio: 16 / 9,
   },
   modal: {

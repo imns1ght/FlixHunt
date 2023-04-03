@@ -26,7 +26,7 @@ const IconButton = ({ name, color, size, type, hide, onPress, onLongPress }: Ico
     }
   }
   return (
-    <TouchableOpacity onPress={hide ? undefined : onPress} onLongPress={onLongPress}>
+    <TouchableOpacity onPress={hide ? undefined : onPress} onLongPress={onLongPress} hitSlop={4}>
       <Icon
         name={name}
         color={color ?? colors.gray}

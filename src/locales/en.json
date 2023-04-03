@@ -1,6 +1,5 @@
 {
   "about": "About",
-  "airingToday": "New episode today!",
   "auth": {
     "title": "FlixHunt.",
     "subtitle": "Discover movies and TV shows.\n\nSearch, view details and get recommendations.",
@@ -44,23 +43,60 @@
   "logout": "Logout",
   "movies": "Movies",
   "nothingFound": "Nothing found...",
-  "nowPlaying": "Movies in theaters",
-  "popular": "What people are watching",
-  "popularMovies": "Movies your friends are watching!",
   "ratings": "Ratings",
   "reviews": "Reviews",
   "recentlyVisited": "Recently visited",
-  "recommendations": "Recommendations",
+  "seasons": "Seasons",
   "searchPlaceholder": "Search for movies or TV shows...",
   "tmdbDisclaimer": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
-  "topRated": "Top Rated Movies and TV Shows",
-  "trending": "Trending",
-  "tvRecommendations": "Recommended TV Shows",
   "tvShows": "TV Shows",
-  "upcoming": "Coming to theaters",
   "videos": "Videos",
   "votes": "votes",
   "watch": "Watch",
   "watchlist": "Watchlist",
-  "watchNotAvailable": "Unavailable"
+  "watchNotAvailable": "Unavailable",
+  "widgets": {
+    "all": {
+      "topRated": "Top Rated",
+      "trending": "Trending",
+      "genre": {
+        "Action": "Action",
+        "ActionAndAdventure": "Action & Adventure",
+        "Adventure": "Adventure Time",
+        "Animation": "Cartoons",
+        "Comedy": "Funny Moments",
+        "Crime": "Crime Scene",
+        "Documentary": "Documentaries",
+        "Drama": "Dramatic Moments",
+        "Family": "Family Time",
+        "Fantasy": "Fantasy World",
+        "History": "Historicals",
+        "Horror": "Nightmares",
+        "Kids": "Kid's Favorites",
+        "Music": "Musicals",
+        "Mystery": "Suspenseful Stories",
+        "Reality": "Reality Shows",
+        "Romance": "Cupid's Corner",
+        "ScienceFiction": "Sci-Fi",
+        "SciFiAndFantasy": "Sci-Fi and Fantasy",
+        "Soap": "Soap Operas",
+        "Talk": "Talk Shows",
+        "Thriller": "Thrillers",
+        "War": "Warzone",
+        "WarAndPolitics": "War Stories",
+        "Western": "Gunslingers and Outlaws"
+      }
+    },
+    "movie": {
+      "moviesInTheaters": "Movies in theaters",
+      "upcoming": "Coming to theaters",
+      "movieRecommendations": "Recommended Movies",
+      "recommendationsById": "Recommendations"
+    },
+    "tv": {
+      "newEpisodeToday": "New episode today",
+      "tvRecommendations": "Recommended TV Shows",
+      "recommendationsById": "Recommendations"
+    }
+  }
 }

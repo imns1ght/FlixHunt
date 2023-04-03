@@ -4,7 +4,7 @@ import { theme } from '~/styles'
 import { CommonActions, useNavigation } from '@react-navigation/native'
 
 const BackButton = () => {
-  const iconSize = 26
+  const iconSize = 24
   const navigation = useNavigation()
 
   const navigateToHome = React.useCallback(() => {

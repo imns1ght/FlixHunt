@@ -12,8 +12,6 @@ import {
   InfoScreen,
   MediaScreen,
   // ListsScreen,
-  // MoviesScreen,
-  // TVShowsScreen,
   ProfileScreen,
   SearchScreen,
 } from '~/screens'
@@ -37,20 +35,6 @@ const BottomTabBar = () => (
         tabBarLabel: translate('bottomBar.search'),
       }}
     />
-    {/* <BottomTab.Screen
-      name='Movies'
-      component={MoviesScreen}
-      options={{
-        tabBarLabel: translate('bottomBar.movies'),
-      }}
-    />
-    <BottomTab.Screen
-      name='TV'
-      component={TVShowsScreen}
-      options={{
-        tabBarLabel: translate('bottomBar.tv'),
-      }}
-    /> */}
     <BottomTab.Screen
       name='Favorites'
       component={FavoritesScreen}

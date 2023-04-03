@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProps } from '~/navigation'
 import { IconButtonProps } from '~/components/Buttons/IconButton/IconButton'
 import { colors } from '~/styles'
+import { translate } from '~/locales'
 
 type Props = Pick<
   MovieFullType,
@@ -28,6 +29,7 @@ type Props = Pick<
   userAuthenticated: boolean
   favorite: boolean
   setFavorite: React.Dispatch<React.SetStateAction<boolean>>
+  seasonsCount?: number
 }
 
 const Header = ({
@@ -45,6 +47,7 @@ const Header = ({
   userAuthenticated,
   favorite,
   setFavorite,
+  seasonsCount,
 }: Props) => {
   const releaseDate = new Date(release_date).toLocaleDateString()
   const genresFormated = arrToStringFormated(genres)
@@ -132,6 +135,11 @@ const Header = ({
                 <CustomText type='paragraph'>{releaseDate}</CustomText>
                 {!!runtime && (
                   <CustomText type='paragraph'>{convertMinsToTime(runtime)}</CustomText>
+                )}
+                {!!seasonsCount && (
+                  <CustomText type='paragraph'>{`${
+                    seasonsCount < 10 ? `0${seasonsCount}` : seasonsCount
+                  } ${translate('seasons')}`}</CustomText>
                 )}
               </View>
               <Rating voteAverage={vote_average} voteCount={vote_count} />
