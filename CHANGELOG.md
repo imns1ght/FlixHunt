@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [1.2.0] - 2023-04-03
+
+###
+
+- Implement favorites screen and an improved home screen.
+
 ## [1.1.0] - 2023-03-31
 
 ### Added
@@ -45,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Change visibility of the bottombar labels on tablets
 
-[unreleased]: https://github.com/imns1ght/FlixHunt/compare/1.1.0...HEAD
+[unreleased]: https://github.com/imns1ght/FlixHunt/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/imns1ght/FlixHunt/compare/1.1.1...1.2.0
 [1.1.0]: https://github.com/imns1ght/FlixHunt/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/imns1ght/FlixHunt/compare/1.0.0...1.0.1
