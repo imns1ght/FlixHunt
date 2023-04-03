@@ -27,7 +27,6 @@ const SearchResults = ({ data }: { data: MediaSimpleType[] }) => {
         ListEmptyComponent={emptyComponent}
         initialNumToRender={2}
         maxToRenderPerBatch={3}
-        keyboardShouldPersistTaps='always'
       />
     </View>
   )

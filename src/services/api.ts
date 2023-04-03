@@ -2,9 +2,11 @@ import axios, { AxiosError } from 'axios'
 import CONSTANTS from '~/constants'
 
 import {
+  AccountStatesType,
   AccountType,
   CastType,
   CollectionType,
+  MarkFavoriteResponseType,
   MediaFullType,
   MediaSimpleType,
   MovieCreditsParams,
@@ -37,16 +39,27 @@ const axiosInstance = axios.create({
 /**
  * Returns a list of popular movies.
  */
-const getPopular = async (mediaType: mediaType): Promise<MediaSimpleType[]> => {
+const getPopular = async (
+  mediaType: mediaType,
+  filters?: Record<string, string | number>
+): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<TrendingResponse>(`/discover/${mediaType}`, {
       params: {
         media_type: mediaType,
+        region: REGION,
+        language: LANGUAGE,
         sort_by: 'popularity.desc',
         'vote_count.gte': '150',
+        ...filters,
       },
     })
-    .then(response => response.data.results)
+    .then(response =>
+      response.data.results.map(item => ({
+        ...item,
+        media_type: mediaType,
+      }))
+    )
     .catch((e: Error | AxiosError) => {
       console.error(e)
       throw e
@@ -111,7 +124,10 @@ const getCast = async (id: number, mediaType: mediaType): Promise<CastType[]> =>
   return response
 }
 
-const getRecommendations = async (id: number, mediaType: mediaType): Promise<MediaSimpleType[]> => {
+const getRecommendationsById = async (
+  id: number,
+  mediaType: mediaType
+): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
     .get<TopRatedResponse>(`/${mediaType}/${id}/recommendations`)
     .then(response => response.data.results.filter(item => !!item.overview))
@@ -129,14 +145,19 @@ const getRecommendations = async (id: number, mediaType: mediaType): Promise<Med
  * @param page Page number
  * @returns List of movies top rated
  */
-const getTopRated = async (mediaType: mediaType, page?: number): Promise<MediaSimpleType[]> => {
+const getTopRated = async (media_type: mediaType, page?: number): Promise<MediaSimpleType[]> => {
   const response = axiosInstance
-    .get<TopRatedResponse>(`/${mediaType}/top_rated`, <TopRatedParams>{
+    .get<TopRatedResponse>(`/${media_type}/top_rated`, <TopRatedParams>{
       params: {
         page: page,
       },
     })
-    .then(response => response.data.results.filter(item => !!item.overview))
+    .then(response =>
+      response.data.results.map(item => ({
+        ...item,
+        media_type: media_type,
+      }))
+    )
     .catch((e: Error | AxiosError) => {
       console.log('error: getMoviesTopRated()', e)
       throw e
@@ -192,12 +213,17 @@ const getMovieNowPlaying = async (): Promise<MovieSimpleType[]> => {
  * @param id The movie id
  * @returns Media with the id provided in the param
  */
-const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType> => {
+const getByID = async (
+  id: number,
+  mediaType: mediaType,
+  session_id?: string
+): Promise<MediaFullType> => {
   const response = await axiosInstance
     .get<MediaFullType>(`/${mediaType}/${id}`, {
       params: {
         movie_id: id,
-        append_to_response: 'images,videos,watch/providers',
+        session_id,
+        append_to_response: 'images,videos,watch/providers,account_states',
         include_image_language: `${LANGUAGE_CODE},${DEFAULT_LANGUAGE_CODE},null`,
         include_video_language: `${LANGUAGE_CODE},${DEFAULT_LANGUAGE_CODE},null`,
       },
@@ -214,8 +240,6 @@ const getByID = async (id: number, mediaType: mediaType): Promise<MediaFullType>
       throw e
     })
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   return response
 }
 
@@ -331,7 +355,82 @@ const getAccountDetails = async (sessionId: string) => {
   return response
 }
 
+const getFavorites = async (
+  account_id: string,
+  session_id: string,
+  media_type: mediaType
+): Promise<MediaSimpleType[]> => {
+  const response = axiosInstance
+    .get<TrendingResponse>(
+      `/account/${account_id}/favorite/${media_type === 'movie' ? 'movies' : 'tv'}`,
+      {
+        params: {
+          session_id,
+          sort_by: 'created_at.desc',
+        },
+      }
+    )
+    .then(response =>
+      response.data.results.map(item => ({
+        ...item,
+        media_type,
+      }))
+    )
+    .catch((e: Error | AxiosError) => {
+      console.error(`${e.name}: ${e.message}`)
+      throw e
+    })
+
+  return response
+}
+
+const getAccountStates = async (
+  id: number,
+  mediaType: mediaType,
+  session_id?: string,
+  guest_session_id?: string
+): Promise<AccountStatesType> => {
+  const response = axiosInstance
+    .get<AccountStatesType>(`/${mediaType}/${id}/account_states`, {
+      params: {
+        session_id,
+        guest_session_id,
+      },
+    })
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.error(`${e.name}: ${e.message}`)
+      throw e
+    })
+
+  return response
+}
+
+const setFavorite = async (
+  media_id: number,
+  media_type: mediaType,
+  favorite: boolean,
+  account_id: string,
+  session_id: string
+) => {
+  const response = axiosInstance
+    .post<MarkFavoriteResponseType>(
+      `/account/${account_id}/favorite`,
+      { media_type, media_id, favorite },
+      { params: { session_id } }
+    )
+    .then(response => response.data)
+    .catch((e: Error | AxiosError) => {
+      console.log(e)
+      throw e
+    })
+
+  return response
+}
+
 export default {
+  setFavorite,
+  getAccountStates,
   getAccountDetails,
   createRequestToken,
   createGuestSession,
@@ -342,10 +441,11 @@ export default {
   getTopRated,
   getMovieUpcoming,
   getMovieNowPlaying,
-  getRecommendations,
+  getRecommendationsById,
   getByID,
   getCast,
   getMovieCollection,
   getTVShowAiringToday,
   searchByString,
+  getFavorites,
 }

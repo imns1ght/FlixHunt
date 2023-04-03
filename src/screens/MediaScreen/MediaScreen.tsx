@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import styles from './MediaScreen.styles'
 import Header from './Header'
 import { NavigationScreenProps } from '~/navigation'
-import { API } from '~/services'
+import { API, Authentication } from '~/services'
 import {
   CastCarousel,
   CollectionCarousel,
@@ -21,16 +21,25 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
   const { id, mediaType } = route.params
   const [loading, setLoading] = React.useState(true)
   const [data, setData] = React.useState<MediaFullType>()
+  const [userAuthenticated, setUserAuthenticated] = React.useState(false)
+  const [favorite, setFavorite] = React.useState(false)
 
   const fetchData = React.useCallback(async () => {
-    const response = await API.getByID(id, mediaType)
+    const response = await API.getByID(id, mediaType, await Authentication.getSessionId())
     setData(response)
-    setLoading(false)
+    setFavorite(response.account_states?.favorite ?? false)
   }, [mediaType, id])
 
-  React.useEffect(() => {
-    fetchData()
+  const loadData = React.useCallback(async () => {
+    await fetchData()
+    const isUserLogged = await Authentication.isUserLogged()
+    setUserAuthenticated(isUserLogged)
+    setLoading(false)
   }, [fetchData])
+
+  React.useEffect(() => {
+    loadData()
+  }, [loadData])
 
   const Content = ({ data }: { data: MediaFullType }) => {
     const showImages = data.images.backdrops.length > 0
@@ -44,6 +53,8 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
     return (
       <View>
         <Header
+          id={data.id}
+          mediaType={isMovie ? 'movie' : 'tv'}
           title={isMovie ? data.title : data.name}
           genres={data.genres}
           images={data.images}
@@ -52,7 +63,11 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
           runtime={isMovie ? data.runtime : null}
           vote_average={data.vote_average}
           vote_count={data.vote_count}
+          seasonsCount={!isMovie ? data.seasons.length : undefined}
           watch_providers={data.watch_providers}
+          userAuthenticated={userAuthenticated}
+          favorite={favorite}
+          setFavorite={setFavorite}
         />
         <Section>
           <CustomText type='paragraph'>{data.overview}</CustomText>
@@ -63,7 +78,12 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
         {isMovie && !!data.belongs_to_collection && (
           <CollectionCarousel id={data.id} collectionId={data.belongs_to_collection.id} />
         )}
-        <MediaCarousel id={data.id} mediaType={data.media_type} type='recommendations' />
+        <MediaCarousel
+          id={data.id}
+          mediaType={data.media_type}
+          widgetName='recommendationsById'
+          widgetType='default'
+        />
       </View>
     )
   }

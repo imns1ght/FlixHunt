@@ -1,3 +1,4 @@
+import { AccountStatesType } from './account'
 import { BelongsToCollectionType } from './collection'
 import genre from './genre'
 import { ImagesType } from './images'
@@ -53,6 +54,7 @@ export type TVSimpleType = {
 }
 
 export type MovieFullType = MovieSimpleType & {
+  account_states?: AccountStatesType
   belongs_to_collection: BelongsToCollectionType
   budget: number
   genres: genre[]
@@ -71,6 +73,7 @@ export type MovieFullType = MovieSimpleType & {
 }
 
 export type TVFullType = TVSimpleType & {
+  account_states?: AccountStatesType
   genres: genre[]
   homepage: string | null
   images: ImagesType

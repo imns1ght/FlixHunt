@@ -1,6 +1,5 @@
 {
   "about": "Sobre",
-  "airingToday": "Novo episódio hoje!",
   "auth": {
     "title": "FlixHunt.",
     "subtitle": "Encontre filmes e séries.\n\nPesquise, veja detalhes e obtenha recomendações.",
@@ -13,6 +12,8 @@
     "search": "Buscar",
     "movies": "Filmes",
     "tv": "Séries",
+    "favorites": "Favoritos",
+    "lists": "Listas",
     "profile": "Perfil"
   },
   "cast": "Elenco",
@@ -29,6 +30,10 @@
   },
   "editProfile": "Editar perfil",
   "error": "Erro...",
+  "errors": {
+    "guestblocked": "Esta funcionalidade está disponível somente para usuários logados. Para ter acesso, faça login ou crie uma conta no TMDB.",
+    "emptyFavoritesList": "Ops! Sua lista de favoritos está vazia. Adicione seus títulos favoritos para serem mostrados aqui!"
+  },
   "favorites": "Favoritos",
   "featureUnavailable": "Funcionalidade em desenvolvimento...",
   "guest": "Visitante",
@@ -36,23 +41,62 @@
   "lists": "Listas",
   "login": "Entrar",
   "logout": "Encerrar sessão",
+  "movies": "Filmes",
   "nothingFound": "Nada encontrado...",
-  "nowPlaying": "Em cartaz nos cinemas",
   "ratings": "Avaliações",
   "reviews": "Comentários",
-  "popular": "O que estão assistindo",
   "recentlyVisited": "Visitados recentemente",
-  "recommendations": "Recomendações",
+  "seasons": "Temporadas",
   "searchPlaceholder": "Busque por filmes ou séries...",
   "tmdbDisclaimer": "Este produto usa a API do TMDB, mas não é endossado ou certificado pelo TMDB.",
-  "topRated": "Melhor avaliados",
-  "trending": "Em alta",
-  "trendingAll": "Popular",
-  "tvRecommendations": "Séries recomendadas",
-  "upcoming": "Em breve...",
+  "tvShows": "Séries",
   "videos": "Vídeos",
   "votes": "votos",
   "watch": "Assistir",
   "watchlist": "Lista de observação",
-  "watchNotAvailable": "Indisponível"
+  "watchNotAvailable": "Indisponível",
+  "widgets": {
+    "all": {
+      "topRated": "Melhor avaliados",
+      "trending": "Tendências",
+      "genre": {
+        "Action": "Ação",
+        "ActionAndAdventure": "Ação e Aventura",
+        "Adventure": "Hora de Aventura",
+        "Animation": "Desenhos Animados",
+        "Comedy": "Comédia",
+        "Crime": "Cena do Crime",
+        "Documentary": "Documentários",
+        "Drama": "Momento de Drama",
+        "Family": "Momento Família",
+        "Fantasy": "Mundo da Fantasia",
+        "History": "Históricos",
+        "Horror": "Terror e Pesadelos",
+        "Kids": "Favoritos das Crianças",
+        "Music": "Musicais",
+        "Mystery": "Cheios de Suspense",
+        "Reality": "Reality Shows",
+        "Romance": "Cantinho do Cupido",
+        "ScienceFiction": "Ficção Científica",
+        "SciFiAndFantasy": "Ficção Científica e Fantasia",
+        "Soap": "Novelas",
+        "Talk": "Talk Shows",
+        "Thriller": "Suspense",
+        "War": "Zona de Guerra",
+        "WarAndPolitics": "Histórias de Guerra",
+        "Western": "Pistoleiros e Foras da Lei"
+      }
+    },
+    "movie": {
+      "moviesInTheaters": "Filmes nos Cinemas",
+      "upcoming": "Em breve nos cinemas",
+      "movieRecommendations": "Filmes Recomendados",
+      "recommendationsById": "Recomendações"
+    },
+    "tv": {
+      "newEpisodeToday": "Novo episódio hoje",
+      "tvRecommendations": "Séries Recomendadas",
+      "recommendationsById": "Recomendações"
+    }
+  }
 }

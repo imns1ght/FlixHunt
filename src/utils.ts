@@ -21,3 +21,5 @@ export const getImagePath = (
 ) => {
   return `${CONSTANTS.api_image_url}/${size}${path}`
 }
+
+export const shuffleArray = (array: unknown[]) => array.sort(() => Math.random() - 0.5)

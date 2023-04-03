@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   card: {
-    height: 280,
+    height: 230,
     aspectRatio: '2/3',
     marginRight: 10,
     justifyContent: 'flex-end',

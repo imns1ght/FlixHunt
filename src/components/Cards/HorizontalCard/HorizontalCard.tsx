@@ -11,6 +11,7 @@ import { CustomText, Rating } from '~/components'
 const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
   const navigation = useNavigation<StackNavigationProps>()
   const isMovie = data.media_type === 'movie' || data.media_type === undefined
+  const mediaType = isMovie ? 'movie' : 'tv'
   const releaseData = new Date(
     isMovie ? data.release_date : data.first_air_date
   ).toLocaleDateString()
@@ -19,7 +20,7 @@ const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
     navigation.navigate('Media', {
       id: data.id,
       title: isMovie ? data.title : data.name,
-      mediaType: isMovie ? 'movie' : 'tv',
+      mediaType,
     })
   }
 
@@ -31,16 +32,22 @@ const HorizontalCard = ({ data }: { data: MediaSimpleType }) => {
         }}
         style={styles.image}
       />
-      <View style={styles.textContainer}>
-        <CustomText type='subtitle' numberOfLines={2}>
-          {isMovie ? data.title : data.name}
-        </CustomText>
-        <View style={styles.details}>
-          <CustomText type='paragraph' numberOfLines={2}>
-            {data.overview}
+      <View style={styles.rightContainer}>
+        <View style={styles.textContainer}>
+          <CustomText type='subtitle' numberOfLines={1} bold>
+            {isMovie ? data.title : data.name}
           </CustomText>
-          <CustomText type='paragraph'>{releaseData}</CustomText>
-          <Rating voteAverage={data.vote_average} voteCount={data.vote_count} />
+          <View style={styles.details}>
+            <CustomText type='paragraph' numberOfLines={2}>
+              {data.overview}
+            </CustomText>
+            <View style={styles.horizontalInfo}>
+              <Rating voteAverage={data.vote_average} voteCount={data.vote_count} />
+              <CustomText type='paragraph' style={styles.release}>
+                {releaseData}
+              </CustomText>
+            </View>
+          </View>
         </View>
       </View>
     </TouchableOpacity>

@@ -10,6 +10,11 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 5,
   },
+  backTitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    columnGap: 10,
+  },
   customButtonsContainer: {
     flexDirection: 'row',
     marginRight: 5,

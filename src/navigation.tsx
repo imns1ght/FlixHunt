@@ -1,5 +1,8 @@
-import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack'
-import type { StackScreenProps } from '@react-navigation/stack'
+import {
+  NativeStackNavigationProp,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack'
+import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import {
   BottomTabNavigationProp,
   BottomTabScreenProps,
@@ -9,28 +12,30 @@ import { mediaType } from './models'
 import { DEFAULT_REGION, LANGUAGE } from './services'
 import { colors } from './styles'
 
-export type TabParamList = {
+export type BottomTabParamList = {
   Home: undefined
   Search: undefined
-  Movies: undefined
-  TV: undefined
   Profile: undefined
+  Favorites: undefined
+  Lists: undefined
 }
 
 export type StackParamList = {
-  BottomBar?: { screen?: keyof TabParamList }
+  BottomBar?: { screen?: keyof BottomTabParamList }
   Media: { id: number; title?: string; mediaType: mediaType }
   Search: { id: string }
+  Lists: { id: string }
+  Favorites: { id: string; tabFocused?: mediaType }
   Auth: undefined
   Info: undefined
 }
 
-type MovieScreenProps = StackScreenProps<StackParamList, 'Media'>
-type HomeScreenProps = BottomTabScreenProps<TabParamList, 'Home'>
-type SearchScreenProps = BottomTabScreenProps<TabParamList, 'Search'>
-type MoviesScreenProps = BottomTabScreenProps<TabParamList, 'Movies'>
-type TVScreenProps = BottomTabScreenProps<TabParamList, 'TV'>
-type ProfileScreenProps = BottomTabScreenProps<TabParamList, 'Profile'>
+type MovieScreenProps = NativeStackScreenProps<StackParamList, 'Media'>
+type HomeScreenProps = BottomTabScreenProps<BottomTabParamList, 'Home'>
+type SearchScreenProps = BottomTabScreenProps<BottomTabParamList, 'Search'>
+type FavoritesScreenProps = BottomTabScreenProps<BottomTabParamList | StackParamList, 'Favorites'>
+type ListsScreenProps = BottomTabScreenProps<BottomTabParamList, 'Lists'>
+type ProfileScreenProps = BottomTabScreenProps<BottomTabParamList, 'Profile'>
 type InfoScreenProps = BottomTabScreenProps<StackParamList, 'Info'>
 type AuthScreenProps = BottomTabScreenProps<StackParamList, 'Auth'>
 
@@ -39,9 +44,9 @@ type AuthScreenProps = BottomTabScreenProps<StackParamList, 'Auth'>
 export type NavigationScreenProps = {
   ['Home']: HomeScreenProps
   ['Search']: SearchScreenProps
+  ['Favorites']: FavoritesScreenProps
+  ['Lists']: ListsScreenProps
   ['Media']: MovieScreenProps
-  ['Movies']: MoviesScreenProps
-  ['TV']: TVScreenProps
   ['Auth']: AuthScreenProps
   ['Info']: InfoScreenProps
   ['Profile']: ProfileScreenProps
@@ -49,11 +54,11 @@ export type NavigationScreenProps = {
 
 /**  Use with useNavigation hook!
  * Example: useNavigation<NavigationsProps>() */
-export type StackNavigationProps = StackNavigationProp<StackParamList>
-export type TabNavigationProps = BottomTabNavigationProp<TabParamList>
+export type StackNavigationProps = NativeStackNavigationProp<StackParamList>
+export type TabNavigationProps = BottomTabNavigationProp<BottomTabParamList>
 
-const Stack = createStackNavigator<StackParamList>()
-const Tab = createBottomTabNavigator<TabParamList>()
+const Stack = createNativeStackNavigator<StackParamList>()
+const BottomTab = createBottomTabNavigator<BottomTabParamList>()
 
 const linkingConfig = {
   prefixes: ['flixhunt://'],
@@ -79,4 +84,4 @@ const inAppBrowserDefaultOptions = {
   showInRecents: true,
 }
 
-export { Stack, Tab, linkingConfig, inAppBrowserDefaultOptions }
+export { Stack, BottomTab, linkingConfig, inAppBrowserDefaultOptions }

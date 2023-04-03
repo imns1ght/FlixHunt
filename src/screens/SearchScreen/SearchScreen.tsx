@@ -31,7 +31,9 @@ const SearchScreen = () => {
   return (
     <View>
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
-      <Section>{!!showResults && <SearchResults data={searchResults} />}</Section>
+      <Section removeVerticalMargin>
+        {!!showResults && <SearchResults data={searchResults} />}
+      </Section>
     </View>
   )
 }
