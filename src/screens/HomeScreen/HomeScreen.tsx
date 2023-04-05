@@ -11,6 +11,7 @@ const TopFixedWidgets: MediaCarouselType[] = [
   { widgetType: 'default', widgetName: 'newEpisodeToday', mediaType: 'tv' },
   { widgetType: 'default', widgetName: 'tvRecommendations', mediaType: 'tv' },
   { widgetType: 'default', widgetName: 'movieRecommendations', mediaType: 'movie' },
+  { widgetType: 'default', widgetName: 'moviesInTheaters', mediaType: 'movie' },
   { widgetType: 'default', widgetName: 'upcoming', mediaType: 'movie' },
 ]
 

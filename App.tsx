@@ -11,7 +11,6 @@ import {
   HomeScreen,
   InfoScreen,
   MediaScreen,
-  // ListsScreen,
   ProfileScreen,
   SearchScreen,
 } from '~/screens'
@@ -42,13 +41,6 @@ const BottomTabBar = () => (
         tabBarLabel: translate('bottomBar.favorites'),
       }}
     />
-    {/* <BottomTab.Screen
-      name='Lists'
-      component={ListsScreen}
-      options={{
-        tabBarLabel: translate('bottomBar.lists'),
-      }}
-    /> */}
     <BottomTab.Screen
       name='Profile'
       component={ProfileScreen}
@@ -80,11 +72,6 @@ const App = () => (
             component={FavoritesScreen}
             getId={({ params }) => `${params.id}`}
           />
-          {/* <Stack.Screen
-            name='Lists'
-            component={ListsScreen}
-            getId={({ params }) => `${params.id}`}
-          /> */}
           <Stack.Screen name='Auth' component={AuthScreen} />
           <Stack.Screen name='Info' component={InfoScreen} />
         </Stack.Navigator>
