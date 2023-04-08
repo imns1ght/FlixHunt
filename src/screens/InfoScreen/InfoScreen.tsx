@@ -10,16 +10,16 @@ const InfoScreen = () => {
   }
   return (
     <ScrollView>
-      <Section centered removeVerticalMargin>
-        <HeaderBar />
-        <Section title={translate('disclaimer.title')} removeVerticalMargin>
-          <CustomText type='paragraph'>{translate('disclaimer.tmdbAccuracy')}</CustomText>
-          <CustomText type='paragraph'>{translate('disclaimer.tmdbNotAffiliated')}</CustomText>
+      <Section centered removeVerticalMargin removeHorizontalMargin>
+        <HeaderBar title={translate('info.title')} />
+        <Section title={translate('info.disclaimer.title')} removeVerticalMargin>
+          <CustomText type='paragraph'>{translate('info.disclaimer.tmdbAccuracy')}</CustomText>
+          <CustomText type='paragraph'>{translate('info.disclaimer.tmdbNotAffiliated')}</CustomText>
         </Section>
-        <Section title={translate('contributing.title')} removeVerticalMargin>
-          <CustomText type='paragraph'>{translate('contributing.description')}</CustomText>
+        <Section title={translate('info.contributing.title')} removeVerticalMargin>
+          <CustomText type='paragraph'>{translate('info.contributing.description')}</CustomText>
           <CustomText type='link' onPress={onPress}>
-            {translate('contributing.link')}
+            {translate('info.contributing.link')}
           </CustomText>
         </Section>
       </Section>

@@ -18,16 +18,7 @@
   },
   "cast": "Cast",
   "collection": "Collection",
-  "contributing": {
-    "title": "Contributing",
-    "description": "FlixHunt is open-source, if you'd like to contribute to this project you can submit a pull request or report a bug creating a new issue on GitHub. We appreciate your help in making FlixHunt better for everyone!",
-    "link": "Click here to access the source code on GitHub"
-  },
-  "disclaimer": {
-    "title": "Disclaimer",
-    "tmdbAccuracy": "The FlixHunt app uses data sourced from the TMDB API (The Movie Database API) to provide information about movies and TV shows. While we strive to ensure that the information displayed in the app is accurate and up-to-date, we cannot guarantee the accuracy, completeness, or timeliness of the data provided by the TMDB API.",
-    "tmdbNotAffiliated": "By using the FlixHunt app, you acknowledge and agree that we are not responsible for any errors or omissions in the information provided, or for any actions you may take based on the information displayed in the app. Additionally, the FlixHunt app is not endorsed or affiliated with TMDB."
-  },
+
   "editProfile": "Edit profile",
   "error": "Error...",
   "errors": {
@@ -37,6 +28,19 @@
   "favorites": "Favorites",
   "featureUnavailable": "Feature under development...",
   "guest": "Guest",
+  "info": {
+    "title": "Informations",
+    "contributing": {
+      "title": "Contributing",
+      "description": "FlixHunt is open-source, if you'd like to contribute to this project you can submit a pull request or report a bug creating a new issue on GitHub. We appreciate your help in making FlixHunt better for everyone!",
+      "link": "Click here to access the source code on GitHub"
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "tmdbAccuracy": "The FlixHunt app uses data sourced from the TMDB API (The Movie Database API) to provide information about movies and TV shows. While we strive to ensure that the information displayed in the app is accurate and up-to-date, we cannot guarantee the accuracy, completeness, or timeliness of the data provided by the TMDB API.",
+      "tmdbNotAffiliated": "By using the FlixHunt app, you acknowledge and agree that we are not responsible for any errors or omissions in the information provided, or for any actions you may take based on the information displayed in the app. Additionally, the FlixHunt app is not endorsed or affiliated with TMDB."
+    }
+  },
   "images": "Images",
   "lists": "Lists",
   "login": "Login",
