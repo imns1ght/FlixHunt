@@ -3,6 +3,7 @@ import { CustomActivityIndicator, CustomText, HorizontalCard, Section } from '~/
 import { MovieSimpleType } from '~/models'
 import { API } from '~/services'
 import { translate } from '~/locales'
+import { FlatList } from 'react-native'
 
 const UpcomingList = () => {
   const [data, setData] = React.useState<MovieSimpleType[]>()
@@ -18,6 +19,10 @@ const UpcomingList = () => {
     fetchData()
   }, [fetchData])
 
+  const renderItem = React.useCallback(({ item }: { item: MovieSimpleType }) => {
+    return <HorizontalCard key={item.id} data={item} />
+  }, [])
+
   return (
     <Section title={translate('widgets.movie.upcoming')}>
       {loading ? (
@@ -25,7 +30,12 @@ const UpcomingList = () => {
       ) : !data ? (
         <CustomText type='paragraph'>{translate('error')}</CustomText>
       ) : (
-        data.map(movie => <HorizontalCard key={movie.id} data={movie} />)
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          initialNumToRender={3}
+          maxToRenderPerBatch={1}
+        />
       )}
     </Section>
   )
