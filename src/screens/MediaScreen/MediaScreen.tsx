@@ -22,12 +22,10 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
   const [loading, setLoading] = React.useState(true)
   const [data, setData] = React.useState<MediaFullType>()
   const [userAuthenticated, setUserAuthenticated] = React.useState(false)
-  const [favorite, setFavorite] = React.useState(false)
 
   const fetchData = React.useCallback(async () => {
     const response = await API.getByID(id, mediaType, await Authentication.getSessionId())
     setData(response)
-    setFavorite(response.account_states?.favorite ?? false)
   }, [mediaType, id])
 
   const loadData = React.useCallback(async () => {
@@ -66,8 +64,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
           seasonsCount={!isMovie ? data.seasons.length : undefined}
           watch_providers={data.watch_providers}
           userAuthenticated={userAuthenticated}
-          favorite={favorite}
-          setFavorite={setFavorite}
+          favoriteStatus={data.account_states?.favorite ?? false}
         />
         <Section>
           <CustomText type='paragraph'>{data.overview}</CustomText>
