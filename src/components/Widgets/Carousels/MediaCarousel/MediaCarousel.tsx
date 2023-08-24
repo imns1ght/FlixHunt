@@ -17,6 +17,8 @@ export type MediaCarouselType = {
   mediaType: mediaType
 }
 
+const ITEM_HEIGHT = 411
+
 const MediaCarousel = ({ id, widgetName, widgetType, mediaType }: MediaCarouselType) => {
   const [data, setData] = React.useState<MediaSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
@@ -134,6 +136,11 @@ const MediaCarousel = ({ id, widgetName, widgetType, mediaType }: MediaCarouselT
           maxToRenderPerBatch={5}
           showsHorizontalScrollIndicator={false}
           windowSize={3}
+          getItemLayout={(_, index) => ({
+            length: ITEM_HEIGHT,
+            offset: ITEM_HEIGHT * index,
+            index,
+          })}
           horizontal
         />
       )}

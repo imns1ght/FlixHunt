@@ -73,8 +73,8 @@ const getTVShowAiringToday = async (): Promise<MediaSimpleType[]> => {
     .get<TrendingResponse>('/tv/airing_today', {
       params: {
         sort_by: 'popularity.desc',
-        'vote_count.gte': '100',
-        'vote_average.gte': '5',
+        'vote_count.gte': '150',
+        'vote_average.gte': '7',
       },
     })
     .then(response => response.data.results.filter(item => !!item.overview))
