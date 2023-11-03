@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageBackground, Linking, View } from 'react-native'
+import { ImageBackground, Linking, SafeAreaView, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { CommonActions } from '@react-navigation/native'
 
@@ -99,46 +99,49 @@ const AuthScreen = () => {
     )
 
   return (
-    <ImageBackground
-      source={require('~/assets/login-background.jpg')}
-      style={styles.imageBackground}
-      resizeMode='cover'
-    >
-      <Section centered>
-        <View>
-          <CustomText type='title' style={styles.title}>
-            {translate('auth.title')}
-          </CustomText>
-          <CustomText type='subtitle' style={styles.subtitle}>
-            {translate('auth.subtitle')}
-          </CustomText>
-        </View>
-        <View style={styles.buttonContainer}>
-          {loginLoading ? (
-            <CustomActivityIndicator size='large' />
-          ) : (
-            <>
-              <CustomButton
-                title={translate('auth.tmdbLogin')}
-                onPress={tmdbLogin}
-                type='rounded'
-              />
-              <CustomText type='link' onPress={guestLogin} style={styles.guestButton}>
-                {translate('auth.guestLogin')}
-              </CustomText>
-            </>
-          )}
-        </View>
-        <View>
-          <CustomText type='paragraph' style={styles.description}>
-            {translate('auth.description')}
-          </CustomText>
-          <CustomText type='paragraph' style={styles.disclaimer}>
-            {translate('tmdbDisclaimer')}
-          </CustomText>
-        </View>
-      </Section>
-    </ImageBackground>
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <ImageBackground
+        source={require('~/assets/login-background.jpg')}
+        style={styles.imageBackground}
+        resizeMode='cover'
+      >
+        <Section centered>
+          <View>
+            <CustomText type='title' style={styles.title}>
+              {translate('auth.title')}
+            </CustomText>
+            <CustomText type='subtitle' style={styles.subtitle}>
+              {translate('auth.subtitle')}
+            </CustomText>
+          </View>
+          <View style={styles.buttonContainer}>
+            {loginLoading ? (
+              <CustomActivityIndicator size='large' />
+            ) : (
+              <>
+                <CustomButton
+                  title={translate('auth.tmdbLogin')}
+                  onPress={tmdbLogin}
+                  type='rounded'
+                />
+                <CustomText type='link' onPress={guestLogin} style={styles.guestButton}>
+                  {translate('auth.guestLogin')}
+                </CustomText>
+              </>
+            )}
+          </View>
+          <View>
+            <CustomText type='paragraph' style={styles.description}>
+              {translate('auth.description')}
+            </CustomText>
+            <CustomText type='paragraph' style={styles.disclaimer}>
+              {translate('tmdbDisclaimer')}
+            </CustomText>
+          </View>
+        </Section>
+      </ImageBackground>
+    </SafeAreaView>
   )
 }
 

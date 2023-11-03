@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { View } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import { SearchBar, Section } from '~/components'
 import { MediaSimpleType } from '~/models'
 import { API } from '~/services'
@@ -29,12 +29,12 @@ const SearchScreen = () => {
   }, [fetchData, searchText])
 
   return (
-    <View>
+    <SafeAreaView style={{ flex: 1 }}>
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
       <Section removeVerticalMargin>
         {!!showResults && <SearchResults data={searchResults} />}
       </Section>
-    </View>
+    </SafeAreaView>
   )
 }
 

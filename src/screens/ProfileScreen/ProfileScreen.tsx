@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { useToast } from 'react-native-toast-notifications'
 
@@ -121,29 +121,31 @@ const ProfileScreen = () => {
   if (loading) return <CustomActivityIndicator size='large' style={{ flexGrow: 1 }} />
 
   return (
-    <Section centered>
-      <View style={styles.mainContainer}>
-        <Header isAuthenticated={isAuthenticated} accountData={accountData} />
-        {!isAuthenticated && (
-          <CustomText type='paragraph'>{translate('auth.description')}</CustomText>
-        )}
-        <View style={styles.listContainer}>
-          {menuItems.map(item => (
-            <ListButton
-              key={item.title}
-              title={item.title}
-              onPress={item.onPress}
-              iconName={item.iconName}
-              disabled={item.disabled}
-              activateDisabledStyle={item.activateDisabledStyle}
-            />
-          ))}
-          {isAuthenticated && (
-            <CustomButton title={translate('logout')} onPress={logout} transparent />
+    <SafeAreaView style={{ flex: 1 }}>
+      <Section centered>
+        <View style={styles.mainContainer}>
+          <Header isAuthenticated={isAuthenticated} accountData={accountData} />
+          {!isAuthenticated && (
+            <CustomText type='paragraph'>{translate('auth.description')}</CustomText>
           )}
+          <View style={styles.listContainer}>
+            {menuItems.map(item => (
+              <ListButton
+                key={item.title}
+                title={item.title}
+                onPress={item.onPress}
+                iconName={item.iconName}
+                disabled={item.disabled}
+                activateDisabledStyle={item.activateDisabledStyle}
+              />
+            ))}
+            {isAuthenticated && (
+              <CustomButton title={translate('logout')} onPress={logout} transparent />
+            )}
+          </View>
         </View>
-      </View>
-    </Section>
+      </Section>
+    </SafeAreaView>
   )
 }
 

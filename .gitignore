@@ -20,6 +20,9 @@ xcuserdata/
 **/build/
 !src/**/build/
 
+### ReactNative.iOS Stack ###
+ios/Pods
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -235,7 +238,6 @@ captures/
 .externalNativeBuild/
 .cxx/
 *.apk
-*.aab
 output.json
 
 # IntelliJ
@@ -256,7 +258,3 @@ google-services.json
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/reactnative
-
-# Custom
-
-.vscode

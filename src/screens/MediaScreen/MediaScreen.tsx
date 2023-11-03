@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, SafeAreaView } from 'react-native'
 import styles from './MediaScreen.styles'
 import Header from './Header'
 import { NavigationScreenProps } from '~/navigation'
@@ -86,17 +86,19 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollview}>
-      {loading ? (
-        <View style={styles.loading}>
-          <CustomActivityIndicator size='large' />
-        </View>
-      ) : data ? (
-        <Content data={data} />
-      ) : (
-        <CustomText type='paragraph'>{translate('error')}</CustomText>
-      )}
-    </ScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.scrollview}>
+        {loading ? (
+          <View style={styles.loading}>
+            <CustomActivityIndicator size='large' />
+          </View>
+        ) : data ? (
+          <Content data={data} />
+        ) : (
+          <CustomText type='paragraph'>{translate('error')}</CustomText>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 

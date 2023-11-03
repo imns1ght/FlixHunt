@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, SafeAreaView } from 'react-native'
 import { MediaCarousel, UpcomingList } from '~/components'
 import { MediaCarouselType } from '~/components/Widgets/Carousels/MediaCarousel/MediaCarousel'
 import { MediaGenres } from '~/models/genre'
@@ -44,12 +44,14 @@ const HomeScreen = () => {
   }, [])
 
   return (
-    <FlatList
-      data={ActivatedWidgets}
-      renderItem={renderItem}
-      initialNumToRender={1}
-      maxToRenderPerBatch={1}
-    />
+    <SafeAreaView style={{ flex: 1 }}>
+      <FlatList
+        data={ActivatedWidgets}
+        renderItem={renderItem}
+        initialNumToRender={1}
+        maxToRenderPerBatch={1}
+      />
+    </SafeAreaView>
   )
 }
 

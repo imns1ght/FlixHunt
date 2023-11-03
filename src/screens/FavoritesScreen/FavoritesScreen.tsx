@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, View, useWindowDimensions } from 'react-native'
+import { FlatList, SafeAreaView, View, useWindowDimensions } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
 import {
   NavigationState,
@@ -116,16 +116,18 @@ const FavoritesScreen = ({ route }: NavigationScreenProps['Favorites']) => {
   if (!isUserLogged) return <GuestBlocked />
 
   return (
-    <View style={styles.container}>
-      <HeaderBar title={translate('favorites')} />
-      <TabView
-        renderTabBar={renderTabBar}
-        navigationState={{ index: tabIndex, routes: tabRoutes }}
-        renderScene={renderScene}
-        onIndexChange={setTabIndex}
-        initialLayout={{ width: windowDimensions.width }}
-      />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <HeaderBar title={translate('favorites')} />
+        <TabView
+          renderTabBar={renderTabBar}
+          navigationState={{ index: tabIndex, routes: tabRoutes }}
+          renderScene={renderScene}
+          onIndexChange={setTabIndex}
+          initialLayout={{ width: windowDimensions.width }}
+        />
+      </View>
+    </SafeAreaView>
   )
 }
 
