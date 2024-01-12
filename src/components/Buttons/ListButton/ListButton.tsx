@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   containerDisabled: {
-    backgroundColor: colors.tertiary + '60',
+    backgroundColor: colors.disabled,
   },
   iconLeft: {
     marginRight: 10,
