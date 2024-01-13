@@ -1,29 +1,26 @@
 import { StyleSheet } from 'react-native'
-import { theme } from '~/styles'
+import { colors } from '~/styles'
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 5,
-    paddingHorizontal: 5,
+    height: 60,
+    paddingHorizontal: 10,
+    backgroundColor: colors.black + '90',
   },
   backTitleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    flex: 1,
     columnGap: 10,
+    paddingRight: 10,
   },
   customButtonsContainer: {
     flexDirection: 'row',
-    marginRight: 5,
+    alignItems: 'center',
     columnGap: 10,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: '700',
-    color: theme.colors.text,
   },
 })
 

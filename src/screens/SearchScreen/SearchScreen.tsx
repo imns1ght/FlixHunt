@@ -29,7 +29,7 @@ const SearchScreen = () => {
   }, [fetchData, searchText])
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flexGrow: 1 }}>
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
       <Section removeVerticalMargin>
         {!!showResults && <SearchResults data={searchResults} />}

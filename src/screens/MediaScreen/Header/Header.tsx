@@ -8,7 +8,6 @@ import FastImage from 'react-native-fast-image'
 import { DEFAULT_REGION, REGION } from '~/services'
 
 import { translate } from '~/locales'
-import MediaScreenHeaderBar from './MediaScreenHeaderBar'
 
 type Props = Pick<
   MovieFullType,
@@ -30,8 +29,6 @@ type Props = Pick<
 }
 
 const Header = ({
-  id,
-  mediaType,
   title,
   poster_path,
   images,
@@ -41,8 +38,6 @@ const Header = ({
   vote_average,
   vote_count,
   watch_providers,
-  userAuthenticated,
-  favoriteStatus,
   seasonsCount,
 }: Props) => {
   const releaseDate = new Date(release_date).toLocaleDateString()
@@ -68,12 +63,6 @@ const Header = ({
       imageStyle={styles.coverImage}
       blurRadius={8}
     >
-      <MediaScreenHeaderBar
-        id={id}
-        mediaType={mediaType}
-        userAuthenticated={userAuthenticated}
-        favoriteStatus={favoriteStatus}
-      />
       <Section removeHorizontalMargin removeVerticalMargin removeGap>
         <View style={styles.titleWithImage}>
           <FastImage

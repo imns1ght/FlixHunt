@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     color: theme.colors.text,
     fontSize: 20,
     fontWeight: '700',
+    flex: 1,
   },
   subtitle: {
     color: theme.colors.text,

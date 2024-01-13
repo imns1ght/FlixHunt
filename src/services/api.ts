@@ -183,7 +183,7 @@ const getMovieUpcoming = async (): Promise<MovieSimpleType[]> => {
       const sortedDec = filteredFinal.sort(
         (a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime()
       )
-      const sliced = sortedDec.slice(0, 10)
+      const sliced = sortedDec.slice(0, 5)
 
       return sliced
     })

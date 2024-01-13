@@ -9,12 +9,21 @@ import { colors } from '~/styles'
 
 type Props = {
   id: number
+  title?: string
+  shouldShowTitle?: boolean
   mediaType: mediaType
   favoriteStatus: boolean
   userAuthenticated: boolean
 }
 
-const MediaScreenHeaderBar = ({ id, mediaType, userAuthenticated, favoriteStatus }: Props) => {
+const MediaScreenHeaderBar = ({
+  id,
+  title,
+  shouldShowTitle,
+  mediaType,
+  userAuthenticated,
+  favoriteStatus,
+}: Props) => {
   const stackNavigation = useNavigation<StackNavigationProps>()
   const [favorite, setFavorite] = React.useState(favoriteStatus)
   const searchScreenId = useId()
@@ -59,7 +68,7 @@ const MediaScreenHeaderBar = ({ id, mediaType, userAuthenticated, favoriteStatus
     mediaType,
   ])
 
-  return <HeaderBar customButtons={headerBarCustomButtons} />
+  return <HeaderBar title={shouldShowTitle ? title : ''} customButtons={headerBarCustomButtons} />
 }
 
 export default MediaScreenHeaderBar

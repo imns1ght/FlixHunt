@@ -16,7 +16,9 @@ const HeaderBar = ({
     <View style={styles.container}>
       <View style={styles.backTitleContainer}>
         <BackButton />
-        <CustomText type='title'>{title}</CustomText>
+        <CustomText type='title' numberOfLines={1}>
+          {title}
+        </CustomText>
       </View>
       <View style={styles.customButtonsContainer}>
         {customButtons &&

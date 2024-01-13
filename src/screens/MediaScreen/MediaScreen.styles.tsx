@@ -15,16 +15,17 @@ const styles = StyleSheet.create({
   cover: {
     resizeMode: 'cover',
     justifyContent: 'flex-end',
+    paddingTop: 15,
+    paddingBottom: 10,
   },
   coverImage: {
     opacity: 0.4,
     backgroundColor: colors.black,
   },
   image: {
-    height: 220,
+    height: 240,
     aspectRatio: '2/3',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
+    borderRadius: 5,
     marginLeft: 5,
     marginRight: 10,
   },
