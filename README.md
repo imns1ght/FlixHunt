@@ -16,13 +16,6 @@ FlixHunt is not endorsed or affiliated with TMDB.
 |-----------------|-----------|----------|---------| 
 | ![Media-2](https://user-images.githubusercontent.com/24906506/229597069-8ac4014e-d615-47bc-9efa-2c099a3ae48d.png) | ![Favorites](https://user-images.githubusercontent.com/24906506/229597048-f990dd65-7d96-405c-a5af-a6c46873b7f1.png) | ![Upcoming Movies](https://user-images.githubusercontent.com/24906506/229597217-b3c93aca-3b9d-488f-b3a7-1cf44caa87cb.png) | ![Profile](https://user-images.githubusercontent.com/24906506/229597094-68046a4f-a7b9-40c3-b107-d075d62eae2c.png)
 
-
-
-
-
-
-
-
 <br/>
 
 Fully supported languages

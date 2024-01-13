@@ -20,6 +20,8 @@ xcuserdata/
 **/build/
 !src/**/build/
 
+**/app-release.aab
+
 ### ReactNative.iOS Stack ###
 ios/Pods
 
@@ -49,7 +51,6 @@ gradle-app.setting
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
