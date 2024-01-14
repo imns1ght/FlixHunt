@@ -48,7 +48,7 @@ To run the app, you'll need to have the following installed on your development 
 3. [Generate a new `TMDB API_KEY`](https://www.themoviedb.org/documentation/api) and add it to the `.env` file:
 
    ```env
-   API_KEY='<insert-your-api-key-here'
+   API_KEY=<insert-your-api-key-here>
    ```
 
 4. Start the server
