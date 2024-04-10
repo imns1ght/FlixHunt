@@ -100,7 +100,6 @@ const AuthScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-
       <ImageBackground
         source={require('~/assets/login-background.jpg')}
         style={styles.imageBackground}

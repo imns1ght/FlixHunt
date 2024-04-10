@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SafeAreaView, View } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import { SearchBar, Section } from '~/components'
 import { MediaSimpleType } from '~/models'
 import { API } from '~/services'

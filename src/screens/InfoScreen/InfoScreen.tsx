@@ -15,7 +15,9 @@ const InfoScreen = () => {
           <HeaderBar title={translate('info.title')} />
           <Section title={translate('info.disclaimer.title')} removeVerticalMargin>
             <CustomText type='paragraph'>{translate('info.disclaimer.tmdbAccuracy')}</CustomText>
-            <CustomText type='paragraph'>{translate('info.disclaimer.tmdbNotAffiliated')}</CustomText>
+            <CustomText type='paragraph'>
+              {translate('info.disclaimer.tmdbNotAffiliated')}
+            </CustomText>
           </Section>
           <Section title={translate('info.contributing.title')} removeVerticalMargin>
             <CustomText type='paragraph'>{translate('info.contributing.description')}</CustomText>
