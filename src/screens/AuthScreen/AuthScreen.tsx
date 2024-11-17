@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next'
 import { CustomActivityIndicator, CustomButton, CustomText, Section } from '~/components'
 import { StackNavigationProps, inAppBrowserDefaultOptions, linkingConfig } from '~/navigation'
 import api from '~/services/api'
-import SecureStorage from '~/services/storage'
 import Authentication from '~/services/authentication'
 import InAppBrowser from 'react-native-inappbrowser-reborn'
 import styles from './AuthScreen.styles'
@@ -39,7 +38,7 @@ const AuthScreen = () => {
       const isNewGuestSession = !(await Authentication.isGuest())
       if (isNewGuestSession) {
         const { guest_session_id } = await api.createGuestSession()
-        await SecureStorage.setItem('guest_session_id', guest_session_id)
+        await Authentication.setGuestSessionId(guest_session_id)
       }
       navigateToHome()
     } catch ({ message }) {

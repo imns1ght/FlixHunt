@@ -1363,8 +1363,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-sensitive-info (6.0.0-alpha.9):
-    - React-Core
   - react-native-webview (13.12.3):
     - DoubleConversion
     - glog
@@ -1816,7 +1814,6 @@ DEPENDENCIES:
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
-  - react-native-sensitive-info (from `../node_modules/react-native-sensitive-info`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -1936,8 +1933,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-pager-view"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
-  react-native-sensitive-info:
-    :path: "../node_modules/react-native-sensitive-info"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-nativeconfig:
@@ -2048,7 +2043,6 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 7a69a9b8fded72ea3cf81923ecf75cad5558ed26
   react-native-pager-view: c64a744211a46202619a77509f802765d1659dba
   react-native-safe-area-context: 2500e4fe998caad50ad3bc51ec23ef951308569e
-  react-native-sensitive-info: d44e909d065f9c0e15734245e5dd6a24b82e3dcd
   react-native-webview: 8039cbb0aa6ad2fd7918e23aebb5586f127d3e91
   React-nativeconfig: 470fce6d871c02dc5eff250a362d56391b7f52d6
   React-NativeModulesApple: 6297fc3136c1fd42884795c51d7207de6312b606

@@ -1,9 +1,20 @@
-import SecureStorage from './storage'
+import Keychain, {
+  ACCESSIBLE,
+  ACCESS_CONTROL,
+  STORAGE_TYPE,
+  SetOptions,
+} from 'react-native-keychain'
 
 export enum UserStorageKeys {
   GUEST_SESSION_ID = 'guest_session_id',
   SESSION_ID = 'session_id',
   ACCOUNT_ID = 'account_id',
+}
+
+const default_storage_options: SetOptions = {
+  accessControl: ACCESS_CONTROL.BIOMETRY_ANY,
+  accessible: ACCESSIBLE.WHEN_UNLOCKED,
+  storage: STORAGE_TYPE.AES_GCM,
 }
 
 class Authentication {
@@ -18,45 +29,69 @@ class Authentication {
     return !!guest
   }
 
-  static async clearStorage() {
+  static async removeUserCredentials() {
     try {
-      Object.values(UserStorageKeys).map(async key => await SecureStorage.deleteItem(key))
+      Object.values(UserStorageKeys).map(
+        async key => await Keychain.resetInternetCredentials({ server: key })
+      )
       return true
     } catch {
+      console.error('Error clearing storage')
       return false
     }
   }
 
-  static async setGuestSessionId(guest_session_id: string) {
-    return SecureStorage.setItem(UserStorageKeys.GUEST_SESSION_ID, guest_session_id)
-  }
-
-  static async setSessionId(session_id: string) {
-    return SecureStorage.setItem(UserStorageKeys.SESSION_ID, session_id)
-  }
-
-  static async setAccountId(account_id: string) {
-    return SecureStorage.setItem(UserStorageKeys.ACCOUNT_ID, account_id)
-  }
-
   static async saveCredentials(session_id: string, account_id: string | number) {
     return Promise.all([
-      SecureStorage.setItem(UserStorageKeys.SESSION_ID, session_id),
-      SecureStorage.setItem(UserStorageKeys.ACCOUNT_ID, `${account_id}`),
-      SecureStorage.deleteItem(UserStorageKeys.GUEST_SESSION_ID),
+      this.setSessionId(session_id),
+      this.setAccountId(`${account_id}`),
+      this.resetGuestSession(),
     ])
   }
 
-  static async getSessionId() {
-    return SecureStorage.getItem(UserStorageKeys.SESSION_ID)
+  static async resetGuestSession() {
+    try {
+      return Keychain.resetInternetCredentials({ server: UserStorageKeys.GUEST_SESSION_ID })
+    } catch {
+      console.error('Error resetting guest session')
+      return false
+    }
   }
 
-  static async getAccountId() {
-    return SecureStorage.getItem(UserStorageKeys.ACCOUNT_ID)
+  static async setKeychainCredentials(key: string, value: string) {
+    try {
+      return Keychain.setInternetCredentials(key, key, value, default_storage_options)
+    } catch {
+      console.error(`Error setting credentials for ${key}`)
+      return false
+    }
   }
 
   static async getGuestSessionId() {
-    return SecureStorage.getItem(UserStorageKeys.GUEST_SESSION_ID)
+    const guestSession = await Keychain.getInternetCredentials(UserStorageKeys.GUEST_SESSION_ID)
+    return guestSession ? guestSession.password : null
+  }
+
+  static async setGuestSessionId(guest_session_id: string) {
+    return this.setKeychainCredentials(UserStorageKeys.GUEST_SESSION_ID, guest_session_id)
+  }
+
+  static async getSessionId() {
+    const session = await Keychain.getInternetCredentials(UserStorageKeys.SESSION_ID)
+    return session ? session.password : null
+  }
+
+  static async setSessionId(session_id: string) {
+    return this.setKeychainCredentials(UserStorageKeys.SESSION_ID, session_id)
+  }
+
+  static async getAccountId() {
+    const account = await Keychain.getInternetCredentials(UserStorageKeys.ACCOUNT_ID)
+    return account ? account.password : null
+  }
+
+  static async setAccountId(account_id: string) {
+    return this.setKeychainCredentials(UserStorageKeys.ACCOUNT_ID, account_id)
   }
 }
 

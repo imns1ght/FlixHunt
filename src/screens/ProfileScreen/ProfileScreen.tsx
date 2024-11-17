@@ -37,7 +37,7 @@ const ProfileScreen = () => {
   }, [stackNavigation])
 
   const logout = () => {
-    if (Authentication.clearStorage()) goToAuth()
+    if (Authentication.removeUserCredentials()) goToAuth()
   }
 
   const loadAccountData = React.useCallback(async () => {

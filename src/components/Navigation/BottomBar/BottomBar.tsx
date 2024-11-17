@@ -6,9 +6,8 @@ import { theme } from '~/styles'
 import Ionicos from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'
+import { BottomTabBarButtonProps, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import styles from './BottomBar.styles'
-import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
 
 const BottomBar = ({
   route,
