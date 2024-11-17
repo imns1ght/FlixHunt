@@ -1,5 +1,5 @@
 import * as RNLocalize from 'react-native-localize'
-import { findBestAvailableLanguage } from 'react-native-localize'
+import { findBestLanguageTag } from 'react-native-localize'
 
 const { countryCode, languageTag, languageCode } = RNLocalize.getLocales()[0]
 
@@ -17,5 +17,5 @@ export {
   DEFAULT_REGION,
   DEFAULT_LANGUAGE,
   DEFAULT_LANGUAGE_CODE,
-  findBestAvailableLanguage,
+  findBestLanguageTag,
 }

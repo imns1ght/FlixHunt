@@ -5,12 +5,12 @@ import FastImage from 'react-native-fast-image'
 import InAppBrowser from 'react-native-inappbrowser-reborn'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { CustomButton, CustomText } from '~/components'
-import { translate } from '~/locales'
 import { AccountType } from '~/models'
 import { StackNavigationProps, inAppBrowserDefaultOptions } from '~/navigation'
 import { colors } from '~/styles'
 import { getImagePath } from '~/utils'
 import styles from './Header.styles'
+import { useTranslation } from 'react-i18next'
 
 const ProfileScreenHeader = ({
   isAuthenticated,
@@ -20,6 +20,7 @@ const ProfileScreenHeader = ({
   accountData?: AccountType
 }) => {
   const navigation = useNavigation<StackNavigationProps>()
+  const { t } = useTranslation();
 
   const editProfile = React.useCallback(async () => {
     await InAppBrowser.isAvailable()
@@ -65,7 +66,7 @@ const ProfileScreenHeader = ({
         <View style={styles.actionContainer}>
           {accountData?.name && <CustomText type='title'>{accountData.name}</CustomText>}
           <CustomText type='paragraph'>@{accountData?.username}</CustomText>
-          <ActionButton title={translate('editProfile')} onPress={editProfile} />
+          <ActionButton title={t('editProfile')} onPress={editProfile} />
         </View>
       </>
     ),
@@ -84,8 +85,8 @@ const ProfileScreenHeader = ({
       <>
         <GuestProfilePicture />
         <View style={styles.actionContainer}>
-          <CustomText type='title'>{translate('guest')}</CustomText>
-          <ActionButton title={translate('login')} onPress={goToAuth} />
+          <CustomText type='title'>{t('guest')}</CustomText>
+          <ActionButton title={t('login')} onPress={goToAuth} />
         </View>
       </>
     ),

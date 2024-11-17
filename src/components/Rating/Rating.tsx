@@ -1,11 +1,13 @@
 import React from 'react'
 import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { translate } from '~/locales'
+import { useTranslation } from 'react-i18next'
 import { CustomText } from '..'
 import styles from './Rating.styles'
 
 const Rating = ({ voteAverage, voteCount }: { voteAverage: number; voteCount: number }) => {
+  const { t } = useTranslation();
+
   return (
     <View>
       <View style={styles.container}>
@@ -18,7 +20,7 @@ const Rating = ({ voteAverage, voteCount }: { voteAverage: number; voteCount: nu
         </CustomText>
       </View>
       <CustomText type='paragraph' style={styles.voteCount}>
-        {`${voteCount.toLocaleString()} ${translate('votes')}`}
+        {`${voteCount.toLocaleString()} ${t('votes')}`}
       </CustomText>
     </View>
   )

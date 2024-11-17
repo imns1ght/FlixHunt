@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { FlatList } from 'react-native'
 import { Card, CustomActivityIndicator, CustomText, Section } from '~/components'
-import { translate } from '~/locales'
 import { MediaSimpleType, mediaType } from '~/models'
 import { MediaGenres, MediaGenresType } from '~/models/genre'
 import { StackNavigationProps } from '~/navigation'
@@ -18,6 +18,7 @@ export type MediaCarouselType = {
 }
 
 const MediaCarousel = ({ id, widgetName, widgetType, mediaType }: MediaCarouselType) => {
+  const { t } = useTranslation();
   const [data, setData] = React.useState<MediaSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
   const navigation = useNavigation<StackNavigationProps>()
@@ -115,7 +116,7 @@ const MediaCarousel = ({ id, widgetName, widgetType, mediaType }: MediaCarouselT
     if (isGenre) path += 'genre.'
     path += widgetName
 
-    return translate(path)
+    return t(path)
   }
 
   return (
@@ -123,13 +124,13 @@ const MediaCarousel = ({ id, widgetName, widgetType, mediaType }: MediaCarouselT
       {loading ? (
         <CustomActivityIndicator size='large' />
       ) : !data ? (
-        <CustomText type='paragraph'>{translate('error')}</CustomText>
+        <CustomText type='paragraph'>{t('error')}</CustomText>
       ) : (
         <FlatList
           keyExtractor={key => key.id.toString()}
           data={data}
           renderItem={renderItem}
-          ListEmptyComponent={<CustomText type='paragraph'>{translate('nothingFound')}</CustomText>}
+          ListEmptyComponent={<CustomText type='paragraph'>{t('nothingFound')}</CustomText>}
           initialNumToRender={3}
           maxToRenderPerBatch={5}
           showsHorizontalScrollIndicator={false}

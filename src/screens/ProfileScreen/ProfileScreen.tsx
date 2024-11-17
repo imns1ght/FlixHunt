@@ -2,6 +2,7 @@ import React from 'react'
 import { SafeAreaView, View } from 'react-native'
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { useToast } from 'react-native-toast-notifications'
+import { useTranslation } from 'react-i18next'
 
 import {
   CustomActivityIndicator,
@@ -11,7 +12,6 @@ import {
   Section,
 } from '~/components'
 import { ListButtonType } from '~/components/Buttons/ListButton/ListButton'
-import { translate } from '~/locales'
 import { AccountType } from '~/models'
 import { StackNavigationProps, TabNavigationProps } from '~/navigation'
 import { API, Authentication } from '~/services'
@@ -19,6 +19,7 @@ import { Header } from './Header'
 import styles from './ProfileScreen.styles'
 
 const ProfileScreen = () => {
+  const { t } = useTranslation();
   const toast = useToast()
   const stackNavigation = useNavigation<StackNavigationProps>()
   const tabNavigation = useNavigation<TabNavigationProps>()
@@ -66,52 +67,52 @@ const ProfileScreen = () => {
   const menuItems: ListButtonType[] = React.useMemo(() => {
     const disabled = !isAuthenticated
     const activateDisabledStyle = true
-    const onPressUnavailable = () => toast.show(translate('featureUnavailable'))
+    const onPressUnavailable = () => toast.show(t('featureUnavailable'))
 
     return [
       {
-        title: translate('favorites'),
+        title: t('favorites'),
         onPress: () => tabNavigation.navigate('Favorites'),
         iconName: 'heart-outline',
         disabled,
       },
       {
-        title: translate('lists'),
+        title: t('lists'),
         onPress: onPressUnavailable,
         iconName: 'view-list-outline',
         activateDisabledStyle,
         disabled,
       },
       {
-        title: translate('watchlist'),
+        title: t('watchlist'),
         onPress: onPressUnavailable,
         iconName: 'file-eye-outline',
         activateDisabledStyle,
         disabled,
       },
       {
-        title: translate('reviews'),
+        title: t('reviews'),
         onPress: onPressUnavailable,
         iconName: 'forum-outline',
         activateDisabledStyle,
         disabled,
       },
       {
-        title: translate('ratings'),
+        title: t('ratings'),
         onPress: onPressUnavailable,
         iconName: 'star-outline',
         activateDisabledStyle,
         disabled,
       },
       {
-        title: translate('recentlyVisited'),
+        title: t('recentlyVisited'),
         onPress: onPressUnavailable,
         iconName: 'history',
         activateDisabledStyle,
         disabled,
       },
       {
-        title: translate('about'),
+        title: t('about'),
         onPress: () => stackNavigation.navigate('Info'),
         iconName: 'information-outline',
       },
@@ -126,7 +127,7 @@ const ProfileScreen = () => {
         <View style={styles.mainContainer}>
           <Header isAuthenticated={isAuthenticated} accountData={accountData} />
           {!isAuthenticated && (
-            <CustomText type='paragraph'>{translate('auth.description')}</CustomText>
+            <CustomText type='paragraph'>{t('auth.description')}</CustomText>
           )}
           <View style={styles.listContainer}>
             {menuItems.map(item => (
@@ -140,7 +141,7 @@ const ProfileScreen = () => {
               />
             ))}
             {isAuthenticated && (
-              <CustomButton title={translate('logout')} onPress={logout} transparent />
+              <CustomButton title={t('logout')} onPress={logout} transparent />
             )}
           </View>
         </View>

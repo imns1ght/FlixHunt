@@ -2,10 +2,11 @@ import React from 'react'
 import { CustomActivityIndicator, CustomText, HorizontalCard, Section } from '~/components'
 import { MovieSimpleType } from '~/models'
 import { API } from '~/services'
-import { translate } from '~/locales'
 import { FlatList } from 'react-native'
+import { useTranslation } from 'react-i18next'
 
 const UpcomingList = () => {
+  const { t } = useTranslation();
   const [data, setData] = React.useState<MovieSimpleType[]>()
   const [loading, setLoading] = React.useState(true)
 
@@ -24,11 +25,11 @@ const UpcomingList = () => {
   }, [])
 
   return (
-    <Section title={translate('widgets.movie.upcoming')}>
+    <Section title={t('widgets.movie.upcoming')}>
       {loading ? (
         <CustomActivityIndicator size='large' />
       ) : !data ? (
-        <CustomText type='paragraph'>{translate('error')}</CustomText>
+        <CustomText type='paragraph'>{t('error')}</CustomText>
       ) : (
         <FlatList
           data={data}

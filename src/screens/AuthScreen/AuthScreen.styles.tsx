@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
   },
+  titleContainer: {},
   loadingContainer: {
     flex: 1,
     alignItems: 'center',
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   title: {
+    flex: 0,
     alignSelf: 'flex-start',
     paddingBottom: 10,
     fontSize: 38,

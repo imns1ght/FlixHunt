@@ -3,10 +3,10 @@ import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import styles from './SearchBar.styles'
 import { theme } from '~/styles'
-import { translate } from '~/locales'
 import { BackButton } from '../Buttons'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { TabNavigationProps } from '~/navigation'
+import { useTranslation } from 'react-i18next'
 
 const SearchBar = ({
   searchText,
@@ -15,6 +15,7 @@ const SearchBar = ({
   searchText: string
   setSearchText: React.Dispatch<React.SetStateAction<string>>
 }) => {
+  const { t } = useTranslation();
   const navigation = useNavigation<TabNavigationProps>()
   const textInputRef = React.useRef<TextInput>(null)
 
@@ -43,7 +44,7 @@ const SearchBar = ({
           ref={textInputRef}
           value={searchText}
           onChangeText={setSearchText}
-          placeholder={translate('searchPlaceholder')}
+          placeholder={t('searchPlaceholder')}
           placeholderTextColor={styles.placeholder.color}
           style={styles.textInput}
           autoFocus

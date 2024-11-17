@@ -4,9 +4,10 @@ import { API } from '~/services'
 import { Card, CustomActivityIndicator, CustomText, Section } from '~/components'
 import { mediaType } from '~/models'
 import { CastType } from '~/models'
-import { translate } from '~/locales'
+import { useTranslation } from 'react-i18next'
 
 const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) => {
+  const { t } = useTranslation();
   const [data, setData] = React.useState<CastType[]>()
   const [loading, setLoading] = React.useState(true)
 
@@ -34,11 +35,11 @@ const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) =
   }, [])
 
   return (
-    <Section title={translate('cast')}>
+    <Section title={t('cast')}>
       {loading ? (
         <CustomActivityIndicator />
       ) : !data ? (
-        <CustomText type='paragraph'>{translate('error')}</CustomText>
+        <CustomText type='paragraph'>{t('error')}</CustomText>
       ) : (
         <FlatList
           data={data}
@@ -46,7 +47,7 @@ const CastCarousel = ({ id, mediaType }: { id: number; mediaType: mediaType }) =
           renderItem={renderItem}
           initialNumToRender={3}
           maxToRenderPerBatch={3}
-          ListEmptyComponent={<CustomText type='paragraph'>{translate('nothingFound')}</CustomText>}
+          ListEmptyComponent={<CustomText type='paragraph'>{t('nothingFound')}</CustomText>}
           showsHorizontalScrollIndicator={false}
           windowSize={3}
           horizontal

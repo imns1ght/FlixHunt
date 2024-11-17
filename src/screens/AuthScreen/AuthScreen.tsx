@@ -2,6 +2,7 @@ import React from 'react'
 import { ImageBackground, Linking, SafeAreaView, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { CommonActions } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 import { CustomActivityIndicator, CustomButton, CustomText, Section } from '~/components'
 import { StackNavigationProps, inAppBrowserDefaultOptions, linkingConfig } from '~/navigation'
@@ -11,13 +12,13 @@ import Authentication from '~/services/authentication'
 import InAppBrowser from 'react-native-inappbrowser-reborn'
 import styles from './AuthScreen.styles'
 import { useToast } from 'react-native-toast-notifications'
-import { translate } from '~/locales'
 
 const { prefixes, config } = linkingConfig
 const deeplink = prefixes[0] + config.screens.Auth
 
 const AuthScreen = () => {
-  const [generalLoading, setGeneralLoading] = React.useState(true)
+  const { t } = useTranslation();
+  const [generalLoading, setGeneralLoading] = React.useState(false)
   const [loginLoading, setLoginLoading] = React.useState(false)
 
   const toast = useToast()
@@ -106,12 +107,12 @@ const AuthScreen = () => {
         resizeMode='cover'
       >
         <Section centered>
-          <View>
+          <View style={styles.titleContainer}>
             <CustomText type='title' style={styles.title}>
-              {translate('auth.title')}
+              {t('auth.title')}
             </CustomText>
             <CustomText type='subtitle' style={styles.subtitle}>
-              {translate('auth.subtitle')}
+              {t('auth.subtitle')}
             </CustomText>
           </View>
           <View style={styles.buttonContainer}>
@@ -120,22 +121,22 @@ const AuthScreen = () => {
             ) : (
               <>
                 <CustomButton
-                  title={translate('auth.tmdbLogin')}
+                  title={t('auth.tmdbLogin')}
                   onPress={tmdbLogin}
                   type='rounded'
                 />
                 <CustomText type='link' onPress={guestLogin} style={styles.guestButton}>
-                  {translate('auth.guestLogin')}
+                  {t('auth.guestLogin')}
                 </CustomText>
               </>
             )}
           </View>
           <View>
             <CustomText type='paragraph' style={styles.description}>
-              {translate('auth.description')}
+              {t('auth.description')}
             </CustomText>
             <CustomText type='paragraph' style={styles.disclaimer}>
-              {translate('tmdbDisclaimer')}
+              {t('tmdbDisclaimer')}
             </CustomText>
           </View>
         </Section>

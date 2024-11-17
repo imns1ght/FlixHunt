@@ -2,11 +2,12 @@ import React from 'react'
 import styles from './SearchResults.styles'
 import { CustomText, HorizontalCard } from '~/components'
 import { MediaSimpleType } from '~/models'
-import { View } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
-import { translate } from '~/locales'
+import { FlatList, View } from 'react-native'
+import { useTranslation } from 'react-i18next'
 
 const SearchResults = ({ data }: { data: MediaSimpleType[] }) => {
+  const { t } = useTranslation();
+
   const renderItem = React.useCallback(
     ({ item }: { item: MediaSimpleType }) => <HorizontalCard key={item.id} data={item} />,
     []
@@ -14,7 +15,7 @@ const SearchResults = ({ data }: { data: MediaSimpleType[] }) => {
 
   const emptyComponent = () => (
     <View style={styles.emptyContainer}>
-      <CustomText type='paragraph'>{translate('nothingFound')}</CustomText>
+      <CustomText type='paragraph'>{t('nothingFound')}</CustomText>
     </View>
   )
 

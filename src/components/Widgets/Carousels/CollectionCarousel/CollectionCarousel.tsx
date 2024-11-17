@@ -1,13 +1,15 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { FlatList } from 'react-native'
 import { Card, CustomActivityIndicator, CustomText, Section } from '~/components'
-import { translate } from '~/locales'
 import { CollectionType, MediaSimpleType } from '~/models'
 import { StackNavigationProps } from '~/navigation'
 import { API } from '~/services'
 
 const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: number }) => {
+  const { t } = useTranslation();
+
   const [collectionData, setCollectionData] = React.useState<CollectionType>()
   const [loading, setLoading] = React.useState(true)
   const navigation = useNavigation<StackNavigationProps>()
@@ -47,11 +49,11 @@ const CollectionCarousel = ({ id, collectionId }: { id: number; collectionId: nu
   )
 
   return (
-    <Section title={collectionData?.name ?? translate('collection')}>
+    <Section title={collectionData?.name ?? t('collection')}>
       {loading ? (
         <CustomActivityIndicator size='large' />
       ) : !collectionData ? (
-        <CustomText type='paragraph'>{translate('error')}</CustomText>
+        <CustomText type='paragraph'>{t('error')}</CustomText>
       ) : (
         <FlatList
           keyExtractor={key => key.id.toString()}

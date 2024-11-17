@@ -1,10 +1,11 @@
-import { CommonActions, useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { translate } from '~/locales'
+import { CommonActions, useNavigation } from '@react-navigation/native'
 import { StackNavigationProps } from '~/navigation'
 import DefaultTemplate from './DefaultTemplate'
+import { useTranslation } from 'react-i18next'
 
 const GuestBlocked = () => {
+  const { t } = useTranslation();
   const navigation = useNavigation<StackNavigationProps>()
   const goToAuth = React.useCallback(() => {
     navigation.dispatch(
@@ -18,8 +19,8 @@ const GuestBlocked = () => {
   return (
     <DefaultTemplate
       iconName='account-lock'
-      message={translate('errors.guestblocked')}
-      actionTitle={translate('login')}
+      message={t('errors.guestblocked')}
+      actionTitle={t('login')}
       action={goToAuth}
     />
   )

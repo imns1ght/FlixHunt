@@ -18,28 +18,28 @@ class Authentication {
     return !!guest
   }
 
-  static clearStorage() {
+  static async clearStorage() {
     try {
-      Object.values(UserStorageKeys).map(key => SecureStorage.deleteItem(key))
+      Object.values(UserStorageKeys).map(async key => await SecureStorage.deleteItem(key))
       return true
     } catch {
       return false
     }
   }
 
-  static setGuestSessionId(guest_session_id: string) {
+  static async setGuestSessionId(guest_session_id: string) {
     return SecureStorage.setItem(UserStorageKeys.GUEST_SESSION_ID, guest_session_id)
   }
 
-  static setSessionId(session_id: string) {
+  static async setSessionId(session_id: string) {
     return SecureStorage.setItem(UserStorageKeys.SESSION_ID, session_id)
   }
 
-  static setAccountId(account_id: string) {
+  static async setAccountId(account_id: string) {
     return SecureStorage.setItem(UserStorageKeys.ACCOUNT_ID, account_id)
   }
 
-  static saveCredentials(session_id: string, account_id: string | number) {
+  static async saveCredentials(session_id: string, account_id: string | number) {
     return Promise.all([
       SecureStorage.setItem(UserStorageKeys.SESSION_ID, session_id),
       SecureStorage.setItem(UserStorageKeys.ACCOUNT_ID, `${account_id}`),
@@ -47,15 +47,15 @@ class Authentication {
     ])
   }
 
-  static getSessionId() {
+  static async getSessionId() {
     return SecureStorage.getItem(UserStorageKeys.SESSION_ID)
   }
 
-  static getAccountId() {
+  static async getAccountId() {
     return SecureStorage.getItem(UserStorageKeys.ACCOUNT_ID)
   }
 
-  static getGuestSessionId() {
+  static async getGuestSessionId() {
     return SecureStorage.getItem(UserStorageKeys.GUEST_SESSION_ID)
   }
 }

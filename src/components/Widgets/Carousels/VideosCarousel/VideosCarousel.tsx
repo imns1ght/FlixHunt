@@ -1,13 +1,14 @@
 import React from 'react'
 import { FlatList, Pressable, View } from 'react-native'
 import YoutubePlayer from 'react-native-youtube-iframe'
+import { useTranslation } from 'react-i18next'
 import Modal from 'react-native-modal'
 import { Section } from '~/components'
 import { VideoType } from '~/models'
 import styles from './VideosCarousel.styles'
-import { translate } from '~/locales'
 
 const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = React.useState(false)
   const [waitToRender, setWaitToRender] = React.useState(true)
   const [selectedVideo, setSelectedVideo] = React.useState<VideoType>()
@@ -55,7 +56,7 @@ const VideosCarousel = ({ videos }: { videos: VideoType[] }) => {
 
   return (
     <>
-      <Section title={translate('videos')} removeHorizontalMargin>
+      <Section title={t('videos')} removeHorizontalMargin>
         {waitToRender ? (
           <DummyView />
         ) : (
