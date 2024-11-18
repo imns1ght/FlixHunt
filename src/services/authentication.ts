@@ -12,9 +12,9 @@ export enum UserStorageKeys {
 }
 
 const default_storage_options: SetOptions = {
-  accessControl: ACCESS_CONTROL.BIOMETRY_ANY,
+  accessControl: Keychain.ACCESS_CONTROL.APPLICATION_PASSWORD,
   accessible: ACCESSIBLE.WHEN_UNLOCKED,
-  storage: STORAGE_TYPE.AES_GCM,
+  storage: STORAGE_TYPE.AES_GCM_NO_AUTH,
 }
 
 class Authentication {

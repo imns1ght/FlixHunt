@@ -17,7 +17,7 @@ const deeplink = prefixes[0] + config.screens.Auth
 
 const AuthScreen = () => {
   const { t } = useTranslation();
-  const [generalLoading, setGeneralLoading] = React.useState(false)
+  const [generalLoading, setGeneralLoading] = React.useState(true)
   const [loginLoading, setLoginLoading] = React.useState(false)
 
   const toast = useToast()
