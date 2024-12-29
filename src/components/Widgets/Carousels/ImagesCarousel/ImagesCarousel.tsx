@@ -1,15 +1,15 @@
 import React from 'react'
-import { Pressable, View } from 'react-native'
+import { FlatList, Pressable, View } from 'react-native'
 import Modal from 'react-native-modal'
 import { ImageType } from '~/models'
 import { getImagePath } from '~/utils'
 import { CustomActivityIndicator, Section } from '~/components'
 import styles from './ImagesCarousel.styles'
-import { FlatList } from 'react-native-gesture-handler'
 import FastImage from 'react-native-fast-image'
-import { translate } from '~/locales'
+import { useTranslation } from 'react-i18next'
 
 const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = React.useState(false)
   const [selectedImage, setSelectedImage] = React.useState<ImageType>()
   const [modalImageLoading, setModalImageLoading] = React.useState(false)
@@ -38,7 +38,7 @@ const ImagesCarousel = ({ images }: { images: ImageType[] }) => {
 
   return (
     <>
-      <Section title={translate('images')} removeHorizontalMargin>
+      <Section title={t('images')} removeHorizontalMargin>
         <FlatList
           keyExtractor={key => key.file_path}
           data={images}

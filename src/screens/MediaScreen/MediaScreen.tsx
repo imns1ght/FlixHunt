@@ -1,5 +1,6 @@
 import React from 'react'
 import { SafeAreaView, ScrollView, View } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import styles from './MediaScreen.styles'
 import Header from './Header'
 import { NavigationScreenProps } from '~/navigation'
@@ -15,10 +16,11 @@ import {
   VideosCarousel,
 } from '~/components'
 import { MediaFullType } from '~/models'
-import { translate } from '~/locales'
 import MediaScreenHeaderBar from './Header/MediaScreenHeaderBar'
 
 const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
+  const { t } = useTranslation();
+
   const { id, mediaType } = route.params
   const [loading, setLoading] = React.useState(true)
   const [data, setData] = React.useState<MediaFullType>()
@@ -116,7 +118,7 @@ const MediaScreen = ({ route }: NavigationScreenProps['Media']) => {
           <Content data={data} />
         </ScrollView>
       ) : (
-        <CustomText type='paragraph'>{translate('error')}</CustomText>
+        <CustomText type='paragraph'>{t('error')}</CustomText>
       )}
     </SafeAreaView>
   )

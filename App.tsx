@@ -1,8 +1,8 @@
-import 'react-native-gesture-handler'
 import React from 'react'
 import { View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { ToastProvider } from 'react-native-toast-notifications'
+import { useTranslation } from 'react-i18next';
 
 import { BottomBar } from '~/components'
 import {
@@ -16,40 +16,41 @@ import {
 } from '~/screens'
 import { BottomTab, Stack, linkingConfig } from '~/navigation'
 import { theme } from '~/styles'
-import { translate } from '~/locales'
 
-const BottomTabBar = () => (
-  <BottomTab.Navigator screenOptions={BottomBar}>
+const BottomTabBar = () => {
+  const { t } = useTranslation();
+
+  return (<BottomTab.Navigator screenOptions={BottomBar}>
     <BottomTab.Screen
       name='Home'
       component={HomeScreen}
       options={{
-        tabBarLabel: translate('bottomBar.home'),
+        tabBarLabel: t('bottomBar.home'),
       }}
     />
     <BottomTab.Screen
       name='Search'
       component={SearchScreen}
       options={{
-        tabBarLabel: translate('bottomBar.search'),
+        tabBarLabel: t('bottomBar.search'),
       }}
     />
     <BottomTab.Screen
       name='Favorites'
       component={FavoritesScreen}
       options={{
-        tabBarLabel: translate('bottomBar.favorites'),
+        tabBarLabel: t('bottomBar.favorites'),
       }}
     />
     <BottomTab.Screen
       name='Profile'
       component={ProfileScreen}
       options={{
-        tabBarLabel: translate('bottomBar.profile'),
+        tabBarLabel: t('bottomBar.profile'),
       }}
     />
-  </BottomTab.Navigator>
-)
+  </BottomTab.Navigator>)
+}
 
 const App = () => (
   <NavigationContainer linking={linkingConfig} theme={theme}>

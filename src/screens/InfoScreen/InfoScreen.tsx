@@ -1,10 +1,12 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Linking, SafeAreaView, ScrollView } from 'react-native'
 import { CustomText, HeaderBar, Section } from '~/components'
-import { translate } from '~/locales'
 
 const InfoScreen = () => {
+  const { t } = useTranslation();
+
   const onPress = () => {
     Linking.openURL('https://github.com/imns1ght/FlixHunt')
   }
@@ -12,17 +14,17 @@ const InfoScreen = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <Section centered removeVerticalMargin removeHorizontalMargin>
-          <HeaderBar title={translate('info.title')} />
-          <Section title={translate('info.disclaimer.title')} removeVerticalMargin>
-            <CustomText type='paragraph'>{translate('info.disclaimer.tmdbAccuracy')}</CustomText>
+          <HeaderBar title={t('info.title')} />
+          <Section title={t('info.disclaimer.title')} removeVerticalMargin>
+            <CustomText type='paragraph'>{t('info.disclaimer.tmdbAccuracy')}</CustomText>
             <CustomText type='paragraph'>
-              {translate('info.disclaimer.tmdbNotAffiliated')}
+              {t('info.disclaimer.tmdbNotAffiliated')}
             </CustomText>
           </Section>
-          <Section title={translate('info.contributing.title')} removeVerticalMargin>
-            <CustomText type='paragraph'>{translate('info.contributing.description')}</CustomText>
+          <Section title={t('info.contributing.title')} removeVerticalMargin>
+            <CustomText type='paragraph'>{t('info.contributing.description')}</CustomText>
             <CustomText type='link' onPress={onPress}>
-              {translate('info.contributing.link')}
+              {t('info.contributing.link')}
             </CustomText>
           </Section>
         </Section>

@@ -21,12 +21,14 @@ import {
 } from '~/components'
 import { MediaSimpleType } from '~/models'
 import { API, Authentication } from '~/services'
-import { translate } from '~/locales'
+
 import { NavigationScreenProps } from '~/navigation'
 import styles from './FavoritesScreen.styles'
+import { useTranslation } from 'react-i18next'
 
 const FavoritesScreen = ({ route }: NavigationScreenProps['Favorites']) => {
   const defaultTab = route.params?.tabFocused
+  const { t } = useTranslation();
   const windowDimensions = useWindowDimensions()
   const [movieList, setMovieList] = React.useState<MediaSimpleType[]>()
   const [tvList, setTVList] = React.useState<MediaSimpleType[]>()
@@ -35,8 +37,8 @@ const FavoritesScreen = ({ route }: NavigationScreenProps['Favorites']) => {
 
   const [tabIndex, setTabIndex] = React.useState(defaultTab === 'tv' ? 1 : 0)
   const tabRoutes = [
-    { key: 'movie', title: translate('movies') },
-    { key: 'tv', title: translate('tvShows') },
+    { key: 'movie', title: t('movies') },
+    { key: 'tv', title: t('tvShows') },
   ]
 
   const fetchData = React.useCallback(async () => {
@@ -118,7 +120,7 @@ const FavoritesScreen = ({ route }: NavigationScreenProps['Favorites']) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <HeaderBar title={translate('favorites')} />
+        <HeaderBar title={t('favorites')} />
         <TabView
           renderTabBar={renderTabBar}
           navigationState={{ index: tabIndex, routes: tabRoutes }}

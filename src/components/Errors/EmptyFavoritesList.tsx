@@ -1,12 +1,13 @@
 import React from 'react'
-import { translate } from '~/locales'
+import { useTranslation } from 'react-i18next';
 import DefaultTemplate from './DefaultTemplate'
 
 const EmptyFavoritesList = () => {
+  const { t } = useTranslation();
   return (
     <DefaultTemplate
       iconName='heart-plus-outline'
-      message={translate('errors.emptyFavoritesList')}
+      message={t('errors.emptyFavoritesList')}
     />
   )
 }

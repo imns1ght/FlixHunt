@@ -6,8 +6,7 @@ import { arrToStringFormated, convertMinsToTime, getImagePath } from '~/utils'
 import { CustomText, Rating, Section, WatchButton } from '~/components'
 import FastImage from 'react-native-fast-image'
 import { DEFAULT_REGION, REGION } from '~/services'
-
-import { translate } from '~/locales'
+import { useTranslation } from 'react-i18next'
 
 type Props = Pick<
   MovieFullType,
@@ -40,6 +39,8 @@ const Header = ({
   watch_providers,
   seasonsCount,
 }: Props) => {
+  const { t } = useTranslation();
+
   const releaseDate = new Date(release_date).toLocaleDateString()
   const genresFormated = arrToStringFormated(genres)
   const posterPath = getImagePath(poster_path, 'w500')
@@ -87,7 +88,7 @@ const Header = ({
                 {!!seasonsCount && (
                   <CustomText type='paragraph'>{`${
                     seasonsCount < 10 ? `0${seasonsCount}` : seasonsCount
-                  } ${translate('seasons')}`}</CustomText>
+                  } ${t('seasons')}`}</CustomText>
                 )}
               </View>
               <Rating voteAverage={vote_average} voteCount={vote_count} />
