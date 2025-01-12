@@ -83,8 +83,8 @@ android {
         applicationId "com.imns1ght.flixhunt"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 12
-        versionName "1.2.8"
+        versionCode 15
+        versionName "1.2.11"
     }
     signingConfigs {
         debug {
